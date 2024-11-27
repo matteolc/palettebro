@@ -1,13 +1,5 @@
-import type { MetaFunction } from "@vercel/remix";
 import { Pattern } from "~/components/Pattern";
 import { ThemeSelector } from "~/components/ThemeSelector";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
 
 export default function Index() {
   return (

@@ -79,10 +79,10 @@ const Layout = (props: { children: ReactNode }) => {
 }
 
 export const meta: MetaFunction = () => [
-  { title: "Remix 🤝 MDX" },
+  { title: "Palette Bruh" },
   {
     name: "description",
-    content: "Template showing off Remix's new MDX capabilities",
+    content: "A palette generator for the web",
   },
 ];
 
