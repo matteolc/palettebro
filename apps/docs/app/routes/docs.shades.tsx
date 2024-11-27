@@ -1,4 +1,4 @@
-import { ColorPaletteContainer, ColorPaletteReference } from "@repo/ui/Palette";
+import { ColorPaletteContainer } from "@repo/ui/Palette";
 
 export default function Page() {
   return (

@@ -33,6 +33,7 @@ const generateThemeColors = (input: Theme) => {
 
   console.dir(result, { depth: null });
   return result;
+
 };
 
 export { generateThemeColors };
