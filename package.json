@@ -1,0 +1,28 @@
+{
+  "name": "turborepo-remix-saas-with-design-system",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo run format-and-lint",
+    "lint:fix": "turbo run format-and-lint:fix",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format-and-lint": "biome check .",
+    "format-and-lint:fix": "biome check . --write",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=docs^... && changeset publish"
+  },
+  "devDependencies": {
+    "turbo": "^2.2.3",
+    "typescript": "5.6.3",
+    "@biomejs/biome": "1.9.4",
+    "@changesets/cli": "^2.27.9",
+    "@types/node": "^22.9.0",
+    "lefthook": "^1.8.2"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@repo/tailwind-theme",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./themes": "./src/themes.ts"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "format-and-lint": "biome check .",
+    "format-and-lint:fix": "biome check . --write"
+  },
+  "devDependencies": {
+    "@adobe/leonardo-contrast-colors": "1.0.0",
+    "@repo/biome-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/theme-generator": "workspace:*",
+    "@types/culori": "^2.1.1",
+    "chroma-js": "^3.1.2",
+    "@types/chroma-js": "^2.4.4",
+    "culori": "^4.0.1",
+    "picocolors": "^1.1.1",
+    "tailwindcss": "^3.4.14",
+    "tsup": "^8.3.5",
+    "typescript": "5.6.3"
+  }
+}

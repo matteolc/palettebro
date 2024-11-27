@@ -1,0 +1,15 @@
+{
+  "name": "@repo/biome-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./react": "./react.json",
+    "./storybook": "./storybook.json",
+    "./library": "./library.json"
+  },
+  "files": ["library.json", "react.json", "storybook.json"],
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
+  }
+}

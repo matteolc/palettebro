@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-neutral-900 bg-primary-100;
+}
+
+a:not(nav a) {
+  @apply underline decoration-primary-700 hover:decoration-accent;
+}
+
+.prose h1 {
+  @apply text-neutral-900;
+}
+
+.prose p {
+  @apply text-neutral-800;
+}
+
+.prose a {
+  @apply text-neutral-900 underline decoration-primary-700 hover:decoration-accent;
+}

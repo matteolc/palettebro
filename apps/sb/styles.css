@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply antialiased;
+  @apply bg-base-100;
+  @apply min-h-screen;
+  color-scheme: dark light;
+}
+
+/* FIXME: this class should add the polka-dotted background to story previews. 
+ * however we cannot add transparency to the base-content color variable.
+ */
+
+.preview {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--fallback-base-100, oklch(var(--base-100))),
+    var(--fallback-base-100, oklch(var(--base-100))) 13px,
+    var(--fallback-base-200, oklch(var(--base-200))) 13px,
+    var(--fallback-base-200, oklch(var(--base-200))) 14px
+  );
+}
