@@ -12,14 +12,14 @@ const ThemeSelector = () => {
             <div className='grid grid-cols-6 gap-2 max-w-sm'>
                 {Object.keys(defaultThemes).map((theme) => (
                     <button
+                        data-theme={theme}
                         type="submit"
                         name="theme"
                         value={theme}
                         key={theme}
                         aria-label="Theme select"
                         tabIndex={0}
-                        className="size-6 bg-transparent border border-white/20 rounded-full"
-                        style={{ backgroundColor: defaultThemes[theme as keyof typeof defaultThemes].baseColors.primary }}
+                        className="size-6 border border-primary-500 rounded-full bg-primary-400"
                     >
                     </button>
                 ))}

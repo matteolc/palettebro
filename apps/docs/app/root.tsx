@@ -18,7 +18,7 @@ import "~/tailwind.css";
 import { getDomainUrl } from "./lib/get-domain-url";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-  isActive ? "border-b-2 border-accent" : "";
+  isActive ? "border-b-2 border-neutral" : "hover:border-b-2 hover:border-primary";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const locales = getClientLocales(request);

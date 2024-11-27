@@ -2,6 +2,7 @@ import { useLoaderData } from "@remix-run/react";
 import type { LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
 import { getTheme } from "~/hooks/use-theme";
 import { themes } from "@repo/tailwind-theme/themes";
+import { CustomColorPaletteContainer } from "@repo/ui/Palette";
 
 export const meta: MetaFunction = () => {
     return [
@@ -15,7 +16,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const themeName = getTheme(request);
     const theme = themes[themeName as keyof typeof themes];
     const baseColor = theme.baseColors.primary;
-    const mode: "diffusion" | "transformer" = "diffusion" as "diffusion" | "transformer";
+    const mode: "diffusion" | "transformer" = "transformer" as "diffusion" | "transformer";
     const colors = 4
     const temperature = 1.2
     const num_results = mode === "transformer" ? 50 : 5
@@ -65,13 +66,7 @@ export default function Index() {
             <button type="button" className="text-neutral-800" onClick={() => downloadObjectAsJson(huemints, "huemints")}>Download</button>
             <div className="grid grid-cols-4 gap-x-20">
                 {huemints?.map((huemint: { palette: string[], score: number }) => (
-                    <div key={huemint.palette.join()} className="flex flex-col items-center justify-center p-4">
-                        <div className="flex gap-2">
-                            {huemint.palette.slice(1).map((color) => (
-                                <div key={color} className="w-16 h-16 rounded-full" style={{ backgroundColor: color }} />
-                            ))}
-                        </div>
-                    </div>
+                    < CustomColorPaletteContainer key={huemint.palette.join()} colors={huemint.palette.slice(1)} />
                 ))}
             </div>
 

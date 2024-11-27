@@ -6,6 +6,7 @@ import { interval } from "./utils/math";
 import type { SchemistColor } from "./color/types";
 import { formatRgbToHex } from "./color/formatting";
 import { schemistToRgb } from "./color/conversion";
+import nearestColor from "nearest-color";
 
 export const sample = (def: NodeDef, color: SchemistColor, ratio?: number) =>
   def.apply(
@@ -116,3 +117,5 @@ export const presetSampleWithKeyAndNameHash = (
       { name, color: formatRgbToHex(schemistToRgb(color)) },
     ])
   );
+
+export { nearestColor };

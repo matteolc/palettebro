@@ -24,6 +24,7 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/tailwind-theme": "workspace:*",
+    "@repo/theme-generator": "workspace:*",
     "@storybook/react": "^8.4.2",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",

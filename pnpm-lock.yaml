@@ -346,6 +346,9 @@ importers:
       '@repo/tailwind-theme':
         specifier: workspace:*
         version: link:../tailwind-theme
+      '@repo/theme-generator':
+        specifier: workspace:*
+        version: link:../theme-generator
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config

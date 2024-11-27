@@ -27,12 +27,12 @@ export default function Palette() {
 
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 max-w-full h-full">
-      <div className="grid grid-col grid-cols-4 sm:grid-row">
+      <div className="grid grid-col grid-cols-4 sm:grid-row ring-1 ring-inset ring-neutral-800/40 rounded-md">
         {(["primary", "secondary", "accent", "neutral"] as const).map((key) => (
           <PaletteItem key={key} token={key} color={palette[key]?.color} name={palette[key]?.name} />
         ))}
       </div>
-      <div className="grid grid-col grid-cols-4 sm:grid-row">
+      <div className="grid grid-col grid-cols-4 sm:grid-row ring-1 ring-inset ring-neutral-800/40 rounded-md">
         {(["info", "success", "warning", "error"] as const).map((key) => (
           <PaletteItem key={key} token={key} color={palette[key]?.color} name={palette[key]?.name} />
         ))}

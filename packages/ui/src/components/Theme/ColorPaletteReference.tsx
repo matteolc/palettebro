@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import dlv from 'dlv';
 import { useEffect, useState } from 'react';
 import colorPalette from 'tailwindcss/colors';
+import { sentenceCase } from './utils';
+import { nearestColor } from '@repo/theme-generator';
 
 function kebabToTitleCase(str: string) {
   return str
@@ -71,51 +73,72 @@ const hints = {
   ),
 };
 
+export const CustomColorPaletteContainer = ({ colors }: { colors: string[] }) => {
+  return (
+    <div className="grid grid-cols-3 gap-x-2 mb-20">
+      {colors.map((color) => {
+        return (
+          <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset ring-neutral-800/10">
+            <div
+              className={clsx("h-20 rounded-t-[inherit] border-b border-[0.5px] border-neutral-800/10 p-2 leading-tight text-xs")}
+              style={{ backgroundColor: color }}
+            >
+              <span>{nearestColor(color)}</span>
+            </div>
+            <div className="px-2 text-sm text-neutral min-w-24">
+              <p>{color}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  )
+}
 
-export const ColorPaletteContainer = ({ colors }: { colors: string[] }) => (
-  <div className="grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-x-2 gap-y-8 sm:grid-cols-1 space-y-20 mb-20">
-    {colors.map((color) => {
-      return (
-        <div key={color} className="2xl:contents">
-          <div className="font-semibold text-neutral-800 text-xl 2xl:col-end-1 2xl:pt-2.5">
-            {{
-              primary: 'Primary',
-              success: 'Success',
-              secondary: 'Secondary',
-              accent: 'Accent',
-              neutral: 'Neutral',
-              warning: 'Warning',
-              error: 'Error',
-              info: 'Info',
-            }[color]}
-          </div>
-          <div className="grid mt-3 grid-cols-1 sm:grid-cols-11 gap-y-8 gap-x-2 sm:mt-2 2xl:mt-0">
-            {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((variant) => {
-              const hint: string | undefined = hints[`${color}-${variant}` as keyof typeof hints];
-              return (
-                <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset ring-white/10">
-                  <div
-                    className="h-20 rounded-t-[inherit] border-b border-[0.5px] border-white/10"
-                    style={{ backgroundColor: `oklch(var(--${color}-${variant}))` }}
-                  />
-                  <div className="px-2 text-sm text-neutral-900 min-w-24">
-                    <p>{variant}</p>
-                  </div>
-                  {hint && (
-                    <div className="absolute bottom-0 left-1/2 flex w-full -translate-x-1/2 translate-y-full flex-col items-center justify-center p-2">
-                      <div className="h-3 w-px bg-neutral-900" />
-                      <p className="w-full text-center text-xs text-neutral-900">{hint}</p>
+export const ColorPaletteContainer = ({ palette, colors }: { palette: Record<string, { name: string; color: string }>; colors: string[] }) => {
+  const colorMap = colors.reduce((acc, color) => {
+    acc[color] = sentenceCase(color);
+    return acc;
+  }, {} as Record<string, string>);
+  return (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-x-2 gap-y-8 sm:grid-cols-1 space-y-20 mb-20">
+      {colors.map((color) => {
+        return (
+          <div key={color} className="2xl:contents">
+            <div className="font-semibold text-neutral-800 text-xl 2xl:col-end-1 2xl:pt-2.5">
+              {colorMap[color]}
+            </div>
+            <div className="grid mt-3 grid-cols-1 sm:grid-cols-11 gap-y-8 gap-x-2 sm:mt-2 2xl:mt-0">
+              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((variant) => {
+                const hint: string | undefined = hints[`${color}-${variant}` as keyof typeof hints];
+                const textVariant = variant > 400 ? 50 : 950;
+                return (
+                  <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset ring-neutral-800/10">
+                    <div
+                      className={clsx("h-20 rounded-t-[inherit] border-b border-[0.5px] border-neutral-800/10 p-2 leading-tight text-xs")}
+                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))` }}
+                    >
+                      <span>{palette[`${color}-${variant}`]?.name}</span>
                     </div>
-                  )}
-                </div>
-              );
-            })}
+                    <div className="px-2 text-sm text-neutral min-w-24">
+                      <p>{variant}</p>
+                    </div>
+                    {hint && (
+                      <div className="absolute bottom-0 left-1/2 flex w-full -translate-x-1/2 translate-y-full flex-col items-center justify-center p-2">
+                        <div className="h-3 w-px bg-neutral" />
+                        <p className="w-full text-center text-xs text-neutral">{hint}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      );
-    })}
-  </div>
-);
+        );
+      })}
+    </div>
+  )
+}
 
 export function ColorPalette({
   name,
