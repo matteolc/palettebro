@@ -3,20 +3,13 @@ import type { LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
 import { getTheme } from "~/hooks/use-theme";
 import { themes } from "@repo/tailwind-theme/themes";
 import { CustomColorPaletteContainer } from "@repo/ui/Palette";
-
-export const meta: MetaFunction = () => {
-    return [
-        { title: "New Remix App" },
-        { name: "description", content: "Welcome to Remix!" },
-    ];
-};
-
+import { useEffect } from "react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const themeName = getTheme(request);
     const theme = themes[themeName as keyof typeof themes];
     const baseColor = theme.baseColors.primary;
-    const mode: "diffusion" | "transformer" = "transformer" as "diffusion" | "transformer";
+    const mode: "diffusion" | "transformer" = "diffusion" as "diffusion" | "transformer";
     const colors = 4
     const temperature = 1.2
     const num_results = mode === "transformer" ? 50 : 5
@@ -50,20 +43,28 @@ export default function Index() {
 
     const { huemints, mode, temperature, baseColor } = useLoaderData<typeof loader>();
 
-    function downloadObjectAsJson(exportObj: JSON, exportName: string) {
-        const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(exportObj))}`;
-        const downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href", dataStr);
-        const name = `${exportName}-${baseColor}-${mode}-temp@${temperature}-${Date.now()}`;
-        downloadAnchorNode.setAttribute("download", `${name}.json`);
-        document.body.appendChild(downloadAnchorNode);
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
+    useEffect(() => {
+        document.addEventListener("click", downloadObjectAsJson);
+        return () => {
+            document.removeEventListener("click", downloadObjectAsJson);
+        }
+    }, [])
+
+    function downloadObjectAsJson(e: MouseEvent) {
+        if (e.altKey) {
+            const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(huemints))}`;
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            const name = `huemints-${baseColor}-${mode}-temp@${temperature}-${Date.now()}`;
+            downloadAnchorNode.setAttribute("download", `${name}.json`);
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
     }
 
     return (
         <div className="flex flex-col gap-y-4 items-start">
-            <button type="button" className="text-neutral-800" onClick={() => downloadObjectAsJson(huemints, "huemints")}>Download</button>
             <div className="grid grid-cols-3 gap-x-20">
                 {huemints?.map((huemint: { palette: string[], score: number }) => (
                     < CustomColorPaletteContainer key={huemint.palette.join()} colors={huemint.palette.slice(1)} />
