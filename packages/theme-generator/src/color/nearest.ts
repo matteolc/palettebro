@@ -1,5 +1,5 @@
-import colornames from "color-name-list/bestof.json"; // TODO: Fix this import
 import nearestColor from "nearest-color";
+import colornames from "../lib/colornames.bestof.json";
 
 const find = nearestColor.from(
   Object.fromEntries(
