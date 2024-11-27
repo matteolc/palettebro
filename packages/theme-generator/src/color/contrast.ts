@@ -2,6 +2,8 @@ import { APCAcontrast, sRGBtoY } from "apca-w3";
 import { wcagContrast } from "culori/fn";
 import { rgbToCulori } from "./culori";
 import type { RgbColor } from "./types";
+import { parseColor } from "./parsing";
+import { schemistToRgb } from "./conversion";
 
 export type ContrastType = "wcag2" | "wcag3";
 
@@ -83,3 +85,11 @@ export const wcag3Contrast = (bg: RgbColor, fg: RgbColor) => {
     APCAcontrast(sRGBtoY([fgR, fgG, fgB]), sRGBtoY([bgR, bgG, bgB])) as number
   );
 };
+
+export const isDark = (color: string) => {
+  const [_, parsedColor] = parseColor(color);
+  if (!parsedColor) return false;
+  
+  const { r, g, b } = schemistToRgb(parsedColor);
+  return (r * 299 + g * 587 + b * 114) / 1000 < 128;
+}

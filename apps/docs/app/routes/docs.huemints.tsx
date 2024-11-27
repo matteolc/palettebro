@@ -64,7 +64,7 @@ export default function Index() {
     return (
         <div className="flex flex-col gap-y-4 items-start">
             <button type="button" className="text-neutral-800" onClick={() => downloadObjectAsJson(huemints, "huemints")}>Download</button>
-            <div className="grid grid-cols-4 gap-x-20">
+            <div className="grid grid-cols-3 gap-x-20">
                 {huemints?.map((huemint: { palette: string[], score: number }) => (
                     < CustomColorPaletteContainer key={huemint.palette.join()} colors={huemint.palette.slice(1)} />
                 ))}

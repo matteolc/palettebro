@@ -4,7 +4,7 @@ import dlv from 'dlv';
 import { useEffect, useState } from 'react';
 import colorPalette from 'tailwindcss/colors';
 import { sentenceCase } from './utils';
-import { nearestColor } from '@repo/theme-generator';
+import { isDark, nearestColor } from '@repo/theme-generator';
 
 function kebabToTitleCase(str: string) {
   return str
@@ -78,12 +78,12 @@ export const CustomColorPaletteContainer = ({ colors }: { colors: string[] }) =>
     <div className="grid grid-cols-3 gap-x-2 mb-20">
       {colors.map((color) => {
         return (
-          <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset ring-neutral-800/10">
+          <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset ring-neutral-800/10 min-w-24">
             <div
-              className={clsx("h-20 rounded-t-[inherit] border-b border-[0.5px] border-neutral-800/10 p-2 leading-tight text-xs")}
+              className={clsx("h-20 rounded-t-[inherit] border-b border-[0.5px] border-neutral-800/10 p-2 leading-tight text-xs text-neutral")}
               style={{ backgroundColor: color }}
             >
-              <span>{nearestColor(color)}</span>
+              <span style={{ color: isDark(color) ? 'white' : 'black' }}>{nearestColor(color)}</span>
             </div>
             <div className="px-2 text-sm text-neutral min-w-24">
               <p>{color}</p>
