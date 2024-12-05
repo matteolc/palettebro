@@ -1,23 +1,23 @@
 import { useLoaderData } from "@remix-run/react";
-import type { LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
-import { getTheme } from "~/hooks/use-theme";
+import type { LoaderFunctionArgs } from "@vercel/remix";
 import { themes } from "@repo/tailwind-theme/themes";
 import { CustomColorPaletteContainer } from "@repo/ui/Palette";
 import { useEffect } from "react";
+import { useHints } from "~/hooks/use-hints";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    const themeName = getTheme(request);
-    const theme = themes[themeName as keyof typeof themes];
+    const hints = useHints();
+    const theme = themes[hints.theme as keyof typeof themes];
     const baseColor = theme.baseColors.primary;
     const mode: "diffusion" | "transformer" = "diffusion" as "diffusion" | "transformer";
-    const colors = 4
-    const temperature = 1.2
+    const colors = 4 // max 12, min 2
+    const temperature = 1.2 // max 2.4, min 0
     const num_results = mode === "transformer" ? 50 : 5
     const cfg = {
-        mode, // transformer, diffusion or random
-        num_colors: colors, // max 12, min 2
-        temperature, // max 2.4, min 0
-        num_results, // max 50 for transformer, 5 for diffusion
+        mode,
+        num_colors: colors,
+        temperature,
+        num_results,
         adjacency: ["0", "65", "45", "35", "65", "0", "35", "65", "45", "35", "0", "35", "35", "65", "35", "0"], // nxn adjacency matrix as a flat array of strings
         palette: ["#ffffff", baseColor, "-", "-"], // locked colors as hex codes, or '-' if blank
     }

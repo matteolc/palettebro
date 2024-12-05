@@ -1,6 +1,7 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import dlv from 'dlv';
+import type React from 'react';
 import { useEffect, useState } from 'react';
 import colorPalette from 'tailwindcss/colors';
 import { sentenceCase } from './utils';
@@ -101,11 +102,11 @@ export const ColorPaletteContainer = ({ palette, colors }: { palette: Record<str
     return acc;
   }, {} as Record<string, string>);
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-x-2 gap-y-8 sm:grid-cols-1 space-y-20 mb-20">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-x-2 gap-y-4 sm:grid-cols-1 space-y-20 mb-20">
       {colors.map((color) => {
         return (
           <div key={color} className="2xl:contents">
-            <div className="font-semibold text-neutral-800 text-xl 2xl:col-end-1 2xl:pt-2.5">
+            <div className="font-semibold text-xl 2xl:col-end-1 2xl:pt-2.5" style={{ color: `oklch(var(--${color}-900))` }}>
               {colorMap[color]}
             </div>
             <div className="grid mt-3 grid-cols-1 sm:grid-cols-11 gap-y-8 gap-x-2 sm:mt-2 2xl:mt-0">
@@ -113,19 +114,19 @@ export const ColorPaletteContainer = ({ palette, colors }: { palette: Record<str
                 const hint: string | undefined = hints[`${color}-${variant}` as keyof typeof hints];
                 const textVariant = variant > 400 ? 50 : 950;
                 return (
-                  <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset ring-neutral-800/10">
+                  <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset" style={{ "--tw-ring-color": `oklch(var(--${color}-200)/10)` } as React.CSSProperties}>
                     <div
-                      className={clsx("h-20 rounded-t-[inherit] border-b border-[0.5px] border-neutral-800/10 p-2 leading-tight text-xs")}
-                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))` }}
+                      className={clsx("h-20 rounded-[inherit] border-b border-[0.5px] p-2 leading-tight text-xs")}
+                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))`, borderColor: `oklch(var(--${color}-200))` }}
                     >
-                      <span>{palette[`${color}-${variant}`]?.name}</span>
-                    </div>
-                    <div className="px-2 text-sm text-neutral min-w-24">
-                      <p>{variant}</p>
+                      <div className="flex items-start flex-col justify-between">
+                        <div className="text-2xl font-bold">{variant}</div>
+                        <div>{palette[`${color}-${variant}`]?.name}</div>
+                      </div>
                     </div>
                     {hint && (
                       <div className="absolute bottom-0 left-1/2 flex w-full -translate-x-1/2 translate-y-full flex-col items-center justify-center p-2">
-                        <div className="h-3 w-px bg-neutral" />
+                        <div className="h-3 w-px" style={{ backgroundColor: "oklch(var(--neutral))" }} />
                         <p className="w-full text-center text-xs text-neutral">{hint}</p>
                       </div>
                     )}

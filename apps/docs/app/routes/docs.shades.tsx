@@ -1,19 +1,21 @@
-import { defaultThemes } from "@repo/tailwind-theme";
-import { usePalette } from "@repo/theme-generator/palettes";
-import { ColorPaletteContainer } from "@repo/ui/Palette";
-import { useTheme } from "~/hooks/use-theme";
+import { ColorPaletteShades } from "~/components/ColorPaletteShades";
+import { useContext } from "react";
+import { PaletteContext } from "~/PaletteContext";
 
 export default function Page() {
-  const theme = useTheme();
-  const palette = usePalette(defaultThemes[theme]);
+  const { palette } = useContext(PaletteContext);
+
+  if (!palette) {
+    return null;
+  }
 
   return (
     <div className="grid grid-cols-1 space-y-20 mb-20">
-      <ColorPaletteContainer
+      <ColorPaletteShades
         palette={palette}
         colors={["primary", "secondary", "accent", "neutral"]}
       />
-      <ColorPaletteContainer palette={palette} colors={["info", "success", "warning", "error"]} />
+      <ColorPaletteShades palette={palette} colors={["info", "success", "warning", "error"]} />
     </div>
   )
 }
