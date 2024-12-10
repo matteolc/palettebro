@@ -164,7 +164,7 @@ const PaletteSettings = () => {
                                 {["mui", "spot"].map((variant) => (
                                     <RadioCardItem value={variant} className="flex items-center gap-3 py-2 text-zinc-950">
                                         <RadioCardIndicator />
-                                        <span>{VariantMap[variant]}</span>
+                                        <span>{VariantMap[variant as "mui" | "ai" | "spot"]}</span>
                                     </RadioCardItem>
                                 ))}
                             </RadioCardGroup>
