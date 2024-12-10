@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 import { useCustomPalette } from "./hooks/use-custom-palette";
 import { StaticThemePreset, ThemeVariant, ThemeVariantEnum } from "@repo/theme-generator/types";
 
-type BaseColors = {
+export type BaseColors = {
   primary: string;
   secondary?: string;
   accent?: string;

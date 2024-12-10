@@ -1,6 +1,6 @@
 import { RiMagicLine, RiSunLine, RiLockUnlockLine, RiMoonLine, RiPaletteLine, RiLockLine, RiEqualizerLine, RiContrastDrop2Fill, RiInformationLine, RiInformationOffLine } from "@remixicon/react";
 import { Fragment, useContext, useEffect, useState } from "react";
-import { PaletteContext, VariantMap } from "~/PaletteContext";
+import { BaseColors, PaletteContext, VariantMap } from "~/PaletteContext";
 import { Checkbox, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { ColorPickerTailwind } from "./picker/ColorPickerTailwind";
 import { sentenceCase } from "~/lib/string";
@@ -65,7 +65,7 @@ const ColorShades = ({ token }: { token: string }) => {
 
 const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock: () => void }) => {
     const [isLocked, setIsLocked] = useState(false);
-    const { palette } = useContext(PaletteContext);
+    const { palette, setBaseColors } = useContext(PaletteContext);
 
     if (!palette)
         return null;
@@ -109,7 +109,7 @@ const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock: () 
                                     <ColorField
                                         token={token}
                                         value={palette[token].color}
-                                        onChange={(value) => console.log(value)}
+                                        onChange={(value) => setBaseColors?.({ [token]: value } as BaseColors)}
                                     />
                                 </PopoverPanel>
                             </Popover>
