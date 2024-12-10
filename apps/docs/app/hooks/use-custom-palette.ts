@@ -3,6 +3,7 @@ import { defaultThemes } from "@repo/tailwind-theme";
 import { usePalette } from "@repo/theme-generator/palettes";
 import { colorToRawOklchString } from "~/lib/oklch";
 import type {
+	StaticThemePreset,
 	ThemeColorScheme,
 	ThemeVariant,
 } from "@repo/theme-generator/types";
@@ -14,6 +15,9 @@ const useCustomPalette = (
 	saturation?: number,
 	variant?: ThemeVariant,
 	lightness?: number,
+	preset?: StaticThemePreset,
+	reverse?: boolean,
+	contrast?: number,
 ) => {
 	const hints = useHints();
 	const currentTheme = defaultThemes[hints.theme];
@@ -23,6 +27,9 @@ const useCustomPalette = (
 		saturation: saturation ?? currentTheme.saturation,
 		variant: variant ?? currentTheme.variant,
 		lightness: lightness ?? currentTheme.lightness,
+		preset,
+		reverse,
+		contrast,
 		baseColors: {
 			...currentTheme.baseColors,
 			...colors,

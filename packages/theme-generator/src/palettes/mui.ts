@@ -13,6 +13,8 @@ export default (theme: {
   accentColor?: SchemistColor;
   saturation: number;
   isDark: boolean;
+  reverse: boolean;
+  preset: "split-complementary" | "tetrad" | "triad";
 }) => {
   const { primaryColor, saturation, isDark } = theme;
 

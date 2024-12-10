@@ -21,14 +21,18 @@ export const ThemeVariantToPalette = {
   ai: aiPalette,
 };
 
+export type StaticThemePreset = 'split-complementary' | 'tetrad' | 'triad'
+
 export type Theme = {
   "color-scheme": ThemeColorScheme;
   variant: ThemeVariant;
-  smooth?: boolean;
+  preset?: StaticThemePreset;
+  reverse?: boolean;
+  smooth?: boolean; // unused
   lightness?: number;
   saturation: number;
-  contrast?: number;
-  ratios?: number[];
+  contrast?: number; // unused
+  ratios?: number[]; // unused
   baseColors: {
     primary: string;
     secondary?: string;

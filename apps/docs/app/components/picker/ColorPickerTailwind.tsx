@@ -43,7 +43,7 @@ export const ColorPickerTailwind = ({ token }: { token: string }) => {
                             style={{ backgroundColor: colors[color as keyof typeof colors][500], borderColor: colors[color as keyof typeof colors][600] }}
                             key={color}
                             className={`border size-6 rounded-full cursor-pointer`}
-                            onClick={() => handleColorClick(colors[color as keyof typeof colors][500])}
+                            onClick={(e) => { e.preventDefault(); handleColorClick(colors[color as keyof typeof colors][500]) }}
                         />
                     ))}
                 </div>

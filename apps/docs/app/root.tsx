@@ -17,7 +17,7 @@ import "~/tailwind.css";
 import { getDomainUrl } from "./lib/get-domain-url";
 import { PaletteToolbar } from "./components/PaletteToolbar";
 import { PaletteProvider } from "./PaletteContext";
-import { PaletteToolbarProvider } from "./components/PaletteToolbarContext";
+import { PaletteToolbarProvider } from "./PaletteToolbarContext";
 
 export const meta: MetaFunction = () => [
   { title: "Palette Bruh" },

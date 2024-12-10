@@ -1,16 +1,16 @@
 import { RiMagicLine, RiSunLine, RiLockUnlockLine, RiMoonLine, RiPaletteLine, RiLockLine, RiEqualizerLine, RiContrastDrop2Fill, RiInformationLine, RiInformationOffLine } from "@remixicon/react";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { PaletteContext, VariantMap } from "~/PaletteContext";
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-import { ColorPickerTailwind } from "./ColorPickerTailwind";
+import { Checkbox, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { ColorPickerTailwind } from "./picker/ColorPickerTailwind";
 import { sentenceCase } from "~/lib/string";
-import { Slider } from "./Slider";
-import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "./RadioCard";
+import { Slider } from "./ui/Slider";
+import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "./ui/RadioCard";
 import { ThemeVariantEnum } from "@repo/theme-generator/types";
 import { Form, useFetcher } from "@remix-run/react";
 import { action } from "~/routes/generate";
 import { Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/react'
-import { PaletteToolbarContext, PaletteToolbarProvider } from "./PaletteToolbarContext";
+import { PaletteToolbarContext, PaletteToolbarProvider } from "../PaletteToolbarContext";
 import clsx from "clsx";
 import ColorField from "./picker/ColorField";
 
@@ -105,14 +105,10 @@ const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock: () 
                                     <RiPaletteLine />
                                 </PopoverButton>
                                 <PopoverPanel anchor={{ to: 'top', gap: "18px" }} className="flex flex-col bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
-                                    <ColorPickerTailwind token={token} />
+
                                     <ColorField
-                                        id="primary-color"
-                                        value={{
-                                            r: 255,
-                                            g: 100,
-                                            b: 50,
-                                        }}
+                                        token={token}
+                                        value={palette[token].color}
                                         onChange={(value) => console.log(value)}
                                     />
                                 </PopoverPanel>
@@ -134,6 +130,46 @@ const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock: () 
     )
 }
 
+const StaticPaletteSettings = () => {
+    const { variant, setVariant, preset, setPreset, reverse, setReverse } = useContext(PaletteContext);
+
+    return (
+        <>
+            <div className="flex flex-row items-center justify-between text-zinc-950">
+                <div className="text-lg mb-2">Preset</div>
+            </div>
+            <RadioCardGroup value={preset} onValueChange={setPreset} className="text-lg mb-4">
+                {['split-complementary', 'tetrad', 'triad'].map((preset) => (
+                    <RadioCardItem value={preset} className="flex items-center gap-3 py-2 text-zinc-950">
+                        <RadioCardIndicator />
+                        <span>{preset}</span>
+                    </RadioCardItem>
+                ))}
+            </RadioCardGroup>
+            <div className="flex flex-row items-center justify-between text-zinc-950">
+                <div className="text-lg mb-2">Reverse</div>
+                <Checkbox checked={reverse} onChange={setReverse} as={Fragment}>
+                    {({ checked, disabled }) => (
+                        <span
+                            className={clsx(
+                                'block size-6 rounded border',
+                                !checked && 'bg-white',
+                                checked && !disabled && 'bg-blue-500',
+                                checked && disabled && 'bg-gray-500',
+                                disabled && 'cursor-not-allowed opacity-50'
+                            )}
+                        >
+                            <svg className={clsx('stroke-white', checked ? 'opacity-100' : 'opacity-0')} viewBox="0 0 14 14" fill="none">
+                                <path d="M3 8L6 11L11 3.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </span>
+                    )}
+                </Checkbox>
+            </div>
+        </>
+    )
+}
+
 const PaletteSettings = () => {
     const { variant, setVariant } = useContext(PaletteContext);
     const { temperature, setTemperature, preset, setPreset, profile, setProfile, page, setPage } = useContext(PaletteToolbarContext);
@@ -152,22 +188,12 @@ const PaletteSettings = () => {
                 <TabGroup>
 
                     <TabList className="flex flex-row gap-2 mb-2 text-lg">
-                        <Tab onClick={() => setVariant?.(ThemeVariantEnum.mui)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Static</Tab>
+                        <Tab onClick={() => setVariant?.(ThemeVariantEnum.spot)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Static</Tab>
                         <Tab onClick={() => setVariant?.(ThemeVariantEnum.ai)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Generative</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <div className="flex flex-row items-center justify-between text-zinc-950">
-                                <div className="text-lg mb-2">Mode</div>
-                            </div>
-                            <RadioCardGroup value={variant} onValueChange={setVariant} className="text-lg mb-4">
-                                {["mui", "spot"].map((variant) => (
-                                    <RadioCardItem value={variant} className="flex items-center gap-3 py-2 text-zinc-950">
-                                        <RadioCardIndicator />
-                                        <span>{VariantMap[variant as "mui" | "ai" | "spot"]}</span>
-                                    </RadioCardItem>
-                                ))}
-                            </RadioCardGroup>
+                            <StaticPaletteSettings />
                         </TabPanel>
                         <TabPanel className="grid grid-cols-3 gap-2">
                             <div>
@@ -245,6 +271,31 @@ const SaturationSettings = () => {
                     <div className="text-lg font-bold mb-2">{saturation}</div>
                 </div>
                 <Slider value={[saturation]} onValueChange={(value: number[]) => setSaturation(value[0])} />
+            </PopoverPanel>
+        </Popover>
+    )
+}
+
+const ContrastSettings = () => {
+    const { contrast, setContrast } = useContext(PaletteContext);
+
+    if (!contrast) return null;
+    if (!setContrast) return null;
+
+    return (
+        <Popover className="relative z-50">
+            <PopoverButton className="outline-none">
+                <button className="px-1 py-2 rounded-full">
+                    <RiContrastDrop2Fill />
+                </button>
+            </PopoverButton>
+            <PopoverPanel anchor={{ to: 'bottom start', gap: "18px" }} className="min-w-52 flex flex-col bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
+
+                <div className="flex flex-row items-center justify-between text-zinc-950">
+                    <div className="text-lg mb-2">Contrast</div>
+                    <div className="text-lg font-bold mb-2">{contrast}</div>
+                </div>
+                <Slider value={[contrast]} onValueChange={(value: number[]) => setContrast(value[0])} />
             </PopoverPanel>
         </Popover>
     )

@@ -1,5 +1,4 @@
-import spotPaletteDark from "../presets/spotPaletteDark";
-import spotPaletteLight from "../presets/spotPaletteLight";
+import spotPalette from "../presets/spotPalette";
 import {
   presetSamplesWithKeyAndName,
   presetSampleWithKeyAndNameHash,
@@ -13,12 +12,13 @@ export default (theme: {
   saturation: number;
   lightness?: number;
   isDark: boolean;
+  reverse: boolean;
+  preset: "split-complementary" | "tetrad" | "triad";
+  contrast: number;
 }) => {
-  const { primaryColor, saturation, isDark, lightness } = theme;
+  const { primaryColor, saturation, isDark, lightness, reverse, preset, contrast } = theme;
 
-  const nodes = isDark
-    ? spotPaletteDark({ saturation, lightness }).nodes
-    : spotPaletteLight({ saturation, lightness }).nodes;
+  const nodes = spotPalette({ saturation, lightness, isDark, reverse, preset, contrast }).nodes
 
   return presetSampleWithKeyAndNameHash([
     ...presetSamplesWithKeyAndName(nodes, primaryColor),

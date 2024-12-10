@@ -47,7 +47,7 @@ export default (options?: { saturation?: number }) =>
           {
             type: negative.type,
             token: "error",
-            isHidden: true,
+            isHidden: false,
             children: [
               ...materialTonesLight.nodes,
               ...tailwindScaleLight.nodes,
@@ -56,7 +56,7 @@ export default (options?: { saturation?: number }) =>
           {
             type: informative.type,
             token: "info",
-            isHidden: true,
+            isHidden: false,
             children: [
               ...materialTonesLight.nodes,
               ...tailwindScaleLight.nodes,
@@ -65,7 +65,7 @@ export default (options?: { saturation?: number }) =>
           {
             type: positive.type,
             token: "success",
-            isHidden: true,
+            isHidden: false,
             children: [
               ...materialTonesLight.nodes,
               ...tailwindScaleLight.nodes,
@@ -74,7 +74,7 @@ export default (options?: { saturation?: number }) =>
           {
             type: warning.type,
             token: "warning",
-            isHidden: true,
+            isHidden: false,
             children: [
               ...materialTonesLight.nodes,
               ...tailwindScaleLight.nodes,

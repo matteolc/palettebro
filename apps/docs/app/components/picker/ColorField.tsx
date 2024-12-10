@@ -1,114 +1,98 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { RGBColorField } from './RGBColorField';
 import { CSSColorField } from './CSSColorField';
 import { HSLColorField } from './HSLColorField';
 import { LCHColorField } from './LCHColorField';
-import { RgbColor, SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
+import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
 import { randomUsableColor } from 'node_modules/@repo/theme-generator/src/color/manipulation';
-import { ColorFormat } from 'node_modules/@repo/theme-generator/src/color/formatting';
-import { rgbToSchemist } from 'node_modules/@repo/theme-generator/src/color/conversion';
+import { ColorFormat, formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
+import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { ColorPickerTailwind } from './ColorPickerTailwind';
 
 interface ColorFieldProps {
-    id: string;
-    value: RgbColor;
-    onChange: (value: SchemistColor) => void;
+    value: string;
+    token: string;
+    onChange: (value: string) => void;
 }
 
-type InputFormat = 'css' | 'rgb' | 'hsl' | 'lch';
-
 const ColorField: React.FC<ColorFieldProps> = ({
-    id,
     value,
+    token,
     onChange
 }) => {
-    const [format, setFormat] = useState<InputFormat>('rgb');
-    const [colorInputFormat, setColorInputFormat] = useState<ColorFormat>('hex');
-    const [localValue, setLocalValue] = useState<SchemistColor>(rgbToSchemist(value) || rgbToSchemist({ r: 0, g: 0, b: 0 }));
+    const [colorFormat, schemistColor] = parseColor(value);
+    if (!schemistColor) return null;
+    if (!colorFormat) return null;
+
+    const [colorInputFormat, setColorInputFormat] = useState<ColorFormat>(colorFormat);
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
+    const [localValue, setLocalValue] = useState<SchemistColor>(schemistColor);
 
     useEffect(() => {
         if (value) {
-            setLocalValue(rgbToSchemist(value));
+            const [colorFormat, schemistColor] = parseColor(value);
+            if (!schemistColor) return;
+            if (!colorFormat) return;
+
+            setLocalValue(schemistColor);
         }
     }, [value]);
 
     const handleChange = (newValue: SchemistColor) => {
         setLocalValue(newValue);
-        onChange(newValue);
+        onChange(formatSchemistToHex(newValue));
     };
 
-    const handleRandomize = () => {
+    const handleRandomize = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         const randomColor = randomUsableColor();
         handleChange(randomColor);
     };
 
     return (
-        <div className="col-span-full">
-            <fieldset className="border rounded p-4">
-                <div className="space-y-4">
-                    <div className="grid gap-4">
-                        <p id={`${id}-format`} className="input-grid-firstCol">
-                            Format
-                        </p>
+        <div className="col-span-full min-h-72">
+            <fieldset>
+                <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>
+                    <TabList className="flex flex-row gap-2 mb-2 text-lg">
+                        <Tab onClick={(e) => { e.preventDefault(); setSelectedIndex(0) }} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">RGB</Tab>
+                        <Tab onClick={(e) => { e.preventDefault(); setSelectedIndex(1) }} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">HSL</Tab>
+                        <Tab onClick={(e) => { e.preventDefault(); setSelectedIndex(2) }} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">LCH</Tab>
+                        <Tab onClick={(e) => { e.preventDefault(); setSelectedIndex(3) }} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">CSS</Tab>
+                        <Tab onClick={(e) => { e.preventDefault(); setSelectedIndex(4) }} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Tailwind</Tab>
+                    </TabList>
+                    <TabPanels className="p-2">
+                        <TabPanel>
+                            <RGBColorField
+                                value={localValue}
+                                onChange={handleChange}
+                            />
+                        </TabPanel>
+                        <TabPanel>
+                            <HSLColorField
+                                value={localValue}
+                                onChange={handleChange}
+                            />
+                        </TabPanel>
+                        <TabPanel>
+                            <LCHColorField
+                                value={localValue}
+                                onChange={handleChange}
+                            />
+                        </TabPanel>
 
-                        <div
-                            className="flex gap-2 input-grid-lastCols"
-                            role="group"
-                            aria-labelledby={`${id}-format`}
-                        >
-                            {(['rgb', 'hsl', 'lch', 'css'] as const).map((f) => (
-                                <React.Fragment key={f}>
-                                    <input
-                                        id={`${id}-${f}`}
-                                        className="hidden"
-                                        type="radio"
-                                        value={f}
-                                        checked={format === f}
-                                        onChange={(e) => setFormat(e.target.value as InputFormat)}
-                                    />
-                                    <label
-                                        className={`px-4 py-2 rounded cursor-pointer ${format === f
-                                            ? 'bg-blue-500 text-white'
-                                            : 'bg-gray-200 hover:bg-gray-300'
-                                            }`}
-                                        htmlFor={`${id}-${f}`}
-                                    >
-                                        {f.toUpperCase()}
-                                    </label>
-                                </React.Fragment>
-                            ))}
-                        </div>
-
-                        {format === 'css' && (
+                        <TabPanel>
                             <CSSColorField
-                                id={id}
                                 value={localValue}
                                 onChange={handleChange}
                                 colorInputFormat={colorInputFormat}
                                 onFormatChange={setColorInputFormat}
                             />
-                        )}
-                        {format === 'rgb' && (
-                            <RGBColorField
-                                id={parseInt(id)}
-                                value={localValue}
-                                onChange={handleChange}
-                            />
-                        )}
-                        {format === 'hsl' && (
-                            <HSLColorField
-                                id={parseInt(id)}
-                                value={localValue}
-                                onChange={handleChange}
-                            />
-                        )}
-                        {format === 'lch' && (
-                            <LCHColorField
-                                id={parseInt(id)}
-                                value={localValue}
-                                onChange={handleChange}
-                            />
-                        )}
-
+                        </TabPanel>
+                        <TabPanel>
+                            <ColorPickerTailwind token={token} />
+                        </TabPanel>
                         <button
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 self-start"
                             type="button"
@@ -116,8 +100,8 @@ const ColorField: React.FC<ColorFieldProps> = ({
                         >
                             Randomize
                         </button>
-                    </div>
-                </div>
+                    </TabPanels>
+                </TabGroup>
             </fieldset>
         </div>
     );

@@ -20,6 +20,9 @@ export const usePalette = (theme: Theme) => {
   const {
     saturation,
     lightness,
+    reverse,
+    preset,
+    contrast,
     baseColors: { primary, secondary, accent },
   } = theme;
 
@@ -77,6 +80,9 @@ export const usePalette = (theme: Theme) => {
     accentColor,
     saturation,
     lightness,
+    contrast: contrast ?? 1,
+    reverse: reverse ?? false,
+    preset: preset ?? "split-complementary",
     isDark: theme["color-scheme"] === ThemeColorSchemeEnum.dark,
   });
 

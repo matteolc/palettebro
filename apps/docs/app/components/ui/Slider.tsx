@@ -9,12 +9,16 @@ import clsx from "clsx"
 interface SliderProps
     extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
     ariaLabelThumb?: string
+    trackClassName?: string
+    trackStyle?: React.CSSProperties
+    rangeClassName?: string
+    rangeStyle?: React.CSSProperties
 }
 
 const Slider = React.forwardRef<
     React.ElementRef<typeof SliderPrimitive.Root>,
     SliderProps
->(({ className, ariaLabelThumb, ...props }, forwardedRef) => {
+>(({ className, trackClassName, trackStyle, rangeClassName, rangeStyle, ariaLabelThumb, ...props }, forwardedRef) => {
     const value = props.value || props.defaultValue
     return (
         <SliderPrimitive.Root
@@ -39,7 +43,9 @@ const Slider = React.forwardRef<
                     // orientation
                     "data-[orientation='horizontal']:h-1.5 data-[orientation='horizontal']:w-full",
                     "data-[orientation='vertical']:h-full data-[orientation='vertical']:w-1.5",
+                    trackClassName,
                 )}
+                style={trackStyle}
             >
                 <SliderPrimitive.Range
                     className={clsx(
@@ -50,7 +56,9 @@ const Slider = React.forwardRef<
                         "data-[orientation='vertical']:w-full",
                         // disabled
                         "data-[disabled]:bg-gray-300",
+                        rangeClassName,
                     )}
+                    style={rangeStyle}
                 />
             </SliderPrimitive.Track>
             {value?.map((_, index) => (

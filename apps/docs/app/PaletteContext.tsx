@@ -1,7 +1,7 @@
 import { usePalette } from "@repo/theme-generator/palettes";
 import { createContext, useState } from "react";
 import { useCustomPalette } from "./hooks/use-custom-palette";
-import { ThemeVariant, ThemeVariantEnum } from "@repo/theme-generator/types";
+import { StaticThemePreset, ThemeVariant, ThemeVariantEnum } from "@repo/theme-generator/types";
 
 type BaseColors = {
   primary: string;
@@ -21,9 +21,15 @@ type PaletteContextType = {
   setSaturation?: (saturation: number) => void;
   setLightness?: (lightness: number) => void;
   setVariant?: (variant: ThemeVariant) => void;
+  setPreset?: (preset: StaticThemePreset) => void;
+  setReverse?: (reverse: boolean) => void;
+  setContrast?: (contrast: number) => void;
+  preset?: StaticThemePreset;
+  reverse?: boolean;
   saturation?: number;
   lightness?: number;
   variant?: ThemeVariant;
+  contrast?: number;
   isDark?: boolean;
 };
 
@@ -43,9 +49,12 @@ export const PaletteProvider = ({ children }: { children: React.ReactNode }) => 
   });
   const [isDark, setIsDark] = useState(false);
   const [saturation, setSaturation] = useState(80);
-  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.mui);
+  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.spot);
   const [lightness, setLightness] = useState(100);
-  const { palette } = useCustomPalette(baseColors, isDark, saturation, variant, lightness);
+  const [preset, setPreset] = useState<StaticThemePreset>("split-complementary");
+  const [reverse, setReverse] = useState<boolean>(false);
+  const [contrast, setContrast] = useState<number>(1);
+  const { palette } = useCustomPalette(baseColors, isDark, saturation, variant, lightness, preset, reverse, contrast);
 
   const setBaseColors = (colors: BaseColors) => {
     setBaseColorsState(prev => ({ ...prev, ...colors }));
@@ -56,7 +65,7 @@ export const PaletteProvider = ({ children }: { children: React.ReactNode }) => 
   };
 
   return (
-    <PaletteContext.Provider value={{ palette, setBaseColors, setLightOrDark, isDark, saturation, setSaturation, variant, setVariant, lightness, setLightness }}>
+    <PaletteContext.Provider value={{ palette, setBaseColors, setLightOrDark, isDark, saturation, setSaturation, variant, setVariant, lightness, setLightness, reverse, setReverse, preset, setPreset, contrast, setContrast }}>
       <div>
         {children}
       </div>
