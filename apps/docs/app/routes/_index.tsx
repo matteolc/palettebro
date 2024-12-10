@@ -1,30 +1,15 @@
-import { ColorPickerTailwind } from "~/components/ColorPickerTailwind";
+import { Isomorph } from "~/components/Isomorph";
 import { Pattern } from "~/components/Pattern";
 
 export default function Index() {
   return (
-    <>
-      <div className="hidden sm:block fixed">
+    <div className="hidden sm:block fixed">
+      <div className="scale-[90%] -mt-14">
         <Pattern />
       </div>
-
-      <div className="z-50">
-        <div className="flex-1 p-10 grid gap-16 sm:place-items-center">
-          <div className="space-y-8">
-            <div>
-              <h2 className="title-gradient text-6xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">🌈 Palette Bruh</h2>
-              <p className="font-light max-w-sm">
-                <a href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl">OKLCH</a> Palette generator powered by <a href="https://culorijs.org/">Culori</a>. Inspired by <a href="https://schemist.fglt.fr/">Schemist</a> and <a href="https://huemint.com/">Huemint</a>. Check out the{" "}
-                <a href="https://github.com/matteolc/palette-bruh">
-                  code on Github
-                </a>
-                .
-              </p>
-            </div>
-            <ColorPickerTailwind />
-          </div>
-        </div>
-      </div>
-    </>
+      {/* <div className="-mt-40 ml-96">
+        <Isomorph />
+      </div>    */}
+    </div>
   );
 }

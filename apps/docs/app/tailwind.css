@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: oklch(var(--primary-100));
+  background-color: oklch(var(--primary-50));
 }
 
 body,

@@ -32,7 +32,7 @@ export const ColorPaletteShades = ({ palette, colors }: { palette: Record<string
       {colors.map((color) => {
         return (
           <div key={color} className="2xl:contents">
-            <div className="font-semibold text-xl 2xl:col-end-1 2xl:pt-2.5" style={{ color: `oklch(var(--${color}-900))` }}>
+            <div className="font-semibold text-xl 2xl:col-end-1 2xl:pt-2.5" style={{ color: `oklch(var(--neutral))` }}>
               {colorMap[color]}
             </div>
             <div className="grid mt-3 grid-cols-1 sm:grid-cols-11 gap-y-8 gap-x-2 sm:mt-2 2xl:mt-0">
@@ -40,10 +40,10 @@ export const ColorPaletteShades = ({ palette, colors }: { palette: Record<string
                 const hint: string | undefined = hints[`${color}-${variant}` as keyof typeof hints];
                 const textVariant = variant > 400 ? 50 : 950;
                 return (
-                  <div key={color} className="relative rounded-md sm:w-full ring-1 ring-inset" style={{ "--tw-ring-color": `oklch(var(--${color}-200)/10)` } as React.CSSProperties}>
+                  <div key={`${color}-${variant}`} className="relative rounded-md sm:w-full ring-1 ring-inset" style={{ "--tw-ring-color": `oklch(var(--${color}-200)/10)` } as React.CSSProperties}>
                     <div
                       className={clsx("h-20 rounded-[inherit] border-b border-[0.5px] p-2 leading-tight text-xs")}
-                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))`, borderColor: `oklch(var(--${color}-200))` }}
+                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))`, borderColor: `oklch(var(--${color}-100))` }}
                     >
                       <div className="flex items-start flex-col justify-between">
                         <div className="text-2xl font-bold">{variant}</div>

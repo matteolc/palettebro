@@ -9,6 +9,8 @@ import type { SchemistColor } from "../color/types";
 
 export default (theme: {
   primaryColor: SchemistColor;
+  secondaryColor?: SchemistColor;
+  accentColor?: SchemistColor;
   saturation: number;
   isDark: boolean;
 }) => {

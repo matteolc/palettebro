@@ -26,11 +26,12 @@ const tailwindColors = [
     "rose",
 ]
 
-export const ColorPickerTailwind = () => {
+export const ColorPickerTailwind = ({ token }: { token: string }) => {
     const { setBaseColors } = useContext(PaletteContext);
 
+
     const handleColorClick = (color: string) => {
-        setBaseColors?.({ primary: color });
+        setBaseColors?.({ [token]: color } as any);
     };
 
     return (

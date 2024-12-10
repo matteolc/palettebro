@@ -6,11 +6,10 @@ import informative from "../nodes/informative";
 import positive from "../nodes/positive";
 import warning from "../nodes/warning";
 import tailwindScaleLight from "./tailwindScaleLight";
-import tetradLeft from "../nodes/tetradLeft";
 import lightness from "../nodes/lightness";
-import tetradRight from "../nodes/tetradRight";
-import highlight from "../nodes/highlight";
 import baseLight from "./baseLight";
+import neutralScaleLight from "./neutralScaleLight";
+import materialNeutralLight from "./materialNeutralLight";
 
 export default (options?: { saturation?: number, lightness?: number }) =>
 ({
@@ -18,23 +17,36 @@ export default (options?: { saturation?: number, lightness?: number }) =>
   description: "A spot palette with a primary color",
   nodes: [
     {
-      type: lightness.type,
+      type: saturation.type,
       isHidden: true,
-      token: "primary",
       args: {
-        amount: options?.lightness ?? 100,
+        amount: options?.saturation ?? 90,
       },
       children: [
         {
-          type: saturation.type,
+          type: lightness.type,
           isHidden: true,
           token: "primary",
           args: {
-            amount: options?.saturation ?? 30,
+            amount: options?.lightness ?? 100,
           },
           children: [
             ...tailwindScaleLight.nodes,
             ...materialTonesLight.nodes,
+            {
+              type: saturation.type,
+              isHidden: true,
+              token: "neutral",
+              args: {
+                amount: 5,
+              },
+              children: [
+                  ...materialTonesLight.nodes,
+                  ...materialNeutralLight.nodes,
+                  ...neutralScaleLight.nodes,
+                  ...baseLight.nodes,
+              ],
+            },
             {
               type: negative.type,
               token: "error",
@@ -65,72 +77,6 @@ export default (options?: { saturation?: number, lightness?: number }) =>
             {
               type: warning.type,
               token: "warning",
-              isHidden: false,
-              children: [
-                ...materialTonesLight.nodes,
-                ...tailwindScaleLight.nodes,
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: lightness.type,
-      isHidden: true,
-      args: {
-        amount: options?.lightness ?? 70,
-      },
-      children: [
-        {
-          type: saturation.type,
-          isHidden: true,
-          args: {
-            amount: (options?.saturation || 100) < 30 ? options?.saturation : 30,
-          },
-          children: [
-            ...baseLight.nodes,
-            {
-              type: highlight.type,
-              isHidden: true,
-              token: "neutral",
-              args: {
-                amount: 15,
-              },
-              children: [
-                ...materialTonesLight.nodes,
-                ...tailwindScaleLight.nodes,
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: lightness.type,
-      isHidden: true,
-      args: {
-        amount: options?.lightness ?? 70,
-      },
-      children: [
-        {
-          type: saturation.type,
-          isHidden: true,
-          args: {
-            amount: options?.saturation ?? 30,
-          },
-          children: [
-            {
-              type: tetradLeft.type,
-              token: "secondary",
-              children: [
-                ...materialTonesLight.nodes,
-                ...tailwindScaleLight.nodes,
-              ],
-            },
-            {
-              type: tetradRight.type,
-              token: "accent",
               isHidden: false,
               children: [
                 ...materialTonesLight.nodes,

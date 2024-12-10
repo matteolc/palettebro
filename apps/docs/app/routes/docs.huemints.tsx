@@ -3,11 +3,9 @@ import type { LoaderFunctionArgs } from "@vercel/remix";
 import { themes } from "@repo/tailwind-theme/themes";
 import { CustomColorPaletteContainer } from "@repo/ui/Palette";
 import { useEffect } from "react";
-import { useHints } from "~/hooks/use-hints";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    const hints = useHints();
-    const theme = themes[hints.theme as keyof typeof themes];
+    const theme = themes.cyan;
     const baseColor = theme.baseColors.primary;
     const mode: "diffusion" | "transformer" = "diffusion" as "diffusion" | "transformer";
     const colors = 4 // max 12, min 2

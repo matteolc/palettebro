@@ -1,13 +1,12 @@
 import type { Config } from "tailwindcss";
 
-const config: Pick<Config, "presets" | "content" | "prefix"> = {
+const config: Pick<Config, "presets" | "content" | "plugins"> = {
 	content: [
 		"./app/**/*.tsx",
-		"./app/**/*.mdx",
 		"../../packages/**/*.{js,ts,jsx,tsx}",
 		"!../../packages/**/node_modules",
 	],
-	// presets: [require("@repo/tailwind-config")],
+	plugins: [require("@headlessui/tailwindcss")],
 };
 
 export default config;

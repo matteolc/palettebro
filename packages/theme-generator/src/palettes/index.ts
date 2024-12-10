@@ -19,7 +19,8 @@ export const usePalette = (theme: Theme) => {
 
   const {
     saturation,
-    baseColors: { primary },
+    lightness,
+    baseColors: { primary, secondary, accent },
   } = theme;
 
   const [_, primaryColor] = parseColor(primary);
@@ -36,9 +37,46 @@ export const usePalette = (theme: Theme) => {
     )} (${picocolors.dim(primary)})`
   );
 
+  let secondaryColor;
+
+  if (secondary) {
+    const parsed = parseColor(secondary);
+    if (parsed[1]) {
+      secondaryColor = parsed[1];
+      const secondaryColorName = nearestColor(formatSchemistToHex(secondaryColor));
+      console.log(
+        ` ├─ ${picocolors.green(
+          "✔︎"
+        )} Generating theme for secondary color: ${picocolors.dim(
+          secondaryColorName
+        )} (${picocolors.dim(secondary)})`
+      );
+    }
+  }
+
+  let accentColor
+
+  if (accent) {
+    const parsed = parseColor(accent);
+    if (parsed[1]) {
+      accentColor = parsed[1];
+      const accentColorName = nearestColor(formatSchemistToHex(accentColor));
+      console.log(
+        ` ├─ ${picocolors.green(
+          "✔︎"
+        )} Generating theme for accent color: ${picocolors.dim(
+          accentColorName
+        )} (${picocolors.dim(accent)})`
+      );
+    }
+  }
+
   const palette = ThemeVariantToPalette[theme.variant]({
     primaryColor,
+    secondaryColor,
+    accentColor,
     saturation,
+    lightness,
     isDark: theme["color-scheme"] === ThemeColorSchemeEnum.dark,
   });
 
