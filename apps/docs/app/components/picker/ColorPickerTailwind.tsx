@@ -35,7 +35,7 @@ export const ColorPickerTailwind = ({ token }: { token: string }) => {
     };
 
     return (
-        <div className="flex gap-4 flex-col max-w-sm">
+        <div className="flex flex-col gap-y-4 my-4">
             <div className="flex gap-2">
                 <div className='grid grid-cols-6 gap-2 max-w-sm'>
                     {tailwindColors.map(color => (
@@ -43,7 +43,7 @@ export const ColorPickerTailwind = ({ token }: { token: string }) => {
                             style={{ backgroundColor: colors[color as keyof typeof colors][500], borderColor: colors[color as keyof typeof colors][600] }}
                             key={color}
                             className={`border size-6 rounded-full cursor-pointer`}
-                            onClick={(e) => { e.preventDefault(); handleColorClick(colors[color as keyof typeof colors][500]) }}
+                            onClick={(e) => handleColorClick(colors[color as keyof typeof colors][500])}
                         />
                     ))}
                 </div>

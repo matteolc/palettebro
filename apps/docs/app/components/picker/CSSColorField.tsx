@@ -18,6 +18,7 @@ const CSSColorField: React.FC<CSSColorFieldProps> = ({
     onFormatChange
 }) => {
     const [formattedValue, setFormattedValue] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const formatted = formatSchemistTo(value, colorInputFormat, 0);
@@ -26,23 +27,19 @@ const CSSColorField: React.FC<CSSColorFieldProps> = ({
         }
     }, [value, colorInputFormat]);
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        const newValue = e.target.value.trim();
-        const [format, color] = parseColor(newValue);
+    const handleSubmit = () => {
+        const [format, color] = parseColor(formattedValue);
 
         if (format && color) {
             onFormatChange(format);
             onChange(color);
-            e.target.setCustomValidity('');
         } else {
-            e.target.setCustomValidity('Invalid color');
-            e.target.reportValidity();
+            setError('Invalid color format');
         }
     };
 
     return (
-        <div className="space-y-2">
+        <div className="flex flex-col gap-y-4 my-4">
             <div className="flex flex-row items-center justify-between text-zinc-950">
                 <label className="text-lg mb-2" htmlFor="css-color-picker">CSS</label>
                 <div className="text-lg font-bold mb-2">{formattedValue}</div>
@@ -53,8 +50,10 @@ const CSSColorField: React.FC<CSSColorFieldProps> = ({
                 name="css-color-picker"
                 type="text"
                 value={formattedValue}
-                onChange={handleInput}
+                onChange={(e) => setFormattedValue(e.target.value.trim())}
             />
+            {error && <div className="text-red-500">{error}</div>}
+            <button className="px-4 py-2 bg-zinc-950 text-white rounded-md" onClick={handleSubmit}>Submit</button>
         </div>
     );
 };
