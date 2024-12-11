@@ -8,6 +8,8 @@ import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/colo
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { ColorPickerTailwind } from './ColorPickerTailwind';
+import { PantoneColorField } from './PantoneColorField';
+import { RALColorField } from './RALColorField';
 
 interface ColorFieldProps {
     value: string;
@@ -32,7 +34,7 @@ const ColorField: FC<ColorFieldProps> = ({
     const handleChange = (newValue: SchemistColor) => onChange(formatSchemistToHex(newValue));
 
     return (
-        <div className="col-span-full min-h-72">
+        <div className="col-span-full h-[30.5rem]">
             <fieldset>
                 <TabGroup>
                     <TabList className="flex flex-row gap-2 mb-2 text-lg text-zinc-950">
@@ -41,6 +43,8 @@ const ColorField: FC<ColorFieldProps> = ({
                         <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">LCH</Tab>
                         <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">CSS</Tab>
                         <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Tailwind</Tab>
+                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Pantone</Tab>
+                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">RAL</Tab>
                     </TabList>
                     <TabPanels className="p-2">
                         <TabPanel>
@@ -70,6 +74,16 @@ const ColorField: FC<ColorFieldProps> = ({
                         </TabPanel>
                         <TabPanel>
                             <ColorPickerTailwind token={token} />
+                        </TabPanel>
+                        <TabPanel>
+                            <PantoneColorField
+                                token={token}
+                            />
+                        </TabPanel>
+                        <TabPanel>
+                            <RALColorField
+                                token={token}
+                            />
                         </TabPanel>
                     </TabPanels>
                 </TabGroup>

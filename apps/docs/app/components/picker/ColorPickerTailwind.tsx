@@ -35,19 +35,24 @@ export const ColorPickerTailwind = ({ token }: { token: string }) => {
     };
 
     return (
-        <div className="flex flex-col gap-y-4 my-4">
-            <div className="flex gap-2">
-                <div className='grid grid-cols-6 gap-2 max-w-sm'>
-                    {tailwindColors.map(color => (
-                        <div
-                            style={{ backgroundColor: colors[color as keyof typeof colors][500], borderColor: colors[color as keyof typeof colors][600] }}
-                            key={color}
-                            className={`border size-6 rounded-full cursor-pointer`}
-                            onClick={(e) => handleColorClick(colors[color as keyof typeof colors][500])}
-                        />
-                    ))}
-                </div>
-            </div>
+        <div className="grid grid-cols-4 gap-4">
+            {tailwindColors.map(color => (
+                <button
+                    key={color}
+                    className="group relative flex flex-col h-24 rounded-lg overflow-hidden "
+                    onClick={(e) => handleColorClick(colors[color as keyof typeof colors][500])}
+                >
+
+                    <div
+                        className="h-full w-full"
+                        style={{ backgroundColor: colors[color as keyof typeof colors][500], borderColor: colors[color as keyof typeof colors][600] }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-2">
+                        <div className="text-xs font-bold">{colors[color as keyof typeof colors][500]}</div>
+                        <div className="text-xs truncate">{color}</div>
+                    </div>
+                </button>
+            ))}
         </div>
     );
 };
