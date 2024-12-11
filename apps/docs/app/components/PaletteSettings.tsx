@@ -24,7 +24,9 @@ export const PaletteSettings = () => {
                 </button>
             </PopoverButton>
             <PopoverPanel anchor={{ to: 'bottom start', gap: "18px" }} className="min-h-[32rem] bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
-                <TabGroup>
+                <TabGroup defaultIndex={
+                    variant === ThemeVariantEnum.spot ? 0 : 1
+                }>
 
                     <TabList className="flex flex-row gap-2 mb-2 text-lg text-zinc-950">
                         <Tab onClick={() => setVariant?.(ThemeVariantEnum.spot)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Static</Tab>
@@ -56,20 +58,7 @@ export const PaletteSettings = () => {
                                     ))}
                                 </RadioCardGroup>
                             </div>
-                            <div>
 
-                                <div className="flex flex-row items-center justify-between text-zinc-950">
-                                    <div className="text-lg mb-2">Page</div>
-                                </div>
-                                <RadioCardGroup value={page} onValueChange={setPage} className="text-lg mb-4">
-                                    {["website-magazine", "brand-2", "brand-3", "website-1"].map((page) => (
-                                        <RadioCardItem value={page} className="flex items-center gap-3 py-2 text-zinc-950">
-                                            <RadioCardIndicator />
-                                            <span>{page}</span>
-                                        </RadioCardItem>
-                                    ))}
-                                </RadioCardGroup>
-                            </div>
                             <div>
                                 <div className="flex flex-row items-center justify-between text-zinc-950">
                                     <div className="text-lg mb-2">Preset</div>
@@ -79,6 +68,20 @@ export const PaletteSettings = () => {
                                         <RadioCardItem value={preset} className="flex items-center gap-3 py-2 text-zinc-950">
                                             <RadioCardIndicator />
                                             <span>{preset}</span>
+                                        </RadioCardItem>
+                                    ))}
+                                </RadioCardGroup>
+                            </div>
+                            <div>
+
+                                <div className="flex flex-row items-center justify-between text-zinc-950">
+                                    <div className="text-lg mb-2">Target</div>
+                                </div>
+                                <RadioCardGroup value={page} onValueChange={setPage} className="text-lg mb-4">
+                                    {["website-magazine", "brand-2", "brand-3", "website-1"].map((page) => (
+                                        <RadioCardItem value={page} className="flex items-center gap-3 py-2 text-zinc-950">
+                                            <RadioCardIndicator />
+                                            <span>{page}</span>
                                         </RadioCardItem>
                                     ))}
                                 </RadioCardGroup>

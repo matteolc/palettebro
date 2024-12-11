@@ -1,16 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
 import { rgbToSchemist, schemistToRgb } from 'node_modules/@repo/theme-generator/src/color/conversion';
 import { range } from 'node_modules/@repo/theme-generator/src/utils/generators';
 import { continuousGradient } from 'node_modules/@repo/theme-generator/src/utils/css';
 import { Slider } from '../ui/Slider';
+import { debounce } from '~/lib/debounce';
+import { CSSColorPickerProps } from './ColorField';
 
-interface RGBColorFieldProps {
-    value: SchemistColor;
-    onChange: (value: SchemistColor) => void;
-}
-
-const RGBColorField: FC<RGBColorFieldProps> = ({
+const RGBColorField: FC<CSSColorPickerProps> = ({
     value,
     onChange
 }) => {
@@ -19,8 +16,40 @@ const RGBColorField: FC<RGBColorFieldProps> = ({
     const [g, setG] = useState(color.g);
     const [b, setB] = useState(color.b);
 
+    const gradients = useMemo(() => ({
+        r: continuousGradient(
+            range(8).map((i) => {
+                const val = Math.min(255, Math.max(0, Math.floor(i * 32)));
+                return rgbToSchemist({ ...color, r: val });
+            })
+        ),
+        g: continuousGradient(
+            range(8).map((i) => {
+                const val = Math.min(255, Math.max(0, Math.floor(i * 32)));
+                return rgbToSchemist({ ...color, g: val });
+            })
+        ),
+        b: continuousGradient(
+            range(8).map((i) => {
+                const val = Math.min(255, Math.max(0, Math.floor(i * 32)));
+                return rgbToSchemist({ ...color, b: val });
+            })
+        )
+    }), [color]);
+
+    // Debounce color updates
+    const debouncedOnChange = useMemo(
+        () => debounce((newColor: SchemistColor) => {
+            onChange(newColor);
+        }, 16), // ~1 frame at 60fps
+        [onChange]
+    );
+
     useEffect(() => {
-        onChange(rgbToSchemist({ r, g, b }));
+        debouncedOnChange(rgbToSchemist({ r, g, b }));
+        return () => {
+            debouncedOnChange.cancel();
+        };
     }, [r, g, b]);
 
     return (
@@ -30,13 +59,9 @@ const RGBColorField: FC<RGBColorFieldProps> = ({
                     <div className="text-lg mb-2">Red</div>
                     <div className="text-lg font-bold mb-2">{Math.floor(r)}</div>
                 </div>
-                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackStyle={{
-                    background: continuousGradient(
-                        range(8).map((i) =>
-                            rgbToSchemist({ ...color, r: Math.floor(i * 32) })
-                        )
-                    )
-                }} max={255} value={[r]} onValueChange={(value: number[]) => setR(value[0])} />
+                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackClassName="data-[orientation='horizontal']:h-4" trackStyle={{
+                    background: gradients.r
+                }} min={0.1} step={0.1} max={255} value={[r]} onValueChange={(value: number[]) => setR(value[0])} />
             </div>
 
             <div className='flex flex-col gap-x-4'>
@@ -44,13 +69,9 @@ const RGBColorField: FC<RGBColorFieldProps> = ({
                     <div className="text-lg mb-2">Green</div>
                     <div className="text-lg font-bold mb-2">{Math.floor(g)}</div>
                 </div>
-                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackStyle={{
-                    background: continuousGradient(
-                        range(8).map((i) =>
-                            rgbToSchemist({ ...color, g: Math.floor(i * 32) })
-                        )
-                    )
-                }} max={255} value={[g]} onValueChange={(value: number[]) => setG(value[0])} />
+                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackClassName="data-[orientation='horizontal']:h-4" trackStyle={{
+                    background: gradients.g
+                }} min={0.1} step={0.1} max={255} value={[g]} onValueChange={(value: number[]) => setG(value[0])} />
             </div>
 
 
@@ -59,13 +80,9 @@ const RGBColorField: FC<RGBColorFieldProps> = ({
                     <div className="text-lg mb-2">Blue</div>
                     <div className="text-lg font-bold mb-2">{Math.floor(b)}</div>
                 </div>
-                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackStyle={{
-                    background: continuousGradient(
-                        range(8).map((i) =>
-                            rgbToSchemist({ ...color, b: Math.floor(i * 32) })
-                        )
-                    )
-                }} max={255} value={[b]} onValueChange={(value: number[]) => setB(value[0])} />
+                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackClassName="data-[orientation='horizontal']:h-4" trackStyle={{
+                    background: gradients.b
+                }} min={0.1} step={0.1} max={255} value={[b]} onValueChange={(value: number[]) => setB(value[0])} />
             </div>
         </div>
     );

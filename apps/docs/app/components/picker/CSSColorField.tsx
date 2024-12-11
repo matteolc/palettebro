@@ -1,37 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
-import { ColorFormat, formatSchemistTo, formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
+import React, { useState } from 'react';
+import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
 import { Input } from '../ui/Input';
+import { CSSColorPickerProps } from './ColorField';
 
-interface CSSColorFieldProps {
-    value: SchemistColor;
-    onChange: (value: SchemistColor) => void;
-    colorInputFormat: ColorFormat;
-    onFormatChange: (format: ColorFormat) => void;
-}
-
-const CSSColorField: React.FC<CSSColorFieldProps> = ({
+const CSSColorField: React.FC<CSSColorPickerProps> = ({
     value,
     onChange,
-    colorInputFormat,
-    onFormatChange
 }) => {
-    const [formattedValue, setFormattedValue] = useState('');
+    const [formattedValue, setFormattedValue] = useState(formatSchemistToHex(value));
     const [error, setError] = useState('');
-
-    useEffect(() => {
-        const formatted = formatSchemistTo(value, colorInputFormat, 0);
-        if (formatSchemistToHex(value) !== formattedValue) {
-            setFormattedValue(formatted);
-        }
-    }, [value, colorInputFormat]);
 
     const handleSubmit = () => {
         const [format, color] = parseColor(formattedValue);
 
         if (format && color) {
-            onFormatChange(format);
+            console.dir({ formattedValue, color }, { depth: null });
             onChange(color);
         } else {
             setError('Invalid color format');

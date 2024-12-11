@@ -108,6 +108,7 @@ const PaletteToolbar = () => {
                         <input type="text" readOnly className="hidden" value={temperature} name="temperature" />
                         <input type="text" readOnly className="hidden" value={adjacency} name="adjacency" />
                         <input type="text" readOnly className="hidden" value={page} name="page" />
+
                         {variant === ThemeVariantEnum.ai ? <button className="px-1 py-2 rounded-full" type={shouldSubmit ? "submit" : "button"} onClick={popPalette}>
                             <RiMagicLine className={variant !== ThemeVariantEnum.ai ? "text-gray-400" : ""} />
                         </button> :
@@ -119,13 +120,12 @@ const PaletteToolbar = () => {
 
                         <PaletteSettings />
 
-                        {!showStatePalette && <div className="mx-4 flex flex-row gap-1">
-                            {BASE_TOKENS.map((token) => (
+                        {showStatePalette ? <div className="mx-4 flex flex-row gap-1">
+                            {STATUS_TOKENS.map((token) => (
                                 <ColorSwatch token={token} key={token} onLockUnlock={resetGeneratedPalettes} />
                             ))}
-                        </div>}
-                        {showStatePalette && <div className="mx-4 flex flex-row gap-1">
-                            {STATUS_TOKENS.map((token) => (
+                        </div> : <div className="mx-4 flex flex-row gap-1">
+                            {BASE_TOKENS.map((token) => (
                                 <ColorSwatch token={token} key={token} onLockUnlock={resetGeneratedPalettes} />
                             ))}
                         </div>}

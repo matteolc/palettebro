@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { FC } from 'react';
 import { RGBColorField } from './RGBColorField';
 import { CSSColorField } from './CSSColorField';
 import { HSLColorField } from './HSLColorField';
 import { LCHColorField } from './LCHColorField';
 import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
-import { ColorFormat, formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
+import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { ColorPickerTailwind } from './ColorPickerTailwind';
@@ -15,7 +15,12 @@ interface ColorFieldProps {
     onChange: (value: string) => void;
 }
 
-const ColorField: React.FC<ColorFieldProps> = ({
+interface CSSColorPickerProps {
+    value: SchemistColor;
+    onChange: (value: SchemistColor) => void;
+}
+
+const ColorField: FC<ColorFieldProps> = ({
     value,
     token,
     onChange
@@ -24,24 +29,7 @@ const ColorField: React.FC<ColorFieldProps> = ({
     if (!schemistColor) return null;
     if (!colorFormat) return null;
 
-    const [colorInputFormat, setColorInputFormat] = useState<ColorFormat>(colorFormat);
-
-    const [localValue, setLocalValue] = useState<SchemistColor>(schemistColor);
-
-    useEffect(() => {
-        if (value) {
-            const [colorFormat, schemistColor] = parseColor(value);
-            if (!schemistColor) return;
-            if (!colorFormat) return;
-
-            setLocalValue(schemistColor);
-        }
-    }, [value]);
-
-    const handleChange = (newValue: SchemistColor) => {
-        setLocalValue(newValue);
-        onChange(formatSchemistToHex(newValue));
-    };
+    const handleChange = (newValue: SchemistColor) => onChange(formatSchemistToHex(newValue));
 
     return (
         <div className="col-span-full min-h-72">
@@ -57,29 +45,27 @@ const ColorField: React.FC<ColorFieldProps> = ({
                     <TabPanels className="p-2">
                         <TabPanel>
                             <RGBColorField
-                                value={localValue}
+                                value={schemistColor}
                                 onChange={handleChange}
                             />
                         </TabPanel>
                         <TabPanel>
                             <HSLColorField
-                                value={localValue}
+                                value={schemistColor}
                                 onChange={handleChange}
                             />
                         </TabPanel>
                         <TabPanel>
                             <LCHColorField
-                                value={localValue}
+                                value={schemistColor}
                                 onChange={handleChange}
                             />
                         </TabPanel>
 
                         <TabPanel>
                             <CSSColorField
-                                value={localValue}
+                                value={schemistColor}
                                 onChange={handleChange}
-                                colorInputFormat={colorInputFormat}
-                                onFormatChange={setColorInputFormat}
                             />
                         </TabPanel>
                         <TabPanel>
@@ -93,3 +79,4 @@ const ColorField: React.FC<ColorFieldProps> = ({
 };
 
 export default ColorField;
+export type { CSSColorPickerProps };
