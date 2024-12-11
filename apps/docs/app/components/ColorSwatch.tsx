@@ -15,7 +15,7 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
     if (!palette)
         return null;
 
-    const name = palette[token].name;
+    const name = palette[token]?.name;
 
     const classes = [
         // Optical border, implemented as the button background to avoid corner artifacts
@@ -75,7 +75,7 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
             </div>
 
 
-            <PopoverPanel anchor={{ to: 'top', gap: "12px" }} className="w-48 flex flex-col bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
+            <PopoverPanel anchor={{ to: 'top start', gap: "16px" }} className="-ml-2.5 w-48 flex flex-col bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
                 <ColorShades token={token} />
             </PopoverPanel>
         </Popover>

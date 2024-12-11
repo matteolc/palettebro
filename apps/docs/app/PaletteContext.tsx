@@ -35,17 +35,11 @@ type PaletteContextType = {
 
 export const PaletteContext = createContext<PaletteContextType>({});
 
-export const VariantMap = {
-  [ThemeVariantEnum.mui]: "Complementary",
-  [ThemeVariantEnum.ai]: "Generative",
-  [ThemeVariantEnum.spot]: "Tetrad",
-}
-
 export const PaletteProvider = ({ children }: { children: React.ReactNode }) => {
   const [baseColors, setBaseColorsState] = useState<{ primary?: string, secondary?: string, accent?: string }>({
-    primary: "#FF0000",
-    secondary: "#00FF00",
-    accent: "#0000FF",
+    primary: "#663399",
+    secondary: "#7da9c3",
+    accent: "#e8d5b5",
   });
   const [isDark, setIsDark] = useState(false);
   const [saturation, setSaturation] = useState(80);
