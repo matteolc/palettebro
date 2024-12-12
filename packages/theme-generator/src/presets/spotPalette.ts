@@ -18,16 +18,18 @@ import triadLeft from "../nodes/triadLeft";
 import splitComplementaryLeft from "../nodes/splitComplementaryLeft";
 import splitComplementaryRight from "../nodes/splitComplementaryRight";
 import contrasting from "../nodes/contrasting";
+import spotTonesLight from "./spotTonesLight";
+import spotTonesDark from "./spotTonesDark";
 
 export default (options?: { saturation?: number, lightness?: number, isDark: boolean, preset: 'split-complementary' | 'tetrad' | 'triad', reverse: boolean, contrast: number }) => {
 
   const lightNodes = [
-    ...materialTonesLight.nodes,
+    ...spotTonesLight.nodes,
     ...tailwindScaleLight.nodes,
   ];
 
   const darkNodes = [
-    ...materialTonesDark.nodes,
+    ...spotTonesDark.nodes,
     ...tailwindScaleDark.nodes,
   ];
 
@@ -65,7 +67,7 @@ export default (options?: { saturation?: number, lightness?: number, isDark: boo
     nodes: [
       {
         type: saturation.type,
-        isHidden: true,
+        isHidden: false,
         token: "primary",
         args: {
           amount: options?.saturation ?? 100,
@@ -84,7 +86,7 @@ export default (options?: { saturation?: number, lightness?: number, isDark: boo
                   ...baseLight.nodes,
                   {
                     type: highlight.type,
-                    isHidden: true,
+                    isHidden: false,
                     token: "neutral",
                     args: {
                       amount: 5,

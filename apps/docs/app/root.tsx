@@ -41,9 +41,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 const Layout = (props: { children: ReactNode }) => {
 
-  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "active border-b-2" : "hover:border-b-2";
-
   return (
     <div className="min-h-screen flex flex-col">
       <header className="w-full max-w-7xl mx-auto p-10">
@@ -52,11 +49,6 @@ const Layout = (props: { children: ReactNode }) => {
             <Link to="/">
               <h2 className="cursor-pointer title-gradient text-4xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">🌈 Palettebruh</h2>
             </Link>
-            {/* <li>
-              <NavLink to="/shades" className={navLinkClass}>
-                Shades
-              </NavLink>
-            </li> */}
           </ul>
         </nav>
       </header>

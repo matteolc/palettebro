@@ -21,7 +21,7 @@ export const PantoneColorField = ({ token }: { token: string }) => {
                         className="h-full w-full"
                         style={{ backgroundColor: `#${pantoneColors[key as keyof typeof pantoneColors].hex}` }}
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-2">
+                    <div className="absolute text-zinc-950 bottom-0 left-0 right-0 bg-white bg-opacity-90 p-2">
                         <div className="text-xs font-bold">{key}</div>
                         <div className="text-xs truncate">{pantoneColors[key as keyof typeof pantoneColors].name}</div>
                     </div>

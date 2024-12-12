@@ -19,9 +19,11 @@ const STATUS_TOKENS = ["info", "success", "warning", "error"];
 const PaletteToolbar = () => {
     const { setLightOrDark, isDark, setBaseColors, variant, palette } = useContext(PaletteContext);
     const { temperature, profile, preset, adjacency, page } = useContext(PaletteToolbarContext);
+
     const [showStatePalette, setShowStatePalette] = useState(false);
-    const fetcher = useFetcher<typeof action>({ key: "generate-palette" });
     const [generatedPalettes, setGeneratedPalettes] = useState<{ palette: string[] }[] | undefined>([]);
+
+    const fetcher = useFetcher<typeof action>({ key: "generate-palette" });
 
     useEffect(() => {
         document.addEventListener("click", downloadObjectAsJson);
@@ -69,7 +71,7 @@ const PaletteToolbar = () => {
 
     useEffect(() => {
         setGeneratedPalettes([]);
-    }, [temperature, profile, preset, adjacency, page])
+    }, [temperature, profile, preset, page])
 
     useEffect(() => {
         if (preset === "high-contrast" || preset === "bright-light") {
@@ -85,7 +87,7 @@ const PaletteToolbar = () => {
         setGeneratedPalettes([]);
     }
 
-    const handleRandomize = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleRandomize = () => {
         const randomColor = randomUsableColor();
         const color = formatSchemistToHex(randomColor)
         setBaseColors?.({ 'primary': color } as BaseColors)

@@ -39,6 +39,9 @@ export const usePalette = (theme: Theme) => {
       primaryColorName
     )} (${picocolors.dim(primary)})`
   );
+  console.log(
+    `%cPrimary (input)\n${formatSchemistToHex(primaryColor)}`, `color: #000000; background-color: ${formatSchemistToHex(primaryColor)}; padding: 0.5rem;`
+  );
 
   let secondaryColor;
 
@@ -53,6 +56,9 @@ export const usePalette = (theme: Theme) => {
         )} Generating theme for secondary color: ${picocolors.dim(
           secondaryColorName
         )} (${picocolors.dim(secondary)})`
+      );
+      console.log(
+        `%cSecondary (input)\n${formatSchemistToHex(secondaryColor)}`, `color: #000000; background-color: ${formatSchemistToHex(secondaryColor)}; padding: 0.5rem;`
       );
     }
   }
@@ -71,6 +77,9 @@ export const usePalette = (theme: Theme) => {
           accentColorName
         )} (${picocolors.dim(accent)})`
       );
+      console.log(
+        `%cAccent (input)\n${formatSchemistToHex(accentColor)}`, `color: #000000; background-color: ${formatSchemistToHex(accentColor)}; padding: 0.5rem;`
+      );
     }
   }
 
@@ -87,6 +96,12 @@ export const usePalette = (theme: Theme) => {
   });
 
   console.dir({ palette }, { depth: null });
+  // console log all the palette colors with modern css
+  Object.entries(palette).forEach(([key, value]) => {
+    console.log(
+      `%c${picocolors.dim(key)}\n${value.name}`, `color: #000000; background-color: ${value.color}; padding: 0.5rem;`
+    );
+  });
 
   return palette;
 };

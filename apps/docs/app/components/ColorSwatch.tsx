@@ -48,7 +48,7 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
                         <div className="flex flex-col items-start">
                             <input type="text" className="hidden" defaultValue={isLocked ? palette[token].color : ""} name={token} />
                             <span className="text-md font-bold">{sentenceCase(token)}</span>
-                            <span className="text-xs" style={{ color: `oklch(var(--${token}-200))` }}>{name}</span>
+                            <span className="text-xs">{name}</span>
                         </div>
                     </PopoverButton>
                     <div className="flex flex-row items-center gap-0.5">
@@ -61,7 +61,7 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
                                 <ColorField
                                     token={token}
                                     value={palette[token].color}
-                                    onChange={(value) => setBaseColors?.({ [token]: value } as BaseColors)}
+                                    onChange={(value) => palette[token].color !== value && setBaseColors?.({ [token]: value } as BaseColors)}
                                 />
                             </PopoverPanel>
                         </Popover>}

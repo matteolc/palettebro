@@ -47,7 +47,7 @@ export const ColorPickerTailwind = ({ token }: { token: string }) => {
                         className="h-full w-full"
                         style={{ backgroundColor: colors[color as keyof typeof colors][500], borderColor: colors[color as keyof typeof colors][600] }}
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-2">
+                    <div className="absolute text-zinc-950 bottom-0 left-0 right-0 bg-white bg-opacity-90 p-2">
                         <div className="text-xs font-bold">{colors[color as keyof typeof colors][500]}</div>
                         <div className="text-xs truncate">{color}</div>
                     </div>
