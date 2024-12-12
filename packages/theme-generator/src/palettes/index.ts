@@ -95,8 +95,6 @@ export const usePalette = (theme: Theme) => {
     isDark: theme["color-scheme"] === ThemeColorSchemeEnum.dark,
   });
 
-  console.dir({ palette }, { depth: null });
-  // console log all the palette colors with modern css
   Object.entries(palette).forEach(([key, value]) => {
     console.log(
       `%c${picocolors.dim(key)}\n${value.name}`, `color: #000000; background-color: ${value.color}; padding: 0.5rem;`

@@ -3,6 +3,7 @@ import type { Preset } from "./types";
 import materialTonesLight from "./materialTonesLight";
 import tailwindScaleLight from "./tailwindScaleLight";
 import lightness from "../nodes/lightness";
+import spotTonesLight from "./spotTonesLight";
 
 export default (options: { token: string, saturation?: number, lightness?: number }) =>
 ({
@@ -13,22 +14,22 @@ export default (options: { token: string, saturation?: number, lightness?: numbe
       type: saturation.type,
       isHidden: true,
       args: {
-        amount: options?.saturation ?? 90,
+        amount: options?.saturation ?? 100,
       },
       children: [
         {
           type: lightness.type,
-          isHidden: true,
+          isHidden: false,
           token: options.token,
           args: {
-            amount: options?.lightness ?? 100,
+            amount: options?.lightness ?? 50,
           },
           children: [
             ...tailwindScaleLight.nodes,
-            ...materialTonesLight.nodes,
+            ...spotTonesLight.nodes,
           ],
         },
-      ],
+      ]
     },
   ],
 } as Preset);

@@ -15,7 +15,7 @@ export async function action({ request }: LoaderFunctionArgs) {
 			| "brand-2"
 			| "brand-3"
 			| "website-1") || "brand-2";
-	const palette = Array<string>(3).fill("-");
+	const palette = Array<string>(num_colors).fill("-");
 	const preset = formData.get("preset") || "default";
 	const adjacency = (formData.get("adjacency") as string)?.split(",") || [];
 
@@ -38,7 +38,7 @@ export async function action({ request }: LoaderFunctionArgs) {
 		temperature,
 		num_results: mode !== "diffusion" ? 50 : 5,
 		page,
-		adjacency, // nxn adjacency matrix as a flat array of strings
+		adjacency,
 		palette,
 	};
 

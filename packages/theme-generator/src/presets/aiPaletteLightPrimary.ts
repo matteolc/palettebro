@@ -10,6 +10,7 @@ import lightness from "../nodes/lightness";
 import baseLight from "./baseLight";
 import neutralScaleLight from "./neutralScaleLight";
 import materialNeutralLight from "./materialNeutralLight";
+import spotTonesLight from "./spotTonesLight";
 
 export default (options?: { saturation?: number, lightness?: number }) =>
 ({
@@ -20,28 +21,28 @@ export default (options?: { saturation?: number, lightness?: number }) =>
       type: saturation.type,
       isHidden: true,
       args: {
-        amount: options?.saturation ?? 90,
+        amount: options?.saturation ?? 100,
       },
       children: [
         {
           type: lightness.type,
-          isHidden: true,
+          isHidden: false,
           token: "primary",
           args: {
-            amount: options?.lightness ?? 100,
+            amount: options?.lightness ?? 50,
           },
           children: [
             ...tailwindScaleLight.nodes,
-            ...materialTonesLight.nodes,
+            ...spotTonesLight.nodes,
             {
               type: saturation.type,
-              isHidden: true,
+              isHidden: false,
               token: "neutral",
               args: {
                 amount: 5,
               },
               children: [
-                  ...materialTonesLight.nodes,
+                  ...spotTonesLight.nodes,
                   ...materialNeutralLight.nodes,
                   ...neutralScaleLight.nodes,
                   ...baseLight.nodes,
@@ -52,7 +53,7 @@ export default (options?: { saturation?: number, lightness?: number }) =>
               token: "error",
               isHidden: false,
               children: [
-                ...materialTonesLight.nodes,
+                ...spotTonesLight.nodes,
                 ...tailwindScaleLight.nodes,
               ],
             },
@@ -61,7 +62,7 @@ export default (options?: { saturation?: number, lightness?: number }) =>
               token: "info",
               isHidden: false,
               children: [
-                ...materialTonesLight.nodes,
+                ...spotTonesLight.nodes,
                 ...tailwindScaleLight.nodes,
               ],
             },
@@ -70,7 +71,7 @@ export default (options?: { saturation?: number, lightness?: number }) =>
               token: "success",
               isHidden: false,
               children: [
-                ...materialTonesLight.nodes,
+                ...spotTonesLight.nodes,
                 ...tailwindScaleLight.nodes,
               ],
             },
@@ -79,7 +80,7 @@ export default (options?: { saturation?: number, lightness?: number }) =>
               token: "warning",
               isHidden: false,
               children: [
-                ...materialTonesLight.nodes,
+                ...spotTonesLight.nodes,
                 ...tailwindScaleLight.nodes,
               ],
             },

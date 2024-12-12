@@ -102,9 +102,9 @@ const AdjancyMap = {
             dark: ["0", "100", "75", "100", "0", "0", "75", "0", "0"],
             "hyper-color": ["0", "75", "55", "75", "0", "0", "55", "0", "0"],
         }
-
     }
 }
+
 type PaletteToolbarContextType = {
     setProfile?: (profile: GeneratorProfile) => void
     setTemperature?: (temperature: number) => void
