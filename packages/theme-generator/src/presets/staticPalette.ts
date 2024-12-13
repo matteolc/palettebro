@@ -20,6 +20,8 @@ import color from "../nodes/color";
 import { SchemistColor } from "../color/types";
 import states from "./states";
 import contrasting from "../nodes/contrasting";
+import rainbow from "./rainbow";
+import analogous from "../nodes/analogous";
 
 export default (options?: { primaryColor?: SchemistColor, saturation?: number, lightness?: number, isDark: boolean, preset: 'split-complementary' | 'tetrad' | 'triad', reverse: boolean }) => {
 
@@ -75,7 +77,8 @@ export default (options?: { primaryColor?: SchemistColor, saturation?: number, l
           color: options?.primaryColor,
         },
         children: [
-          ...shadeNodes,          
+          ...shadeNodes,   
+          ...rainbow.nodes,        
           secondaryNode,
           accentNode,
           {

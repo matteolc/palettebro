@@ -3,7 +3,7 @@ import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/type
 import { hslToSchemist, schemistToHsl } from 'node_modules/@repo/theme-generator/src/color/conversion';
 import { continuousGradient } from 'node_modules/@repo/theme-generator/src/utils/css';
 import { range } from 'node_modules/@repo/theme-generator/src/utils/generators';
-import { Slider } from '../ui/Slider';
+import { Slider } from '../Slider';
 import { debounce } from '~/lib/debounce';
 import { CSSColorPickerProps } from './ColorField';
 

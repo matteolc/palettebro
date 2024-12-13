@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
-import { Input } from '../ui/Input';
+import { Input } from './ColorInput';
 import { CSSColorPickerProps } from './ColorField';
 
 const CSSColorField: React.FC<CSSColorPickerProps> = ({

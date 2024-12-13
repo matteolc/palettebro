@@ -49,7 +49,7 @@ export const ColorPaletteShades = ({ colors }: { colors: string[] }) => {
                   <div key={`${color}-${variant}`} className="relative rounded-md sm:w-full ring-1 ring-inset" style={{ "--tw-ring-color": `oklch(var(--${color}-200)/10)` } as React.CSSProperties}>
                     <div
                       className={clsx("h-20 rounded-[inherit] border-b border-[0.5px] p-2 leading-tight text-xs")}
-                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))`, borderColor: `oklch(var(--${color}-${borderVariant}))` }}
+                      style={{ backgroundColor: `oklch(var(--${color}-${variant}))`, color: `oklch(var(--${color}-${textVariant}))` }}
                     >
                       <div className="flex items-start flex-col justify-between">
                         <div className="text-2xl font-bold">{variant}</div>
@@ -59,7 +59,7 @@ export const ColorPaletteShades = ({ colors }: { colors: string[] }) => {
                     {hint && (
                       <div className="absolute bottom-0 left-1/2 flex w-full -translate-x-1/2 translate-y-full flex-col items-center justify-center p-2">
                         <div className="h-3 w-px" style={{ backgroundColor: "oklch(var(--neutral-800))" }} />
-                        <p className="w-full text-center text-xs text-neutral">{hint}</p>
+                        <p className="w-full text-center text-xs"  style={{ color: "oklch(var(--neutral-800))" }}>{hint}</p>
                       </div>
                     )}
                   </div>

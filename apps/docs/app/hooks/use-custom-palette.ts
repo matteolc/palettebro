@@ -35,7 +35,6 @@ const useCustomPalette = (
 			...colors,
 		},
 	};
-	// console.dir(modifiedTheme, { depth: null });
 	const modifiedPalette = usePalette(modifiedTheme);
 	const result: Record<string, string> = {};
 	for (const [key, value] of Object.entries(modifiedPalette)) {
@@ -50,6 +49,8 @@ const useCustomPalette = (
 			document.documentElement.style.setProperty(key, value);
 		}
 	}, [result]);
+
+	console.dir({ palette: modifiedPalette, result }, { depth: null });
 
 	return {
 		palette: modifiedPalette,

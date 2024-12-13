@@ -3,7 +3,7 @@ import { TokenColorPalette } from "~/components/TokenColorPalette";
 
 export default function Page() {
   return (
-    <div className="container mx-auto">
+    <div className="flex flex-col gap-y-4">
       {BASE_TOKENS.map((token) => (
         <TokenColorPalette token={token} key={token} />
       ))}

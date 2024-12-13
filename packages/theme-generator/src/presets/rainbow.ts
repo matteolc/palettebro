@@ -7,6 +7,7 @@ export default {
   description: "Every analogous colors",
   nodes: range(11).map((steps) => ({
     type: analogous.type,
+    token: `$-rainbow-${steps}`,
     args: {
       steps: steps + 1,
     },

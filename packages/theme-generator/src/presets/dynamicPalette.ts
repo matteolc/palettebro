@@ -14,6 +14,8 @@ import color from "../nodes/color";
 import staticTones from "./staticTones";
 import tailwindScaleDark from "./tailwindScaleDark";
 import states from "./states";
+import rainbow from "./rainbow";
+import highlight from "../nodes/highlight";
 
 export default (options?: { token: 'primary' | 'secondary' | 'accent', primaryColor?: SchemistColor, secondaryColor?: SchemistColor, accentColor?: SchemistColor, isDark: boolean, saturation?: number, lightness?: number }) => {
 
@@ -33,18 +35,24 @@ export default (options?: { token: 'primary' | 'secondary' | 'accent', primaryCo
 
   const nodes = options?.token === 'primary' ? [
     ...shadeNodes,
+    ...rainbow.nodes,     
     {
       type: saturation.type,
-      isHidden: false,
-      token: "neutral",
+      isHidden: true,
       args: {
-        amount: 5,
+        amount: 30,
       },
       children: [
-        ...shadeNodes,
-        ...materialNeutralLight.nodes,
-        ...neutralScaleLight.nodes,
         ...baseLight.nodes,
+        {
+          type: highlight.type,
+          isHidden: false,
+          token: "neutral",
+          args: {
+            amount: 5,
+          },
+          children: shadeNodes,
+        },
       ],
     },
     {

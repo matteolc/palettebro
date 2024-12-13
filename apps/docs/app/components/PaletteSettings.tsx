@@ -2,8 +2,8 @@ import { RiEqualizerLine } from "@remixicon/react";
 import { useContext } from "react";
 import { PaletteContext } from "~/PaletteContext";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-import { Slider } from "./ui/Slider";
-import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "./ui/RadioCard";
+import { Slider } from "./Slider";
+import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "./RadioCard";
 import { ThemeVariantEnum } from "@repo/theme-generator/types";
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { PaletteToolbarContext } from "../PaletteToolbarContext";

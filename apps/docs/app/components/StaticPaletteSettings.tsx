@@ -1,6 +1,6 @@
 import { Fragment, useContext } from "react";
 import { PaletteContext } from "~/PaletteContext";
-import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "./ui/RadioCard";
+import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "./RadioCard";
 import { Checkbox } from "@headlessui/react";
 import clsx from "clsx";
 

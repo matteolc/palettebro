@@ -1,4 +1,3 @@
-import { Isomorph } from "~/components/Isomorph";
 import { Pattern } from "~/components/Pattern";
 
 export default function Index() {
@@ -7,9 +6,6 @@ export default function Index() {
       <div className="scale-[90%] -mt-14">
         <Pattern />
       </div>
-      {/* <div className="-mt-40 ml-96">
-        <Isomorph />
-      </div>    */}
     </div>
   );
 }

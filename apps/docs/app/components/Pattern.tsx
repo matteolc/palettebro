@@ -215,13 +215,13 @@ const Pattern = () => {
                 <rect
                     x="645.83551"
                     y="-208.74046"
-                    fill="oklch(var(--secondary))"
+                    fill="oklch(var(--primary-200))"
                     className="text-secondary"
                     width="208.64944"
                     height="208.64944"
                 />
                 <path
-                    fill="oklch(var(--secondary-400))"
+                    fill="oklch(var(--primary-400))"
                     className="text-accent"
                     d="M854.48499-191.00525v173.49026H750.44843c-47.90802,0-86.74512-38.83711-86.74512-86.74514
             s38.8371-86.74513,86.74512-86.74513H854.48499z"
@@ -307,7 +307,7 @@ const Pattern = () => {
                 </mask>
                 <circle
                     mask="url(#mask-10_8_)"
-                    fill="oklch(var(--secondary-300))"
+                    fill="oklch(var(--secondary-200))"
                     className="text-accent"
                     cx="1063.42261"
                     cy="-0.37921"
@@ -335,7 +335,7 @@ const Pattern = () => {
                 </mask>
                 <circle
                     mask="url(#mask-10_7_)"
-                    fill="oklch(var(--secondary-300))"
+                    fill="oklch(var(--secondary-200))"
                     className="text-accent"
                     cx="854.19678"
                     cy="-209.02864"

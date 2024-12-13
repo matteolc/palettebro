@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { PaletteContext } from "~/PaletteContext";
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { RiContrastDrop2Fill } from "@remixicon/react";
-import { Slider } from "./ui/Slider";
+import { Slider } from "./Slider";
 
 export const SaturationSettings = () => {
     const { saturation, setSaturation } = useContext(PaletteContext);
