@@ -9,21 +9,23 @@ import tailwindScaleLight from "./tailwindScaleLight";
 import baseLight from "./baseLight";
 import neutralScaleLight from "./neutralScaleLight";
 import materialNeutralLight from "./materialNeutralLight";
-import spotTonesLight from "./spotTonesLight";
 import { SchemistColor } from "../color/types";
 import color from "../nodes/color";
-import spotTonesDark from "./spotTonesDark";
+import staticTones from "./staticTones";
 import tailwindScaleDark from "./tailwindScaleDark";
+import states from "./states";
 
 export default (options?: { token: 'primary' | 'secondary' | 'accent', primaryColor?: SchemistColor, secondaryColor?: SchemistColor, accentColor?: SchemistColor, isDark: boolean, saturation?: number, lightness?: number }) => {
 
   const lightNodes = [
-    ...spotTonesLight.nodes,
+    ...staticTones.nodes,
+    ...states.nodes,
     ...tailwindScaleLight.nodes,
   ];
 
   const darkNodes = [
-    ...spotTonesDark.nodes,
+    ...staticTones.nodes,
+    ...states.nodes,
     ...tailwindScaleDark.nodes,
   ];
 

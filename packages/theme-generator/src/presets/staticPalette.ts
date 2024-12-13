@@ -14,21 +14,24 @@ import triadRight from "../nodes/triadRight";
 import triadLeft from "../nodes/triadLeft";
 import splitComplementaryLeft from "../nodes/splitComplementaryLeft";
 import splitComplementaryRight from "../nodes/splitComplementaryRight";
-import spotTonesLight from "./spotTonesLight";
-import spotTonesDark from "./spotTonesDark";
+import staticTones from "./staticTones";
 import lightness from "../nodes/lightness";
 import color from "../nodes/color";
 import { SchemistColor } from "../color/types";
+import states from "./states";
+import contrasting from "../nodes/contrasting";
 
 export default (options?: { primaryColor?: SchemistColor, saturation?: number, lightness?: number, isDark: boolean, preset: 'split-complementary' | 'tetrad' | 'triad', reverse: boolean }) => {
 
   const lightNodes = [
-    ...spotTonesLight.nodes,
+    ...staticTones.nodes,
+    ...states.nodes,
     ...tailwindScaleLight.nodes,
   ];
 
   const darkNodes = [
-    ...spotTonesDark.nodes,
+    ...staticTones.nodes,
+    ...states.nodes,
     ...tailwindScaleDark.nodes,
   ];
 
@@ -63,7 +66,7 @@ export default (options?: { primaryColor?: SchemistColor, saturation?: number, l
   return {
     label: "Spot palette",
     description: "A static palette with a primary color",
-    nodes: [
+    nodes: [    
       {
         type: color.type,
         isHidden: false,

@@ -10,7 +10,6 @@ import { ColorSwatch } from "./ColorSwatch";
 import { SaturationSettings } from "./SaturationSettings";
 import { PaletteSettings } from "./PaletteSettings";
 import { randomUsableColor } from "node_modules/@repo/theme-generator/src/color/manipulation";
-import { SchemistColor } from "node_modules/@repo/theme-generator/src/color/types";
 import { formatSchemistToHex } from "node_modules/@repo/theme-generator/src/color/formatting";
 
 const BASE_TOKENS = ["primary", "secondary", "accent", "neutral"];
