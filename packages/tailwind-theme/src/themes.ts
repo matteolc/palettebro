@@ -254,9 +254,9 @@ export const themes = {
       primary: colors.zinc[500],
     },
   },
-  "purple-spot": {
+  "purple-static": {
     ...lightThemeDefaultProps,
-    variant: ThemeVariantEnum.spot,
+    variant: ThemeVariantEnum.static,
     baseColors: {
       primary: "#845ec2",
     },

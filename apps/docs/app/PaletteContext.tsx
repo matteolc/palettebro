@@ -1,5 +1,5 @@
 import { usePalette } from "@repo/theme-generator/palettes";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useCustomPalette } from "./hooks/use-custom-palette";
 import { StaticThemePreset, ThemeVariant, ThemeVariantEnum } from "@repo/theme-generator/types";
 
@@ -36,14 +36,14 @@ type PaletteContextType = {
 export const PaletteContext = createContext<PaletteContextType>({});
 
 export const PaletteProvider = ({ children }: { children: React.ReactNode }) => {
-  const [baseColors, setBaseColorsState] = useState<{ primary?: string, secondary?: string, accent?: string }>({
+  const [baseColors, setBaseColorsState] = useState<{ primary: string, secondary?: string, accent?: string }>({
     primary: "#663399",
     secondary: "#7da9c3",
     accent: "#e8d5b5",
   });
   const [isDark, setIsDark] = useState(false);
   const [saturation, setSaturation] = useState(80);
-  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.spot);
+  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.static);
   const [lightness, setLightness] = useState(100);
   const [preset, setPreset] = useState<StaticThemePreset>("split-complementary");
   const [reverse, setReverse] = useState<boolean>(false);

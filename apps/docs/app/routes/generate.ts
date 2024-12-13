@@ -7,7 +7,7 @@ export async function action({ request }: LoaderFunctionArgs) {
 	const mode =
 		(formData.get("mode") as "diffusion" | "transformer" | "random") ||
 		"transformer";
-	const num_colors = 3; // or 4
+	const num_colors = Number(formData.get("colors")) || 3;
 	const temperature = Number(formData.get("temperature")) || 1.2;
 	const page =
 		(formData.get("page") as
@@ -27,9 +27,9 @@ export async function action({ request }: LoaderFunctionArgs) {
 		}
 	}
 
-	if (preset === "high-contrast" || preset === "bright-light") {
-		palette[0] = "#ffffff";
-	}
+	// if (preset === "high-contrast" || preset === "bright-light") {
+	// 	palette[0] = "#ffffff";
+	// }
 
 	const cfg = {
 		preset,
@@ -42,8 +42,6 @@ export async function action({ request }: LoaderFunctionArgs) {
 		palette,
 	};
 
-	console.dir(cfg, { depth: null });
-
 	const data = await fetch("https://api.huemint.com/color", {
 		method: "POST",
 		body: JSON.stringify(cfg),
@@ -52,7 +50,6 @@ export async function action({ request }: LoaderFunctionArgs) {
 		},
 	});
 	const generated = await data.json();
-	// console.dir(generated, { depth: null });
 
 	return {
 		results: generated.results,

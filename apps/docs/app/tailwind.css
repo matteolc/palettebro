@@ -31,22 +31,22 @@ a:not(nav a):hover {
 
 .title-gradient {
   --tw-gradient-to: oklch(var(--secondary-700)) var(--tw-gradient-to-position);
-  --tw-gradient-from: oklch(var(--primary-600)) var(--tw-gradient-from-position);
+  --tw-gradient-from: oklch(var(--primary-700)) var(--tw-gradient-from-position);
   --tw-gradient-stops: var(--tw-gradient-from),
-    oklch(var(--accent-500)) var(--tw-gradient-via-position),
+    oklch(var(--accent-700)) var(--tw-gradient-via-position),
     var(--tw-gradient-to);
-    animation: gradient 8s ease infinite;
-    background-size: 150% 150%;
+    animation: gradient 4s ease infinite;
+    background-size: 400% 400%;
 }
 
 @keyframes gradient {
 	0% {
-		background-position: 0% 80%;
+		background-position: 0% 50%;
 	}
 	50% {
-		background-position: 100% 80%;
+		background-position: 100% 50%;
 	}
 	100% {
-		background-position: 0% 80%;
+		background-position: 0% 50%;
 	}
 }

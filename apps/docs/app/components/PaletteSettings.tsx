@@ -25,11 +25,11 @@ export const PaletteSettings = () => {
             </PopoverButton>
             <PopoverPanel anchor={{ to: 'bottom start', gap: "18px" }} className="min-h-[32rem] bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
                 <TabGroup defaultIndex={
-                    variant === ThemeVariantEnum.spot ? 0 : 1
+                    variant === ThemeVariantEnum.static ? 0 : 1
                 }>
 
                     <TabList className="flex flex-row gap-2 mb-2 text-lg text-zinc-950">
-                        <Tab onClick={() => setVariant?.(ThemeVariantEnum.spot)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Static</Tab>
+                        <Tab onClick={() => setVariant?.(ThemeVariantEnum.static)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Static</Tab>
                         <Tab onClick={() => setVariant?.(ThemeVariantEnum.ai)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Generative</Tab>
                     </TabList>
                     <TabPanels className="p-2">

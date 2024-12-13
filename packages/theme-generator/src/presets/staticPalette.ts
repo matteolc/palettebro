@@ -1,27 +1,26 @@
 import negative from "../nodes/negative";
 import saturation from "../nodes/saturation";
 import type { Preset } from "./types";
-import materialTonesLight from "./materialTonesLight";
 import informative from "../nodes/informative";
 import positive from "../nodes/positive";
 import warning from "../nodes/warning";
 import tailwindScaleLight from "./tailwindScaleLight";
 import tetradLeft from "../nodes/tetradLeft";
-import lightness from "../nodes/lightness";
 import tetradRight from "../nodes/tetradRight";
 import highlight from "../nodes/highlight";
 import baseLight from "./baseLight";
-import materialTonesDark from "./materialTonesDark";
 import tailwindScaleDark from "./tailwindScaleDark";
 import triadRight from "../nodes/triadRight";
 import triadLeft from "../nodes/triadLeft";
 import splitComplementaryLeft from "../nodes/splitComplementaryLeft";
 import splitComplementaryRight from "../nodes/splitComplementaryRight";
-import contrasting from "../nodes/contrasting";
 import spotTonesLight from "./spotTonesLight";
 import spotTonesDark from "./spotTonesDark";
+import lightness from "../nodes/lightness";
+import color from "../nodes/color";
+import { SchemistColor } from "../color/types";
 
-export default (options?: { saturation?: number, lightness?: number, isDark: boolean, preset: 'split-complementary' | 'tetrad' | 'triad', reverse: boolean, contrast: number }) => {
+export default (options?: { primaryColor?: SchemistColor, saturation?: number, lightness?: number, isDark: boolean, preset: 'split-complementary' | 'tetrad' | 'triad', reverse: boolean }) => {
 
   const lightNodes = [
     ...spotTonesLight.nodes,
@@ -63,63 +62,63 @@ export default (options?: { saturation?: number, lightness?: number, isDark: boo
 
   return {
     label: "Spot palette",
-    description: "A spot palette with a primary color",
+    description: "A static palette with a primary color",
     nodes: [
       {
-        type: saturation.type,
+        type: color.type,
         isHidden: false,
         token: "primary",
         args: {
-          amount: options?.saturation ?? 100,
+          color: options?.primaryColor,
         },
+        children: [
+          ...shadeNodes,          
+          secondaryNode,
+          accentNode,
+          {
+            type: saturation.type,
+            isHidden: true,
+            args: {
+              amount: 30,
+            },
             children: [
-              ...shadeNodes,
-              secondaryNode,
-              accentNode,
+              ...baseLight.nodes,
               {
-                type: saturation.type,
-                isHidden: true,
+                type: highlight.type,
+                isHidden: false,
+                token: "neutral",
                 args: {
-                  amount: 30,
+                  amount: 5,
                 },
-                children: [
-                  ...baseLight.nodes,
-                  {
-                    type: highlight.type,
-                    isHidden: false,
-                    token: "neutral",
-                    args: {
-                      amount: 5,
-                    },
-                    children: shadeNodes,
-                  },
-                ],
-              },
-              {
-                type: negative.type,
-                token: "error",
-                isHidden: false,
                 children: shadeNodes,
               },
-              {
-                type: informative.type,
-                token: "info",
-                isHidden: false,
-                children: shadeNodes,
-              },
-              {
-                type: positive.type,
-                token: "success",
-                isHidden: false,
-                children: shadeNodes,
-              },
-              {
-                type: warning.type,
-                token: "warning",
-                isHidden: false,
-                children: shadeNodes,
-              },
-            ],   
+            ],
+          },
+          {
+            type: negative.type,
+            token: "error",
+            isHidden: false,
+            children: shadeNodes,
+          },
+          {
+            type: informative.type,
+            token: "info",
+            isHidden: false,
+            children: shadeNodes,
+          },
+          {
+            type: positive.type,
+            token: "success",
+            isHidden: false,
+            children: shadeNodes,
+          },
+          {
+            type: warning.type,
+            token: "warning",
+            isHidden: false,
+            children: shadeNodes,
+          },
+        ],
       },
     ],
   } as Preset;

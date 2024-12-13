@@ -1,9 +1,9 @@
 import muiPalette from "./palettes/mui";
-import spotPalette from "./palettes/spot";
-import aiPalette from "./palettes/ai";
+import spotPalette from "./palettes/static";
+import aiPalette from "./palettes/dynamic";
 
 export type ThemeColorScheme = "light" | "dark";
-export type ThemeVariant = "mui" | "spot" | "ai";
+export type ThemeVariant = "mui" | "static" | "ai";
 
 export const createEnum = <T extends readonly string[]>(values: T) => {
   return values.reduce((acc, value) => {
@@ -13,11 +13,11 @@ export const createEnum = <T extends readonly string[]>(values: T) => {
 };
 
 export const ThemeColorSchemeEnum = createEnum(["light", "dark"] as const);
-export const ThemeVariantEnum = createEnum(["mui", "spot", "ai"] as const);
+export const ThemeVariantEnum = createEnum(["mui", "static", "ai"] as const);
 
 export const ThemeVariantToPalette = {
   mui: muiPalette,
-  spot: spotPalette,
+  static: spotPalette,
   ai: aiPalette,
 };
 
@@ -28,11 +28,6 @@ export type Theme = {
   variant: ThemeVariant;
   preset?: StaticThemePreset;
   reverse?: boolean;
-  smooth?: boolean; // unused
-  lightness?: number;
-  saturation: number;
-  contrast?: number; // unused
-  ratios?: number[]; // unused
   baseColors: {
     primary: string;
     secondary?: string;

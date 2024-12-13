@@ -11,16 +11,15 @@ export default (theme: {
   primaryColor: SchemistColor;
   secondaryColor?: SchemistColor;
   accentColor?: SchemistColor;
-  saturation: number;
   isDark: boolean;
   reverse: boolean;
   preset: "split-complementary" | "tetrad" | "triad";
 }) => {
-  const { primaryColor, saturation, isDark } = theme;
+  const { primaryColor, isDark } = theme;
 
   const nodes = isDark
-    ? materialDarkWithShades({ saturation }).nodes
-    : materialLightWithShades({ saturation }).nodes;
+    ? materialDarkWithShades().nodes
+    : materialLightWithShades().nodes;
 
   return presetSampleWithKeyAndNameHash([
     ...presetSamplesWithKeyAndName(nodes, primaryColor),

@@ -5,7 +5,7 @@ type GeneratorPage = "website-magazine" | "brand-2" | "brand-3" | "website-1";
 type GeneratorPreset = "default" | "high-contrast" | "bright-light" | "pastel" | "vibrant" | "dark" | "hyper-color";
 
 const AdjancyMap = {
-    "3": {
+    3: {
         "website-1": {
             default: [
                 "0",
@@ -116,6 +116,7 @@ type PaletteToolbarContextType = {
     page: GeneratorPage
     temperature: number
     preset: GeneratorPreset
+    numColors: 3
 }
 
 export const PaletteToolbarContext = createContext<PaletteToolbarContextType>({
@@ -123,7 +124,8 @@ export const PaletteToolbarContext = createContext<PaletteToolbarContextType>({
     profile: "transformer",
     page: "brand-2",
     temperature: 1.2,
-    preset: "default"
+    preset: "default",
+    numColors: 3
 });
 
 export const PaletteToolbarProvider = ({ children }: { children: React.ReactNode }) => {
@@ -131,14 +133,15 @@ export const PaletteToolbarProvider = ({ children }: { children: React.ReactNode
     const [temperature, setTemperature] = useState<number>(1.2);
     const [preset, setPreset] = useState<GeneratorPreset>("default");
     const [page, setPage] = useState<GeneratorPage>("brand-2");
-    const [adjacency, setAdjacency] = useState<string[]>(AdjancyMap[3]["brand-2"]["default"]);
+    const [numColors, setNumColors] = useState<3>(3);
+    const [adjacency, setAdjacency] = useState<string[]>(AdjancyMap[numColors][page][preset].map(String));
 
     useEffect(() => {
-        setAdjacency(AdjancyMap[3][page][preset].map(String));
+        setAdjacency(AdjancyMap[numColors][page][preset].map(String));
     }, [page, preset]);
 
     return (
-        <PaletteToolbarContext.Provider value={{ profile, setProfile, page, setPage, temperature, setTemperature, preset, setPreset, adjacency, setAdjacency }}>
+        <PaletteToolbarContext.Provider value={{ profile, setProfile, page, setPage, temperature, setTemperature, preset, setPreset, adjacency, setAdjacency, numColors }}>
             <div>
                 {children}
             </div>

@@ -18,11 +18,8 @@ export const usePalette = (theme: Theme) => {
   );
 
   const {
-    saturation,
-    lightness,
     reverse,
     preset,
-    contrast,
     baseColors: { primary, secondary, accent },
   } = theme;
 
@@ -45,7 +42,7 @@ export const usePalette = (theme: Theme) => {
 
   let secondaryColor;
 
-  if (secondary) {
+  if (secondary && theme.variant === 'ai') {
     const parsed = parseColor(secondary);
     if (parsed[1]) {
       secondaryColor = parsed[1];
@@ -65,7 +62,7 @@ export const usePalette = (theme: Theme) => {
 
   let accentColor
 
-  if (accent) {
+  if (accent && theme.variant === 'ai') {
     const parsed = parseColor(accent);
     if (parsed[1]) {
       accentColor = parsed[1];
@@ -82,14 +79,11 @@ export const usePalette = (theme: Theme) => {
       );
     }
   }
-
+  
   const palette = ThemeVariantToPalette[theme.variant]({
     primaryColor,
     secondaryColor,
     accentColor,
-    saturation,
-    lightness,
-    contrast: contrast ?? 1,
     reverse: reverse ?? false,
     preset: preset ?? "split-complementary",
     isDark: theme["color-scheme"] === ThemeColorSchemeEnum.dark,

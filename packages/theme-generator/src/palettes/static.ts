@@ -1,4 +1,4 @@
-import spotPalette from "../presets/spotPalette";
+import staticPalette from "../presets/staticPalette";
 import {
   presetSamplesWithKeyAndName,
   presetSampleWithKeyAndNameHash,
@@ -9,16 +9,13 @@ export default (theme: {
   primaryColor: SchemistColor;
   secondaryColor?: SchemistColor;
   accentColor?: SchemistColor;
-  saturation: number;
-  lightness?: number;
   isDark: boolean;
   reverse: boolean;
   preset: "split-complementary" | "tetrad" | "triad";
-  contrast: number;
 }) => {
-  const { primaryColor, saturation, isDark, lightness, reverse, preset, contrast } = theme;
+  const { primaryColor, isDark, reverse, preset } = theme;
 
-  const nodes = spotPalette({ saturation, lightness, isDark, reverse, preset, contrast }).nodes
+  const nodes = staticPalette({ primaryColor, isDark, reverse, preset }).nodes
 
   return presetSampleWithKeyAndNameHash([
     ...presetSamplesWithKeyAndName(nodes, primaryColor),

@@ -18,7 +18,7 @@ const STATUS_TOKENS = ["info", "success", "warning", "error"];
 
 const PaletteToolbar = () => {
     const { setLightOrDark, isDark, setBaseColors, variant, palette } = useContext(PaletteContext);
-    const { temperature, profile, preset, adjacency, page } = useContext(PaletteToolbarContext);
+    const { temperature, profile, preset, adjacency, page, numColors } = useContext(PaletteToolbarContext);
 
     const [showStatePalette, setShowStatePalette] = useState(false);
     const [generatedPalettes, setGeneratedPalettes] = useState<{ palette: string[] }[] | undefined>([]);
@@ -73,11 +73,11 @@ const PaletteToolbar = () => {
         setGeneratedPalettes([]);
     }, [temperature, profile, preset, page])
 
-    useEffect(() => {
-        if (preset === "high-contrast" || preset === "bright-light") {
-            setBaseColors?.({ primary: "#FFFFFF" });
-        }
-    }, [preset])
+    // useEffect(() => {
+    //     if (preset === "high-contrast" || preset === "bright-light") {
+    //         setBaseColors?.({ primary: "#FFFFFF" });
+    //     }
+    // }, [preset])
 
     const popPalette = () => {
         setGeneratedPalettes(generatedPalettes?.slice(1));
@@ -106,7 +106,7 @@ const PaletteToolbar = () => {
 
                         <input type="text" readOnly className="hidden" value={profile} name="mode" />
                         <input type="text" readOnly className="hidden" value={preset} name="preset" />
-                        <input type="text" readOnly className="hidden" value="4" name="colors" />
+                        <input type="text" readOnly className="hidden" value={numColors} name="colors" />
                         <input type="text" readOnly className="hidden" value={temperature} name="temperature" />
                         <input type="text" readOnly className="hidden" value={adjacency} name="adjacency" />
                         <input type="text" readOnly className="hidden" value={page} name="page" />
@@ -136,7 +136,7 @@ const PaletteToolbar = () => {
                             {showStatePalette ? <RiInformationOffLine /> : <RiInformationLine />}
                         </button>
 
-                        <SaturationSettings />
+                        {/* <SaturationSettings /> */}
 
                         <button type="button" className="pl-1 pr-2.5 py-2 rounded-full" onClick={() => setLightOrDark?.(!isDark)}>
                             {isDark ? <RiMoonLine /> : <RiSunLine />}
