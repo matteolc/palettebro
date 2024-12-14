@@ -12,6 +12,13 @@ import { CardsReportIssue } from "~/components/shadcdn/CardsReportIssue"
 import { CardsShare } from "~/components/shadcdn/CardsShare"
 import { CardsTeamMembers } from "~/components/shadcdn/CardsTeamMembers"
 import { CardsDataTable } from "~/components/shadcdn/CardsDataTable"
+import { CardsTrendingChart } from "~/components/shadcdn/CardsTrendingChart"
+import { CardsTrendingStackedChart } from "~/components/shadcdn/CardsTrendingStackedChart"
+import { CardsAreaChart } from "~/components/shadcdn/CardsAreaChart"
+import { CardsAreaChartIteractive } from "~/components/shadcdn/CardsAreaChartInteractive"
+import { CardsAlert } from "~/components/shadcdn/CardsAlert"
+import { CardsProduct } from "~/components/shadcdn/CardsProduct"
+import { CardsProductOutOfStock } from "~/components/shadcdn/CardsProductOutOfStock"
 
 export default function Page() {
   return (
@@ -59,6 +66,30 @@ export default function Page() {
         <div className="xl:hidden">
           <CardsReportIssue />
         </div>
+      </div>
+
+      <div className="space-y-4 lg:col-span-10 xl:col-span-11 xl:space-y-4">
+        <CardsAlert />
+      </div>
+      <div className="space-y-4 lg:col-span-10 xl:col-span-11 xl:space-y-4">
+        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <CardsProduct />
+          <CardsProductOutOfStock
+            name="Wireless Headphones"
+            price={129.99}
+            category="Out of stock"
+            rating={4}
+            imageUrl="/path/to/image.jpg"
+          />
+        </div>
+      </div>
+      <div className="space-y-4 lg:col-span-10 xl:col-span-11 xl:space-y-4">
+        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <CardsTrendingChart />
+          <CardsTrendingStackedChart />
+          <CardsAreaChart />
+        </div>
+        <CardsAreaChartIteractive />
       </div>
     </div>
   )

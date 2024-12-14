@@ -43,8 +43,8 @@ const Layout = (props: { children: ReactNode }) => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-50 w-full border-b border-neutral-300/20 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60">
-        <nav className="w-full max-w-7xl mx-auto mt-2 flex items-baseline justify-between">
+      <header className="px-8 sticky top-0 z-50 w-full border-b border-neutral-300/20 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60">
+        <nav className="w-full max-w-full mx-auto mt-2 flex items-baseline justify-between">
             <Link to="/">
               <h2 className="cursor-pointer title-gradient text-4xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">🌈 Palettebruh</h2>
             </Link>
@@ -54,7 +54,7 @@ const Layout = (props: { children: ReactNode }) => {
           </ul>
         </nav>
       </header>
-      <main className="w-full max-w-7xl mx-auto flex-1 flex">
+      <main className="px-8 w-full max-w-full mx-auto flex-1 flex">
         <div className="pt-10 prose max-w-fit">
           {props.children}
         </div>

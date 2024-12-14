@@ -36,7 +36,7 @@ const config: Pick<Config, "presets" | "content" | "plugins" | "darkMode" | "the
     			},
     			muted: {
     				DEFAULT: 'oklch(var(--neutral-200))',
-    				foreground: 'oklch(var(--neutral-700))'
+    				foreground: 'oklch(var(--neutral-500))'
     			},
     			accent: {
     				DEFAULT: 'oklch(var(--neutral-200))',
