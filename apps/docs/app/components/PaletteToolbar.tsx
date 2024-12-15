@@ -87,7 +87,7 @@ const PaletteToolbar = () => {
 
     return (
         <PopoverGroup>
-            <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-10">
+            <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-50">
                 <div style={{
                     borderColor:
                         `oklch(var(--neutral-100))`

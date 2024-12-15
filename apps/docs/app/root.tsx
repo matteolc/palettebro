@@ -42,10 +42,8 @@ const Layout = (props: { children: ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col">
       <NavigationHeader />
-      <main className="px-8 w-full max-w-full mx-auto flex-1 flex mt-36">
-        <div className="pt-10 prose max-w-fit">
-          {props.children}
-        </div>
+      <main className="px-8 w-full max-w-full mx-auto flex-1 flex flex-col mt-20">
+        {props.children}
         <PaletteToolbarProvider>
           <PaletteToolbar />
         </PaletteToolbarProvider>

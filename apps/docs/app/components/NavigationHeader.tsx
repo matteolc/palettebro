@@ -34,7 +34,7 @@ const NavigationHeader = () => {
                             Palette
                         </Button>
                     </NavLink>
-                    <NavLink to="/shadcdn" className="hover:text-primary"><Button variant="outline">Components</Button></NavLink>
+                    <NavLink to="/examples" className="hover:text-primary"><Button variant="outline">Components</Button></NavLink>
                 </ul>
             </motion.nav>
         </motion.header>
