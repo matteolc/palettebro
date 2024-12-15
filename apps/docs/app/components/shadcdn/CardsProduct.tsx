@@ -18,20 +18,20 @@ export function CardsProduct() {
         style={{ aspectRatio: "500/500", objectFit: "cover" }}
       />
       <div className="flex justify-between items-baseline">
-        <CardTitle className="font-bold text-2xl">Product Title</CardTitle>
-        <Badge className="text-sm py-1 px-2 rounded-full"  style={{ backgroundColor: "oklch(var(--info-500))", color: "oklch(var(--on-info-container))", borderColor: "oklch(var(--info-600))" }}>Category</Badge>
+        <CardTitle className="font-bold text-2xl">Fancy Watch</CardTitle>
+        <Badge className="text-sm py-1 px-2 rounded-full" style={{ backgroundColor: "oklch(var(--info-container))", color: "oklch(var(--on-info-container))" }}>Category</Badge>
       </div>
       <CardDescription className="">
-        This is a brief description of the product.
+        A fancy watch for your wrist. It's a great accessory for any outfit.
       </CardDescription>
       <div className="flex justify-between items-center">
         <div className="text-xl font-semibold">$99</div>
         <div className="flex gap-1">
-          <StarIcon className="w-5 h-5 text-yellow-500" />
-          <StarIcon className="w-5 h-5 text-yellow-500" />
-          <StarIcon className="w-5 h-5 text-yellow-500" />
-          <StarIcon className="w-5 h-5 text-yellow-500" />
-          <StarIcon className="w-5 h-5 text-gray-300" />
+          <StarIcon className="w-5 h-5" style={{ color: "oklch(var(--accent))", fill: "oklch(var(--accent))" }} />
+          <StarIcon className="w-5 h-5" style={{ color: "oklch(var(--accent))", fill: "oklch(var(--accent))" }} />
+          <StarIcon className="w-5 h-5" style={{ color: "oklch(var(--accent))", fill: "oklch(var(--accent))" }} />
+          <StarIcon className="w-5 h-5" style={{ color: "oklch(var(--accent))", fill: "oklch(var(--accent))" }} />
+          <StarIcon className="w-5 h-5" style={{ color: "oklch(var(--neutral))" }} />
         </div>
       </div>
     </Card>

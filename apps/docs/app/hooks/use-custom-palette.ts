@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { defaultThemes } from "@repo/tailwind-theme";
 import { usePalette } from "@repo/theme-generator/palettes";
 import { colorToRawOklchString } from "~/lib/oklch";
 import type {
@@ -8,28 +7,36 @@ import type {
 	ThemeVariant,
 } from "@repo/theme-generator/types";
 import { useHints } from "./use-hints";
+import twColors from "tailwindcss/colors";
 
 const useCustomPalette = (
 	colors: Record<string, string>,
-	isDark?: boolean,
-	saturation?: number,
-	variant?: ThemeVariant,
-	lightness?: number,
-	preset?: StaticThemePreset,
-	reverse?: boolean,
-	contrast?: number,
+	variant: ThemeVariant,
+	isDark: boolean,
+	preset: StaticThemePreset,
+	reverse: boolean,
 ) => {
 	const hints = useHints();
-	const currentTheme = defaultThemes[hints.theme];
+	const currentTheme = {
+		light: {
+			"color-scheme": "light" as const,
+			baseColors: {
+				primary: twColors.purple[500],
+			},
+		},
+		dark: {
+			"color-scheme": "dark" as const,
+			baseColors: {
+				primary: twColors.purple[500],
+			},
+		},
+	}[hints.theme];
 	const modifiedTheme = {
 		...currentTheme,
 		"color-scheme": isDark ? "dark" : ("light" as ThemeColorScheme),
-		saturation: saturation ?? currentTheme.saturation,
-		variant: variant ?? currentTheme.variant,
-		lightness: lightness ?? currentTheme.lightness,
+		variant,
 		preset,
 		reverse,
-		contrast,
 		baseColors: {
 			...currentTheme.baseColors,
 			...colors,
@@ -49,8 +56,6 @@ const useCustomPalette = (
 			document.documentElement.style.setProperty(key, value);
 		}
 	}, [result]);
-
-	console.dir({ palette: modifiedPalette, result }, { depth: null });
 
 	return {
 		palette: modifiedPalette,

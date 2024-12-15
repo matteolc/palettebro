@@ -1,8 +1,6 @@
 import {
-  Link,
   Links,
   Meta,
-  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -18,6 +16,7 @@ import { getDomainUrl } from "./lib/get-domain-url";
 import { PaletteToolbar } from "./components/PaletteToolbar";
 import { PaletteProvider } from "./PaletteContext";
 import { PaletteToolbarProvider } from "./PaletteToolbarContext";
+import { NavigationHeader } from "./components/NavigationHeader";
 
 export const meta: MetaFunction = () => [
   { title: "Palette Bruh" },
@@ -40,21 +39,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 const Layout = (props: { children: ReactNode }) => {
-
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="px-8 sticky top-0 z-50 w-full border-b border-neutral-300/20 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60">
-        <nav className="w-full max-w-full mx-auto mt-2 flex items-baseline justify-between">
-            <Link to="/">
-              <h2 className="cursor-pointer title-gradient text-4xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">🌈 Palettebruh</h2>
-            </Link>
-            <ul className="flex gap-8 text-lg font-semibold items-baseline">
-              <NavLink to="/palette" className="hover:text-primary">palette</NavLink>
-              <NavLink to="/shadcdn" className="hover:text-primary">components</NavLink>
-          </ul>
-        </nav>
-      </header>
-      <main className="px-8 w-full max-w-full mx-auto flex-1 flex">
+      <NavigationHeader />
+      <main className="px-8 w-full max-w-full mx-auto flex-1 flex mt-36">
         <div className="pt-10 prose max-w-fit">
           {props.children}
         </div>
@@ -83,7 +71,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gradient-to-bl home-gradient min-h-fit">
+      <body className="bg-gradient-to-bl home-gradient min-h-fit antialiased">
         <PaletteProvider>
           <Layout>
             <Outlet />

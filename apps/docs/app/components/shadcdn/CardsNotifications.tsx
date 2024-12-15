@@ -28,7 +28,7 @@ const notifications = [
 
 export function CardsNotifications() {
   return (
-    <Card className={cn("w-[380px]")}>
+    <Card>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>You have 3 unread messages.</CardDescription>

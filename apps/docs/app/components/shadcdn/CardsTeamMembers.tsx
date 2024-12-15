@@ -33,7 +33,7 @@ export function CardsTeamMembers() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Team Members</CardTitle>
+        <CardTitle className="text-2xl">Team Members</CardTitle>
         <CardDescription>
           Invite your team members to collaborate.
         </CardDescription>

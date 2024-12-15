@@ -12,12 +12,12 @@ interface ProductCardProps {
   imageUrl?: string;
 }
 
-export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({ 
-  name = "Product Name", 
-  price = 0, 
-  category = "Uncategorized", 
-  rating = 0, 
-  imageUrl = "/api/placeholder/350/200" 
+export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
+  name = "Product Name",
+  price = 0,
+  category = "Uncategorized",
+  rating = 0,
+  imageUrl = "/product-1.jpg"
 }) => {
   // Generate star rating display
   const renderStars = (currentRating: number) => {
@@ -32,40 +32,44 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <Card className="hover:shadow-lg transition-shadow duration-300 flex flex-col justify-around">
+    <Card className="hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
       <CardHeader className="relative p-0">
-        <div className="relative h-[200px] overflow-hidden rounded-t-lg">
-          <Badge 
+        <div className="relative overflow-hidden rounded-t-lg">
+          <Badge
             variant="destructive"
             className="absolute top-3 left-3 z-10 px-2 py-1"
           >
             {category}
           </Badge>
-          <img 
-            src={imageUrl} 
-            alt={name} 
+          <img
+            src="/product-1.jpg"
+            alt="Product Image"
+            width="500"
+            height="500"
             className="w-full h-64 object-cover"
           />
         </div>
       </CardHeader>
-      
-      <CardContent>
-        <CardTitle className="text-xl font-bold">{name}</CardTitle>
-        <div className="flex items-center justify-between mt-2">
-          <span className="text-lg font-semibold">
-            ${typeof price === 'number' ? price.toFixed(2) : '0.00'}
-          </span>
-          <div className="flex space-x-1">
-            {renderStars(rating || 0)}
+
+      <div>
+        <CardContent>
+          <CardTitle className="text-xl font-bold">{name}</CardTitle>
+          <div className="flex items-center justify-between mt-2">
+            <span className="text-lg font-semibold">
+              ${typeof price === 'number' ? price.toFixed(2) : '0.00'}
+            </span>
+            <div className="flex space-x-1">
+              {renderStars(rating || 0)}
+            </div>
           </div>
-        </div>
-      </CardContent>
-      
-      <CardFooter>
-        <Button className="w-full">
-          <span style={{ color: "oklch(var(--on-primary))" }}>Add to cart</span>
-        </Button>
-      </CardFooter>
+        </CardContent>
+
+        <CardFooter>
+          <Button className="w-full">
+            <span style={{ color: "oklch(var(--on-primary))" }}>Add to cart</span>
+          </Button>
+        </CardFooter>
+      </div>
     </Card>
   );
 };

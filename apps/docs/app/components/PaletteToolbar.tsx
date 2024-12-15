@@ -7,7 +7,6 @@ import { action } from "~/routes/generate";
 import { Popover, PopoverButton, PopoverGroup } from '@headlessui/react'
 import { PaletteToolbarContext } from "../PaletteToolbarContext";
 import { ColorSwatch } from "./ColorSwatch";
-import { SaturationSettings } from "./SaturationSettings";
 import { PaletteSettings } from "./PaletteSettings";
 import { randomUsableColor } from "node_modules/@repo/theme-generator/src/color/manipulation";
 import { formatSchemistToHex } from "node_modules/@repo/theme-generator/src/color/formatting";
@@ -16,12 +15,10 @@ const BASE_TOKENS = ["primary", "secondary", "accent", "neutral"];
 const STATUS_TOKENS = ["info", "success", "warning", "error"];
 
 const PaletteToolbar = () => {
-    const { setLightOrDark, isDark, setBaseColors, variant, palette } = useContext(PaletteContext);
+    const { setIsDark, isDark, setBaseColors, variant, palette } = useContext(PaletteContext);
     const { temperature, profile, preset, adjacency, page, numColors } = useContext(PaletteToolbarContext);
-
     const [showStatePalette, setShowStatePalette] = useState(false);
     const [generatedPalettes, setGeneratedPalettes] = useState<{ palette: string[] }[] | undefined>([]);
-
     const fetcher = useFetcher<typeof action>({ key: "generate-palette" });
 
     useEffect(() => {
@@ -72,12 +69,6 @@ const PaletteToolbar = () => {
         setGeneratedPalettes([]);
     }, [temperature, profile, preset, page])
 
-    // useEffect(() => {
-    //     if (preset === "high-contrast" || preset === "bright-light") {
-    //         setBaseColors?.({ primary: "#FFFFFF" });
-    //     }
-    // }, [preset])
-
     const popPalette = () => {
         setGeneratedPalettes(generatedPalettes?.slice(1));
     }
@@ -110,8 +101,8 @@ const PaletteToolbar = () => {
                         <input type="text" readOnly className="hidden" value={adjacency} name="adjacency" />
                         <input type="text" readOnly className="hidden" value={page} name="page" />
 
-                        {variant === ThemeVariantEnum.ai ? <button className="px-1 py-2 rounded-full" type={shouldSubmit ? "submit" : "button"} onClick={popPalette}>
-                            <RiMagicLine className={variant !== ThemeVariantEnum.ai ? "text-gray-400" : ""} />
+                        {variant === ThemeVariantEnum.dynamic ? <button className="px-1 py-2 rounded-full" type={shouldSubmit ? "submit" : "button"} onClick={popPalette}>
+                            <RiMagicLine className={variant !== ThemeVariantEnum.dynamic ? "text-gray-400" : ""} />
                         </button> :
                             <Popover>
                                 <PopoverButton className="outline-none px-1 py-2 rounded-full" onClick={handleRandomize}>
@@ -127,7 +118,7 @@ const PaletteToolbar = () => {
                             ))}
                         </div> : <div className="mx-4 flex flex-row gap-1">
                             {BASE_TOKENS.map((token) => (
-                                <ColorSwatch token={token} key={token} onLockUnlock={resetGeneratedPalettes} />
+                                <ColorSwatch token={token} key={token} />
                             ))}
                         </div>}
 
@@ -135,9 +126,7 @@ const PaletteToolbar = () => {
                             {showStatePalette ? <RiInformationOffLine /> : <RiInformationLine />}
                         </button>
 
-                        {/* <SaturationSettings /> */}
-
-                        <button type="button" className="pl-1 pr-2.5 py-2 rounded-full" onClick={() => setLightOrDark?.(!isDark)}>
+                        <button type="button" className="pl-1 pr-2.5 py-2 rounded-full" onClick={() => setIsDark?.(!isDark)}>
                             {isDark ? <RiMoonLine /> : <RiSunLine />}
                         </button>
                     </Form>

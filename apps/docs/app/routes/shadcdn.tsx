@@ -73,23 +73,24 @@ export default function Page() {
       </div>
       <div className="space-y-4 lg:col-span-10 xl:col-span-11 xl:space-y-4">
         <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <CardsTrendingChart />
+          <CardsTrendingStackedChart />
+          <CardsAreaChart />
+        </div>
+        <CardsAreaChartIteractive />
+      </div>
+
+      <div className="space-y-4 lg:col-span-10 xl:col-span-11 xl:space-y-4">
+        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <CardsNotifications />
           <CardsProduct />
           <CardsProductOutOfStock
             name="Wireless Headphones"
             price={129.99}
             category="Out of stock"
             rating={4}
-            imageUrl="/path/to/image.jpg"
           />
         </div>
-      </div>
-      <div className="space-y-4 lg:col-span-10 xl:col-span-11 xl:space-y-4">
-        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-          <CardsTrendingChart />
-          <CardsTrendingStackedChart />
-          <CardsAreaChart />
-        </div>
-        <CardsAreaChartIteractive />
       </div>
     </div>
   )

@@ -8,7 +8,7 @@ import { ColorShades } from "./ColorShades";
 import ColorField from "./picker/ColorField";
 import clsx from "clsx";
 
-export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock: () => void }) => {
+export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock?: () => void }) => {
     const [isLocked, setIsLocked] = useState(false);
     const { palette, setBaseColors, variant } = useContext(PaletteContext);
 
@@ -34,8 +34,8 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
 
     const EDITABLE_TOKENS = ["primary", "secondary", "accent"];
 
-    const shouldShowColorPicker = (variant === ThemeVariantEnum.ai && (EDITABLE_TOKENS.includes(token))) || token === 'primary';
-    const shouldShowLock = variant === ThemeVariantEnum.ai && (EDITABLE_TOKENS.includes(token));
+    const shouldShowColorPicker = (variant === ThemeVariantEnum.dynamic && (EDITABLE_TOKENS.includes(token))) || token === 'primary';
+    const shouldShowLock = variant === ThemeVariantEnum.dynamic && (EDITABLE_TOKENS.includes(token));
 
     return (
         <Popover>
@@ -66,7 +66,7 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
                             </PopoverPanel>
                         </Popover>}
                         {shouldShowLock && <Popover>
-                            <PopoverButton className="outline-none py-2 rounded-full" onClick={() => { setIsLocked(!isLocked); onLockUnlock() }}>
+                            <PopoverButton className="outline-none py-2 rounded-full" onClick={() => { setIsLocked(!isLocked); onLockUnlock?.() }}>
                                 {isLocked ? <RiLockLine /> : <RiLockUnlockLine />}
                             </PopoverButton>
                         </Popover>}

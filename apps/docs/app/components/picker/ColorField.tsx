@@ -7,7 +7,7 @@ import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/type
 import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-import { ColorPickerTailwind } from './ColorPickerTailwind';
+import { TailwindColorField } from './TailwindColorField';
 import { PantoneColorField } from './PantoneColorField';
 import { RALColorField } from './RALColorField';
 
@@ -73,7 +73,7 @@ const ColorField: FC<ColorFieldProps> = ({
                             />
                         </TabPanel>
                         <TabPanel>
-                            <ColorPickerTailwind token={token} />
+                            <TailwindColorField token={token} />
                         </TabPanel>
                         <TabPanel>
                             <PantoneColorField

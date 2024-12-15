@@ -26,7 +26,7 @@ const tailwindColors = [
     "rose",
 ]
 
-export const ColorPickerTailwind = ({ token }: { token: string }) => {
+export const TailwindColorField = ({ token }: { token: string }) => {
     const { setBaseColors } = useContext(PaletteContext);
 
 

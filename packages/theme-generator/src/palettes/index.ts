@@ -42,7 +42,7 @@ export const usePalette = (theme: Theme) => {
 
   let secondaryColor;
 
-  if (secondary && theme.variant === 'ai') {
+  if (secondary && theme.variant === 'dynamic') {
     const parsed = parseColor(secondary);
     if (parsed[1]) {
       secondaryColor = parsed[1];
@@ -62,7 +62,7 @@ export const usePalette = (theme: Theme) => {
 
   let accentColor
 
-  if (accent && theme.variant === 'ai') {
+  if (accent && theme.variant === 'dynamic') {
     const parsed = parseColor(accent);
     if (parsed[1]) {
       accentColor = parsed[1];

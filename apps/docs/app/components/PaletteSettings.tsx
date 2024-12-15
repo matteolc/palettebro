@@ -30,7 +30,7 @@ export const PaletteSettings = () => {
 
                     <TabList className="flex flex-row gap-2 mb-2 text-lg text-zinc-950">
                         <Tab onClick={() => setVariant?.(ThemeVariantEnum.static)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Static</Tab>
-                        <Tab onClick={() => setVariant?.(ThemeVariantEnum.ai)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Generative</Tab>
+                        <Tab onClick={() => setVariant?.(ThemeVariantEnum.dynamic)} className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Generative</Tab>
                     </TabList>
                     <TabPanels className="p-2">
                         <TabPanel>
