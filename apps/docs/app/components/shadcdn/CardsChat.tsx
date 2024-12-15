@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { Check, Plus, Send } from "lucide-react"
 
@@ -32,13 +30,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog"
-import { Input } from "~/components/ui/input"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip"
+import { Input } from "~/components/ui/input"
 
 const users = [
   {

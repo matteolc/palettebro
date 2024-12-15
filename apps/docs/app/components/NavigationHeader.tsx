@@ -1,7 +1,3 @@
-
-// <header className="px-8 sticky top-0 z-50 w-full border-b border-neutral-300/20 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60"> */}
-// <header className="fixed inset-x-3 top-4 z-50 mx-auto flex transform-gpu animate-slide-down-fade justify-center overflow-hidden rounded-xl border border-transparent px-6 py-3 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform h-16 bg-white/0 dark:bg-primary-950/0">
-
 import { Link, NavLink } from "@remix-run/react";
 import { Button } from "./ui/button";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";

@@ -1,7 +1,3 @@
-// Tremor Slider [v0.1.0]
-
-"use client"
-
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 import clsx from "clsx"
