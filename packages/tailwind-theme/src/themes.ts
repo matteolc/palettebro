@@ -1,5 +1,4 @@
 import colors from "tailwindcss/colors";
-import { BASE_RATIOS } from "./utils/use-palette";
 import type { Themes } from "@repo/theme-generator/types";
 import { ThemeVariantEnum } from "@repo/theme-generator/types";
 
@@ -7,7 +6,6 @@ const themeDefaultProps = {
   saturation: 80,
   contrast: 1,
   smooth: true,
-  ratios: BASE_RATIOS,
   variant: ThemeVariantEnum.mui,
 };
 
