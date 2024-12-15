@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Minus, Plus } from "lucide-react"
 import { Bar, BarChart } from "recharts"
-import { ChartConfig, ChartContainer } from "../ui/chart"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Button } from "../ui/button"
+import { ChartConfig, ChartContainer } from "~/components/ui/chart"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~/components/ui/card"
+import { Button } from "~/components/ui/button"
 
 const data = [
   {
