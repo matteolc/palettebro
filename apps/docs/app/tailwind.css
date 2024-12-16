@@ -2,24 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: oklch(var(--primary-50));
-}
-
-body,
-prose h1,
-prose p {
-  color: oklch(var(--neutral-900));
-}
-
-nav a:hover {
-  border-color: oklch(var(--neutral) / 20%);
-}
-
-nav a.active {
-  border-color: oklch(var(--accent));
-}
-
 .home-gradient {
   --tw-gradient-to: oklch(var(--accent-100)) var(--tw-gradient-to-position);
   --tw-gradient-from: oklch(var(--primary-50)) var(--tw-gradient-from-position);

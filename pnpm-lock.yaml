@@ -29,18 +29,9 @@ importers:
 
   apps/docs:
     dependencies:
-      '@builtwithjavascript/oklch-color-picker':
-        specifier: ^0.9.1
-        version: 0.9.1
       '@epic-web/client-hints':
         specifier: ^1.3.5
         version: 1.3.5
-      '@headlessui/react':
-        specifier: ^2.2.0
-        version: 2.2.0(react-dom@18.3.1)(react@18.3.1)
-      '@headlessui/tailwindcss':
-        specifier: ^0.2.1
-        version: 0.2.1(tailwindcss@3.4.15)
       '@hookform/resolvers':
         specifier: ^3.9.1
         version: 3.9.1(react-hook-form@7.54.1)
@@ -137,9 +128,6 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@shikijs/compat':
-        specifier: ^1.24.2
-        version: 1.24.2
       '@tanstack/react-table':
         specifier: ^8.0.0
         version: 8.20.6(react-dom@18.3.1)(react@18.3.1)
@@ -188,9 +176,6 @@ importers:
       react:
         specifier: ^18.3.1
         version: 18.3.1
-      react-color-palette:
-        specifier: ^7.3.0
-        version: 7.3.0(react@18.3.1)
       react-day-picker:
         specifier: 8.10.1
         version: 8.10.1(date-fns@4.1.0)(react@18.3.1)
@@ -956,10 +941,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@builtwithjavascript/oklch-color-picker@0.9.1:
-    resolution: {integrity: sha512-wTZNBzzJZ4mYJz+IKgODBph+0grgqG2Fx4TV3/j/WhwaEsNx9mknWFY6msjUaaRzf/ZjYTnq8Y3VWzDys98IXA==}
-    dev: false
 
   /@changesets/apply-release-plan@7.0.5:
     resolution: {integrity: sha512-1cWCk+ZshEkSVEZrm2fSj1Gz8sYvxgUL4Q78+1ZZqeqfuevPTPk033/yUZ3df8BKMohkqqHfzj0HOOrG0KtXTw==}
@@ -1773,6 +1754,7 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       tabbable: 6.2.0
+    dev: true
 
   /@floating-ui/utils@0.2.8:
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
@@ -1790,15 +1772,7 @@ packages:
       '@tanstack/react-virtual': 3.10.9(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-
-  /@headlessui/tailwindcss@0.2.1(tailwindcss@3.4.15):
-    resolution: {integrity: sha512-2+5+NZ+RzMyrVeCZOxdbvkUSssSxGvcUxphkIfSVLpRiKsj+/63T2TOL9dBYMXVfj/CGr6hMxSRInzXv6YY7sA==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      tailwindcss: ^3.0
-    dependencies:
-      tailwindcss: 3.4.15
-    dev: false
+    dev: true
 
   /@hookform/resolvers@3.9.1(react-hook-form@7.54.1):
     resolution: {integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==}
@@ -3614,6 +3588,7 @@ packages:
       '@swc/helpers': 0.5.13
       clsx: 2.1.1
       react: 18.3.1
+    dev: true
 
   /@react-aria/interactions@3.22.4(react@18.3.1):
     resolution: {integrity: sha512-E0vsgtpItmknq/MJELqYJwib+YN18Qag8nroqwjk1qOnBa9ROIkUhWJerLi1qs5diXq9LHKehZDXRlwPvdEFww==}
@@ -3625,6 +3600,7 @@ packages:
       '@react-types/shared': 3.25.0(react@18.3.1)
       '@swc/helpers': 0.5.13
       react: 18.3.1
+    dev: true
 
   /@react-aria/ssr@3.9.6(react@18.3.1):
     resolution: {integrity: sha512-iLo82l82ilMiVGy342SELjshuWottlb5+VefO3jOQqQRNYnJBFpUSadswDPbRimSgJUZuFwIEYs6AabkP038fA==}
@@ -3634,6 +3610,7 @@ packages:
     dependencies:
       '@swc/helpers': 0.5.13
       react: 18.3.1
+    dev: true
 
   /@react-aria/utils@3.25.3(react@18.3.1):
     resolution: {integrity: sha512-PR5H/2vaD8fSq0H/UB9inNbc8KDcVmW6fYAfSWkkn+OAdhTTMVKqXXrZuZBWyFfSD5Ze7VN6acr4hrOQm2bmrA==}
@@ -3646,6 +3623,7 @@ packages:
       '@swc/helpers': 0.5.13
       clsx: 2.1.1
       react: 18.3.1
+    dev: true
 
   /@react-stately/utils@3.10.4(react@18.3.1):
     resolution: {integrity: sha512-gBEQEIMRh5f60KCm7QKQ2WfvhB2gLUr9b72sqUdIZ2EG+xuPgaIlCBeSicvjmjBvYZwOjoOEnmIkcx2GHp/HWw==}
@@ -3654,6 +3632,7 @@ packages:
     dependencies:
       '@swc/helpers': 0.5.13
       react: 18.3.1
+    dev: true
 
   /@react-types/shared@3.25.0(react@18.3.1):
     resolution: {integrity: sha512-OZSyhzU6vTdW3eV/mz5i6hQwQUhkRs7xwY2d1aqPvTdMe0+2cY7Fwp45PAiwYLEj73i9ro2FxF9qC4DvHGSCgQ==}
@@ -3661,6 +3640,7 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
     dependencies:
       react: 18.3.1
+    dev: true
 
   /@remix-run/dev@2.15.0(@remix-run/react@2.15.0)(@remix-run/serve@2.15.0)(@types/node@22.9.0)(typescript@5.7.2)(vite@5.4.11):
     resolution: {integrity: sha512-iXV6u9PBwFc7KriDpVcjqLGJzZZd6ZOrxewen7hoH0OBzGwjkhtm46BTQEJrZ/e/dzlU1IU/0ylH29tN9BZoyg==}
@@ -4029,14 +4009,6 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@shikijs/compat@1.24.2:
-    resolution: {integrity: sha512-PEa6NzVyHQJP3g0dxzHlFmBOmaDz7RrvMAC/BJR554aFolSV7spr3kK50uVijYQGB3eQopLS+6iN6WJSoEzuTw==}
-    dependencies:
-      '@shikijs/core': 1.24.2
-      '@shikijs/transformers': 1.24.2
-      shiki: 1.24.2
-    dev: false
-
   /@shikijs/core@1.24.2:
     resolution: {integrity: sha512-BpbNUSKIwbKrRRA+BQj0BEWSw+8kOPKDJevWeSE/xIqGX7K0xrCZQ9kK0nnEQyrzsUoka1l81ZtJ2mGaCA32HQ==}
     dependencies:
@@ -4061,12 +4033,6 @@ packages:
     dependencies:
       '@shikijs/types': 1.24.2
       '@shikijs/vscode-textmate': 9.3.1
-    dev: false
-
-  /@shikijs/transformers@1.24.2:
-    resolution: {integrity: sha512-cIwn8YSwO3bsWKJ+pezcXY1Vq0BVwvuLes1TZSC5+Awi6Tsfqhf3vBahOIqZK1rraMKOti2VEAEF/95oXMig1w==}
-    dependencies:
-      shiki: 1.24.2
     dev: false
 
   /@shikijs/types@1.24.2:
@@ -4498,6 +4464,7 @@ packages:
     resolution: {integrity: sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==}
     dependencies:
       tslib: 2.8.1
+    dev: true
 
   /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.14):
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
@@ -4557,6 +4524,7 @@ packages:
       '@tanstack/virtual-core': 3.10.9
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    dev: true
 
   /@tanstack/table-core@8.20.5:
     resolution: {integrity: sha512-P9dF7XbibHph2PFRz8gfBKEXEY/HJPOhym8CHmjF8y3q5mWpKx9xtZapXQUWCgkqvsK0R46Azuz+VaxD4Xl+Tg==}
@@ -4565,6 +4533,7 @@ packages:
 
   /@tanstack/virtual-core@3.10.9:
     resolution: {integrity: sha512-kBknKOKzmeR7lN+vSadaKWXaLS0SZZG+oqpQ/k80Q6g9REn6zRHS/ZYdrIzHnpHgy/eWs00SujveUN/GJT2qTw==}
+    dev: true
 
   /@testing-library/dom@10.4.0:
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
@@ -8503,15 +8472,6 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /react-color-palette@7.3.0(react@18.3.1):
-    resolution: {integrity: sha512-GCgz+XEcbyFkq5wVvrPiXp8mUnOI3oObtmOtsZBCpDXgzHcDCJdssW8lTtVXbUqodo6pOw6pwYQRlXpi/ekkzQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      react: 18.3.1
-    dev: false
-
   /react-confetti@6.1.0(react@18.3.1):
     resolution: {integrity: sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==}
     engines: {node: '>=10.18'}
@@ -9393,6 +9353,7 @@ packages:
 
   /tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
+    dev: true
 
   /tailwind-merge@2.5.4:
     resolution: {integrity: sha512-0q8cfZHMu9nuYP/b5Shb7Y7Sh1B7Nnl5GqNr1U+n2p6+mybvRtayrQ+0042Z5byvTA8ihjlP8Odo8/VnHbZu4Q==}
