@@ -10,18 +10,22 @@ import {
 } from "../types";
 
 export const usePalette = (theme: Theme) => {
-  console.log(
-    "\n",
-    `🏄   ${picocolors.magenta("@repo/theme-generator")} ${picocolors.dim(
-      version
-    )}`
-  );
 
   const {
+    debug,
     reverse,
     preset,
     baseColors: { primary, secondary, accent },
   } = theme;
+
+  if (debug) {
+    console.log(
+      "\n",
+      `🏄   ${picocolors.magenta("@repo/theme-generator")} ${picocolors.dim(
+        version
+      )}`
+    );
+  }
 
   const [_, primaryColor] = parseColor(primary);
   if (!primaryColor) {
@@ -29,16 +33,18 @@ export const usePalette = (theme: Theme) => {
   }
   const primaryColorName = nearestColor(formatSchemistToHex(primaryColor));
 
-  console.log(
-    ` ├─ ${picocolors.green(
-      "✔︎"
-    )} Generating theme for primary color: ${picocolors.dim(
-      primaryColorName
-    )} (${picocolors.dim(primary)})`
-  );
-  console.log(
-    `%cPrimary (input)\n${formatSchemistToHex(primaryColor)}`, `color: #000000; background-color: ${formatSchemistToHex(primaryColor)}; padding: 0.5rem;`
-  );
+  if (debug) {
+    console.log(
+      ` ├─ ${picocolors.green(
+        "✔︎"
+      )} Generating theme for primary color: ${picocolors.dim(
+        primaryColorName
+      )} (${picocolors.dim(primary)})`
+    );
+    console.log(
+      `%cPrimary (input)\n${formatSchemistToHex(primaryColor)}`, `color: #000000; background-color: ${formatSchemistToHex(primaryColor)}; padding: 0.5rem;`
+    );
+  }
 
   let secondaryColor;
 
@@ -47,16 +53,18 @@ export const usePalette = (theme: Theme) => {
     if (parsed[1]) {
       secondaryColor = parsed[1];
       const secondaryColorName = nearestColor(formatSchemistToHex(secondaryColor));
-      console.log(
-        ` ├─ ${picocolors.green(
-          "✔︎"
-        )} Generating theme for secondary color: ${picocolors.dim(
-          secondaryColorName
-        )} (${picocolors.dim(secondary)})`
-      );
-      console.log(
-        `%cSecondary (input)\n${formatSchemistToHex(secondaryColor)}`, `color: #000000; background-color: ${formatSchemistToHex(secondaryColor)}; padding: 0.5rem;`
-      );
+      if (debug) {
+        console.log(
+          ` ├─ ${picocolors.green(
+            "✔︎"
+          )} Generating theme for secondary color: ${picocolors.dim(
+            secondaryColorName
+          )} (${picocolors.dim(secondary)})`
+        );
+        console.log(
+          `%cSecondary (input)\n${formatSchemistToHex(secondaryColor)}`, `color: #000000; background-color: ${formatSchemistToHex(secondaryColor)}; padding: 0.5rem;`
+        );
+      }
     }
   }
 
@@ -67,19 +75,21 @@ export const usePalette = (theme: Theme) => {
     if (parsed[1]) {
       accentColor = parsed[1];
       const accentColorName = nearestColor(formatSchemistToHex(accentColor));
-      console.log(
-        ` ├─ ${picocolors.green(
-          "✔︎"
-        )} Generating theme for accent color: ${picocolors.dim(
-          accentColorName
-        )} (${picocolors.dim(accent)})`
-      );
-      console.log(
-        `%cAccent (input)\n${formatSchemistToHex(accentColor)}`, `color: #000000; background-color: ${formatSchemistToHex(accentColor)}; padding: 0.5rem;`
-      );
+      if (debug) {
+        console.log(
+          ` ├─ ${picocolors.green(
+            "✔︎"
+          )} Generating theme for accent color: ${picocolors.dim(
+            accentColorName
+          )} (${picocolors.dim(accent)})`
+        );
+        console.log(
+          `%cAccent (input)\n${formatSchemistToHex(accentColor)}`, `color: #000000; background-color: ${formatSchemistToHex(accentColor)}; padding: 0.5rem;`
+        );
+      }
     }
   }
-  
+
   const palette = ThemeVariantToPalette[theme.variant]({
     primaryColor,
     secondaryColor,
@@ -89,11 +99,13 @@ export const usePalette = (theme: Theme) => {
     isDark: theme["color-scheme"] === ThemeColorSchemeEnum.dark,
   });
 
-  // Object.entries(palette).forEach(([key, value]) => {
-  //   console.log(
-  //     `%c${picocolors.dim(key)}\n${value.name}`, `color: #000000; background-color: ${value.color}; padding: 0.5rem;`
-  //   );
-  // });
+  if (debug) {
+    Object.entries(palette).forEach(([key, value]) => {
+      console.log(
+        `%c${picocolors.dim(key)}\n${value.name}`, `color: #000000; background-color: ${value.color}; padding: 0.5rem;`
+      );
+    });
+  }
 
   return palette;
 };

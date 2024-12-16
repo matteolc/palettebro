@@ -28,6 +28,7 @@ export type Theme = {
   variant: ThemeVariant;
   preset?: StaticThemePreset;
   reverse?: boolean;
+  debug?: boolean;
   baseColors: {
     primary: string;
     secondary?: string;

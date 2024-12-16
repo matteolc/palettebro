@@ -46,6 +46,7 @@ const useCustomPalette = (
 	const modifiedTheme = {
 		...currentTheme,
 		"color-scheme": isDark ? "dark" : ("light" as ThemeColorScheme),
+		debug: false,
 		variant,
 		preset,
 		reverse,
