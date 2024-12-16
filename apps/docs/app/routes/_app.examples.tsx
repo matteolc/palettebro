@@ -26,7 +26,7 @@ export default function Page() {
                     <ExamplesNav />
                 </div>
             </div>
-            <div className="py-8">
+            <div className="py-8 container">
                 <Outlet />
             </div>
         </>

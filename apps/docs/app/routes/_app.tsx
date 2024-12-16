@@ -1,18 +1,18 @@
 import {
-    Outlet,
-  } from "@remix-run/react";
-  
-  import { PaletteToolbar } from "~/components/PaletteToolbar";
-  import { PaletteToolbarProvider } from "~/PaletteToolbarContext";
-  import { NavigationHeader } from "~/components/NavigationHeader";
+  Outlet,
+} from "@remix-run/react";
+
+import { PaletteToolbar } from "~/components/PaletteToolbar";
+import { PaletteToolbarProvider } from "~/PaletteToolbarContext";
+import { NavigationHeader } from "~/components/NavigationHeader";
 import { PaletteProvider } from "~/PaletteContext";
-  
-  export default function Page() {
-    return (
-        <PaletteProvider>
+
+export default function Page() {
+  return (
+    <PaletteProvider>
       <div className="min-h-screen flex flex-col">
         <NavigationHeader />
-        <main className="px-8 w-full max-w-full mx-auto flex-1 flex flex-col mt-20">
+        <main className="w-full max-w-full mx-auto flex-1 flex flex-col mt-20">
           <Outlet />
           <PaletteToolbarProvider>
             <PaletteToolbar />
@@ -27,6 +27,6 @@ import { PaletteProvider } from "~/PaletteContext";
           </span>
         </footer>
       </div>
-      </PaletteProvider>
-    )
-  }
+    </PaletteProvider>
+  )
+}

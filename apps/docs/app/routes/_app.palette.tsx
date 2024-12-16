@@ -23,7 +23,7 @@ export default function Page() {
         </PageActions>
       </PageHeader>
 
-      <div className="mt-8 flex flex-col gap-y-4">
+      <div className="container mt-8 flex flex-col gap-y-4">
         {BASE_TOKENS.map((token) => (
           <TokenColorPalette token={token} key={token} />
         ))}

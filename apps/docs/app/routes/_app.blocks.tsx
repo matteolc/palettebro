@@ -34,7 +34,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="container-wrapper flex-1"><Outlet /></div>
+      <div className="container flex-1"><Outlet /></div>
     </>
     )
 }
