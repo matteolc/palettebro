@@ -19,9 +19,9 @@ export const PaletteSettings = () => {
     return (
         <Popover className="relative z-50">
             <PopoverButton className="outline-none">
-                <button className="px-1 py-2 rounded-full">
+                <div className="px-1 py-2 rounded-full">
                     <RiEqualizerLine />
-                </button>
+                </div>
             </PopoverButton>
             <PopoverPanel anchor={{ to: 'bottom start', gap: "18px" }} className="min-h-[32rem] bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
                 <TabGroup defaultIndex={
@@ -51,7 +51,7 @@ export const PaletteSettings = () => {
                                 </div>
                                 <RadioCardGroup value={profile} onValueChange={setProfile} className="text-lg mb-4">
                                     {["transformer", "diffusion", "creative"].map((profile) => (
-                                        <RadioCardItem value={profile} className="flex items-center gap-3 py-2 text-zinc-950">
+                                        <RadioCardItem key={profile} value={profile} className="flex items-center gap-3 py-2 text-zinc-950">
                                             <RadioCardIndicator />
                                             <span>{profile}</span>
                                         </RadioCardItem>
@@ -65,7 +65,7 @@ export const PaletteSettings = () => {
                                 </div>
                                 <RadioCardGroup value={preset} onValueChange={setPreset} className="text-lg mb-4">
                                     {["default", "high-contrast", "bright-light", "pastel", "vibrant", "dark", "hyper-color"].map((preset) => (
-                                        <RadioCardItem value={preset} className="flex items-center gap-3 py-2 text-zinc-950">
+                                        <RadioCardItem key={preset} value={preset} className="flex items-center gap-3 py-2 text-zinc-950">
                                             <RadioCardIndicator />
                                             <span>{preset}</span>
                                         </RadioCardItem>
@@ -79,7 +79,7 @@ export const PaletteSettings = () => {
                                 </div>
                                 <RadioCardGroup value={page} onValueChange={setPage} className="text-lg mb-4">
                                     {["website-magazine", "brand-2", "brand-3", "website-1"].map((page) => (
-                                        <RadioCardItem value={page} className="flex items-center gap-3 py-2 text-zinc-950">
+                                        <RadioCardItem key={page} value={page} className="flex items-center gap-3 py-2 text-zinc-950">
                                             <RadioCardIndicator />
                                             <span>{page}</span>
                                         </RadioCardItem>

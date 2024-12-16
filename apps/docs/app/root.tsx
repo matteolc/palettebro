@@ -7,16 +7,11 @@ import {
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/remix";
 import type { LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
-import { type ReactNode } from "react";
 import { getClientLocales } from 'remix-utils/locales/server';
 import { getHints } from "./hooks/use-hints";
 
 import "~/tailwind.css";
 import { getDomainUrl } from "./lib/get-domain-url";
-import { PaletteToolbar } from "./components/PaletteToolbar";
-import { PaletteProvider } from "./PaletteContext";
-import { PaletteToolbarProvider } from "./PaletteToolbarContext";
-import { NavigationHeader } from "./components/NavigationHeader";
 
 export const meta: MetaFunction = () => [
   { title: "Palette Bruh" },
@@ -38,28 +33,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
   }
 }
 
-const Layout = (props: { children: ReactNode }) => {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <NavigationHeader />
-      <main className="px-8 w-full max-w-full mx-auto flex-1 flex flex-col mt-20">
-        {props.children}
-        <PaletteToolbarProvider>
-          <PaletteToolbar />
-        </PaletteToolbarProvider>
-      </main>
-      <footer className="w-full max-w-7xl mx-auto p-10 flex justify-center">
-        <span className="text-sm" style={{ color: "var(--neutral-500)" }}>
-          Made with ❤️ by{" "}
-          <a href="https://github.com/matteolc">
-            matteolc
-          </a>
-        </span>
-      </footer>
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <html lang="en" className="h-full min-h-fit">
@@ -70,11 +43,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-gradient-to-bl home-gradient min-h-fit antialiased">
-        <PaletteProvider>
-          <Layout>
-            <Outlet />
-          </Layout>
-        </PaletteProvider>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <Analytics />

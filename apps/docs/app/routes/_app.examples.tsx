@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "@remix-run/react";
-import { ExamplesNav } from "~/components/blocks/examples-nav";
-import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/blocks/page-header";
+import { ExamplesNav } from "~/components/examples/examples-nav";
+import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/PageHeader";
 import { Button } from "~/components/ui/button";
 
 export default function Page() {

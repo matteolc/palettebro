@@ -19,10 +19,10 @@ import { CardsAreaChartIteractive } from "~/components/shadcdn/CardsAreaChartInt
 import { CardsAlert } from "~/components/shadcdn/CardsAlert"
 import { CardsProduct } from "~/components/shadcdn/CardsProduct"
 import { CardsProductOutOfStock } from "~/components/shadcdn/CardsProductOutOfStock"
-import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/blocks/page-header"
+import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/PageHeader"
 import { Button } from "~/components/ui/button"
 import { NavLink } from "@remix-run/react"
-import { ExamplesNav } from "~/components/blocks/examples-nav"
+import { ExamplesNav } from "~/components/examples/examples-nav"
 
 export default function Page() {
   return (

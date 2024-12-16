@@ -1,5 +1,5 @@
 import { NavLink } from "@remix-run/react";
-import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/blocks/page-header";
+import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/PageHeader";
 import { BASE_TOKENS, STATUS_TOKENS } from "~/components/PaletteToolbar";
 import { TokenColorPalette } from "~/components/TokenColorPalette";
 import { Button } from "~/components/ui/button";
