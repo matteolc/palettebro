@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { usePalette } from "@repo/theme-generator/palettes";
 import { colorToRawOklchString } from "~/lib/oklch";
 import type {
@@ -9,6 +9,17 @@ import type {
 import { useHints } from "./use-hints";
 import twColors from "tailwindcss/colors";
 
+const useSetCssVars = () => {
+	return useCallback((cssVars: Record<string, string>) => {
+	  for (const [key, value] of Object.entries(cssVars)) {
+		document.documentElement.style.setProperty(key, value);
+		for (const iframe of document.querySelectorAll("iframe")) {
+		  iframe.contentDocument?.documentElement.style.setProperty(key, value);
+		}
+	  }
+	}, []); // Empty deps since it doesn't depend on any external values
+  };
+  
 const useCustomPalette = (
 	colors: Record<string, string>,
 	variant: ThemeVariant,
@@ -17,6 +28,7 @@ const useCustomPalette = (
 	reverse: boolean,
 ) => {
 	const hints = useHints();
+	const setCssVars = useSetCssVars();
 	const currentTheme = {
 		light: {
 			"color-scheme": "light" as const,
@@ -43,23 +55,20 @@ const useCustomPalette = (
 		},
 	};
 	const modifiedPalette = usePalette(modifiedTheme);
-	const result: Record<string, string> = {};
+	const cssVars: Record<string, string> = {};
 	for (const [key, value] of Object.entries(modifiedPalette)) {
-		Object.assign(result, {
+		Object.assign(cssVars, {
 			[`--${key}`]: colorToRawOklchString(value.color),
 		});
 	}
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		for (const [key, value] of Object.entries(result)) {
-			document.documentElement.style.setProperty(key, value);
-		}
-	}, [result]);
+		setCssVars(cssVars);
+	}, [cssVars]);
 
 	return {
 		palette: modifiedPalette,
-		result,
 	};
 };
 

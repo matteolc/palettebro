@@ -89,11 +89,11 @@ export const usePalette = (theme: Theme) => {
     isDark: theme["color-scheme"] === ThemeColorSchemeEnum.dark,
   });
 
-  Object.entries(palette).forEach(([key, value]) => {
-    console.log(
-      `%c${picocolors.dim(key)}\n${value.name}`, `color: #000000; background-color: ${value.color}; padding: 0.5rem;`
-    );
-  });
+  // Object.entries(palette).forEach(([key, value]) => {
+  //   console.log(
+  //     `%c${picocolors.dim(key)}\n${value.name}`, `color: #000000; background-color: ${value.color}; padding: 0.5rem;`
+  //   );
+  // });
 
   return palette;
 };

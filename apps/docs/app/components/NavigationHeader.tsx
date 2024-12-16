@@ -28,13 +28,14 @@ const NavigationHeader = () => {
                 <Link to="/">
                     <h2 className="cursor-pointer title-gradient text-4xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">🌈 Palettebruh</h2>
                 </Link>
-                <ul className="flex gap-4 text-lg font-semibold items-baseline">
+                <ul className="flex gap-2 text-lg font-semibold items-baseline">
                     <NavLink to="/palette" className="hover:text-primary">
                         <Button variant="outline">
                             Palette
                         </Button>
                     </NavLink>
-                    <NavLink to="/examples" className="hover:text-primary"><Button variant="outline">Components</Button></NavLink>
+                    <NavLink to="/examples" className="hover:text-primary"><Button variant="outline">Examples</Button></NavLink>
+                    <NavLink to="/blocks" className="hover:text-primary"><Button variant="outline">Pages</Button></NavLink>
                 </ul>
             </motion.nav>
         </motion.header>

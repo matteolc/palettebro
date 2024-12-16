@@ -1,5 +1,5 @@
 import { usePalette } from "@repo/theme-generator/palettes";
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 import { useCustomPalette } from "./hooks/use-custom-palette";
 import { StaticThemePreset, ThemeVariant, ThemeVariantEnum } from "@repo/theme-generator/types";
 
@@ -36,15 +36,22 @@ export const PaletteProvider = ({ children }: { children: React.ReactNode }) => 
   const [reverse, setReverse] = useState<boolean>(false);
   const { palette } = useCustomPalette(baseColors, variant, isDark, preset, reverse);
 
-  const setBaseColors = (colors: BaseColors) => {
-    setBaseColorsState(prev => ({ ...prev, ...colors }));
-  };
-
+  const contextValue = useMemo(() => ({
+    palette,
+    setBaseColors: (colors: BaseColors) => setBaseColorsState(prev => ({ ...prev, ...colors })),
+    setIsDark,
+    isDark,
+    variant,
+    setVariant,
+    reverse,
+    setReverse,
+    preset,
+    setPreset,
+  }), [palette, isDark, variant, reverse, preset]);
+    
   return (
-    <PaletteContext.Provider value={{ palette, setBaseColors, setIsDark, isDark, variant, setVariant, reverse, setReverse, preset, setPreset }}>
-      <div>
-        {children}
-      </div>
+    <PaletteContext.Provider value={contextValue}>
+      {children}
     </PaletteContext.Provider >
   );
 };

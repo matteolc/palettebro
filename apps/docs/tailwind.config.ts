@@ -60,14 +60,14 @@ const config: Pick<
     				'5': 'oklch(var(--primary-rainbow-5))'
     			},
     			sidebar: {
-    				DEFAULT: 'hsl(var(--sidebar-background))',
-    				foreground: 'hsl(var(--sidebar-foreground))',
-    				primary: 'hsl(var(--sidebar-primary))',
-    				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-    				accent: 'hsl(var(--sidebar-accent))',
-    				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-    				border: 'hsl(var(--sidebar-border))',
-    				ring: 'hsl(var(--sidebar-ring))'
+    				DEFAULT: 'oklch(var(--primary-100))',
+    				foreground: 'oklch(var(--neutral-700))',
+    				primary: 'oklch(var(--primary))',
+    				'primary-foreground': 'oklch(var(--on-primary))',
+    				accent: 'oklch(var(--accent))',
+    				'accent-foreground': 'oklch(var(--on-accent))',
+    				border: 'oklch(var(--neutral-200))',
+    				ring: 'oklch(var(--neutral-100))'
     			}
     		}
     	}
