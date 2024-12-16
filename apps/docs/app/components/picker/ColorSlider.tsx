@@ -5,16 +5,13 @@ import clsx from "clsx"
 interface SliderProps
     extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
     ariaLabelThumb?: string
-    trackClassName?: string
     trackStyle?: React.CSSProperties
-    rangeClassName?: string
-    rangeStyle?: React.CSSProperties
 }
 
 const Slider = React.forwardRef<
     React.ElementRef<typeof SliderPrimitive.Root>,
     SliderProps
->(({ className, trackClassName, trackStyle, rangeClassName, rangeStyle, ariaLabelThumb, ...props }, forwardedRef) => {
+>(({ className, trackStyle, ariaLabelThumb, ...props }, forwardedRef) => {
     const value = props.value || props.defaultValue
     return (
         <SliderPrimitive.Root
@@ -29,32 +26,28 @@ const Slider = React.forwardRef<
                 "data-[disabled]:pointer-events-none",
                 className,
             )}
-            tremor-id="tremor-raw"
             {...props}
         >
             <SliderPrimitive.Track
                 className={clsx(
                     // base
-                    "relative grow overflow-hidden rounded-full bg-gray-200",
+                    "relative grow overflow-hidden rounded-full bg-gradient-to-r border border-zinc-200",
                     // orientation
-                    "data-[orientation='horizontal']:h-1.5 data-[orientation='horizontal']:w-full",
-                    "data-[orientation='vertical']:h-full data-[orientation='vertical']:w-1.5",
-                    trackClassName,
+                    "data-[orientation='horizontal']:h-4 data-[orientation='horizontal']:w-full",
+                    "data-[orientation='vertical']:h-full data-[orientation='vertical']:w-4",
                 )}
                 style={trackStyle}
             >
                 <SliderPrimitive.Range
                     className={clsx(
                         // base
-                        "absolute rounded-full bg-blue-500",
+                        "absolute rounded-full bg-transparent",
                         // orientation
                         "data-[orientation='horizontal']:h-full",
                         "data-[orientation='vertical']:w-full",
                         // disabled
-                        "data-[disabled]:bg-gray-300",
-                        rangeClassName,
+                        "data-[disabled]:bg-muted",
                     )}
-                    style={rangeStyle}
                 />
             </SliderPrimitive.Track>
             {value?.map((_, index) => (
@@ -62,9 +55,9 @@ const Slider = React.forwardRef<
                     key={index}
                     className={clsx(
                         // base
-                        "block size-[17px] shrink-0 rounded-full border shadow transition-all",
+                        "block size-6 shrink-0 rounded-full border-2 shadow transition-all",
                         // boder color
-                        "border-gray-400",
+                        "border-primary",
                         // background color
                         "bg-white",
                         // disabled

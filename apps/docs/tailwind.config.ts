@@ -10,7 +10,7 @@ const config: Pick<
 		"../../packages/**/*.{js,ts,jsx,tsx}",
 		"!../../packages/**/node_modules",
 	],
-	plugins: [require("@headlessui/tailwindcss"), require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate")],
 	theme: {
     	extend: {
     		borderRadius: {

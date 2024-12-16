@@ -2,7 +2,7 @@ import {
   Outlet,
 } from "@remix-run/react";
 
-import { PaletteToolbar } from "~/components/PaletteToolbar";
+import { PaletteToolbar } from "~/components/palette/PaletteToolbar";
 import { PaletteToolbarProvider } from "~/PaletteToolbarContext";
 import { NavigationHeader } from "~/components/NavigationHeader";
 import { PaletteProvider } from "~/PaletteContext";

@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { PaletteContext } from "~/PaletteContext";
 
-export const ColorShades = ({ token }: { token: string }) => {
+export const TokenShades = ({ token }: { token: string }) => {
 
     const { palette } = useContext(PaletteContext);
     if (!palette) return null;
 
     return (
-        <div key={token} className="contents">
+        <div key={token}>
             <div className="flex flex-col gap-y-0.5">
                 {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((variant) => {
                     const textVariant = variant > 400 ? 50 : 950;

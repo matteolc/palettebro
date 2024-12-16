@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { sentenceCase } from '~/lib/string';
 import { PaletteContext } from '~/PaletteContext';
 import { ColorPaletteShades } from './ColorPaletteShades';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 const TokenColorPalette = ({ token }: { token: string }) => {
     const { palette } = useContext(PaletteContext);

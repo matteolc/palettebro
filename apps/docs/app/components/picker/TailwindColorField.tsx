@@ -35,7 +35,7 @@ export const TailwindColorField = ({ token }: { token: string }) => {
     };
 
     return (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 my-4">
             {tailwindColors.map(color => (
                 <button
                     key={color}

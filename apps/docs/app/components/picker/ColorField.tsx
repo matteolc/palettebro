@@ -6,7 +6,7 @@ import { LCHColorField } from './LCHColorField';
 import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
 import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { TailwindColorField } from './TailwindColorField';
 import { PantoneColorField } from './PantoneColorField';
 import { RALColorField } from './RALColorField';
@@ -36,57 +36,55 @@ const ColorField: FC<ColorFieldProps> = ({
     return (
         <div className="col-span-full h-[30.5rem]">
             <fieldset>
-                <TabGroup>
-                    <TabList className="flex flex-row gap-2 mb-2 text-lg text-zinc-950">
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">RGB</Tab>
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">HSL</Tab>
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">LCH</Tab>
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">CSS</Tab>
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Tailwind</Tab>
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">Pantone</Tab>
-                        <Tab className="rounded-md px-2 py-1 outline-none data-[selected]:bg-zinc-950 data-[selected]:text-white data-[hover]:underline">RAL</Tab>
-                    </TabList>
-                    <TabPanels className="p-2">
-                        <TabPanel>
+                <Tabs defaultValue='lch'>
+                    <TabsList className="bg-zinc-100 text-zinc-950">
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="rgb">RGB</TabsTrigger>
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="hsl">HSL</TabsTrigger>
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="lch">LCH</TabsTrigger>
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="css">HTML</TabsTrigger>
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="tw">Tailwind</TabsTrigger>
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="pantone">Pantone</TabsTrigger>
+                        <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="ral">RAL</TabsTrigger>
+                    </TabsList>
+                        <TabsContent value="rgb">
                             <RGBColorField
                                 value={schemistColor}
                                 onChange={handleChange}
                             />
-                        </TabPanel>
-                        <TabPanel>
+                        </TabsContent>
+                        <TabsContent value="hsl">
                             <HSLColorField
                                 value={schemistColor}
                                 onChange={handleChange}
                             />
-                        </TabPanel>
-                        <TabPanel>
+                        </TabsContent>
+                        <TabsContent value="lch">
                             <LCHColorField
                                 value={schemistColor}
                                 onChange={handleChange}
                             />
-                        </TabPanel>
+                        </TabsContent>
 
-                        <TabPanel>
+                        <TabsContent value="css">
                             <CSSColorField
                                 value={schemistColor}
                                 onChange={handleChange}
                             />
-                        </TabPanel>
-                        <TabPanel>
+                        </TabsContent>
+                        <TabsContent value="tw">
                             <TailwindColorField token={token} />
-                        </TabPanel>
-                        <TabPanel>
+                        </TabsContent>
+                        <TabsContent value="pantone">
                             <PantoneColorField
                                 token={token}
                             />
-                        </TabPanel>
-                        <TabPanel>
+                        </TabsContent>
+                        <TabsContent value="ral">
                             <RALColorField
                                 token={token}
                             />
-                        </TabPanel>
-                    </TabPanels>
-                </TabGroup>
+                        </TabsContent>
+                </Tabs>
             </fieldset>
         </div>
     );

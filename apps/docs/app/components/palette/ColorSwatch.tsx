@@ -1,11 +1,15 @@
 import { ThemeVariantEnum } from "@repo/theme-generator/types";
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+  } from "~/components/ui/popover"
 import { useContext, useState } from "react";
 import { BaseColors, PaletteContext } from "~/PaletteContext";
 import { sentenceCase } from "~/lib/string";
 import { RiLockLine, RiLockUnlockLine, RiPaletteLine } from "@remixicon/react";
-import { ColorShades } from "./ColorShades";
-import ColorField from "./picker/ColorField";
+import { TokenShades } from "./TokenShades";
+import ColorField from "../picker/ColorField";
 import clsx from "clsx";
 
 export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlock?: () => void }) => {
@@ -44,40 +48,40 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
                 style={{ backgroundColor: `oklch(var(--${token}))`, color: `oklch(var(--on-${token}))` }}
                 className={clsx(classes, `min-w-48 px-2.5 py-1.5 rounded-lg border`)}>
                 <div className="flex flex-row items-stretch justify-between">
-                    <PopoverButton className="outline-none">
+                    <PopoverTrigger className="outline-none">
                         <div className="flex flex-col items-start">
                             <input type="text" className="hidden" defaultValue={isLocked ? palette[token].color : ""} name={token} />
                             <span className="text-md font-bold">{sentenceCase(token)}</span>
                             <span className="text-xs">{name}</span>
                         </div>
-                    </PopoverButton>
+                    </PopoverTrigger>
                     <div className="flex flex-row items-center gap-0.5">
                         {shouldShowColorPicker && <Popover>
-                            <PopoverButton className="outline-none py-2 rounded-full">
+                            <PopoverTrigger className="outline-none py-2 rounded-full">
                                 <RiPaletteLine />
-                            </PopoverButton>
-                            <PopoverPanel anchor={{ to: 'top', gap: "18px" }} className="flex flex-col bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
+                            </PopoverTrigger>
+                            <PopoverContent sideOffset={14} className="w-full bg-white border-neutral-200 p-2.5 shadow-md h-fit overflow-y-scroll">
 
                                 <ColorField
                                     token={token}
                                     value={palette[token].color}
                                     onChange={(value) => palette[token].color !== value && setBaseColors?.({ [token]: value } as BaseColors)}
                                 />
-                            </PopoverPanel>
+                            </PopoverContent>
                         </Popover>}
                         {shouldShowLock && <Popover>
-                            <PopoverButton className="outline-none py-2 rounded-full" onClick={() => { setIsLocked(!isLocked); onLockUnlock?.() }}>
+                            <PopoverTrigger className="outline-none py-2 rounded-full" onClick={() => { setIsLocked(!isLocked); onLockUnlock?.() }}>
                                 {isLocked ? <RiLockLine /> : <RiLockUnlockLine />}
-                            </PopoverButton>
+                            </PopoverTrigger>
                         </Popover>}
                     </div>
                 </div>
             </div>
 
 
-            <PopoverPanel anchor={{ to: 'top start', gap: "16px" }} className="-ml-2.5 w-48 flex flex-col bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
-                <ColorShades token={token} />
-            </PopoverPanel>
+            <PopoverContent className="w-48 p-1 bg-white border-neutral-200" sideOffset={14}>
+                <TokenShades token={token} />
+            </PopoverContent>
         </Popover>
     )
 }

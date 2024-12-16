@@ -10,7 +10,7 @@ export const RALColorField = ({ token }: { token: string }) => {
     };
 
     return (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 my-4">
             {Object.keys(ralColors).map((key: string) => (
                 <button
                     key={key}

@@ -30,11 +30,7 @@ export const ColorPaletteShades = ({ colors }: { colors: string[] }) => {
   if (!palette) {
     return null;
   }
-    
-  const colorMap = colors.reduce((acc, color) => {
-    acc[color] = sentenceCase(color);
-    return acc;
-  }, {} as Record<string, string>);
+
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-x-2 gap-y-4 sm:grid-cols-1 space-y-20 mb-20">
       {colors.map((color) => {
@@ -44,7 +40,6 @@ export const ColorPaletteShades = ({ colors }: { colors: string[] }) => {
               {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((variant) => {
                 const hint: string | undefined = hints[`${color}-${variant}` as keyof typeof hints];
                 const textVariant = variant > 400 ? 50 : 950;
-                const borderVariant = variant > 600 ? 950 : 50;
                 return (
                   <div key={`${color}-${variant}`} className="relative rounded-md sm:w-full ring-1 ring-inset" style={{ "--tw-ring-color": `oklch(var(--${color}-200)/10)` } as React.CSSProperties}>
                     <div

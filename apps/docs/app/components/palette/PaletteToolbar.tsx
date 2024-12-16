@@ -4,8 +4,7 @@ import { BaseColors, PaletteContext } from "~/PaletteContext";
 import { ThemeVariantEnum } from "@repo/theme-generator/types";
 import { Form, useFetcher } from "@remix-run/react";
 import { action } from "~/routes/generate";
-import { Popover, PopoverButton, PopoverGroup } from '@headlessui/react'
-import { PaletteToolbarContext } from "../PaletteToolbarContext";
+import { PaletteToolbarContext } from "../../PaletteToolbarContext";
 import { ColorSwatch } from "./ColorSwatch";
 import { PaletteSettings } from "./PaletteSettings";
 import { randomUsableColor } from "node_modules/@repo/theme-generator/src/color/manipulation";
@@ -86,53 +85,53 @@ const PaletteToolbar = () => {
     const shouldSubmit = generatedPalettes?.length === 0;
 
     return (
-        <PopoverGroup>
-            <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-50">
-                <div style={{
-                    borderColor:
-                        `oklch(var(--neutral-100))`
-                }} className="items-center gap-2 rounded-lg border px-2 py-1 hidden md:flex bg-white/80 backdrop-blur-md shadow-lg">
-                    <Form noValidate fetcherKey="generate-palette" navigate={false} action="/generate" method="POST" className="flex items-center justify-center text-zinc-900">
+        <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-50">
+            <div
+                style={{ borderColor: `oklch(var(--neutral-100))` }}
+                className="items-center gap-2 rounded-lg border px-2 py-1 hidden md:flex bg-white/80 backdrop-blur-md shadow-lg">
+                <Form noValidate fetcherKey="generate-palette" navigate={false} action="/generate" method="POST" className="flex items-center justify-center text-zinc-900">
 
-                        <input type="text" readOnly className="hidden" value={profile} name="mode" />
-                        <input type="text" readOnly className="hidden" value={preset} name="preset" />
-                        <input type="text" readOnly className="hidden" value={numColors} name="colors" />
-                        <input type="text" readOnly className="hidden" value={temperature} name="temperature" />
-                        <input type="text" readOnly className="hidden" value={adjacency} name="adjacency" />
-                        <input type="text" readOnly className="hidden" value={page} name="page" />
+                    <input type="text" readOnly className="hidden" value={profile} name="mode" />
+                    <input type="text" readOnly className="hidden" value={preset} name="preset" />
+                    <input type="text" readOnly className="hidden" value={numColors} name="colors" />
+                    <input type="text" readOnly className="hidden" value={temperature} name="temperature" />
+                    <input type="text" readOnly className="hidden" value={adjacency} name="adjacency" />
+                    <input type="text" readOnly className="hidden" value={page} name="page" />
 
-                        {variant === ThemeVariantEnum.dynamic ? <button className="px-1 py-2 rounded-full" type={shouldSubmit ? "submit" : "button"} onClick={popPalette}>
+                    {variant === ThemeVariantEnum.dynamic ?
+                        <button className="px-1 py-2 rounded-full" type={shouldSubmit ? "submit" : "button"} onClick={popPalette}>
                             <RiMagicLine className={variant !== ThemeVariantEnum.dynamic ? "text-gray-400" : ""} />
                         </button> :
-                            <Popover>
-                                <PopoverButton className="outline-none px-1 py-2 rounded-full" onClick={handleRandomize}>
-                                    <RiMagicLine />
-                                </PopoverButton>
-                            </Popover>}
+                        <button className="px-1 py-2 rounded-full" type="button" onClick={handleRandomize}>
+                            <RiMagicLine />
+                        </button>
+                    }
 
-                        <PaletteSettings />
+                    <PaletteSettings />
 
-                        {showStatePalette ? <div className="mx-4 flex flex-row gap-1">
+                    {showStatePalette ?
+                        <div className="mx-4 flex flex-row gap-1">
                             {STATUS_TOKENS.map((token) => (
                                 <ColorSwatch token={token} key={token} onLockUnlock={resetGeneratedPalettes} />
                             ))}
-                        </div> : <div className="mx-4 flex flex-row gap-1">
+                        </div> :
+                        <div className="mx-4 flex flex-row gap-1">
                             {BASE_TOKENS.map((token) => (
                                 <ColorSwatch token={token} key={token} />
                             ))}
-                        </div>}
+                        </div>
+                    }
 
-                        <button type="button" className="px-1 py-2 rounded-full" onClick={() => setShowStatePalette?.(!showStatePalette)}>
-                            {showStatePalette ? <RiInformationOffLine /> : <RiInformationLine />}
-                        </button>
+                    <button type="button" className="px-1 py-2 rounded-full" onClick={() => setShowStatePalette?.(!showStatePalette)}>
+                        {showStatePalette ? <RiInformationOffLine /> : <RiInformationLine />}
+                    </button>
 
-                        <button type="button" className="pl-1 pr-2.5 py-2 rounded-full" onClick={() => setIsDark?.(!isDark)}>
-                            {isDark ? <RiMoonLine /> : <RiSunLine />}
-                        </button>
-                    </Form>
-                </div>
-            </div >
-        </PopoverGroup>
+                    <button type="button" className="pl-1 pr-2.5 py-2 rounded-full" onClick={() => setIsDark?.(!isDark)}>
+                        {isDark ? <RiMoonLine /> : <RiSunLine />}
+                    </button>
+                </Form>
+            </div>
+        </div >
     )
 }
 

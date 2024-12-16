@@ -1,7 +1,7 @@
 import { NavLink } from "@remix-run/react";
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/PageHeader";
-import { BASE_TOKENS, STATUS_TOKENS } from "~/components/PaletteToolbar";
-import { TokenColorPalette } from "~/components/TokenColorPalette";
+import { BASE_TOKENS, STATUS_TOKENS } from "~/components/palette/PaletteToolbar";
+import { TokenColorPalette } from "~/components/palette/TokenColorPalette";
 import { Button } from "~/components/ui/button";
 
 export default function Page() {

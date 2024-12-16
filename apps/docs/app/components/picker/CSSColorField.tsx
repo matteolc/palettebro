@@ -25,7 +25,7 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({
     return (
         <div className="flex flex-col gap-y-4 my-4">
             <div className="flex flex-row items-center justify-between text-zinc-950">
-                <label className="text-lg mb-2" htmlFor="css-color-picker">CSS</label>
+                <label className="text-lg mb-2" htmlFor="css-color-picker">HTML</label>
                 <div className="text-lg font-bold mb-2">{formattedValue}</div>
             </div>
             <Input

@@ -3,7 +3,7 @@ import { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/type
 import { hslToSchemist, schemistToHsl } from 'node_modules/@repo/theme-generator/src/color/conversion';
 import { continuousGradient } from 'node_modules/@repo/theme-generator/src/utils/css';
 import { range } from 'node_modules/@repo/theme-generator/src/utils/generators';
-import { Slider } from '../Slider';
+import { Slider } from './ColorSlider';
 import { debounce } from '~/lib/debounce';
 import { CSSColorPickerProps } from './ColorField';
 
@@ -55,7 +55,7 @@ const HSLColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
                     <div className="text-lg mb-2">Hue</div>
                     <div className="text-lg font-bold mb-2">{Math.floor(h)}</div>
                 </div>
-                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackClassName="data-[orientation='horizontal']:h-4" trackStyle={{
+                <Slider trackStyle={{
                     background: gradients.h
                 }} max={360} value={[h]} onValueChange={(value: number[]) => setH(value[0])} />
             </div>
@@ -65,7 +65,7 @@ const HSLColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
                     <div className="text-lg mb-2">Saturation</div>
                     <div className="text-lg font-bold mb-2">{Math.floor(s)}%</div>
                 </div>
-                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackClassName="data-[orientation='horizontal']:h-4" trackStyle={{
+                <Slider trackStyle={{
                     background: gradients.s
                 }} max={100} value={[s]} onValueChange={(value: number[]) => setS(value[0])} />
             </div>
@@ -76,7 +76,7 @@ const HSLColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
                     <div className="text-lg mb-2">Lightness</div>
                     <div className="text-lg font-bold mb-2">{Math.floor(l)}%</div>
                 </div>
-                <Slider className="bg-gradient-to-r" rangeClassName="bg-transparent" trackClassName="data-[orientation='horizontal']:h-4" trackStyle={{
+                <Slider trackStyle={{
                     background: gradients.l
                 }} max={100} value={[l]} onValueChange={(value: number[]) => setL(value[0])} />
             </div>
