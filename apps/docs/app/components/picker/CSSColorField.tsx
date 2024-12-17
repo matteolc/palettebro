@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
-import { Input } from './ColorInput';
 import { CSSColorPickerProps } from './ColorField';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
 const CSSColorField: React.FC<CSSColorPickerProps> = ({
     value,
@@ -37,7 +38,12 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({
                 onChange={(e) => setFormattedValue(e.target.value.trim())}
             />
             {error && <div className="text-red-500">{error}</div>}
-            <button className="px-4 py-2 bg-zinc-950 text-white rounded-md" onClick={handleSubmit}>Submit</button>
+            <Button style={
+              {
+                "--primary": `14.08% 0.0044 285.82`,
+                "--on-primary": `100% 0 0`,
+              } as React.CSSProperties
+            } onClick={handleSubmit}>Submit</Button>
         </div>
     );
 };

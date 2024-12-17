@@ -2,6 +2,7 @@ import { RadioCardGroup, RadioCardIndicator, RadioCardItem } from "../RadioCard"
 import { useContext } from "react";
 import { PaletteToolbarContext } from "~/PaletteToolbarContext";
 import { Slider } from "../ui/slider";
+import colors from "tailwindcss/colors";
 
 export const DynamicPaletteSettings = () => {
     const { temperature, setTemperature, preset, setPreset, profile, setProfile, page, setPage } = useContext(PaletteToolbarContext);
@@ -17,7 +18,12 @@ export const DynamicPaletteSettings = () => {
                 <div className="text-lg mb-2">Temperature</div>
                 <div className="text-lg font-bold mb-2">{temperature}</div>
             </div>
-            <Slider value={[temperature]} min={0} step={0.1} max={2.4} onValueChange={(value: number[]) => setTemperature(value[0])} />
+            <Slider style={
+              {
+                "--primary": `14.08% 0.0044 285.82`,
+                "--primary-50": `97.5% 0.0044 285.82`
+              } as React.CSSProperties
+            } value={[temperature]} min={0} step={0.1} max={2.4} onValueChange={(value: number[]) => setTemperature(value[0])} />
             <div className="mb-4" />
 
             <div className="flex flex-row items-center justify-between text-zinc-950">

@@ -12,7 +12,6 @@ const RadioCardGroup = React.forwardRef<
         <RadioGroupPrimitives.Root
             ref={forwardedRef}
             className={clsx("grid gap-2", className)}
-            tremor-id="tremor-raw"
             {...props}
         />
     )
@@ -64,7 +63,7 @@ const RadioCardIndicator = React.forwardRef<
                 // background color
                 "bg-white",
                 // checked
-                "group-data-[state=checked]:border-0 group-data-[state=checked]:border-transparent group-data-[state=checked]:bg-blue-500",
+                "group-data-[state=checked]:border-0 group-data-[state=checked]:border-transparent group-data-[state=checked]:bg-zinc-800",
                 // disabled
                 "group-data-[disabled]:border-gray-300 group-data-[disabled]:bg-gray-100 group-data-[disabled]:text-gray-400",
                 // focus

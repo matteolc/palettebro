@@ -21,7 +21,12 @@ export const StaticPaletteSettings = () => {
             </RadioCardGroup>
             <div className="flex flex-row items-center justify-between text-zinc-950">
                 <div className="text-lg mb-2">Reverse</div>
-                <Checkbox checked={reverse} onCheckedChange={setReverse} className="size-6 data-[state=checked]:bg-zinc-950 data-[state=checked]:text-zinc-50 border-zinc-400"/>
+                <Checkbox checked={reverse} onCheckedChange={setReverse} style={
+              {
+                "--primary": `14.08% 0.0044 285.82`,
+                "--on-primary": `100% 0 0`,
+              } as React.CSSProperties
+            }  className="size-5"/>
             </div>
         </>
     )

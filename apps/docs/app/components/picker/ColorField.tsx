@@ -34,8 +34,7 @@ const ColorField: FC<ColorFieldProps> = ({
     const handleChange = (newValue: SchemistColor) => onChange(formatSchemistToHex(newValue));
 
     return (
-        <div className="col-span-full h-[30.5rem]">
-            <fieldset>
+        <div className="h-[30.5rem]">
                 <Tabs defaultValue='lch'>
                     <TabsList className="bg-zinc-100 text-zinc-950">
                         <TabsTrigger className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50" value="rgb">RGB</TabsTrigger>
@@ -85,7 +84,6 @@ const ColorField: FC<ColorFieldProps> = ({
                             />
                         </TabsContent>
                 </Tabs>
-            </fieldset>
         </div>
     );
 };
