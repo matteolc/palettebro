@@ -29,8 +29,13 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({
                 <label className="text-lg mb-2" htmlFor="css-color-picker">HTML</label>
                 <div className="text-lg font-bold mb-2">{formattedValue}</div>
             </div>
-            <Input
+            <Input style={
+              {
+                "--neutral-100": `87.11% 0.0055 286.29`,
+                "--neutral-200": `91.97% 0.004 286.32`,
+              } as React.CSSProperties}
                 placeholder="Enter color"
+                className="text-zinc-950"
                 id="css-color-picker"
                 name="css-color-picker"
                 type="text"

@@ -57,7 +57,7 @@ const Slider = React.forwardRef<
                         // base
                         "block size-6 shrink-0 rounded-full border-2 shadow transition-all",
                         // boder color
-                        "border-primary",
+                        "border-zinc-800",
                         // background color
                         "bg-white",
                         // disabled

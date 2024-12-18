@@ -45,8 +45,8 @@ export const ColorSwatch = ({ token, onLockUnlock }: { token: string, onLockUnlo
         <Popover>
 
             <div
-                style={{ backgroundColor: `oklch(var(--${token}))`, color: `oklch(var(--on-${token}))` }}
-                className={clsx(classes, `min-w-48 px-2.5 py-1.5 rounded-lg border`)}>
+                style={{ backgroundColor: `oklch(var(--${token}))`, color: `oklch(var(--${token}-text))` }}
+                className={clsx(classes, `min-w-48 px-2.5 py-1.5 rounded-lg`)}>
                 <div className="flex flex-row items-stretch justify-between">
                     <PopoverTrigger className="outline-none">
                         <div className="flex flex-col items-start">

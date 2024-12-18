@@ -22,7 +22,7 @@ const NavigationHeader = () => {
             layout
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            className={clsx("w-full left-0 fixed inset-x-3 top-4 z-50 mx-auto flex transform-gpu justify-center overflow-hidden rounded-xl border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform", isScrolled ? "px-3 max-w-3xl border-muted bg-background/80 shadow-xl shadow-black/5" : "border-transparent bg-white/0")}>
+            className={clsx("w-full left-0 fixed inset-x-3 top-4 z-50 mx-auto flex transform-gpu justify-center overflow-hidden rounded-xl border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform", isScrolled ? "px-3 max-w-3xl border-muted bg-background/95 shadow-xl shadow-black/5" : "border-transparent bg-white/0")}>
             <div className="container-wrapper">
                 <motion.nav className="container w-full w-full flex items-center justify-between">
                     <Link to="/">

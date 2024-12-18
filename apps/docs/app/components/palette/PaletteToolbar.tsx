@@ -11,6 +11,8 @@ import { randomUsableColor } from "node_modules/@repo/theme-generator/src/color/
 import { formatSchemistToHex } from "node_modules/@repo/theme-generator/src/color/formatting";
 import { PaletteSwatches } from "./PaletteSwatches";
 import { action as favouritesAction } from "~/routes/favourites";
+import { useDownload } from "~/lib/use-download";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
 
 const BASE_TOKENS = ["primary", "secondary", "accent", "neutral"];
 const STATUS_TOKENS = ["info", "success", "warning", "error"];
@@ -19,41 +21,24 @@ const PaletteToolbar = () => {
     const { setIsDark, isDark, setBaseColors, variant, palette } = useContext(PaletteContext);
     const { temperature, profile, preset, adjacency, page, numColors } = useContext(PaletteToolbarContext);
     const [generatedPalettes, setGeneratedPalettes] = useState<{ palette: string[] }[] | undefined>([]);
-    const fetcher = useFetcher<typeof action>({ key: "generate-palette" });
+    const generateFetcher = useFetcher<typeof action>({ key: "generate" });
     const favouritesFetcher = useFetcher<typeof favouritesAction>({ key: "favourites" });
 
-    useEffect(() => {
-        document.addEventListener("click", downloadObjectAsJson);
-        return () => document.removeEventListener("click", downloadObjectAsJson);
-    }, [])
-
-    function downloadObjectAsJson(e: MouseEvent) {
-        if (!palette) return;
-        if (e.altKey) {
-            const paletteToColors = Object.entries(palette).reduce((acc, [key, value]) => {
-                acc[key] = { value: value.color, type: 'color' };
-                return acc;
-            }, {} as Record<string, { value: string, type?: string }>);
-            const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify({
-                colors: {
-                    type: "color",
-                    ...paletteToColors
-                }
-            }))}`;
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            const name = `palettebruh-${Date.now()}`;
-            downloadAnchorNode.setAttribute("download", `${name}.json`);
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
+    const paletteToColors = Object.entries(palette ?? {}).reduce((acc, [key, value]) => {
+        acc[key] = { value: value.color, type: 'color' };
+        return acc;
+    }, {} as Record<string, { value: string, type?: string }>);
+    useDownload(JSON.stringify({
+        colors: {
+            type: "color",
+            ...paletteToColors
         }
-    }
+    }));
 
     useEffect(() => {
-        if (fetcher?.data?.results && generatedPalettes?.length === 0)
-            setGeneratedPalettes(fetcher.data.results);
-    }, [fetcher.data])
+        if (generateFetcher?.data?.results && generatedPalettes?.length === 0)
+            setGeneratedPalettes(generateFetcher.data.results);
+    }, [generateFetcher.data])
 
     useEffect(() => {
         const result = generatedPalettes?.[0];
@@ -75,11 +60,9 @@ const PaletteToolbar = () => {
 
     return (
         <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-50">
-            <div
-                style={{ borderColor: `oklch(var(--neutral-100))` }}
-                className="items-center gap-2 rounded-lg border px-2 py-1 hidden md:flex bg-white/80 backdrop-blur-md shadow-lg">
+            <div className="items-center gap-2 rounded-lg px-2 py-1 hidden md:flex bg-white backdrop-blur-md shadow-lg">
                 <div className="flex items-center justify-center text-zinc-900">
-                    <Form noValidate fetcherKey="generate-palette" navigate={false} action="/generate" method="POST">
+                    <Form noValidate fetcherKey="generate" navigate={false} action="/generate" method="POST">
 
                         <input type="text" readOnly className="hidden" value={profile} name="mode" />
                         <input type="text" readOnly className="hidden" value={preset} name="preset" />
@@ -97,9 +80,7 @@ const PaletteToolbar = () => {
                             </button>
                         }
                     </Form>
-
                     <PaletteSettings />
-
                     <Form noValidate fetcherKey="favourites" navigate={false} action="/favourites" method="POST">
                         <input type="text" readOnly className="hidden" value={palette?.['primary'].name} name="name" />
                         <input type="text" readOnly className="hidden" value={palette?.['primary'].color} name="primary" />
@@ -109,6 +90,7 @@ const PaletteToolbar = () => {
                             <RiHeartLine />
                         </button>
                     </Form>
+
 
                     <PaletteSwatches onLockUnlock={resetGeneratedPalettes} />
 

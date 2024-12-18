@@ -15,13 +15,13 @@ export const PaletteSettings = () => {
     const { variant, setVariant } = useContext(PaletteContext);
 
     return (
-        <Popover>
+        <Popover>            
             <PopoverTrigger className="outline-none">
                 <div className="px-1 py-2 rounded-full">
                     <RiEqualizerLine />
                 </div>
             </PopoverTrigger>
-            <PopoverContent sideOffset={14} align="start" className="w-full min-h-[32rem] bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
+            <PopoverContent sideOffset={14} align="start" className="w-full min-h-[34rem] bg-white z-50 rounded-md  border p-2.5 text-sm shadow-md">
                 <Tabs defaultValue={variant}>
 
                     <TabsList className="bg-zinc-100 text-zinc-950">
