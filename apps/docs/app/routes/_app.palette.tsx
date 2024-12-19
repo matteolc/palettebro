@@ -1,10 +1,17 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink, useLoaderData } from "@remix-run/react";
+import { LoaderFunctionArgs } from "@vercel/remix";
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/PageHeader";
 import { BASE_TOKENS, STATUS_TOKENS } from "~/components/palette/PaletteToolbar";
 import { TokenColorPalette } from "~/components/palette/TokenColorPalette";
 import { Button } from "~/components/ui/button";
+import { loader as favouritesLoader } from "~/routes/favourites";
+
+export const loader = favouritesLoader;
 
 export default function Page() {
+  const { palettes } = useLoaderData<typeof favouritesLoader>();
+  console.dir(palettes, { depth: null });
+  
   return (
     <>
       <PageHeader>
@@ -24,10 +31,7 @@ export default function Page() {
       </PageHeader>
 
       <div className="container mt-8 flex flex-col gap-y-4">
-        {BASE_TOKENS.map((token) => (
-          <TokenColorPalette token={token} key={token} />
-        ))}
-        {STATUS_TOKENS.map((token) => (
+        {[...BASE_TOKENS, ...STATUS_TOKENS].map((token) => (
           <TokenColorPalette token={token} key={token} />
         ))}
       </div>

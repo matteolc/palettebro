@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 const TokenColorPalette = ({ token }: { token: string }) => {
     const { palette } = useContext(PaletteContext);
-    console.dir(palette, { depth: null });
     const name = palette?.[token]?.name;
 
     if (!name) return null;

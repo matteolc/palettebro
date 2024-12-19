@@ -82,7 +82,6 @@ const PaletteToolbar = () => {
                     </Form>
                     <PaletteSettings />
                     <Form noValidate fetcherKey="favourites" navigate={false} action="/favourites" method="POST">
-                        <input type="text" readOnly className="hidden" value={palette?.['primary'].name} name="name" />
                         <input type="text" readOnly className="hidden" value={palette?.['primary'].color} name="primary" />
                         <input type="text" readOnly className="hidden" value={palette?.['secondary'].color} name="secondary" />
                         <input type="text" readOnly className="hidden" value={palette?.['accent'].color} name="accent" />

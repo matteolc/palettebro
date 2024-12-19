@@ -4,9 +4,10 @@ import type {
 } from "@vercel/remix";
 import { favouritesCookie } from "~/lib/palette-store";
 import { z } from "zod";
+import { getGeneratorChain } from "~/lib/palette-name-generator";
 
 const paletteSchema = z.object({
-	name: z.string(),
+	name: z.string().optional(),
 	primary: z.string(),
 	secondary: z.string(),
 	accent: z.string(),
@@ -36,12 +37,20 @@ export async function action({ request }: ActionFunctionArgs) {
 		});
 	}
 
-	const { name, primary, secondary, accent } = parsed.data;
+	const { chain, parser } = getGeneratorChain();
+	const { primary, secondary, accent } = parsed.data;
+	
+	const response = await chain.invoke({
+		question: "Please generate a name for this color palette.",
+		format_instructions: parser.getFormatInstructions(),
+		primary_color: primary,
+		secondary_color: secondary,
+	  });
 
 	cookie.palettes = [
 		...(cookie.palettes ?? []),
 		{
-			name,
+			name: response.name,
 			primary,
 			secondary,
 			accent,
