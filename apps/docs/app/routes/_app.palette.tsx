@@ -4,7 +4,7 @@ import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } fro
 import { BASE_TOKENS, STATUS_TOKENS } from "~/components/palette/PaletteToolbar";
 import { TokenColorPalette } from "~/components/palette/TokenColorPalette";
 import { Button } from "~/components/ui/button";
-import { loader as favouritesLoader } from "~/routes/favourites";
+import { loader as favouritesLoader } from "~/routes/kfavourites";
 
 export const loader = favouritesLoader;
 

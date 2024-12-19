@@ -53,8 +53,8 @@ export const ColorPaletteShades = ({ colors }: { colors: string[] }) => {
                     </div>
                     {hint && (
                       <div className="absolute bottom-0 left-1/2 flex w-full -translate-x-1/2 translate-y-full flex-col items-center justify-center p-2">
-                        <div className="h-3 w-px" style={{ backgroundColor: "oklch(var(--neutral-800))" }} />
-                        <p className="w-full text-center text-xs"  style={{ color: "oklch(var(--neutral-800))" }}>{hint}</p>
+                        <div className="h-3 w-px bg-neutral-800" />
+                        <p className="w-full text-center text-xs text-neutral-800">{hint}</p>
                       </div>
                     )}
                   </div>

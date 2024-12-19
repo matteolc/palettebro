@@ -35,6 +35,14 @@
   }
 }
 
+@keyframes place {
+  0% {
+    transform: scaleY(1.2);
+    filter: brightness(300%);
+    filter: hue-rotate(50deg);
+  }
+}
+
 @layer base {
   :root {
     --radius: 0.5rem;

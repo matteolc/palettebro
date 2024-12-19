@@ -7,11 +7,13 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "include": ["apps/**/*.ts", "packages/**/*.tsx"],
+    "include": ["apps/**/*", "packages/**/*.tsx"],
     "ignore": ["node_modules", "dist/**"]
   },
   "formatter": {
-    "enabled": true
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
   },
   "organizeImports": {
     "enabled": true

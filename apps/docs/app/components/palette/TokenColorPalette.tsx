@@ -15,7 +15,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
         <Card >
             <CardHeader>
                 <CardTitle>
-                    <h3 className="text-xl font-bold flex items-center" style={{ color: "oklch(var(--neutral-800))" }}>
+                    <h3 className="text-xl font-bold flex items-center text-neutral-800">
                         <RiPaletteFill className="mr-2" style={{ color: `oklch(var(--${token}))` }} /> {sentenceCase(token)} Palette
                     </h3>
                 </CardTitle>

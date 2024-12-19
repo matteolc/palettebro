@@ -1,12 +1,16 @@
-
 import { Outlet } from "@remix-run/react";
 import { BlocksNav } from "~/components/blocks/blocks-nav";
-import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "~/components/PageHeader";
+import {
+  PageActions,
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "~/components/PageHeader";
 import { Button } from "~/components/ui/button";
 
 export default function Page() {
-    return (
-<>
+  return (
+    <>
       <PageHeader>
         <PageHeaderHeading>Building Blocks for the Web</PageHeaderHeading>
         <PageHeaderDescription>
@@ -21,6 +25,7 @@ export default function Page() {
             <a
               href="https://github.com/shadcn-ui/ui/discussions/new?category=blocks-request"
               target="_blank"
+              rel="noreferrer"
             >
               Request a block
             </a>
@@ -34,7 +39,9 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="container flex-1"><Outlet /></div>
+      <div className="container flex-1">
+        <Outlet />
+      </div>
     </>
-    )
+  );
 }
