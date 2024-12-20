@@ -1,5 +1,4 @@
-import { Icons } from "~/components/ui/icons"
-import { Button } from "~/components/ui/button"
+import { Button } from '~/components/ui/button';
 import {
   Card,
   CardContent,
@@ -7,9 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card"
-import { Input } from "~/components/ui/input"
-import { Label } from "~/components/ui/label"
+} from '~/components/ui/card';
+import { Icons } from '~/components/ui/icons';
+import { Input } from '~/components/ui/input';
+import { Label } from '~/components/ui/label';
 
 export function CardsCreateAccount() {
   return (
@@ -54,5 +54,5 @@ export function CardsCreateAccount() {
         <Button className="w-full">Create account</Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-import { RiDeleteBin6Line, RiEyeLine } from "@remixicon/react";
-import { ColorSwatch } from "./ColorSwatch";
+import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
+import { ColorSwatch } from './ColorSwatch';
 
-import { RiCheckLine, RiClipboardLine } from "@remixicon/react";
-import { useContext, useState } from "react";
-import { Button } from "../ui/button";
-import { cn } from "~/lib/utils";
-import { PaletteContext } from "~/PaletteContext";
-import { Form } from "@remix-run/react";
+import { Form } from '@remix-run/react';
+import { RiCheckLine, RiClipboardLine } from '@remixicon/react';
+import { useContext, useState } from 'react';
+import { PaletteContext } from '~/PaletteContext';
+import { cn } from '~/lib/utils';
+import { Button } from '../ui/button';
 
 interface AnimatedPaletteProps {
   name: string;
@@ -33,7 +33,7 @@ export function AnimatedPalette({
     <div className="group grid grid-rows-8 gap-2 h-64 w-48">
       <div
         className={cn(
-          "relative w-full overflow-hidden block rounded-xl row-span-6",
+          'relative w-full overflow-hidden block rounded-xl row-span-6',
           className,
         )}
       >
@@ -41,15 +41,14 @@ export function AnimatedPalette({
           <div
             key={color.hex}
             className={cn(
-              "absolute w-full font-inter text-xs text-black/90 origin-top first:rounded-xl last:rounded-t-xl",
+              'absolute w-full font-inter text-xs text-black/90 origin-top first:rounded-xl last:rounded-t-xl',
             )}
             style={{
               backgroundColor: color.hex,
               height: `${PADDING_MAP[index as keyof typeof PADDING_MAP]}%`,
               animation: `place ${0 + index * 0.2}s ease-out`,
             }}
-          >
-          </div>
+          ></div>
         ))}
       </div>
 
@@ -69,7 +68,11 @@ export function AnimatedPalette({
             >
               <RiEyeLine className="hidden group-hover:block h-4 w-4 hover:text-primary-950" />
             </button>
-            <Form method="POST" action="/favourites" className="hidden group-hover:block">
+            <Form
+              method="POST"
+              action="/favourites"
+              className="hidden group-hover:block"
+            >
               <input type="hidden" name="intent" value="DELETE" />
               <input type="hidden" name="palette" value={name} />
               <button type="submit">
@@ -102,7 +105,7 @@ export function PaletteSwatch({ color, className }: PaletteSwatchProps) {
       type="button"
       onClick={copyToClipboard}
       className={cn(
-        "isolate group relative h-10 w-10 rounded-md transition-all hover:ring-2 hover:ring-ring hover:ring-offset-2",
+        'isolate group relative h-10 w-10 rounded-md transition-all hover:ring-2 hover:ring-ring hover:ring-offset-2',
         className,
       )}
       style={{ backgroundColor: color }}

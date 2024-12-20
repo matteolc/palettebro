@@ -1,15 +1,15 @@
-import { promises as fs } from "fs"
-import path from "path"
-import { z } from "zod"
-import { columns } from "~/components/examples/tasks/components/columns"
-import { DataTable } from "~/components/examples/tasks/components/data-table"
-import { UserNav } from "~/components/examples/tasks/components/user-nav"
-import { taskSchema } from "~/components/examples/tasks/data/schema"
-import tasksFromFile from "~/components/examples/tasks/data/tasks.json"
-import { Card } from "~/components/ui/card"
+import { promises as fs } from 'fs';
+import path from 'path';
+import { z } from 'zod';
+import { columns } from '~/components/examples/tasks/components/columns';
+import { DataTable } from '~/components/examples/tasks/components/data-table';
+import { UserNav } from '~/components/examples/tasks/components/user-nav';
+import { taskSchema } from '~/components/examples/tasks/data/schema';
+import tasksFromFile from '~/components/examples/tasks/data/tasks.json';
+import { Card } from '~/components/ui/card';
 
 export default function Page() {
-  const tasks = z.array(taskSchema).parse(tasksFromFile)
+  const tasks = z.array(taskSchema).parse(tasksFromFile);
 
   return (
     <Card className="shadow rounded-lg">
@@ -27,6 +27,6 @@ export default function Page() {
         </div>
         <DataTable data={tasks} columns={columns} />
       </div>
-      </Card>
-  )
+    </Card>
+  );
 }

@@ -1,9 +1,9 @@
-import { AppearanceForm } from "~/components/examples/forms/appearance/appearance-form";
-import { Separator } from "~/components/ui/separator";
+import { AppearanceForm } from '~/components/examples/forms/appearance/appearance-form';
+import { Separator } from '~/components/ui/separator';
 
 export default function Page() {
-    return (
-      <div className="space-y-6">
+  return (
+    <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium">Appearance</h3>
         <p className="text-sm text-muted-foreground">
@@ -13,6 +13,6 @@ export default function Page() {
       </div>
       <Separator />
       <AppearanceForm />
-    </div>       
-    )
+    </div>
+  );
 }

@@ -1,4 +1,3 @@
-import { AppSidebar } from "./app-sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,20 +5,21 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "~/components/ui/breadcrumb"
-import { Separator } from "~/components/ui/separator"
+} from '~/components/ui/breadcrumb';
+import { Separator } from '~/components/ui/separator';
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "~/components/ui/sidebar"
+} from '~/components/ui/sidebar';
+import { AppSidebar } from './app-sidebar';
 
 export default function Page() {
   return (
     <SidebarProvider
       style={
         {
-          "--sidebar-width": "350px",
+          '--sidebar-width': '350px',
         } as React.CSSProperties
       }
     >
@@ -50,5 +50,5 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

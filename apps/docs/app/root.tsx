@@ -4,20 +4,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import { Analytics } from "@vercel/analytics/remix";
-import type { LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
+} from '@remix-run/react';
+import { Analytics } from '@vercel/analytics/remix';
+import type { LoaderFunctionArgs, MetaFunction } from '@vercel/remix';
 import { getClientLocales } from 'remix-utils/locales/server';
-import { getHints } from "./hooks/use-hints";
+import { getHints } from './hooks/use-hints';
 
-import "~/tailwind.css";
-import { getDomainUrl } from "./lib/get-domain-url";
+import '~/tailwind.css';
+import { getDomainUrl } from './lib/get-domain-url';
 
 export const meta: MetaFunction = () => [
-  { title: "Palette Bruh" },
+  { title: 'Palette Bruh' },
   {
-    name: "description",
-    content: "A palette generator for the web",
+    name: 'description',
+    content: 'A palette generator for the web',
   },
 ];
 
@@ -30,7 +30,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
       path: new URL(request.url).pathname,
     },
     locales,
-  }
+  };
 }
 
 export default function App() {

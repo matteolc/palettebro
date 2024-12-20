@@ -1,36 +1,34 @@
-
-
-import { MoreHorizontal, type LucideIcon } from "lucide-react"
+import { type LucideIcon, MoreHorizontal } from 'lucide-react';
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu"
+} from '~/components/ui/dropdown-menu';
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "~/components/ui/sidebar"
+} from '~/components/ui/sidebar';
 
 export function NavMain({
   items,
 }: {
   items: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
+    title: string;
+    url: string;
+    icon?: LucideIcon;
+    isActive?: boolean;
     items?: {
-      title: string
-      url: string
-    }[]
-  }[]
+      title: string;
+      url: string;
+    }[];
+  }[];
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
 
   return (
     <SidebarGroup>
@@ -45,8 +43,8 @@ export function NavMain({
               </DropdownMenuTrigger>
               {item.items?.length ? (
                 <DropdownMenuContent
-                  side={isMobile ? "bottom" : "right"}
-                  align={isMobile ? "end" : "start"}
+                  side={isMobile ? 'bottom' : 'right'}
+                  align={isMobile ? 'end' : 'start'}
                   className="min-w-56 rounded-lg"
                 >
                   {item.items.map((item) => (
@@ -61,5 +59,5 @@ export function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

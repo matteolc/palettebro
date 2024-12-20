@@ -1,9 +1,16 @@
-import * as React from "react"
-import { Minus, Plus } from "lucide-react"
-import { Bar, BarChart } from "recharts"
-import { ChartConfig, ChartContainer } from "~/components/ui/chart"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~/components/ui/card"
-import { Button } from "~/components/ui/button"
+import { Minus, Plus } from 'lucide-react';
+import * as React from 'react';
+import { Bar, BarChart } from 'recharts';
+import { Button } from '~/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
+import { type ChartConfig, ChartContainer } from '~/components/ui/chart';
 
 const data = [
   {
@@ -45,20 +52,20 @@ const data = [
   {
     goal: 349,
   },
-]
+];
 
 const chartConfig = {
   goal: {
-    label: "Goal",
-    color: "oklch(var(--primary-rainbow-1))",
+    label: 'Goal',
+    color: 'oklch(var(--primary-rainbow-1))',
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function CardsActivityGoal() {
-  const [goal, setGoal] = React.useState(350)
+  const [goal, setGoal] = React.useState(350);
 
   function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
   }
 
   return (
@@ -111,5 +118,5 @@ export function CardsActivityGoal() {
         <Button className="w-full">Set Goal</Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

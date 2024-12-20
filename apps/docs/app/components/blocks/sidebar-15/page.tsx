@@ -1,17 +1,17 @@
-import { SidebarLeft } from "./sidebar-left"
-import { SidebarRight } from "./sidebar-right"
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-} from "~/components/ui/breadcrumb"
-import { Separator } from "~/components/ui/separator"
+} from '~/components/ui/breadcrumb';
+import { Separator } from '~/components/ui/separator';
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "~/components/ui/sidebar"
+} from '~/components/ui/sidebar';
+import { SidebarLeft } from './sidebar-left';
+import { SidebarRight } from './sidebar-right';
 
 export default function Page() {
   return (
@@ -40,5 +40,5 @@ export default function Page() {
       </SidebarInset>
       <SidebarRight />
     </SidebarProvider>
-  )
+  );
 }

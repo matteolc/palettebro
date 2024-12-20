@@ -1,12 +1,12 @@
-import { Outlet } from "@remix-run/react";
-import { BlocksNav } from "~/components/blocks/blocks-nav";
+import { Outlet } from '@remix-run/react';
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "~/components/PageHeader";
-import { Button } from "~/components/ui/button";
+} from '~/components/PageHeader';
+import { BlocksNav } from '~/components/blocks/blocks-nav';
+import { Button } from '~/components/ui/button';
 
 export default function Page() {
   return (

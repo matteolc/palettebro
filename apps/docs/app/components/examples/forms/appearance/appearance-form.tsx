@@ -1,11 +1,9 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { ChevronDown } from "lucide-react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ChevronDown } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { cn } from "~/lib/utils"
-import { toast } from "~/hooks/use-toast"
-import { Button, buttonVariants } from "~/components/ui/button"
+import { Button, buttonVariants } from '~/components/ui/button';
 import {
   Form,
   FormControl,
@@ -14,41 +12,43 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group"
+} from '~/components/ui/form';
+import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group';
+import { toast } from '~/hooks/use-toast';
+import { cn } from '~/lib/utils';
 
 const appearanceFormSchema = z.object({
-  theme: z.enum(["light", "dark"], {
-    required_error: "Please select a theme.",
+  theme: z.enum(['light', 'dark'], {
+    required_error: 'Please select a theme.',
   }),
-  font: z.enum(["inter", "manrope", "system"], {
-    invalid_type_error: "Select a font",
-    required_error: "Please select a font.",
+  font: z.enum(['inter', 'manrope', 'system'], {
+    invalid_type_error: 'Select a font',
+    required_error: 'Please select a font.',
   }),
-})
+});
 
-type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
+type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AppearanceFormValues> = {
-  theme: "light",
-}
+  theme: 'light',
+};
 
 export function AppearanceForm() {
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues,
-  })
+  });
 
   function onSubmit(data: AppearanceFormValues) {
     toast({
-      title: "You submitted the following values:",
+      title: 'You submitted the following values:',
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    })
+    });
   }
 
   return (
@@ -64,8 +64,8 @@ export function AppearanceForm() {
                 <FormControl>
                   <select
                     className={cn(
-                      buttonVariants({ variant: "outline" }),
-                      "w-[200px] appearance-none font-normal"
+                      buttonVariants({ variant: 'outline' }),
+                      'w-[200px] appearance-none font-normal',
                     )}
                     {...field}
                   >
@@ -158,5 +158,5 @@ export function AppearanceForm() {
         <Button type="submit">Update preferences</Button>
       </form>
     </Form>
-  )
+  );
 }

@@ -1,6 +1,5 @@
-import { BellRing, Check } from "lucide-react"
-import { cn } from "~/lib/utils"
-import { Button } from "~/components/ui/button"
+import { BellRing, Check } from 'lucide-react';
+import { Button } from '~/components/ui/button';
 import {
   Card,
   CardContent,
@@ -8,23 +7,24 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card"
-import { Switch } from "~/components/ui/switch"
+} from '~/components/ui/card';
+import { Switch } from '~/components/ui/switch';
+import { cn } from '~/lib/utils';
 
 const notifications = [
   {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
+    title: 'Your call has been confirmed.',
+    description: '1 hour ago',
   },
   {
-    title: "You have a new message!",
-    description: "1 hour ago",
+    title: 'You have a new message!',
+    description: '1 hour ago',
   },
   {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
+    title: 'Your subscription is expiring soon!',
+    description: '2 hours ago',
   },
-]
+];
 
 export function CardsNotifications() {
   return (
@@ -71,5 +71,5 @@ export function CardsNotifications() {
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

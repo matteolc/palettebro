@@ -1,4 +1,4 @@
-import { addDays, addHours, format, nextSaturday } from "date-fns"
+import { addDays, addHours, format, nextSaturday } from 'date-fns';
 import {
   Archive,
   ArchiveX,
@@ -8,45 +8,41 @@ import {
   Reply,
   ReplyAll,
   Trash2,
-} from "lucide-react"
+} from 'lucide-react';
 
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import { Button } from '~/components/ui/button';
+import { Calendar } from '~/components/ui/calendar';
 import {
   DropdownMenuContent,
   DropdownMenuItem,
-} from "~/components/ui/dropdown-menu"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "~/components/ui/avatar"
-import { Button } from "~/components/ui/button"
-import { Calendar } from "~/components/ui/calendar"
+} from '~/components/ui/dropdown-menu';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu"
-import { Label } from "~/components/ui/label"
+} from '~/components/ui/dropdown-menu';
+import { Label } from '~/components/ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "~/components/ui/popover"
-import { Separator } from "~/components/ui/separator"
-import { Switch } from "~/components/ui/switch"
-import { Textarea } from "~/components/ui/textarea"
+} from '~/components/ui/popover';
+import { Separator } from '~/components/ui/separator';
+import { Switch } from '~/components/ui/switch';
+import { Textarea } from '~/components/ui/textarea';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "~/components/ui/tooltip"
-import { Mail } from "./data"
+} from '~/components/ui/tooltip';
+import type { Mail } from './data';
 
 interface MailDisplayProps {
-  mail: Mail | null
+  mail: Mail | null;
 }
 
 export function MailDisplay({ mail }: MailDisplayProps) {
-  const today = new Date()
+  const today = new Date();
 
   return (
     <div className="flex h-full flex-col">
@@ -98,9 +94,9 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      Later today{" "}
+                      Later today{' '}
                       <span className="ml-auto text-muted-foreground">
-                        {format(addHours(today, 4), "E, h:m b")}
+                        {format(addHours(today, 4), 'E, h:m b')}
                       </span>
                     </Button>
                     <Button
@@ -109,7 +105,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Tomorrow
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 1), "E, h:m b")}
+                        {format(addDays(today, 1), 'E, h:m b')}
                       </span>
                     </Button>
                     <Button
@@ -118,7 +114,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       This weekend
                       <span className="ml-auto text-muted-foreground">
-                        {format(nextSaturday(today), "E, h:m b")}
+                        {format(nextSaturday(today), 'E, h:m b')}
                       </span>
                     </Button>
                     <Button
@@ -127,7 +123,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Next week
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 7), "E, h:m b")}
+                        {format(addDays(today, 7), 'E, h:m b')}
                       </span>
                     </Button>
                   </div>
@@ -194,9 +190,9 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                 <AvatarImage alt={mail.name} />
                 <AvatarFallback>
                   {mail.name
-                    .split(" ")
+                    .split(' ')
                     .map((chunk) => chunk[0])
-                    .join("")}
+                    .join('')}
                 </AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
@@ -209,7 +205,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             </div>
             {mail.date && (
               <div className="ml-auto text-xs text-muted-foreground">
-                {format(new Date(mail.date), "PPpp")}
+                {format(new Date(mail.date), 'PPpp')}
               </div>
             )}
           </div>
@@ -251,5 +247,5 @@ export function MailDisplay({ mail }: MailDisplayProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

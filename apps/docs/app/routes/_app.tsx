@@ -1,11 +1,9 @@
-import {
-  Outlet,
-} from "@remix-run/react";
+import { Outlet } from '@remix-run/react';
 
-import { PaletteToolbar } from "~/components/palette/PaletteToolbar";
-import { PaletteToolbarProvider } from "~/PaletteToolbarContext";
-import { NavigationHeader } from "~/components/NavigationHeader";
-import { PaletteProvider } from "~/PaletteContext";
+import { PaletteProvider } from '~/PaletteContext';
+import { PaletteToolbarProvider } from '~/PaletteToolbarContext';
+import { NavigationHeader } from '~/components/NavigationHeader';
+import { PaletteToolbar } from '~/components/palette/PaletteToolbar';
 
 export default function Page() {
   return (
@@ -19,14 +17,11 @@ export default function Page() {
           </PaletteToolbarProvider>
         </main>
         <footer className="w-full max-w-7xl mx-auto p-10 flex justify-center">
-          <span className="text-sm" style={{ color: "var(--neutral-500)" }}>
-            Made with ❤️ by{" "}
-            <a href="https://github.com/matteolc">
-              matteolc
-            </a>
+          <span className="text-sm" style={{ color: 'var(--neutral-500)' }}>
+            Made with ❤️ by <a href="https://github.com/matteolc">matteolc</a>
           </span>
         </footer>
       </div>
     </PaletteProvider>
-  )
+  );
 }

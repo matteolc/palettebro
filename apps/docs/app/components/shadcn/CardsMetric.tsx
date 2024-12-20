@@ -1,4 +1,4 @@
-import { Line, LineChart } from "recharts"
+import { Line, LineChart } from 'recharts';
 
 import {
   Card,
@@ -6,13 +6,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card"
+} from '~/components/ui/card';
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "~/components/ui/chart"
+} from '~/components/ui/chart';
 
 const data = [
   {
@@ -43,18 +43,18 @@ const data = [
     average: 349,
     today: 430,
   },
-]
+];
 
 const chartConfig = {
   today: {
-    label: "Today",
-    color: "oklch(var(--primary-rainbow-1))",
+    label: 'Today',
+    color: 'oklch(var(--primary-rainbow-1))',
   },
   average: {
-    label: "Average",
-    color: "oklch(var(--primary-rainbow-8))",
+    label: 'Average',
+    color: 'oklch(var(--primary-rainbow-8))',
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function CardsMetric() {
   return (
@@ -83,7 +83,7 @@ export function CardsMetric() {
               stroke="var(--color-average)"
               activeDot={{
                 r: 6,
-                fill: "var(--color-average)",
+                fill: 'var(--color-average)',
               }}
             />
             <Line
@@ -93,7 +93,7 @@ export function CardsMetric() {
               stroke="var(--color-today)"
               activeDot={{
                 r: 8,
-                style: { fill: "var(--color-today)" },
+                style: { fill: 'var(--color-today)' },
               }}
             />
             <ChartTooltip content={<ChartTooltipContent />} />
@@ -101,5 +101,5 @@ export function CardsMetric() {
         </ChartContainer>
       </CardContent>
     </Card>
-  )
+  );
 }

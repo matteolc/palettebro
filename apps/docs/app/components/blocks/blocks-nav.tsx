@@ -1,17 +1,17 @@
-import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area"
-import { registryCategories } from "./registry-categories"
-import { Link, useLocation } from "@remix-run/react"
+import { Link, useLocation } from '@remix-run/react';
+import { ScrollArea, ScrollBar } from '~/components/ui/scroll-area';
+import { registryCategories } from './registry-categories';
 
 export function BlocksNav() {
-  const pathname = useLocation().pathname
+  const pathname = useLocation().pathname;
 
   return (
     <div className="relative overflow-hidden">
       <ScrollArea className="max-w-none">
         <div className="flex items-center">
           <BlocksNavLink
-            category={{ name: "Featured", slug: "", hidden: false }}
-            isActive={pathname === "/blocks"}
+            category={{ name: 'Featured', slug: '', hidden: false }}
+            isActive={pathname === '/blocks'}
           />
           {registryCategories.map((category) => (
             <BlocksNavLink
@@ -24,18 +24,18 @@ export function BlocksNav() {
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
     </div>
-  )
+  );
 }
 
 function BlocksNavLink({
   category,
   isActive,
 }: {
-  category: (typeof registryCategories)[number]
-  isActive: boolean
+  category: (typeof registryCategories)[number];
+  isActive: boolean;
 }) {
   if (category.hidden) {
-    return null
+    return null;
   }
 
   return (
@@ -47,5 +47,5 @@ function BlocksNavLink({
     >
       {category.name}
     </Link>
-  )
+  );
 }

@@ -1,64 +1,69 @@
-import { cn } from "~/lib/utils"
-import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area"
-import { NavLink, useLocation } from "@remix-run/react"
+import { NavLink, useLocation } from '@remix-run/react';
+import { ScrollArea, ScrollBar } from '~/components/ui/scroll-area';
+import { cn } from '~/lib/utils';
 
 const examples = [
   {
-    name: "Mail",
-    href: "/examples/mail",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/mail",
+    name: 'Mail',
+    href: '/examples/mail',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/mail',
     hidden: false,
   },
   {
-    name: "Dashboard",
-    href: "/examples/dashboard",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/dashboard",
+    name: 'Dashboard',
+    href: '/examples/dashboard',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/dashboard',
     hidden: false,
   },
   {
-    name: "Tasks",
-    href: "/examples/tasks",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/tasks",
+    name: 'Tasks',
+    href: '/examples/tasks',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/tasks',
     hidden: false,
   },
   {
-    name: "Playground",
-    href: "/examples/playground",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/playground",
+    name: 'Playground',
+    href: '/examples/playground',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/playground',
     hidden: false,
   },
   {
-    name: "Forms",
-    href: "/examples/forms",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/forms",
+    name: 'Forms',
+    href: '/examples/forms',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/forms',
     hidden: false,
   },
   {
-    name: "Music",
-    href: "/examples/music",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/music",
+    name: 'Music',
+    href: '/examples/music',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/music',
     hidden: false,
   },
   {
-    name: "Authentication",
-    href: "/examples/authentication",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/authentication",
+    name: 'Authentication',
+    href: '/examples/authentication',
+    code: 'https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/authentication',
     hidden: false,
   },
-]
+];
 
-interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> { }
+interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
-  const pathname = useLocation().pathname
+  const pathname = useLocation().pathname;
 
   return (
     <div className="relative">
       <ScrollArea className="max-w-[600px] lg:max-w-none">
-        <div className={cn("flex items-center", className)} {...props}>
+        <div className={cn('flex items-center', className)} {...props}>
           <ExampleLink
-            example={{ name: "Examples", href: "/examples", code: "", hidden: false }}
-            isActive={pathname === "/examples"}
+            example={{
+              name: 'Examples',
+              href: '/examples',
+              code: '',
+              hidden: false,
+            }}
+            isActive={pathname === '/examples'}
           />
           {examples.map((example) => (
             <ExampleLink
@@ -71,18 +76,18 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
     </div>
-  )
+  );
 }
 
 function ExampleLink({
   example,
   isActive,
 }: {
-  example: (typeof examples)[number]
-  isActive: boolean
+  example: (typeof examples)[number];
+  isActive: boolean;
 }) {
   if (example.hidden) {
-    return null
+    return null;
   }
 
   return (
@@ -94,5 +99,5 @@ function ExampleLink({
     >
       {example.name}
     </NavLink>
-  )
+  );
 }

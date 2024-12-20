@@ -1,4 +1,4 @@
-import { Button } from "~/components/ui/button"
+import { Button } from '~/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "~/components/ui/dialog"
+} from '~/components/ui/dialog';
 
 export function CodeViewer() {
   return (
@@ -43,32 +43,32 @@ export function CodeViewer() {
                 <span />
                 <span>response = openai.Completion.create(</span>
                 <span>
-                  {" "}
+                  {' '}
                   model=
                   <span className="text-green-300">&quot;davinci&quot;</span>,
                 </span>
                 <span>
-                  {" "}
+                  {' '}
                   prompt=<span className="text-amber-300">&quot;&quot;</span>,
                 </span>
                 <span>
-                  {" "}
+                  {' '}
                   temperature=<span className="text-amber-300">0.9</span>,
                 </span>
                 <span>
-                  {" "}
+                  {' '}
                   max_tokens=<span className="text-amber-300">5</span>,
                 </span>
                 <span>
-                  {" "}
+                  {' '}
                   top_p=<span className="text-amber-300">1</span>,
                 </span>
                 <span>
-                  {" "}
+                  {' '}
                   frequency_penalty=<span className="text-amber-300">0</span>,
                 </span>
                 <span>
-                  {" "}
+                  {' '}
                   presence_penalty=<span className="text-green-300">0</span>,
                 </span>
                 <span>)</span>
@@ -85,5 +85,5 @@ export function CodeViewer() {
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

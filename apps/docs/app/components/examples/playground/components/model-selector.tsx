@@ -1,10 +1,8 @@
-import * as React from "react"
-import { PopoverProps } from "@radix-ui/react-popover"
-import { Check, ChevronsUpDown } from "lucide-react"
+import type { PopoverProps } from '@radix-ui/react-popover';
+import { Check, ChevronsUpDown } from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from "~/lib/utils"
-import { useMutationObserver } from "~/hooks/use-mutation-observer"
-import { Button } from "~/components/ui/button"
+import { Button } from '~/components/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -12,30 +10,32 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "~/components/ui/command"
+} from '~/components/ui/command';
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "~/components/ui/hover-card"
-import { Label } from "~/components/ui/label"
+} from '~/components/ui/hover-card';
+import { Label } from '~/components/ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "~/components/ui/popover"
+} from '~/components/ui/popover';
+import { useMutationObserver } from '~/hooks/use-mutation-observer';
+import { cn } from '~/lib/utils';
 
-import { Model, ModelType } from "../data/models"
+import type { Model, ModelType } from '../data/models';
 
 interface ModelSelectorProps extends PopoverProps {
-  types: readonly ModelType[]
-  models: Model[]
+  types: readonly ModelType[];
+  models: Model[];
 }
 
 export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
-  const [open, setOpen] = React.useState(false)
-  const [selectedModel, setSelectedModel] = React.useState<Model>(models[0])
-  const [peekedModel, setPeekedModel] = React.useState<Model>(models[0])
+  const [open, setOpen] = React.useState(false);
+  const [selectedModel, setSelectedModel] = React.useState<Model>(models[0]);
+  const [peekedModel, setPeekedModel] = React.useState<Model>(models[0]);
 
   return (
     <div className="grid gap-2">
@@ -61,7 +61,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             aria-label="Select a model"
             className="w-full justify-between"
           >
-            {selectedModel ? selectedModel.name : "Select a model..."}
+            {selectedModel ? selectedModel.name : 'Select a model...'}
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
@@ -106,8 +106,8 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
                           isSelected={selectedModel?.id === model.id}
                           onPeek={(model) => setPeekedModel(model)}
                           onSelect={() => {
-                            setSelectedModel(model)
-                            setOpen(false)
+                            setSelectedModel(model);
+                            setOpen(false);
                           }}
                         />
                       ))}
@@ -119,30 +119,30 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }
 
 interface ModelItemProps {
-  model: Model
-  isSelected: boolean
-  onSelect: () => void
-  onPeek: (model: Model) => void
+  model: Model;
+  isSelected: boolean;
+  onSelect: () => void;
+  onPeek: (model: Model) => void;
 }
 
 function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = React.useRef<HTMLDivElement>(null);
 
   useMutationObserver(ref, (mutations) => {
     mutations.forEach((mutation) => {
       if (
-        mutation.type === "attributes" &&
-        mutation.attributeName === "aria-selected" &&
-        ref.current?.getAttribute("aria-selected") === "true"
+        mutation.type === 'attributes' &&
+        mutation.attributeName === 'aria-selected' &&
+        ref.current?.getAttribute('aria-selected') === 'true'
       ) {
-        onPeek(model)
+        onPeek(model);
       }
-    })
-  })
+    });
+  });
 
   return (
     <CommandItem
@@ -153,8 +153,8 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
     >
       {model.name}
       <Check
-        className={cn("ml-auto", isSelected ? "opacity-100" : "opacity-0")}
+        className={cn('ml-auto', isSelected ? 'opacity-100' : 'opacity-0')}
       />
     </CommandItem>
-  )
+  );
 }

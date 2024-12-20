@@ -1,24 +1,24 @@
+import { Form, useFetcher } from '@remix-run/react';
 import {
-  RiMagicLine,
-  RiSunLine,
-  RiMoonLine,
   RiHeartLine,
-} from "@remixicon/react";
-import { useContext, useEffect, useState } from "react";
-import { type BaseColors, PaletteContext } from "~/PaletteContext";
-import { ThemeVariantEnum } from "@repo/theme-generator/types";
-import { Form, useFetcher } from "@remix-run/react";
-import type { action } from "~/routes/generate";
-import { PaletteToolbarContext } from "../../PaletteToolbarContext";
-import { PaletteSettings } from "./PaletteSettings";
-import { randomUsableColor } from "node_modules/@repo/theme-generator/src/color/manipulation";
-import { formatSchemistToHex } from "node_modules/@repo/theme-generator/src/color/formatting";
-import { PaletteSwatches } from "./PaletteSwatches";
-import type { action as favouritesAction } from "~/routes/kfavourites";
-import { useDownload } from "~/lib/use-download";
+  RiMagicLine,
+  RiMoonLine,
+  RiSunLine,
+} from '@remixicon/react';
+import { ThemeVariantEnum } from '@repo/theme-generator/types';
+import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
+import { randomUsableColor } from 'node_modules/@repo/theme-generator/src/color/manipulation';
+import { useContext, useEffect, useState } from 'react';
+import { type BaseColors, PaletteContext } from '~/PaletteContext';
+import { useDownload } from '~/lib/use-download';
+import type { action } from '~/routes/generate';
+import type { action as favouritesAction } from '~/routes/kfavourites';
+import { PaletteToolbarContext } from '../../PaletteToolbarContext';
+import { PaletteSettings } from './PaletteSettings';
+import { PaletteSwatches } from './PaletteSwatches';
 
-const BASE_TOKENS = ["primary", "secondary", "accent", "neutral"];
-const STATUS_TOKENS = ["info", "success", "warning", "error"];
+const BASE_TOKENS = ['primary', 'secondary', 'accent', 'neutral'];
+const STATUS_TOKENS = ['info', 'success', 'warning', 'error'];
 
 const PaletteToolbar = () => {
   const { setIsDark, isDark, setBaseColors, variant, palette } =
@@ -28,14 +28,14 @@ const PaletteToolbar = () => {
   const [generatedPalettes, setGeneratedPalettes] = useState<
     { palette: string[] }[] | undefined
   >([]);
-  const generateFetcher = useFetcher<typeof action>({ key: "generate" });
+  const generateFetcher = useFetcher<typeof action>({ key: 'generate' });
   const favouritesFetcher = useFetcher<typeof favouritesAction>({
-    key: "favourites",
+    key: 'favourites',
   });
 
   const paletteToColors = Object.entries(palette ?? {}).reduce(
     (acc, [key, value]) => {
-      acc[key] = { value: value.color, type: "color" };
+      acc[key] = { value: value.color, type: 'color' };
       return acc;
     },
     {} as Record<string, { value: string; type?: string }>,
@@ -43,7 +43,7 @@ const PaletteToolbar = () => {
   useDownload(
     JSON.stringify({
       colors: {
-        type: "color",
+        type: 'color',
         ...paletteToColors,
       },
     }),
@@ -142,12 +142,12 @@ const PaletteToolbar = () => {
             {variant === ThemeVariantEnum.dynamic ? (
               <button
                 className="px-1 py-2"
-                type={shouldSubmit ? "submit" : "button"}
+                type={shouldSubmit ? 'submit' : 'button'}
                 onClick={popPalette}
               >
                 <RiMagicLine
                   className={
-                    variant !== ThemeVariantEnum.dynamic ? "text-gray-400" : ""
+                    variant !== ThemeVariantEnum.dynamic ? 'text-gray-400' : ''
                   }
                 />
               </button>

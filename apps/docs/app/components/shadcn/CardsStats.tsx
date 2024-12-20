@@ -1,6 +1,6 @@
-import { Bar, BarChart, Line, LineChart } from "recharts"
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card"
-import { ChartConfig, ChartContainer } from "~/components/ui/chart"
+import { Bar, BarChart, Line, LineChart } from 'recharts';
+import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import { type ChartConfig, ChartContainer } from '~/components/ui/chart';
 
 const data = [
   {
@@ -35,18 +35,18 @@ const data = [
     revenue: 26475,
     subscription: 189,
   },
-]
+];
 
 const chartConfig = {
   revenue: {
-    label: "Revenue",
-    color: "oklch(var(--primary-rainbow-1))"
+    label: 'Revenue',
+    color: 'oklch(var(--primary-rainbow-1))',
   },
   subscription: {
-    label: "Subscriptions",
-    color: "oklch(var(--primary-rainbow-1))"
+    label: 'Subscriptions',
+    color: 'oklch(var(--primary-rainbow-1))',
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function CardsStats() {
   return (
@@ -76,7 +76,7 @@ export function CardsStats() {
                 dataKey="revenue"
                 activeDot={{
                   r: 6,
-                  fill: "var(--color-revenue)",
+                  fill: 'var(--color-revenue)',
                 }}
                 stroke="var(--color-revenue)"
               />
@@ -105,5 +105,5 @@ export function CardsStats() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

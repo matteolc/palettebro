@@ -1,5 +1,5 @@
-import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from "recharts"
+import { TrendingUp } from 'lucide-react';
+import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from 'recharts';
 
 import {
   Card,
@@ -8,47 +8,47 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card"
+} from '~/components/ui/card';
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "~/components/ui/chart"
+} from '~/components/ui/chart';
 
 const chartData = [
-  { browser: "chrome", visitors: 187, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 275, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
-]
+  { browser: 'chrome', visitors: 187, fill: 'var(--color-chrome)' },
+  { browser: 'safari', visitors: 200, fill: 'var(--color-safari)' },
+  { browser: 'firefox', visitors: 275, fill: 'var(--color-firefox)' },
+  { browser: 'edge', visitors: 173, fill: 'var(--color-edge)' },
+  { browser: 'other', visitors: 90, fill: 'var(--color-other)' },
+];
 
 const chartConfig = {
   visitors: {
-    label: "Visitors",
+    label: 'Visitors',
   },
   chrome: {
-    label: "Chrome",
-    color: "oklch(var(--primary-rainbow-4))",
+    label: 'Chrome',
+    color: 'oklch(var(--primary-rainbow-4))',
   },
   safari: {
-    label: "Safari",
-    color: "oklch(var(--primary-rainbow-5))",
+    label: 'Safari',
+    color: 'oklch(var(--primary-rainbow-5))',
   },
   firefox: {
-    label: "Firefox",
-    color: "oklch(var(--primary-rainbow-6))",
+    label: 'Firefox',
+    color: 'oklch(var(--primary-rainbow-6))',
   },
   edge: {
-    label: "Edge",
-    color: "oklch(var(--primary-rainbow-7))",
+    label: 'Edge',
+    color: 'oklch(var(--primary-rainbow-7))',
   },
   other: {
-    label: "Other",
-    color: "oklch(var(--primary-rainbow-8))",
+    label: 'Other',
+    color: 'oklch(var(--primary-rainbow-8))',
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function CardsTrendingChart() {
   return (
@@ -60,7 +60,12 @@ export function CardsTrendingChart() {
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
-            <CartesianGrid vertical={false} opacity={1} stroke="oklch(var(--neutral-200))" strokeDasharray={"4 4"}/>
+            <CartesianGrid
+              vertical={false}
+              opacity={1}
+              stroke="oklch(var(--neutral-200))"
+              strokeDasharray={'4 4'}
+            />
             <XAxis
               dataKey="browser"
               tickLine={false}
@@ -88,7 +93,7 @@ export function CardsTrendingChart() {
                     strokeDasharray={4}
                     strokeDashoffset={4}
                   />
-                )
+                );
               }}
             />
           </BarChart>
@@ -103,5 +108,5 @@ export function CardsTrendingChart() {
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }

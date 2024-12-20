@@ -1,9 +1,6 @@
-import * as React from "react"
-import { Plus } from "lucide-react"
+import { Plus } from 'lucide-react';
+import type * as React from 'react';
 
-import { Calendars } from "./calendars"
-import { DatePicker } from "./date-picker"
-import { NavUser } from "./nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -14,30 +11,33 @@ import {
   SidebarMenuItem,
   SidebarRail,
   SidebarSeparator,
-} from "~/components/ui/sidebar"
+} from '~/components/ui/sidebar';
+import { Calendars } from './calendars';
+import { DatePicker } from './date-picker';
+import { NavUser } from './nav-user';
 
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: 'shadcn',
+    email: 'm@example.com',
+    avatar: '/avatars/shadcn.jpg',
   },
   calendars: [
     {
-      name: "My Calendars",
-      items: ["Personal", "Work", "Family"],
+      name: 'My Calendars',
+      items: ['Personal', 'Work', 'Family'],
     },
     {
-      name: "Favorites",
-      items: ["Holidays", "Birthdays"],
+      name: 'Favorites',
+      items: ['Holidays', 'Birthdays'],
     },
     {
-      name: "Other",
-      items: ["Travel", "Reminders", "Deadlines"],
+      name: 'Other',
+      items: ['Travel', 'Reminders', 'Deadlines'],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -62,5 +62,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

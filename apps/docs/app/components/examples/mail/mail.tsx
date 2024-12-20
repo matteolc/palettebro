@@ -1,6 +1,3 @@
-
-
-import * as React from "react"
 import {
   AlertCircle,
   Archive,
@@ -13,40 +10,36 @@ import {
   ShoppingCart,
   Trash2,
   Users2,
-} from "lucide-react"
+} from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from "~/lib/utils"
-import { Input } from "~/components/ui/input"
+import { Input } from '~/components/ui/input';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "~/components/ui/resizable"
-import { Separator } from "~/components/ui/separator"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "~/components/ui/tabs"
-import { TooltipProvider } from "~/components/ui/tooltip"
-import { AccountSwitcher } from "./account-switcher"
-import { MailDisplay } from "./mail-display"
-import { MailList } from "./mail-list"
-import { Nav } from "./nav"
-import { type Mail } from "./data"
-import { useMail } from "./use-mail"
+} from '~/components/ui/resizable';
+import { Separator } from '~/components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+import { TooltipProvider } from '~/components/ui/tooltip';
+import { cn } from '~/lib/utils';
+import { AccountSwitcher } from './account-switcher';
+import type { Mail } from './data';
+import { MailDisplay } from './mail-display';
+import { MailList } from './mail-list';
+import { Nav } from './nav';
+import { useMail } from './use-mail';
 
 interface MailProps {
   accounts: {
-    label: string
-    email: string
-    icon: React.ReactNode
-  }[]
-  mails: Mail[]
-  defaultLayout: number[] | undefined
-  defaultCollapsed?: boolean
-  navCollapsedSize: number
+    label: string;
+    email: string;
+    icon: React.ReactNode;
+  }[];
+  mails: Mail[];
+  defaultLayout: number[] | undefined;
+  defaultCollapsed?: boolean;
+  navCollapsedSize: number;
 }
 
 export function Mail({
@@ -56,8 +49,8 @@ export function Mail({
   defaultCollapsed = false,
   navCollapsedSize,
 }: MailProps) {
-  const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed)
-  const [mail] = useMail()
+  const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
+  const [mail] = useMail();
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -65,8 +58,8 @@ export function Mail({
         direction="horizontal"
         onLayout={(sizes: number[]) => {
           document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(
-            sizes
-          )}`
+            sizes,
+          )}`;
         }}
         className="h-full max-h-[800px] items-stretch"
       >
@@ -77,26 +70,26 @@ export function Mail({
           minSize={15}
           maxSize={20}
           onCollapse={() => {
-            setIsCollapsed(true)
+            setIsCollapsed(true);
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              true
-            )}`
+              true,
+            )}`;
           }}
           onResize={() => {
-            setIsCollapsed(false)
+            setIsCollapsed(false);
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              false
-            )}`
+              false,
+            )}`;
           }}
           className={cn(
             isCollapsed &&
-            "min-w-[50px] transition-all duration-300 ease-in-out"
+              'min-w-[50px] transition-all duration-300 ease-in-out',
           )}
         >
           <div
             className={cn(
-              "flex h-[52px] items-center justify-center",
-              isCollapsed ? "h-[52px]" : "px-2"
+              'flex h-[52px] items-center justify-center',
+              isCollapsed ? 'h-[52px]' : 'px-2',
             )}
           >
             <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
@@ -106,40 +99,40 @@ export function Mail({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Inbox",
-                label: "128",
+                title: 'Inbox',
+                label: '128',
                 icon: Inbox,
-                variant: "default",
+                variant: 'default',
               },
               {
-                title: "Drafts",
-                label: "9",
+                title: 'Drafts',
+                label: '9',
                 icon: File,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Sent",
-                label: "",
+                title: 'Sent',
+                label: '',
                 icon: Send,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Junk",
-                label: "23",
+                title: 'Junk',
+                label: '23',
                 icon: ArchiveX,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Trash",
-                label: "",
+                title: 'Trash',
+                label: '',
                 icon: Trash2,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Archive",
-                label: "",
+                title: 'Archive',
+                label: '',
                 icon: Archive,
-                variant: "ghost",
+                variant: 'ghost',
               },
             ]}
           />
@@ -148,34 +141,34 @@ export function Mail({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Social",
-                label: "972",
+                title: 'Social',
+                label: '972',
                 icon: Users2,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Updates",
-                label: "342",
+                title: 'Updates',
+                label: '342',
                 icon: AlertCircle,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Forums",
-                label: "128",
+                title: 'Forums',
+                label: '128',
                 icon: MessagesSquare,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Shopping",
-                label: "8",
+                title: 'Shopping',
+                label: '8',
                 icon: ShoppingCart,
-                variant: "ghost",
+                variant: 'ghost',
               },
               {
-                title: "Promotions",
-                label: "21",
+                title: 'Promotions',
+                label: '21',
                 icon: Archive,
-                variant: "ghost",
+                variant: 'ghost',
               },
             ]}
           />
@@ -225,5 +218,5 @@ export function Mail({
         </ResizablePanel>
       </ResizablePanelGroup>
     </TooltipProvider>
-  )
+  );
 }

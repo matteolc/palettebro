@@ -1,8 +1,6 @@
-import * as React from "react"
-import { GalleryVerticalEnd } from "lucide-react"
+import { GalleryVerticalEnd } from 'lucide-react';
+import type * as React from 'react';
 
-import { NavMain } from "./nav-main"
-import { SidebarOptInForm } from "./sidebar-opt-in-form"
 import {
   Sidebar,
   SidebarContent,
@@ -12,138 +10,140 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "~/components/ui/sidebar"
+} from '~/components/ui/sidebar';
+import { NavMain } from './nav-main';
+import { SidebarOptInForm } from './sidebar-opt-in-form';
 
 // This is sample data.
 const data = {
   navMain: [
     {
-      title: "Getting Started",
-      url: "#",
+      title: 'Getting Started',
+      url: '#',
       items: [
         {
-          title: "Installation",
-          url: "#",
+          title: 'Installation',
+          url: '#',
         },
         {
-          title: "Project Structure",
-          url: "#",
+          title: 'Project Structure',
+          url: '#',
         },
       ],
     },
     {
-      title: "Building Your Application",
-      url: "#",
+      title: 'Building Your Application',
+      url: '#',
       items: [
         {
-          title: "Routing",
-          url: "#",
+          title: 'Routing',
+          url: '#',
         },
         {
-          title: "Data Fetching",
-          url: "#",
+          title: 'Data Fetching',
+          url: '#',
           isActive: true,
         },
         {
-          title: "Rendering",
-          url: "#",
+          title: 'Rendering',
+          url: '#',
         },
         {
-          title: "Caching",
-          url: "#",
+          title: 'Caching',
+          url: '#',
         },
         {
-          title: "Styling",
-          url: "#",
+          title: 'Styling',
+          url: '#',
         },
         {
-          title: "Optimizing",
-          url: "#",
+          title: 'Optimizing',
+          url: '#',
         },
         {
-          title: "Configuring",
-          url: "#",
+          title: 'Configuring',
+          url: '#',
         },
         {
-          title: "Testing",
-          url: "#",
+          title: 'Testing',
+          url: '#',
         },
         {
-          title: "Authentication",
-          url: "#",
+          title: 'Authentication',
+          url: '#',
         },
         {
-          title: "Deploying",
-          url: "#",
+          title: 'Deploying',
+          url: '#',
         },
         {
-          title: "Upgrading",
-          url: "#",
+          title: 'Upgrading',
+          url: '#',
         },
         {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
+          title: 'Examples',
+          url: '#',
         },
       ],
     },
     {
-      title: "Architecture",
-      url: "#",
+      title: 'API Reference',
+      url: '#',
       items: [
         {
-          title: "Accessibility",
-          url: "#",
+          title: 'Components',
+          url: '#',
         },
         {
-          title: "Fast Refresh",
-          url: "#",
+          title: 'File Conventions',
+          url: '#',
         },
         {
-          title: "Next.js Compiler",
-          url: "#",
+          title: 'Functions',
+          url: '#',
         },
         {
-          title: "Supported Browsers",
-          url: "#",
+          title: 'next.config.js Options',
+          url: '#',
         },
         {
-          title: "Turbopack",
-          url: "#",
+          title: 'CLI',
+          url: '#',
+        },
+        {
+          title: 'Edge Runtime',
+          url: '#',
+        },
+      ],
+    },
+    {
+      title: 'Architecture',
+      url: '#',
+      items: [
+        {
+          title: 'Accessibility',
+          url: '#',
+        },
+        {
+          title: 'Fast Refresh',
+          url: '#',
+        },
+        {
+          title: 'Next.js Compiler',
+          url: '#',
+        },
+        {
+          title: 'Supported Browsers',
+          url: '#',
+        },
+        {
+          title: 'Turbopack',
+          url: '#',
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -175,5 +175,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

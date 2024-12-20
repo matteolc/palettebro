@@ -1,8 +1,14 @@
-import React from 'react';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
-import { Badge } from '~/components/ui/badge';
 import { Star } from 'lucide-react';
+import type React from 'react';
+import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
 
 interface ProductCardProps {
   name?: string;
@@ -13,19 +19,23 @@ interface ProductCardProps {
 }
 
 export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
-  name = "Product Name",
+  name = 'Product Name',
   price = 0,
-  category = "Uncategorized",
+  category = 'Uncategorized',
   rating = 0,
-  imageUrl = "/product-1.jpg"
+  imageUrl = '/product-1.jpg',
 }) => {
   // Generate star rating display
   const renderStars = (currentRating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
-        color={index < currentRating ? "oklch(var(--accent))" : "oklch(var(--neutral))"}
-        fill={index < currentRating ? "oklch(var(--accent))" : "none"}
+        color={
+          index < currentRating
+            ? 'oklch(var(--accent))'
+            : 'oklch(var(--neutral))'
+        }
+        fill={index < currentRating ? 'oklch(var(--accent))' : 'none'}
         size={20}
       />
     ));
@@ -58,15 +68,15 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
             <span className="text-lg font-semibold">
               ${typeof price === 'number' ? price.toFixed(2) : '0.00'}
             </span>
-            <div className="flex space-x-1">
-              {renderStars(rating || 0)}
-            </div>
+            <div className="flex space-x-1">{renderStars(rating || 0)}</div>
           </div>
         </CardContent>
 
         <CardFooter>
           <Button className="w-full">
-            <span style={{ color: "oklch(var(--on-primary))" }}>Add to cart</span>
+            <span style={{ color: 'oklch(var(--on-primary))' }}>
+              Add to cart
+            </span>
           </Button>
         </CardFooter>
       </div>

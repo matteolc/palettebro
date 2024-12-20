@@ -1,22 +1,22 @@
-import * as React from "react"
-import { SliderProps } from "@radix-ui/react-slider"
+import type { SliderProps } from '@radix-ui/react-slider';
+import * as React from 'react';
 
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "~/components/ui/hover-card"
-import { Label } from "~/components/ui/label"
-import { Slider } from "~/components/ui/slider"
+} from '~/components/ui/hover-card';
+import { Label } from '~/components/ui/label';
+import { Slider } from '~/components/ui/slider';
 
 interface TemperatureSelectorProps {
-  defaultValue: SliderProps["defaultValue"]
+  defaultValue: SliderProps['defaultValue'];
 }
 
 export function TemperatureSelector({
   defaultValue,
 }: TemperatureSelectorProps) {
-  const [value, setValue] = React.useState(defaultValue)
+  const [value, setValue] = React.useState(defaultValue);
 
   return (
     <div className="grid gap-2 pt-2">
@@ -51,5 +51,5 @@ export function TemperatureSelector({
         </HoverCardContent>
       </HoverCard>
     </div>
-  )
+  );
 }

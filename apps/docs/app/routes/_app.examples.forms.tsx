@@ -1,36 +1,35 @@
-import { Outlet } from "@remix-run/react";
-import { SidebarNav } from "~/components/examples/forms/components/sidebar-nav";
-import { Card } from "~/components/ui/card";
-import { Separator } from "~/components/ui/separator";
-
+import { Outlet } from '@remix-run/react';
+import { SidebarNav } from '~/components/examples/forms/components/sidebar-nav';
+import { Card } from '~/components/ui/card';
+import { Separator } from '~/components/ui/separator';
 
 const sidebarNavItems = [
-    {
-      title: "Profile",
-      href: "/examples/forms",
-    },
-    {
-      title: "Account",
-      href: "/examples/forms/account",
-    },
-    {
-      title: "Appearance",
-      href: "/examples/forms/appearance",
-    },
-    {
-      title: "Notifications",
-      href: "/examples/forms/notifications",
-    },
-    {
-      title: "Display",
-      href: "/examples/forms/display",
-    },
-  ]
+  {
+    title: 'Profile',
+    href: '/examples/forms',
+  },
+  {
+    title: 'Account',
+    href: '/examples/forms/account',
+  },
+  {
+    title: 'Appearance',
+    href: '/examples/forms/appearance',
+  },
+  {
+    title: 'Notifications',
+    href: '/examples/forms/notifications',
+  },
+  {
+    title: 'Display',
+    href: '/examples/forms/display',
+  },
+];
 
 export default function Page() {
-    return (
-        <Card className="shadow rounded-lg">
-        <div className="hidden space-y-6 p-10 pb-16 md:block">
+  return (
+    <Card className="shadow rounded-lg">
+      <div className="hidden space-y-6 p-10 pb-16 md:block">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
           <p className="text-muted-foreground">
@@ -43,9 +42,10 @@ export default function Page() {
             <SidebarNav items={sidebarNavItems} />
           </aside>
           <div className="flex-1 lg:max-w-2xl">
-          <Outlet /></div>
+            <Outlet />
+          </div>
         </div>
       </div>
-      </Card>
-    )
+    </Card>
+  );
 }

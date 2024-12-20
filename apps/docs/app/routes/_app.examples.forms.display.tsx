@@ -1,9 +1,9 @@
-import { DisplayForm } from "~/components/examples/forms/display/display-form";
-import { Separator } from "~/components/ui/separator";
+import { DisplayForm } from '~/components/examples/forms/display/display-form';
+import { Separator } from '~/components/ui/separator';
 
 export default function Page() {
-    return (
-      <div className="space-y-6">
+  return (
+    <div className="space-y-6">
       <div>
         <h3 className="text-lg font-medium">Display</h3>
         <p className="text-sm text-muted-foreground">
@@ -12,6 +12,6 @@ export default function Page() {
       </div>
       <Separator />
       <DisplayForm />
-    </div>   
-    )
+    </div>
+  );
 }
