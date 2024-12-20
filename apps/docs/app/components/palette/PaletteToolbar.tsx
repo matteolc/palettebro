@@ -169,6 +169,7 @@ const PaletteToolbar = () => {
             action="/favourites"
             method="POST"
           >
+            <input type="hidden" name="intent" value="ADD" />
             <input
               type="text"
               readOnly

@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { Button } from "../ui/button";
 import { cn } from "~/lib/utils";
 import { PaletteContext } from "~/PaletteContext";
+import { Form } from "@remix-run/react";
 
 interface AnimatedPaletteProps {
   name: string;
@@ -40,7 +41,7 @@ export function AnimatedPalette({
           <div
             key={color.hex}
             className={cn(
-              "group absolute w-full font-inter text-xs text-black/90 origin-top first:rounded-xl last:rounded-t-xl",
+              "absolute w-full font-inter text-xs text-black/90 origin-top first:rounded-xl last:rounded-t-xl",
             )}
             style={{
               backgroundColor: color.hex,
@@ -48,9 +49,6 @@ export function AnimatedPalette({
               animation: `place ${0 + index * 0.2}s ease-out`,
             }}
           >
-            <span className="hidden group-hover:block absolute w-full inset-0 text-white text-lg font-bold">
-              {color.hex}
-            </span>
           </div>
         ))}
       </div>
@@ -58,18 +56,27 @@ export function AnimatedPalette({
       <div className="text-lg font-semibold">
         <div className="flex items-center justify-between">
           {name}
-          <button
-            type="button"
-            onClick={() =>
-              setBaseColors?.({
-                primary: colors[3].hex,
-                secondary: colors[2].hex,
-                accent: colors[1].hex,
-              })
-            }
-          >
-            <RiEyeLine className="hidden group-hover:block h-4 w-4 group-hover:animate-wiggle" />
-          </button>
+          <div className="flex gap-2 items-baseline">
+            <button
+              type="button"
+              onClick={() =>
+                setBaseColors?.({
+                  primary: colors[3].hex,
+                  secondary: colors[2].hex,
+                  accent: colors[1].hex,
+                })
+              }
+            >
+              <RiEyeLine className="hidden group-hover:block h-4 w-4 hover:text-primary-950" />
+            </button>
+            <Form method="POST" action="/favourites" className="hidden group-hover:block">
+              <input type="hidden" name="intent" value="DELETE" />
+              <input type="hidden" name="palette" value={name} />
+              <button type="submit">
+                <RiDeleteBin6Line className="h-4 w-4 hover:text-primary-950" />
+              </button>
+            </Form>
+          </div>
         </div>
       </div>
     </div>
