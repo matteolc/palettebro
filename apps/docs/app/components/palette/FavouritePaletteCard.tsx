@@ -48,7 +48,7 @@ export function AnimatedPalette({
               height: `${PADDING_MAP[index as keyof typeof PADDING_MAP]}%`,
               animation: `place ${0 + index * 0.2}s ease-out`,
             }}
-          ></div>
+          />
         ))}
       </div>
 

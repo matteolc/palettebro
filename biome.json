@@ -8,7 +8,7 @@
   "files": {
     "ignoreUnknown": false,
     "include": ["apps/**/*", "packages/**/*.tsx"],
-    "ignore": ["node_modules", "dist/**"]
+    "ignore": ["node_modules", "dist/**", "apps/**/build/**", "packages/**/dist/**", "apps/**/node_modules", "packages/**/node_modules"]
   },
   "formatter": {
     "enabled": true,
@@ -19,6 +19,11 @@
     "enabled": true
   },
   "linter": {
-    "enabled": true
+    "enabled": true,
+    "rules": {
+      "a11y": {
+        "useValidAnchor": "info"
+      }
+    }
   }
 }

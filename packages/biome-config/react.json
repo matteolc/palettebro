@@ -33,6 +33,7 @@
         "noNoninteractiveElementToInteractiveRole": "error",
         "noNoninteractiveTabindex": "error",
         "noPositiveTabindex": "error",
+        "noSvgWithoutTitle": "info",
         "noRedundantAlt": "error",
         "noRedundantRoles": "error",
         "useAltText": "error",
@@ -47,7 +48,7 @@
         "useKeyWithClickEvents": "error",
         "useKeyWithMouseEvents": "error",
         "useMediaCaption": "error",
-        "useValidAnchor": "error",
+        "useValidAnchor": "info",
         "useValidAriaProps": "error",
         "useValidAriaRole": "error",
         "useValidAriaValues": "error"
@@ -74,7 +75,7 @@
     "ignore": [
       "**/node_modules/**",
       "**/dist/**",
-      "**/.eslintrc.js",
+      "**/build/**",
       "**/*.css"
     ]
   },

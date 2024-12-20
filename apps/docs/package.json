@@ -8,7 +8,7 @@
     "dev": "remix vite:dev",
     "start": "remix dev",
     "format-and-lint": "biome check .",
-    "format-and-lint:fix": "biome check . --write",
+    "format-and-lint:fix": "biome check . --fix --unsafe",
     "typecheck": "tsc"
   },
   "dependencies": {

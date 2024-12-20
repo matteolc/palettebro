@@ -255,7 +255,7 @@ const Pattern = () => {
           cx="1584.46985"
           cy="-313.64157"
           r="16.42682"
-        ></circle>
+        />
         <rect
           x="1063.1344"
           y="-0.09102"
@@ -263,7 +263,7 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <rect
           x="1063.1344"
           y="208.55843"
@@ -271,13 +271,13 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <path
           fill="oklch(var(--accent))"
           className="text-accent"
           d="M1063.1344,208.55843L1063.1344,208.55843c115.23389,0,208.64941,93.41554,208.64941,208.64943l0,0
             C1156.54993,417.20786,1063.1344,323.79233,1063.1344,208.55843z"
-        ></path>
+        />
         <rect
           x="854.48499"
           y="-208.74046"
@@ -285,7 +285,7 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <mask
           maskUnits="userSpaceOnUse"
           x="1010.10748"
@@ -303,7 +303,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="208.64944"
-          ></rect>
+          />
         </mask>
         <circle
           mask="url(#mask-10_8_)"
@@ -312,7 +312,7 @@ const Pattern = () => {
           cx="1063.42261"
           cy="-0.37921"
           r="53.31513"
-        ></circle>
+        />
 
         <mask
           maskUnits="userSpaceOnUse"
@@ -331,7 +331,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="208.64944"
-          ></rect>
+          />
         </mask>
         <circle
           mask="url(#mask-10_7_)"
@@ -340,7 +340,7 @@ const Pattern = () => {
           cx="854.19678"
           cy="-209.02864"
           r="53.31512"
-        ></circle>
+        />
         <rect
           x="1689.08276"
           y="417.20786"
@@ -348,7 +348,7 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <mask
           maskUnits="userSpaceOnUse"
           x="1844.7052"
@@ -366,7 +366,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="208.64944"
-          ></rect>
+          />
         </mask>
         <circle
           mask="url(#mask-10_6_)"
@@ -375,7 +375,7 @@ const Pattern = () => {
           cx="1898.02039"
           cy="625.56909"
           r="53.31513"
-        ></circle>
+        />
 
         <mask
           maskUnits="userSpaceOnUse"
@@ -394,7 +394,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="208.64944"
-          ></rect>
+          />
         </mask>
         <circle
           mask="url(#mask-10_5_)"
@@ -403,7 +403,7 @@ const Pattern = () => {
           cx="1688.79456"
           cy="416.91968"
           r="53.31512"
-        ></circle>
+        />
 
         <rect
           x="1271.78381"
@@ -412,7 +412,7 @@ const Pattern = () => {
           className="text-primary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <rect
           x="1480.43335"
           y="208.27023"
@@ -420,7 +420,7 @@ const Pattern = () => {
           className="text-primary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <rect
           x="1689.08276"
           y="-0.37921"
@@ -428,7 +428,7 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <rect
           x="437.1861"
           y="-0.09102"
@@ -436,13 +436,13 @@ const Pattern = () => {
           className="text-primary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <path
           fill="oklch(var(--primary-100))"
           className="text-accent"
           d="M437.1861-0.09102L437.1861-0.09102c0,115.2339,93.41553,208.64944,208.64941,208.64944l0,0
             C645.83551,93.32452,552.41998-0.09102,437.1861-0.09102z"
-        ></path>
+        />
         <rect
           x="1271.78381"
           y="417.20786"
@@ -450,7 +450,7 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <ellipse
           fill="oklch(var(--accent-200))"
           className="text-accent"
@@ -458,7 +458,7 @@ const Pattern = () => {
           cy="519.46442"
           rx="85.59238"
           ry="84.52135"
-        ></ellipse>
+        />
         <rect
           x="1271.78381"
           y="521.26007"
@@ -466,7 +466,7 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="104.32471"
-        ></rect>
+        />
 
         <mask
           maskUnits="userSpaceOnUse"
@@ -485,7 +485,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="104.32471"
-          ></rect>
+          />
         </mask>
         <ellipse
           mask="url(#mask-16_2_)"
@@ -495,7 +495,7 @@ const Pattern = () => {
           cy="521.19415"
           rx="85.49548"
           ry="84.4371"
-        ></ellipse>
+        />
 
         <rect
           x="1271.78381"
@@ -504,7 +504,7 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <rect
           x="1480.43335"
           y="-209.02866"
@@ -512,14 +512,14 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <circle
           fill="oklch(var(--accent))"
           className="text-accent"
           cx="1376.39673"
           cy="105.09827"
           r="60.23167"
-        ></circle>
+        />
         <rect
           x="1689.08276"
           y="208.27023"
@@ -527,14 +527,14 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <circle
           fill="oklch(var(--secondary))"
           className="text-secondary"
           cx="1793.69568"
           cy="313.4595"
           r="60.23167"
-        ></circle>
+        />
         <rect
           x="1271.78381"
           y="-417.38989"
@@ -542,13 +542,13 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <path
           fill="oklch(var(--secondary-100))"
           className="text-accent"
           d="M1480.43335-417.38989L1480.43335-417.38989c0,115.23389-93.41565,208.64943-208.64954,208.64943l0,0
             C1271.78381-323.97437,1365.19934-417.38989,1480.43335-417.38989z"
-        ></path>
+        />
         <rect
           x="1271.78381"
           y="208.55843"
@@ -556,13 +556,13 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <path
           fill="oklch(var(--secondary-800))"
           className="text-accent"
           d="M1271.78381,417.20786L1271.78381,417.20786c0-115.23389,93.41553-208.64943,208.64954-208.64943l0,0
             C1480.43335,323.79233,1387.0177,417.20786,1271.78381,417.20786z"
-        ></path>
+        />
 
         <mask
           maskUnits="userSpaceOnUse"
@@ -581,7 +581,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="208.64944"
-          ></rect>
+          />
         </mask>
         <circle
           mask="url(#mask-8_2_)"
@@ -590,7 +590,7 @@ const Pattern = () => {
           cx="1062.86023"
           cy="626.83496"
           r="53.31512"
-        ></circle>
+        />
 
         <rect
           x="854.21075"
@@ -599,7 +599,7 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
 
         <mask
           maskUnits="userSpaceOnUse"
@@ -618,7 +618,7 @@ const Pattern = () => {
             fill="#FFFFFF"
             width="208.64944"
             height="208.64944"
-          ></rect>
+          />
         </mask>
         <circle
           mask="url(#mask-14_2_)"
@@ -627,20 +627,20 @@ const Pattern = () => {
           cx="1063.14844"
           cy="416.89734"
           r="53.31512"
-        ></circle>
+        />
 
         <path
           fill="oklch(var(--accent))"
           className="text-accent"
           d="M855.06134-209.31685L855.06134-209.31685c114.91559,0,208.07306-93.15749,208.07306-208.07304l0,0
             C948.21881-417.38989,855.06134-324.23242,855.06134-209.31685z"
-        ></path>
+        />
         <path
           fill="oklch(var(--secondary))"
           className="text-secondary"
           d="M1063.1344-417.38989L1063.1344-417.38989c0,114.91559,93.15747,208.07306,208.07312,208.07306l0,0
             C1271.20752-324.23242,1178.04993-417.38989,1063.1344-417.38989z"
-        ></path>
+        />
         <rect
           x="1480.43335"
           y="-0.37921"
@@ -648,7 +648,7 @@ const Pattern = () => {
           className="text-secondary"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <rect
           x="1689.08276"
           y="-209.02866"
@@ -656,32 +656,32 @@ const Pattern = () => {
           className="text-accent"
           width="208.64944"
           height="208.64944"
-        ></rect>
+        />
         <polygon
           fill="oklch(var(--primary-100))"
           className="text-accent"
           points="1689.08276,626.8573 1689.08276,417.20786 1480.43335,417.20786 1480.43335,625.8573 	"
-        ></polygon>
+        />
         <path
           fill="oklch(var(--accent))"
           className="text-accent"
           d="M1665.08801,417.42111L1665.08801,417.42111h-127.06287c-31.68933,0-57.37854,25.6893-57.37854,57.3786
             v127.0629C1582.51074,601.86261,1665.08801,519.28534,1665.08801,417.42111z"
-        ></path>
+        />
         <circle
           fill="oklch(var(--primary-100))"
           className="text-accent"
           cx="1512.50879"
           cy="452.65521"
           r="16.42681"
-        ></circle>
+        />
         <polygon
           fill="oklch(var(--accent))"
           className="text-accent"
           points="1583.56238,-103.4325 1583.56238,-88.12148 1585.23193,-88.12148 1585.23193,-103.4325
             1600.39661,-103.4325 1600.39661,-105.36361 1585.23193,-105.36361 1585.23193,-120.39875 1583.56238,-120.39875
             1583.56238,-105.36361 1568.11938,-105.36361 1568.11938,-103.4325 	"
-        ></polygon>
+        />
       </g>
       <rect
         x="107.53548"
@@ -689,7 +689,7 @@ const Pattern = () => {
         fill="none"
         width="417.19321"
         height="69.37226"
-      ></rect>
+      />
     </svg>
   );
 };

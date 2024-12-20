@@ -53,7 +53,7 @@ export const ColorSwatch = ({
           backgroundColor: `oklch(var(--${token}))`,
           color: `oklch(var(--${token}-text))`,
         }}
-        className={clsx(classes, `min-w-48 px-2.5 py-1.5 rounded-lg`)}
+        className={clsx(classes, 'min-w-48 px-2.5 py-1.5 rounded-lg')}
       >
         <div className="flex flex-row items-stretch justify-between">
           <PopoverTrigger className="outline-none">

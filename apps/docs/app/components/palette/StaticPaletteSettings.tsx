@@ -39,8 +39,8 @@ export const StaticPaletteSettings = () => {
           onCheckedChange={setReverse}
           style={
             {
-              '--primary': `14.08% 0.0044 285.82`,
-              '--on-primary': `100% 0 0`,
+              '--primary': '14.08% 0.0044 285.82',
+              '--on-primary': '100% 0 0',
             } as React.CSSProperties
           }
           className=""

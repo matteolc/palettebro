@@ -34,8 +34,8 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
       <Input
         style={
           {
-            '--neutral-100': `87.11% 0.0055 286.29`,
-            '--neutral-200': `91.97% 0.004 286.32`,
+            '--neutral-100': '87.11% 0.0055 286.29',
+            '--neutral-200': '91.97% 0.004 286.32',
           } as React.CSSProperties
         }
         placeholder="Enter color"
@@ -50,8 +50,8 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
       <Button
         style={
           {
-            '--primary': `14.08% 0.0044 285.82`,
-            '--on-primary': `100% 0 0`,
+            '--primary': '14.08% 0.0044 285.82',
+            '--on-primary': '100% 0 0',
           } as React.CSSProperties
         }
         onClick={handleSubmit}

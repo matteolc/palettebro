@@ -45,7 +45,9 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                 backgroundColor: `oklch(var(--${token}))`,
                 color: `oklch(var(--${token}-text))`,
               }}
-              className={`p-4 rounded justify-center text-white items-center flex`}
+              className={
+                'p-4 rounded justify-center text-white items-center flex'
+              }
             >
               <div className="flex flex-col justify-center items-center">
                 <div className="text-xl font-bold">Base</div>
@@ -57,7 +59,9 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                 backgroundColor: `oklch(var(--${token}-dark))`,
                 color: `oklch(var(--${token}-text))`,
               }}
-              className={`p-4 rounded justify-center text-white items-center flex`}
+              className={
+                'p-4 rounded justify-center text-white items-center flex'
+              }
             >
               <div className="flex flex-col justify-center items-center">
                 <div className="text-xl font-bold">Dark</div>
@@ -72,7 +76,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                 backgroundColor: `oklch(var(--${token}-container))`,
                 color: `oklch(var(--on-${token}-container))`,
               }}
-              className={`p-4 rounded text-center`}
+              className={'p-4 rounded text-center'}
             >
               <div className="flex flex-col justify-center items-center">
                 <div className="text-xl font-bold">Container</div>
@@ -84,7 +88,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                 backgroundColor: `oklch(var(--on-${token}-container))`,
                 color: `oklch(var(--${token}-container))`,
               }}
-              className={`p-4 rounded text-center`}
+              className={'p-4 rounded text-center'}
             >
               <div className="flex flex-col justify-center items-center">
                 <div className="text-xl font-bold">On Container</div>

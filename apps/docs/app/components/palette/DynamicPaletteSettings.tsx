@@ -100,8 +100,8 @@ export const DynamicPaletteSettings = () => {
         <Slider
           style={
             {
-              '--primary': `14.08% 0.0044 285.82`,
-              '--primary-50': `97.5% 0.0044 285.82`,
+              '--primary': '14.08% 0.0044 285.82',
+              '--primary-50': '97.5% 0.0044 285.82',
             } as React.CSSProperties
           }
           value={[temperature]}
