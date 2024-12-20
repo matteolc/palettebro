@@ -21,15 +21,6 @@ export default function Page() {
           <Button asChild size="sm">
             <a href="#blocks">Browse Blocks</a>
           </Button>
-          <Button asChild variant="ghost" size="sm">
-            <a
-              href="https://github.com/shadcn-ui/ui/discussions/new?category=blocks-request"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Request a block
-            </a>
-          </Button>
         </PageActions>
       </PageHeader>
       <div id="blocks" className="border-grid scroll-mt-24 border-b">

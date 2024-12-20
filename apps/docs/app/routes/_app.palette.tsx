@@ -17,12 +17,11 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading>All your color shades</PageHeaderHeading>
         <PageHeaderDescription>
-          Here you can find all the color shades used in the palette. You can
-          copy the color value by clicking on the color.
+          Here you can find all the color shades used in the palette.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <NavLink to="/docs">Get Started</NavLink>
+            <NavLink to="/examples">Examples</NavLink>
           </Button>
           <Button asChild size="sm" variant="ghost">
             <NavLink to="/blocks">Browse Blocks</NavLink>

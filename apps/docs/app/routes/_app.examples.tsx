@@ -10,7 +10,7 @@ export default function Page() {
                 <PageHeaderHeading>Build your component library</PageHeaderHeading>
                 <PageHeaderDescription>
                     Beautifully designed components that you can copy and paste into your
-                    apps. Made with Tailwind CSS. Open source.
+                    apps. Made with Tailwind CSS and Shadcn. Open source.
                 </PageHeaderDescription>
                 <PageActions>
                     <Button asChild size="sm">
