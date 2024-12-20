@@ -383,7 +383,7 @@ export const Isomorph = () => {
       />
       <path
         d="M336 547.145V997.145"
-        stroke="oklch(var(--accent-200))"
+        stroke="oklch(var(--accent-400))"
         strokeWidth="4.26667"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -395,13 +395,13 @@ export const Isomorph = () => {
       />
       <path
         d="M224 1062.07V612.073L448 612.072V1062.07H224Z"
-        fill="oklch(var(--accent-300))"
-        fill-opacity="0.6"
+        fill="oklch(var(--accent-200))"
+        fill-opacity="0.8"
       />
       <path
         d="M448 612.072L336 547.145L224 612.072L448 612.072Z"
-        fill="oklch(var(--accent-300))"
-        fill-opacity="0.6"
+        fill="oklch(var(--accent-200))"
+        fill-opacity="0.8"
       />
       <path
         d="M224 1062.07L336 1127L448 1062.07"
@@ -439,12 +439,12 @@ export const Isomorph = () => {
       />
       <path
         d="M336 596.855L224 531.928L336 402.072L448 531.928L336 596.855Z"
-        fill="oklch(var(--accent-400))"
-        fillOpacity={0.8}
+        fill="oklch(var(--accent-200))"
+        fillOpacity={0.6}
       />
       <path
         d="M336 596.855L224 531.928L336 402.072M336 596.855L448 531.928L336 402.072M336 596.855V402.072"
-        stroke="oklch(var(--accent-400))"
+        stroke="oklch(var(--accent-200))"
         strokeWidth="4"
         strokeLinejoin="round"
       />

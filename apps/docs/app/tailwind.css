@@ -13,19 +13,19 @@
 }
 
 .title-gradient {
-  --tw-gradient-to: oklch(var(--secondary-600)) var(--tw-gradient-to-position);
-  --tw-gradient-from: oklch(var(--primary)) var(--tw-gradient-from-position);
-  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--accent-400))
+  --tw-gradient-to: oklch(var(--secondary-700)) var(--tw-gradient-to-position);
+  --tw-gradient-from: oklch(var(--accent-800)) var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-500))
     var(--tw-gradient-via-position), var(--tw-gradient-to);
   animation: gradient 4s ease infinite;
-  background-size: 300% 300%;
+  background-size: 200% 200%;
 }
 
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
-  20% {
+  50% {
     background-position: 100% 50%;
   }
   100% {

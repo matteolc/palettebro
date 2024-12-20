@@ -33,6 +33,8 @@ const PaletteToolbar = () => {
     key: 'favourites',
   });
 
+  const isGeneratorLoading = generateFetcher.state === 'submitting';
+
   const paletteToColors = Object.entries(palette ?? {}).reduce(
     (acc, [key, value]) => {
       acc[key] = { value: value.color, type: 'color' };
@@ -87,7 +89,7 @@ const PaletteToolbar = () => {
 
   return (
     <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-50">
-      <div className="items-center gap-2 rounded-lg px-2 py-1 hidden md:flex bg-white backdrop-blur-md shadow-lg">
+      <div className="items-center gap-2 rounded-lg px-2 py-1 hidden lg:flex bg-white backdrop-blur-md shadow-lg">
         <div className="flex items-center justify-center text-zinc-900">
           <Form
             noValidate
@@ -203,7 +205,7 @@ const PaletteToolbar = () => {
             </button>
           </Form>
 
-          <PaletteSwatches onLockUnlock={resetGeneratedPalettes} />
+          <PaletteSwatches onLockUnlock={resetGeneratedPalettes} isLoading={isGeneratorLoading}/>
 
           <button
             type="button"
