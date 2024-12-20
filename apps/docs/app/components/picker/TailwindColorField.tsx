@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import colors from 'tailwindcss/colors';
-import { PaletteContext } from '~/PaletteContext';
+import { type BaseColors, PaletteContext } from '~/PaletteContext';
 
 const tailwindColors = [
   'slate',
@@ -30,13 +30,14 @@ export const TailwindColorField = ({ token }: { token: string }) => {
   const { setBaseColors } = useContext(PaletteContext);
 
   const handleColorClick = (color: string) => {
-    setBaseColors?.({ [token]: color } as any);
+    setBaseColors?.({ [token]: color } as BaseColors);
   };
 
   return (
     <div className="grid grid-cols-4 gap-4 my-4">
       {tailwindColors.map((color) => (
         <button
+          type="button"
           key={color}
           className="group relative flex flex-col h-24 rounded-lg overflow-hidden "
           onClick={(e) =>

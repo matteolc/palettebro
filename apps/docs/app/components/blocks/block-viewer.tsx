@@ -169,6 +169,7 @@ function BlockViewerView() {
           >
             <div className="h-[930px] bg-background relative z-20 w-full">
               <iframe
+                title="Page Preview"
                 src={`/view/${item.name}`}
                 height={item.meta?.iframeHeight ?? 930}
                 className="relative z-20 w-full bg-background"

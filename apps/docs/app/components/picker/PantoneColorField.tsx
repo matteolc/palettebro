@@ -1,18 +1,19 @@
 import { useContext } from 'react';
-import { PaletteContext } from '~/PaletteContext';
+import { type BaseColors, PaletteContext } from '~/PaletteContext';
 import pantoneColors from './pantone-numbers.json';
 
 export const PantoneColorField = ({ token }: { token: string }) => {
   const { setBaseColors } = useContext(PaletteContext);
 
   const handleColorClick = (hex: string) => {
-    setBaseColors?.({ [token]: `#${hex}` } as any);
+    setBaseColors?.({ [token]: `#${hex}` } as BaseColors);
   };
 
   return (
     <div className="grid grid-cols-4 gap-4 my-4">
       {Object.keys(pantoneColors).map((key: string) => (
         <button
+          type="button"
           key={key}
           onClick={() =>
             handleColorClick(

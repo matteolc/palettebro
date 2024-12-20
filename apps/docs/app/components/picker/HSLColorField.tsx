@@ -48,6 +48,7 @@ const HSLColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
     [onChange],
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     debouncedOnChange(hslToSchemist({ h, s, l }));
     return () => {

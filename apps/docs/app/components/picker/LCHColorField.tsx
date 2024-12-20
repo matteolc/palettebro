@@ -48,6 +48,7 @@ const LCHColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
     [onChange],
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     debouncedOnChange(lchToSchemist({ h, c, l }));
     return () => {

@@ -49,6 +49,7 @@ const RGBColorField: FC<CSSColorPickerProps> = ({ value, onChange }) => {
     [onChange],
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     debouncedOnChange(rgbToSchemist({ r, g, b }));
     return () => {

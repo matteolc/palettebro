@@ -7,8 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "include": ["apps/**/*", "packages/**/*.tsx"],
-    "ignore": ["node_modules", "dist/**", "apps/**/build/**", "packages/**/dist/**", "apps/**/node_modules", "packages/**/node_modules"]
+    "ignore": ["node_modules", "dist/**"]
   },
   "formatter": {
     "enabled": true,
@@ -21,9 +20,70 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "recommended": true,
       "a11y": {
-        "useValidAnchor": "info"
+        "noAccessKey": "error",
+        "noAriaUnsupportedElements": "error",
+        "noAutofocus": "error",
+        "noBlankTarget": "error",
+        "noDistractingElements": "error",
+        "noHeaderScope": "error",
+        "noInteractiveElementToNoninteractiveRole": "error",
+        "noLabelWithoutControl": "error",
+        "noNoninteractiveElementToInteractiveRole": "error",
+        "noNoninteractiveTabindex": "error",
+        "noPositiveTabindex": "error",
+        "noSvgWithoutTitle": "off",
+        "noRedundantAlt": "error",
+        "noRedundantRoles": "error",
+        "useAltText": "error",
+        "useAnchorContent": "error",
+        "useAriaActivedescendantWithTabindex": "error",
+        "useAriaPropsForRole": "error",
+        "useButtonType": "warn",
+        "useFocusableInteractive": "error",
+        "useHeadingContent": "error",
+        "useHtmlLang": "error",
+        "useIframeTitle": "error",
+        "useKeyWithClickEvents": "error",
+        "useKeyWithMouseEvents": "error",
+        "useMediaCaption": "error",
+        "useValidAnchor": "off",
+        "useValidAriaProps": "error",
+        "useValidAriaRole": "error",
+        "useValidAriaValues": "error"
+      },
+      "complexity": { "noUselessFragments": "warn" },
+      "correctness": {
+        "noChildrenProp": "error",
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error",
+        "useJsxKeyInIterable": "error"
+      },
+      "security": { "noDangerouslySetInnerHtmlWithChildren": "error" },
+      "style": {
+        "noDefaultExport": "off",
+        "useBlockStatements": "off",
+        "useFragmentSyntax": "warn"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "warn",
+        "noCommentText": "error",
+        "noDuplicateJsxProps": "error"
       }
+    },
+    "ignore": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/*.css"
+    ]
+  },
+  "javascript": {
+    "globals": ["JSX"],
+    "formatter": {
+      "quoteStyle": "single"
     }
-  }
+  },
+  "overrides": [{ "include": ["*.ts?(x)"] }]
 }
