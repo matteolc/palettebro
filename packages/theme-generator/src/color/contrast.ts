@@ -1,11 +1,11 @@
-import { APCAcontrast, sRGBtoY } from "apca-w3";
-import { wcagContrast } from "culori/fn";
-import { rgbToCulori } from "./culori";
-import type { RgbColor } from "./types";
-import { parseColor } from "./parsing";
-import { schemistToRgb } from "./conversion";
+import { APCAcontrast, sRGBtoY } from 'apca-w3';
+import { wcagContrast } from 'culori/fn';
+import { rgbToCulori } from './culori';
+import type { RgbColor } from './types';
+import { parseColor } from './parsing';
+import { schemistToRgb } from './conversion';
 
-export type ContrastType = "wcag2" | "wcag3";
+export type ContrastType = 'wcag2' | 'wcag3';
 
 export enum Wcag2Level {
   aaa = 7,
@@ -41,10 +41,10 @@ const wcag3To2Equivalences = {
 
 export const equivalence = (type: ContrastType, level: number) => {
   switch (type) {
-    case "wcag2":
+    case 'wcag2':
       return wcag3To2Equivalences?.[level as Wcag3Level] ?? level;
 
-    case "wcag3":
+    case 'wcag3':
       return wcag2To3Equivalences?.[level as Wcag2Level] ?? level;
 
     default:
@@ -54,42 +54,68 @@ export const equivalence = (type: ContrastType, level: number) => {
 
 export const wcag2Grade = (level: number) =>
   level >= Wcag2Level.aaa
-    ? "AAA"
+    ? 'AAA'
     : level >= Wcag2Level.aa
-    ? "AA"
-    : level >= Wcag2Level.aa18
-    ? "AA18"
-    : "KO";
+      ? 'AA'
+      : level >= Wcag2Level.aa18
+        ? 'AA18'
+        : 'KO';
 
 export const wcag3Grade = (level: number) =>
   level >= Wcag3Level.all
-    ? "5"
+    ? '5'
     : level >= Wcag3Level.body
-    ? "4"
-    : level >= Wcag3Level.large
-    ? "3"
-    : level >= Wcag3Level.text
-    ? "2"
-    : level >= Wcag3Level.nonText
-    ? "1"
-    : "0";
+      ? '4'
+      : level >= Wcag3Level.large
+        ? '3'
+        : level >= Wcag3Level.text
+          ? '2'
+          : level >= Wcag3Level.nonText
+            ? '1'
+            : '0';
 
-export const wcag2Contrast = (bg: RgbColor, fg: RgbColor) =>
-  wcagContrast(rgbToCulori(bg), rgbToCulori(fg));
+export const wcag2Contrast = (bg: string, fg: string) => {
+  const [_, bgColor] = parseColor(bg);
+  const [__, fgColor] = parseColor(fg);
 
-export const wcag3Contrast = (bg: RgbColor, fg: RgbColor) => {
-  const { r: bgR, g: bgG, b: bgB } = bg;
-  const { r: fgR, g: fgG, b: fgB } = fg;
+  if (!bgColor || !fgColor) return undefined;
+
+  return wcagContrast(
+    rgbToCulori(schemistToRgb(bgColor)),
+    rgbToCulori(schemistToRgb(fgColor)),
+  );
+};
+
+export const wcag2ContrastGrade = (bg: string, fg: string) => {
+  const contrast = wcag2Contrast(bg, fg);
+  if (!contrast) return 'KO';
+
+  return wcag2Grade(contrast);
+};
+
+export const wcag3Contrast = (bg: string, fg: string) => {
+  const [_, bgColor] = parseColor(bg);
+  const [__, fgColor] = parseColor(fg);
+
+  if (!bgColor || !fgColor) return 0;
+
+  const { r: bgR, g: bgG, b: bgB } = schemistToRgb(bgColor);
+  const { r: fgR, g: fgG, b: fgB } = schemistToRgb(fgColor);
 
   return Math.abs(
-    APCAcontrast(sRGBtoY([fgR, fgG, fgB]), sRGBtoY([bgR, bgG, bgB])) as number
+    APCAcontrast(sRGBtoY([fgR, fgG, fgB]), sRGBtoY([bgR, bgG, bgB])) as number,
   );
+};
+
+export const wcag3ContrastGrade = (bg: string, fg: string) => {
+  const contrast = wcag3Contrast(bg, fg);
+  return wcag3Grade(contrast);
 };
 
 export const isDark = (color: string) => {
   const [_, parsedColor] = parseColor(color);
   if (!parsedColor) return false;
-  
+
   const { r, g, b } = schemistToRgb(parsedColor);
   return (r * 299 + g * 587 + b * 114) / 1000 < 128;
-}
+};

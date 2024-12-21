@@ -1,13 +1,12 @@
-import defs, { generateName } from "./nodes";
-import type { PresetNode } from "./presets/types";
-import type { Args, NodeDef, Param } from "./nodes/types";
-import { range } from "./utils/generators";
-import { interval } from "./utils/math";
-import type { SchemistColor } from "./color/types";
-import { formatRgbToHex } from "./color/formatting";
-import { schemistToRgb } from "./color/conversion";
-import nearestColor from "./color/nearest";
-import { isDark } from "./color/contrast";
+import defs, { generateName } from './nodes';
+import type { PresetNode } from './presets/types';
+import type { Args, NodeDef, Param } from './nodes/types';
+import { range } from './utils/generators';
+import { interval } from './utils/math';
+import type { SchemistColor } from './color/types';
+import { formatRgbToHex } from './color/formatting';
+import { schemistToRgb } from './color/conversion';
+import nearestColor from './color/nearest';
 
 export const sample = (def: NodeDef, color: SchemistColor, ratio?: number) =>
   def.apply(
@@ -15,11 +14,11 @@ export const sample = (def: NodeDef, color: SchemistColor, ratio?: number) =>
     Object.fromEntries(
       def.params.map((param) => [
         param.name,
-        ratio !== undefined && param.type === "range"
+        ratio !== undefined && param.type === 'range'
           ? interval(param.min, param.max, ratio)
           : param.default,
-      ])
-    )
+      ]),
+    ),
   );
 
 export const samples = (def: NodeDef, color: SchemistColor, count: number) =>
@@ -28,33 +27,33 @@ export const samples = (def: NodeDef, color: SchemistColor, count: number) =>
 export const paramSample = (
   def: NodeDef,
   args: Args,
-  paramName: Param["name"],
+  paramName: Param['name'],
   color: SchemistColor,
-  ratio: number
+  ratio: number,
 ) =>
   def.apply(
     color,
     Object.fromEntries(
       def.params.map((param) => [
         param.name,
-        param.name === paramName && param.type === "range"
+        param.name === paramName && param.type === 'range'
           ? interval(param.min, param.max, ratio)
           : param.name in args
-          ? args[param.name]
-          : param.default,
-      ])
-    )
+            ? args[param.name]
+            : param.default,
+      ]),
+    ),
   );
 
 export const paramSamples = (
   def: NodeDef,
   args: Args,
-  paramName: Param["name"],
+  paramName: Param['name'],
   color: SchemistColor,
-  count: number
+  count: number,
 ) =>
   range(count).map((_, i) =>
-    paramSample(def, args, paramName, color, i / (count - 1))
+    paramSample(def, args, paramName, color, i / (count - 1)),
   );
 
 export const presetSample = (def: NodeDef, color: SchemistColor, args?: Args) =>
@@ -64,8 +63,8 @@ export const presetSample = (def: NodeDef, color: SchemistColor, args?: Args) =>
       def.params.map(({ name, default: d }) => [
         name,
         args && name in args ? args[name] : d,
-      ])
-    )
+      ]),
+    ),
   );
 
 export const presetSamples = (nodes: PresetNode[], color: SchemistColor) =>
@@ -88,7 +87,7 @@ export const presetSamples = (nodes: PresetNode[], color: SchemistColor) =>
 export const presetSamplesWithKeyAndName = (
   nodes: PresetNode[],
   color: SchemistColor,
-  parentToken?: string
+  parentToken?: string,
 ) => {
   return nodes.flatMap(({ type, args, children, isHidden, token }) => {
     const def = defs[type];
@@ -110,13 +109,14 @@ export const presetSamplesWithKeyAndName = (
 };
 
 export const presetSampleWithKeyAndNameHash = (
-  samples: [string, string, SchemistColor][]
+  samples: [string, string, SchemistColor][],
 ) =>
   Object.fromEntries(
     samples.map(([key, name, color]) => [
       key,
       { name, color: formatRgbToHex(schemistToRgb(color)) },
-    ])
+    ]),
   );
 
-export { nearestColor, isDark };
+export { nearestColor };
+export * from './color/contrast';

@@ -1,5 +1,5 @@
 import { StructuredOutputParser } from '@langchain/core/output_parsers';
-import { ChatPromptTemplate, PromptTemplate } from '@langchain/core/prompts';
+import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableSequence } from '@langchain/core/runnables';
 import { z } from 'zod';
 import { ChatOpenAIClient } from '~/openai.server';
@@ -10,7 +10,9 @@ export const getGeneratorChain = () => {
   });
 
   const parser = StructuredOutputParser.fromZodSchema(zodSchema);
-  const { llm } = new ChatOpenAIClient({});
+  const { llm } = new ChatOpenAIClient({
+    temperature: 1.2,
+  });
 
   const chain = RunnableSequence.from([
     ChatPromptTemplate.fromTemplate(

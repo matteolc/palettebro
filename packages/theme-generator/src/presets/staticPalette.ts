@@ -1,30 +1,36 @@
-import negative from "../nodes/negative";
-import saturation from "../nodes/saturation";
-import type { Preset } from "./types";
-import informative from "../nodes/informative";
-import positive from "../nodes/positive";
-import warning from "../nodes/warning";
-import tailwindScaleLight from "./tailwindScaleLight";
-import tetradLeft from "../nodes/tetradLeft";
-import tetradRight from "../nodes/tetradRight";
-import highlight from "../nodes/highlight";
-import baseLight from "./baseLight";
-import tailwindScaleDark from "./tailwindScaleDark";
-import triadRight from "../nodes/triadRight";
-import triadLeft from "../nodes/triadLeft";
-import splitComplementaryLeft from "../nodes/splitComplementaryLeft";
-import splitComplementaryRight from "../nodes/splitComplementaryRight";
-import staticTones from "./staticTones";
-import lightness from "../nodes/lightness";
-import color from "../nodes/color";
-import { SchemistColor } from "../color/types";
-import states from "./states";
-import contrasting from "../nodes/contrasting";
-import rainbow from "./rainbow";
-import analogous from "../nodes/analogous";
+import negative from '../nodes/negative';
+import saturation from '../nodes/saturation';
+import type { Preset } from './types';
+import informative from '../nodes/informative';
+import positive from '../nodes/positive';
+import warning from '../nodes/warning';
+import tailwindScaleLight from './tailwindScaleLight';
+import tetradLeft from '../nodes/tetradLeft';
+import tetradRight from '../nodes/tetradRight';
+import highlight from '../nodes/highlight';
+import baseLight from './baseLight';
+import tailwindScaleDark from './tailwindScaleDark';
+import triadRight from '../nodes/triadRight';
+import triadLeft from '../nodes/triadLeft';
+import splitComplementaryLeft from '../nodes/splitComplementaryLeft';
+import splitComplementaryRight from '../nodes/splitComplementaryRight';
+import staticTones from './staticTones';
+import lightness from '../nodes/lightness';
+import color from '../nodes/color';
+import type { SchemistColor } from '../color/types';
+import states from './states';
+import contrasting from '../nodes/contrasting';
+import rainbow from './rainbow';
+import analogous from '../nodes/analogous';
 
-export default (options?: { primaryColor?: SchemistColor, saturation?: number, lightness?: number, isDark: boolean, preset: 'split-complementary' | 'tetrad' | 'triad', reverse: boolean }) => {
-
+export default (options?: {
+  primaryColor?: SchemistColor;
+  saturation?: number;
+  lightness?: number;
+  isDark: boolean;
+  preset: 'split-complementary' | 'tetrad' | 'triad';
+  reverse: boolean;
+}) => {
   const lightNodes = [
     ...staticTones.nodes,
     ...states.nodes,
@@ -40,45 +46,49 @@ export default (options?: { primaryColor?: SchemistColor, saturation?: number, l
   const shadeNodes = options?.isDark ? darkNodes : lightNodes;
 
   const secondaryNode = {
-    token: "secondary",
+    token: 'secondary',
     children: shadeNodes,
     type: '',
-  }
+  };
   if (options?.preset === 'split-complementary') {
-    secondaryNode["type"] = options?.reverse ? splitComplementaryRight.type : splitComplementaryLeft.type;
+    secondaryNode.type = options?.reverse
+      ? splitComplementaryRight.type
+      : splitComplementaryLeft.type;
   } else if (options?.preset === 'tetrad') {
-    secondaryNode["type"] = options?.reverse ? tetradRight.type : tetradLeft.type;
+    secondaryNode.type = options?.reverse ? tetradRight.type : tetradLeft.type;
   } else {
-    secondaryNode["type"] = options?.reverse ? triadRight.type : triadLeft.type;
+    secondaryNode.type = options?.reverse ? triadRight.type : triadLeft.type;
   }
 
   const accentNode = {
-    token: "accent",
+    token: 'accent',
     children: shadeNodes,
     type: '',
-  }
+  };
   if (options?.preset === 'split-complementary') {
-    accentNode["type"] = options?.reverse ? splitComplementaryLeft.type : splitComplementaryRight.type;
+    accentNode.type = options?.reverse
+      ? splitComplementaryLeft.type
+      : splitComplementaryRight.type;
   } else if (options?.preset === 'tetrad') {
-    accentNode["type"] = options?.reverse ? tetradLeft.type : tetradRight.type;
+    accentNode.type = options?.reverse ? tetradLeft.type : tetradRight.type;
   } else {
-    accentNode["type"] = options?.reverse ? triadLeft.type : triadRight.type;
+    accentNode.type = options?.reverse ? triadLeft.type : triadRight.type;
   }
 
   return {
-    label: "Spot palette",
-    description: "A static palette with a primary color",
-    nodes: [    
+    label: 'Spot palette',
+    description: 'A static palette with a primary color',
+    nodes: [
       {
         type: color.type,
         isHidden: false,
-        token: "primary",
+        token: 'primary',
         args: {
           color: options?.primaryColor,
         },
         children: [
-          ...shadeNodes,   
-          ...rainbow.nodes,        
+          ...shadeNodes,
+          ...rainbow.nodes,
           secondaryNode,
           accentNode,
           {
@@ -92,7 +102,7 @@ export default (options?: { primaryColor?: SchemistColor, saturation?: number, l
               {
                 type: highlight.type,
                 isHidden: false,
-                token: "neutral",
+                token: 'neutral',
                 args: {
                   amount: 5,
                 },
@@ -102,25 +112,25 @@ export default (options?: { primaryColor?: SchemistColor, saturation?: number, l
           },
           {
             type: negative.type,
-            token: "error",
+            token: 'error',
             isHidden: false,
             children: shadeNodes,
           },
           {
             type: informative.type,
-            token: "info",
+            token: 'info',
             isHidden: false,
             children: shadeNodes,
           },
           {
             type: positive.type,
-            token: "success",
+            token: 'success',
             isHidden: false,
             children: shadeNodes,
           },
           {
             type: warning.type,
-            token: "warning",
+            token: 'warning',
             isHidden: false,
             children: shadeNodes,
           },

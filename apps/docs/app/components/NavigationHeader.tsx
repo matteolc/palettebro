@@ -25,10 +25,10 @@ const NavigationHeader = () => {
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       className={clsx(
-        'left-0 py-1 fixed inset-x-3 top-4 z-50 mx-auto flex justify-center overflow-hidden rounded-lg border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform',
+        'py-1 max-w-2xl fixed inset-x-3 top-4 z-50 mx-auto flex justify-center overflow-hidden rounded-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform',
         isScrolled
-          ? 'max-w-3xl border-neutral-200/60 bg-background/95 shadow-xl shadow-black/5'
-          : 'border-transparent bg-white/0',
+          ? 'bg-background/95 lg:max-w-3xl lg:border-neutral-200/60 lg:bg-background/95 lg:shadow-xl lg:shadow-black/5 lg:border '
+          : 'lg:max-w-full bg-white/0',
       )}
     >
       <div
@@ -44,7 +44,7 @@ const NavigationHeader = () => {
               🌈 Palettebruh
             </h2>
           </Link>
-          <div className="flex gap-4 items-center">
+          <div className="hidden lg:flex gap-4 items-center">
             <ul className="flex gap-x-2 text-lg font-semibold items-center bg-primary/10 px-2 py-0.5 rounded-lg border border-primary-400/10">
               {['palette', 'examples', 'blocks'].map((item) => (
                 <NavLink

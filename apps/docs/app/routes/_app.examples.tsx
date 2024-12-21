@@ -12,10 +12,10 @@ export default function Page() {
   return (
     <>
       <PageHeader>
-        <PageHeaderHeading>Build your component library</PageHeaderHeading>
+        <PageHeaderHeading>Example component library</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps. Made with Tailwind CSS and Shadcn. Open source.
+          A collection of components made with <a href="https://ui.shadcn.com">shadcn/ui</a>{' '}
+          themed with <a href="https://ui.shadcn.com/docs/theming#css-variables">CSS variables</a>.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
