@@ -17,7 +17,7 @@ export default function Page() {
           </PaletteToolbarProvider>
         </main>
         <footer className="w-full max-w-7xl mx-auto p-10 flex justify-center">
-          <span className="text-sm" style={{ color: 'var(--neutral-500)' }}>
+          <span className="text-sm text-neutral-500">
             Made with ❤️ by <a href="https://github.com/matteolc">matteolc</a>
           </span>
         </footer>
