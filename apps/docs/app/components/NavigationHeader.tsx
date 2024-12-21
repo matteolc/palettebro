@@ -25,7 +25,7 @@ const NavigationHeader = () => {
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       className={clsx(
-        'py-1 max-w-2xl fixed inset-x-3 top-4 z-50 mx-auto flex justify-center overflow-hidden rounded-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform',
+        'left-0 right-0 py-1 max-w-2xl fixed inset-x-3 top-4 z-50 mx-auto flex justify-center overflow-hidden rounded-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform',
         isScrolled
           ? 'bg-background/95 lg:max-w-3xl lg:border-neutral-200/60 lg:bg-background/95 lg:shadow-xl lg:shadow-black/5 lg:border '
           : 'lg:max-w-full bg-white/0',

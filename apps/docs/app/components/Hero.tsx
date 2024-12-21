@@ -2,7 +2,7 @@ import { Badge } from './ui/badge';
 
 export const Hero = () => {
   return (
-    <div className="max-w-2xl mx-auto lg:mx-2 mt-20 z-40">
+    <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
       <Badge variant="outline" className="mb-4 text-md rounded-full">
         <span className="relative flex h-3 w-3 mr-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75" />
