@@ -13,7 +13,6 @@ const generateThemeTokens = (input: Theme) => {
     });
   }
 
-  // add css variables
   for (const item of Object.entries(DEFAULT_UTILITY_VALUES)) {
     const [variable, value] = item;
     if (!Object.hasOwn(input, variable)) {
@@ -21,7 +20,6 @@ const generateThemeTokens = (input: Theme) => {
     }
   }
 
-  console.dir(result, { depth: null });
   return result;
 };
 

@@ -1,11 +1,11 @@
-import pc from "picocolors";
-import plugin from "tailwindcss/plugin";
+import pc from 'picocolors';
+import plugin from 'tailwindcss/plugin';
 
-import { version } from "../package.json";
-import { injectThemes } from "./theming/inject-themes";
-import { themes } from "./themes";
-import { utilities } from "./utilities";
-import { PALETTE_COLORS, SHADCN_COLOR_UTILITIES } from "./theming/const";
+import { version } from '../package.json';
+import { injectThemes } from './theming/inject-themes';
+import { themes } from './themes';
+import { utilities } from './utilities';
+import { PALETTE_COLORS, SHADCN_COLOR_UTILITIES } from './theming/const';
 
 type PluginOptions = {
   themes: boolean | string[];
@@ -19,24 +19,24 @@ export default plugin.withOptions(
       addBase,
       addUtilities,
     }: {
-      // biome-ignore lint/suspicious/noExplicitAny: TODO: fix this
+      // biome-ignore lint/suspicious/noExplicitAny: No will to type this
       addBase: (...args: any[]) => void;
-      // biome-ignore lint/suspicious/noExplicitAny: TODO: fix this
+      // biome-ignore lint/suspicious/noExplicitAny: No will to type this
       addUtilities: (...args: any[]) => void;
     }) => {
       console.log(
-        "\n",
-        `🏄   ${pc.magenta("@repo/tailwind-theme")} ${pc.dim(version)}`
+        '\n',
+        `🏄   ${pc.magenta('@repo/tailwind-theme')} ${pc.dim(version)}`,
       );
 
       if (options.utils) {
         addUtilities(utilities);
-        console.log(`├─ ${pc.green("✔︎")} ${"Utility classes added"}`, "\n");
+        console.log(`├─ ${pc.green('✔︎')} ${'Utility classes added'}`, '\n');
       }
 
       if (options.themes) {
         injectThemes(addBase, options, themes);
-        console.log(`├─ ${pc.green("✔︎")} ${"Theme classes added"}`, "\n");
+        console.log(`├─ ${pc.green('✔︎')} ${'Theme classes added'}`, '\n');
       }
     },
   () => ({
@@ -48,7 +48,7 @@ export default plugin.withOptions(
         },
       },
     },
-  })
+  }),
 );
 
 export { themes as defaultThemes };

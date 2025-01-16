@@ -7,7 +7,7 @@ import type { Themes } from "@repo/theme-generator/types";
 const THEME_ROOT = ":root";
 
 const injectThemes = (
-  // biome-ignore lint/suspicious/noExplicitAny: TODO:
+  // biome-ignore lint/suspicious/noExplicitAny: No will to type this
   addBase: (...args: any[]) => void,
   options: PluginOptions,
   themes: Themes
@@ -18,7 +18,6 @@ const injectThemes = (
     Object.assign(includedThemes, { [theme]: generateThemeTokens(value) });
   }
 
-  // inject themes in order
   const themesToInject = {};
   DEFAULT_THEMES.forEach((themeName, index) => {
     if (index === 0) {
