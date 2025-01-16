@@ -1,5 +1,4 @@
-import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
-import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
+import { formatSchemistToHex, parseColor } from '@repo/theme-generator';
 import type React from 'react';
 import { useState } from 'react';
 import { Button } from '~/ui/button';
@@ -50,7 +49,7 @@ const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({ value, onChange })
         style={
           {
             '--primary': '14.08% 0.0044 285.82',
-            '--on-primary': '100% 0 0',
+            '--primary-foreground': '100% 0 0',
           } as React.CSSProperties
         }
         onClick={handleSubmit}

@@ -1,5 +1,6 @@
 import { Form, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
+import { generatePaletteName } from '@repo/theme-generator/services/generate-palette-name';
 import type { ActionFunctionArgs, LoaderFunctionArgs } from '@vercel/remix';
 import { z } from 'zod';
 import {
@@ -8,12 +9,8 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import {
-  AnimatedPalette,
-  FavoritePaletteCard,
-} from '~/components/palette/FavouritePaletteCard';
+import { AnimatedPalette } from '~/components/palette/FavouritePaletteCard';
 import { Button } from '~/components/ui/button';
-import { getGeneratorChain } from '~/lib/palette-name-generator';
 import { favouritesCookie } from '~/lib/palette-store';
 
 const paletteSchema = z.object({
@@ -70,14 +67,12 @@ export async function action({ request }: ActionFunctionArgs) {
         });
       }
 
-      const { chain, parser } = getGeneratorChain();
       const { primary, secondary, accent, neutral } = parsed.data;
 
-      const response = await chain.invoke({
-        question: 'Please generate a name for this color palette.',
-        format_instructions: parser.getFormatInstructions(),
-        primary_color: primary,
-        secondary_color: secondary,
+      const response = await generatePaletteName({
+        primary,
+        secondary,
+        accent,
       });
 
       cookie.palettes = [

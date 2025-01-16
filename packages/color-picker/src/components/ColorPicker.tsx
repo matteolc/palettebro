@@ -1,6 +1,4 @@
-import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/color/formatting';
-import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
-import type { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
+import { formatSchemistToHex, parseColor } from '@repo/theme-generator';
 import type { FC } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/ui/tabs';
 import type { ColorPickerProps } from '~/types';
@@ -9,13 +7,6 @@ import { tabs } from '~/const';
 const ColorPicker: FC<ColorPickerProps> = ({ value, onChange }) => {
   const [colorFormat, schemistColor] = parseColor(value);
   if (!schemistColor || !colorFormat) return null;
-
-  const handleChange = (color: SchemistColor) =>
-    onChange(formatSchemistToHex(color));
-
-  const handleColorChange = (color: string) => {
-    onChange(color);
-  };
 
   return (
     <div className="h-[30.5rem]">
@@ -35,12 +26,12 @@ const ColorPicker: FC<ColorPickerProps> = ({ value, onChange }) => {
         {tabs.map(({ value, type, component: Component }) => (
           <TabsContent key={value} value={value}>
             {type === 'string' ? (
-              <Component type="string" onChange={handleColorChange} />
+              <Component type="string" onChange={onChange} />
             ) : (
               <Component
                 type="schemist"
                 value={schemistColor}
-                onChange={handleChange}
+                onChange={(color) => onChange(formatSchemistToHex(color))}
               />
             )}
           </TabsContent>

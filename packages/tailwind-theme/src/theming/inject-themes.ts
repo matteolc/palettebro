@@ -1,5 +1,5 @@
 import pc from "picocolors";
-import { generateThemeColors } from "./generate-theme-colors";
+import { generateThemeTokens } from "./generate-theme-tokens";
 import { DEFAULT_THEMES } from "./const";
 import type { PluginOptions } from "..";
 import type { Themes } from "@repo/theme-generator/types";
@@ -15,7 +15,7 @@ const injectThemes = (
   const includedThemes = {};
 
   for (const [theme, value] of Object.entries(themes)) {
-    Object.assign(includedThemes, { [theme]: generateThemeColors(value) });
+    Object.assign(includedThemes, { [theme]: generateThemeTokens(value) });
   }
 
   // inject themes in order
@@ -59,22 +59,13 @@ const injectThemes = (
       themesToInject[
         `[data-theme=${DEFAULT_THEMES[0]}]` as keyof typeof themesToInject
       ] = includedThemes[DEFAULT_THEMES[0] as keyof typeof includedThemes];
-      themesToInject[
-        `${THEME_ROOT}:has(input.theme-controller[value=${DEFAULT_THEMES[0]}]:checked)` as keyof typeof themesToInject
-      ] = includedThemes[DEFAULT_THEMES[0] as keyof typeof includedThemes];
       // theme 1 with name
       themesToInject[
         `[data-theme=${DEFAULT_THEMES[1]}]` as keyof typeof themesToInject
       ] = includedThemes[DEFAULT_THEMES[1] as keyof typeof includedThemes];
-      themesToInject[
-        `${THEME_ROOT}:has(input.theme-controller[value=${DEFAULT_THEMES[1]}]:checked)` as keyof typeof themesToInject
-      ] = includedThemes[DEFAULT_THEMES[1] as keyof typeof includedThemes];
     } else {
       themesToInject[
         `[data-theme=${themeName}]` as keyof typeof themesToInject
-      ] = includedThemes[themeName as keyof typeof includedThemes];
-      themesToInject[
-        `${THEME_ROOT}:has(input.theme-controller[value=${themeName}]:checked)` as keyof typeof themesToInject
       ] = includedThemes[themeName as keyof typeof includedThemes];
     }
   });

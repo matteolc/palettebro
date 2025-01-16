@@ -1,4 +1,20 @@
 // @see https://github.com/akx/gradient/blob/master/src/culori.d.ts
+declare module "culori" {
+  export namespace Culori {
+
+
+    export interface Oklch extends Color {
+      mode: "oklch";
+      l: number;
+      c: number;
+      h: number;
+      alpha?: number;
+    }
+  }
+
+  export function oklch(color: string): Culori.Oklch | null;
+}
+
 declare module "culori/fn" {
   export namespace Culori {
     export interface Hsl extends Color {

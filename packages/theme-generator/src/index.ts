@@ -120,3 +120,8 @@ export const presetSampleWithKeyAndNameHash = (
 
 export { nearestColor };
 export * from './color/contrast';
+export * from './color/formatting';
+export * from './color/parsing';
+export * from './color/conversion';
+export * from './utils/css';
+export * from './utils/generators';

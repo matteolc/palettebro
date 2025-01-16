@@ -2,10 +2,10 @@ import pc from "picocolors";
 import plugin from "tailwindcss/plugin";
 
 import { version } from "../package.json";
-import { themeColors } from "./theming/theme-colors";
 import { injectThemes } from "./theming/inject-themes";
 import { themes } from "./themes";
 import { utilities } from "./utilities";
+import { PALETTE_COLORS, SHADCN_COLOR_UTILITIES } from "./theming/const";
 
 type PluginOptions = {
   themes: boolean | string[];
@@ -34,13 +34,17 @@ export default plugin.withOptions(
         console.log(`├─ ${pc.green("✔︎")} ${"Utility classes added"}`, "\n");
       }
 
-      injectThemes(addBase, options, themes);
+      if (options.themes) {
+        injectThemes(addBase, options, themes);
+        console.log(`├─ ${pc.green("✔︎")} ${"Theme classes added"}`, "\n");
+      }
     },
   () => ({
     theme: {
       extend: {
         colors: {
-          ...themeColors,
+          ...SHADCN_COLOR_UTILITIES,
+          ...PALETTE_COLORS,
         },
       },
     },

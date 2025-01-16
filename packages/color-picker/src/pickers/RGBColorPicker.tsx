@@ -1,9 +1,9 @@
 import {
   rgbToSchemist,
   schemistToRgb,
-} from 'node_modules/@repo/theme-generator/src/color/conversion';
-import { continuousGradient } from 'node_modules/@repo/theme-generator/src/utils/css';
-import { range } from 'node_modules/@repo/theme-generator/src/utils/generators';
+  continuousGradient,
+  range,
+} from '@repo/theme-generator';
 import { type FC, useMemo, useState } from 'react';
 import type { SchemistBasedPickerProps } from '~/types';
 import { BaseColorPicker } from '~/components';
@@ -39,29 +39,29 @@ const RGBColorPicker: FC<SchemistBasedPickerProps> = ({ value, onChange }) => {
   );
 
   const sliderConfig = [
-    { 
-      label: 'Red', 
-      value: r, 
-      setValue: setR, 
+    {
+      label: 'Red',
+      value: r,
+      setValue: setR,
       gradient: gradients.r,
       max: 255,
-      unit: ''
+      unit: '',
     },
-    { 
-      label: 'Green', 
-      value: g, 
-      setValue: setG, 
+    {
+      label: 'Green',
+      value: g,
+      setValue: setG,
       gradient: gradients.g,
       max: 255,
-      unit: ''
+      unit: '',
     },
-    { 
-      label: 'Blue', 
-      value: b, 
-      setValue: setB, 
+    {
+      label: 'Blue',
+      value: b,
+      setValue: setB,
       gradient: gradients.b,
       max: 255,
-      unit: ''
+      unit: '',
     },
   ];
 

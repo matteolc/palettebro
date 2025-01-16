@@ -1,9 +1,9 @@
 import {
   lchToSchemist,
   schemistToLch,
-} from 'node_modules/@repo/theme-generator/src/color/conversion';
-import { continuousGradient } from 'node_modules/@repo/theme-generator/src/utils/css';
-import { range } from 'node_modules/@repo/theme-generator/src/utils/generators';
+  continuousGradient,
+  range,
+} from '@repo/theme-generator';
 import React, { useMemo } from 'react';
 import type { SchemistBasedPickerProps } from '~/types';
 import { BaseColorPicker } from '~/components';

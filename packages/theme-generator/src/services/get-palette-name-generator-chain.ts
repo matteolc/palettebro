@@ -2,7 +2,7 @@ import { StructuredOutputParser } from '@langchain/core/output_parsers';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableSequence } from '@langchain/core/runnables';
 import { z } from 'zod';
-import { ChatOpenAIClient } from '~/openai.server';
+import { ChatOpenAIClient } from './openai';
 
 export const getGeneratorChain = () => {
   const zodSchema = z.object({
