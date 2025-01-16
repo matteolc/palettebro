@@ -1,13 +1,12 @@
 import { useContext } from 'react';
-import colors from 'tailwindcss/colors';
 import { PaletteToolbarContext } from '~/PaletteToolbarContext';
 import { sentenceCase } from '~/lib/string';
 import {
   RadioCardGroup,
   RadioCardIndicator,
   RadioCardItem,
-} from '../RadioCard';
-import { Slider } from '../ui/slider';
+} from '~/components/RadioCard';
+import { Slider } from '~/components/ui/slider';
 
 export const DynamicPaletteSettings = () => {
   const {
@@ -26,20 +25,6 @@ export const DynamicPaletteSettings = () => {
 
   return (
     <div className="grid grid-cols-2 gap-2">
-      {/* <div>
-            <div className="flex flex-row items-center justify-between text-zinc-950">
-                <div className="text-lg mb-2 font-bold">Profile</div>
-            </div>
-            <RadioCardGroup value={profile} onValueChange={setProfile} className="text-lg mb-4">
-                {["transformer", "diffusion", "creative"].map((p) => (
-                    <RadioCardItem key={p} value={p} className="flex items-center gap-3 py-2 text-zinc-950">
-                        <RadioCardIndicator />
-                        <span>{sentenceCase(p.split("-").join(" "))}</span>
-                    </RadioCardItem>
-                ))}
-            </RadioCardGroup>
-        </div> */}
-
       <div>
         <div className="flex flex-row items-center justify-between text-zinc-950">
           <div className="text-lg mb-2 font-bold">Preset</div>

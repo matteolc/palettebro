@@ -1,32 +1,25 @@
-import { NavLink } from '@remix-run/react';
 import {
-  PageActions,
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from '~/components/PageHeader';
-import { ExamplesNav } from '~/components/examples/examples-nav';
-import { CardsActivityGoal } from '~/components/shadcn/CardsActivityGoal';
-import { CardsAlert } from '~/components/shadcn/CardsAlert';
-import { CardsAreaChart } from '~/components/shadcn/CardsAreaChart';
-import { CardsAreaChartIteractive } from '~/components/shadcn/CardsAreaChartInteractive';
-import { CardsCalendar } from '~/components/shadcn/CardsCalendar';
-import { CardsChat } from '~/components/shadcn/CardsChat';
-import { CardsCookieSettings } from '~/components/shadcn/CardsCookieSettings';
-import { CardsCreateAccount } from '~/components/shadcn/CardsCreateAccount';
-import { CardsDataTable } from '~/components/shadcn/CardsDataTable';
-import { CardsMetric } from '~/components/shadcn/CardsMetric';
-import { CardsNotifications } from '~/components/shadcn/CardsNotifications';
-import { CardsPaymentMethod } from '~/components/shadcn/CardsPaymentMethod';
-import { CardsProduct } from '~/components/shadcn/CardsProduct';
-import { CardsProductOutOfStock } from '~/components/shadcn/CardsProductOutOfStock';
-import { CardsReportIssue } from '~/components/shadcn/CardsReportIssue';
-import { CardsShare } from '~/components/shadcn/CardsShare';
-import { CardsStats } from '~/components/shadcn/CardsStats';
-import { CardsTeamMembers } from '~/components/shadcn/CardsTeamMembers';
-import { CardsTrendingChart } from '~/components/shadcn/CardsTrendingChart';
-import { CardsTrendingStackedChart } from '~/components/shadcn/CardsTrendingStackedChart';
-import { Button } from '~/components/ui/button';
+  CardsActivityGoal,
+  CardsAlert,
+  CardsAreaChart,
+  CardsAreaChartIteractive,
+  CardsCalendar,
+  CardsChat,
+  CardsCookieSettings,
+  CardsCreateAccount,
+  CardsDataTable,
+  CardsMetric,
+  CardsNotifications,
+  CardsPaymentMethod,
+  CardsProduct,
+  CardsProductOutOfStock,
+  CardsReportIssue,
+  CardsShare,
+  CardsStats,
+  CardsTeamMembers,
+  CardsTrendingChart,
+  CardsTrendingStackedChart,
+} from '~/components/examples/cards';
 
 export default function Page() {
   return (

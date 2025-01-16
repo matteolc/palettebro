@@ -12,7 +12,7 @@ import {
 } from '~/components/palette/PaletteToolbar';
 import { TokenColorPalette } from '~/components/palette/TokenColorPalette';
 import { Button } from '~/components/ui/button';
-import { loader as favouritesLoader } from '~/routes/kfavourites';
+import { loader as favouritesLoader } from '~/routes/favourites';
 
 export const loader = favouritesLoader;
 

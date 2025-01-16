@@ -2,11 +2,11 @@ import { formatSchemistToHex } from 'node_modules/@repo/theme-generator/src/colo
 import { parseColor } from 'node_modules/@repo/theme-generator/src/color/parsing';
 import type React from 'react';
 import { useState } from 'react';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import type { CSSColorPickerProps } from './ColorField';
+import { Button } from '~/ui/button';
+import { Input } from '~/ui/input';
+import type { SchemistBasedPickerProps } from '~/types';
 
-const CSSColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
+const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({ value, onChange }) => {
   const [formattedValue, setFormattedValue] = useState(
     formatSchemistToHex(value),
   );
@@ -16,7 +16,6 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
     const [format, color] = parseColor(formattedValue);
 
     if (format && color) {
-      console.dir({ formattedValue, color }, { depth: null });
       onChange(color);
     } else {
       setError('Invalid color format');
@@ -62,4 +61,4 @@ const CSSColorField: React.FC<CSSColorPickerProps> = ({ value, onChange }) => {
   );
 };
 
-export { CSSColorField };
+export { CSSColorPicker };

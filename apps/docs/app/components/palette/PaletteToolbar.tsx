@@ -12,8 +12,8 @@ import { useContext, useEffect, useState } from 'react';
 import { type BaseColors, PaletteContext } from '~/PaletteContext';
 import { useDownload } from '~/lib/use-download';
 import type { action } from '~/routes/generate';
-import type { action as favouritesAction } from '~/routes/kfavourites';
-import { PaletteToolbarContext } from '../../PaletteToolbarContext';
+import type { action as favouritesAction } from '~/routes/favourites';
+import { PaletteToolbarContext } from '~/PaletteToolbarContext';
 import { PaletteSettings } from './PaletteSettings';
 import { PaletteSwatches } from './PaletteSwatches';
 

@@ -1,12 +1,9 @@
 import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
-import { ColorSwatch } from './ColorSwatch';
-
 import { Form } from '@remix-run/react';
 import { RiCheckLine, RiClipboardLine } from '@remixicon/react';
 import { useContext, useState } from 'react';
 import { PaletteContext } from '~/PaletteContext';
 import { cn } from '~/lib/utils';
-import { Button } from '../ui/button';
 
 interface AnimatedPaletteProps {
   name: string;

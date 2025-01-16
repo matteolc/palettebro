@@ -1,5 +1,6 @@
 import { RiLockLine, RiLockUnlockLine, RiPaletteLine } from '@remixicon/react';
 import { ThemeVariantEnum } from '@repo/theme-generator/types';
+import { ColorPicker } from '@repo/color-picker';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
 import { type BaseColors, PaletteContext } from '~/PaletteContext';
@@ -9,7 +10,6 @@ import {
   PopoverTrigger,
 } from '~/components/ui/popover';
 import { sentenceCase } from '~/lib/string';
-import ColorField from '../picker/ColorField';
 import { TokenShades } from './TokenShades';
 
 export const ColorSwatch = ({
@@ -78,10 +78,10 @@ export const ColorSwatch = ({
                   sideOffset={14}
                   className="w-full bg-white border-neutral-200 p-2.5 shadow-md h-fit overflow-y-scroll"
                 >
-                  <ColorField
+                  <ColorPicker
                     token={token}
                     value={palette[token].color}
-                    onChange={(value) =>
+                    onChange={(value: string) =>
                       palette[token].color !== value &&
                       setBaseColors?.({ [token]: value } as BaseColors)
                     }

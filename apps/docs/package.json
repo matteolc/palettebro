@@ -46,6 +46,7 @@
     "@remixicon/react": "^4.5.0",
     "@repo/tailwind-theme": "workspace:*",
     "@repo/theme-generator": "workspace:*",
+    "@repo/color-picker": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tanstack/react-table": "^8.0.0",
     "@types/culori": "^2.1.1",

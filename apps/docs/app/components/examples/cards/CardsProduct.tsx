@@ -11,6 +11,7 @@ export function CardsProduct() {
     <Card className="space-y-4 shadow rounded-lg p-6">
       <img
         src="/product-1.jpg"
+        // biome-ignore lint/a11y/noRedundantAlt: <explanation>
         alt="Product Image"
         width="500"
         height="500"

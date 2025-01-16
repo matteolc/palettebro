@@ -29,6 +29,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
   const renderStars = (currentRating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
+        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
         key={index}
         color={
           index < currentRating
@@ -53,6 +54,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
           </Badge>
           <img
             src="/product-1.jpg"
+            // biome-ignore lint/a11y/noRedundantAlt: <explanation>
             alt="Product Image"
             width="500"
             height="500"

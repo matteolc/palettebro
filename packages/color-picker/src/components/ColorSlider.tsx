@@ -50,9 +50,9 @@ const Slider = React.forwardRef<
           )}
         />
       </SliderPrimitive.Track>
-      {value?.map((_, index) => (
+      {value?.map((val) => (
         <SliderPrimitive.Thumb
-          key={index}
+          key={`slider-thumb-${val}`}
           className={clsx(
             // base
             'block size-6 shrink-0 rounded-full border-2 shadow transition-all',

@@ -10,7 +10,7 @@ import {
   wcag3Contrast,
   wcag3ContrastGrade,
 } from '@repo/theme-generator';
-import { Badge } from '../ui/badge';
+import { Badge } from '~/components/ui/badge';
 
 const TokenColorPalette = ({ token }: { token: string }) => {
   const { palette } = useContext(PaletteContext);
