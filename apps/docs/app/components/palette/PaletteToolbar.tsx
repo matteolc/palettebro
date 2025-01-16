@@ -35,20 +35,8 @@ const PaletteToolbar = () => {
 
   const isGeneratorLoading = generateFetcher.state === 'submitting';
 
-  const paletteToColors = Object.entries(palette ?? {}).reduce(
-    (acc, [key, value]) => {
-      acc[key] = { value: value.color, type: 'color' };
-      return acc;
-    },
-    {} as Record<string, { value: string; type?: string }>,
-  );
   useDownload(
-    JSON.stringify({
-      colors: {
-        type: 'color',
-        ...paletteToColors,
-      },
-    }),
+    Object.entries(palette ?? {}).map(([key, value]) => `--${key}: ${value.color};`).join('\n')
   );
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -205,7 +193,7 @@ const PaletteToolbar = () => {
             </button>
           </Form>
 
-          <PaletteSwatches onLockUnlock={resetGeneratedPalettes} isLoading={isGeneratorLoading}/>
+          <PaletteSwatches onLockUnlock={resetGeneratedPalettes} isLoading={isGeneratorLoading} />
 
           <button
             type="button"

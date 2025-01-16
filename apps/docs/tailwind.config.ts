@@ -28,7 +28,7 @@ const config: Pick<
         background: 'oklch(var(--primary-50)/<alpha-value>)',
         foreground: 'oklch(var(--neutral-700)/<alpha-value>)',
         card: {
-          DEFAULT: 'oklch(var(--primary-50)/40)',
+          DEFAULT: 'oklch(var(--primary-50))',
           foreground: 'oklch(var(--neutral-700))',
         },
         popover: {

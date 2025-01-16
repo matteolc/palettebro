@@ -8,7 +8,7 @@ export const useDownload = (data: string) => {
 
   function downloadObjectAsJson(e: MouseEvent) {
     if (e.altKey) {
-      const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
+      const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(data)}`;
       const downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute('href', dataStr);
       const name = `palettebruh-${Date.now()}`;
