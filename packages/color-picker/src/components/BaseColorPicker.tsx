@@ -33,12 +33,7 @@ export const BaseColorPicker: React.FC<BaseColorPickerProps> = ({
   );
 
   const handleSliderChange = (config: SliderConfig, newValue: number) => {
-    // Immediately update the state
-    requestAnimationFrame(() => {
-      config.setValue(newValue);
-    });
-
-    // Debounce the color change notification
+    config.setValue(newValue);
     const values = sliderConfig.map((c) => (c === config ? newValue : c.value));
     debouncedOnChange(onColorChange(values));
   };
@@ -64,7 +59,6 @@ export const BaseColorPicker: React.FC<BaseColorPickerProps> = ({
             trackStyle={{ background: config.gradient }}
             max={config.max}
             value={[config.value]}
-            step={1}
             onValueChange={(value: number[]) =>
               handleSliderChange(config, value[0])
             }

@@ -33,14 +33,7 @@ const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({
         <div className="text-lg font-bold mb-2">{formattedValue}</div>
       </div>
       <Input
-        style={
-          {
-            '--neutral-100': '87.11% 0.0055 286.29',
-            '--neutral-200': '91.97% 0.004 286.32',
-          } as React.CSSProperties
-        }
         placeholder="Enter color"
-        className="text-zinc-950"
         id="css-color-picker"
         name="css-color-picker"
         type="text"
@@ -48,17 +41,7 @@ const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({
         onChange={(e) => setFormattedValue(e.target.value.trim())}
       />
       {error && <div className="text-red-500">{error}</div>}
-      <Button
-        style={
-          {
-            '--primary': '14.08% 0.0044 285.82',
-            '--primary-foreground': '100% 0 0',
-          } as React.CSSProperties
-        }
-        onClick={handleSubmit}
-      >
-        Submit
-      </Button>
+      <Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
 };

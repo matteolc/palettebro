@@ -8,8 +8,8 @@ const config: Pick<
   darkMode: 'class',
   content: [
     './app/**/*.tsx',
-    // TODO: remove once built color picker
-    '../../packages/**/*.{js,ts,jsx,tsx}',
+    '../../packages/color-picker/**/*.{js,ts,jsx,tsx}',
+    '../../packages/theme-toolbar/**/*.{js,ts,jsx,tsx}',
     '!../../packages/**/node_modules',
   ],
   variants: {
