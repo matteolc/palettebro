@@ -1,5 +1,5 @@
 import type { LoaderFunctionArgs } from '@vercel/remix';
-import { BASE_TOKENS } from '~/components/palette/PaletteToolbar';
+import { BASE_TOKENS } from '@repo/theme-toolbar';
 
 export async function action({ request }: LoaderFunctionArgs) {
   const formData = await request.formData();

@@ -5,11 +5,8 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import {
-  BASE_TOKENS,
-  STATUS_TOKENS,
-} from '~/components/palette/PaletteToolbar';
-import { TokenColorPalette } from '~/components/palette/TokenColorPalette';
+import { BASE_TOKENS, STATUS_TOKENS } from '@repo/theme-toolbar';
+import { TokenColorPalette } from '@repo/theme-toolbar';
 import { Button } from '~/components/ui/button';
 import { loader as favouritesLoader } from '~/routes/_app.favourites';
 

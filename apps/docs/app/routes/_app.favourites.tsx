@@ -9,7 +9,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import { AnimatedPalette } from '~/components/palette/FavouritePaletteCard';
+import { AnimatedPalette } from '@repo/theme-toolbar';
 import { Button } from '~/components/ui/button';
 import { favouritesCookie } from '~/lib/palette-store';
 

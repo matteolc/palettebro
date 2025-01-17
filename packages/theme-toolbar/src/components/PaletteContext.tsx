@@ -29,14 +29,15 @@ type PaletteContextType = {
 export const PaletteContext = createContext<PaletteContextType>({});
 
 export const PaletteProvider = ({
+  lightOrDark,
   children,
-}: { children: React.ReactNode }) => {
+}: { lightOrDark?: string; children: React.ReactNode }) => {
   const [baseColors, setBaseColorsState] = useState<BaseColors>({
     primary: '#663399',
     secondary: '#7da9c3',
     accent: '#e8d5b5',
   });
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(lightOrDark === 'dark');
   const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.static);
   const [preset, setPreset] = useState<StaticThemePreset>(
     'split-complementary',
