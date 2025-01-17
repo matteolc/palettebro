@@ -20,7 +20,7 @@ export const getPalette = (props: { theme: Theme }) => {
   if (debug) {
     console.log(
       '\n',
-      `🏄   ${picocolors.magenta('@repo/theme-generator')} ${picocolors.dim(
+      `🏄   ${picocolors.magenta('@palettebruh/theme-generator')} ${picocolors.dim(
         version,
       )}`,
     );

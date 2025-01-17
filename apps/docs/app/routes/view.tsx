@@ -1,5 +1,5 @@
 import { Outlet } from '@remix-run/react';
-import { PaletteProvider } from '@repo/theme-toolbar';
+import { PaletteProvider } from '@palettebruh/theme-toolbar';
 import React from 'react';
 
 export default function Page() {

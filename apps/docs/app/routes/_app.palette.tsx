@@ -1,6 +1,6 @@
 import { NavLink } from '@remix-run/react';
-import { BASE_TOKENS, STATUS_TOKENS } from '@repo/theme-toolbar';
-import { TokenColorPalette } from '@repo/theme-toolbar';
+import { BASE_TOKENS, STATUS_TOKENS } from '@palettebruh/theme-toolbar';
+import { TokenColorPalette } from '@palettebruh/theme-toolbar';
 import {
   PageActions,
   PageHeader,

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/theme-toolbar",
+  "name": "@palettebruh/theme-toolbar",
   "version": "0.0.1",
   "private": true,
   "exports": {
@@ -20,8 +20,8 @@
     "@radix-ui/react-tabs": "^1.1.2",
     "@radix-ui/react-radio-group": "^1.2.2",
     "@remixicon/react": "^4.5.0",
-    "@repo/color-picker": "workspace:*",
-    "@repo/theme-generator": "workspace:*",
+    "@palettebruh/color-picker": "workspace:*",
+    "@palettebruh/theme-generator": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.471.1",
@@ -30,8 +30,8 @@
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
-    "@repo/biome-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@palettebruh/biome-config": "workspace:*",
+    "@palettebruh/typescript-config": "workspace:*",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "tailwindcss": "^3.4.14",

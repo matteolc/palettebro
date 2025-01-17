@@ -1,4 +1,4 @@
-import { formatSchemistToHex, parseColor } from '@repo/theme-generator';
+import { formatSchemistToHex, parseColor } from '@palettebruh/theme-generator';
 import type { FC } from 'react';
 import { tabs } from '~/const';
 import type { ColorPickerProps } from '~/types';

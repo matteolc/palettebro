@@ -1,7 +1,7 @@
 import {
   StaticThemePresetEnum,
   type ThemeColorScheme,
-} from '@repo/theme-generator/types';
+} from '@palettebruh/theme-generator/types';
 import colors from 'tailwindcss/colors';
 
 export const getDarkLightDefaultTheme = (theme: ThemeColorScheme) => {

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/color-picker",
+  "name": "@palettebruh/color-picker",
   "version": "0.0.1",
   "private": true,
   "exports": {
@@ -13,8 +13,8 @@
   "devDependencies": {
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-tabs": "^1.1.2",
-    "@repo/biome-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@palettebruh/biome-config": "workspace:*",
+    "@palettebruh/typescript-config": "workspace:*",
     "@types/react": "^18.3.12",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.6.0",
@@ -25,6 +25,6 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "react": "^18.3.1",
-    "@repo/theme-generator": "workspace:*"
+    "@palettebruh/theme-generator": "workspace:*"
   }
 }

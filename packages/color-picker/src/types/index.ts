@@ -1,4 +1,4 @@
-import type { SchemistColor } from '@repo/theme-generator/types';
+import type { SchemistColor } from '@palettebruh/theme-generator/types';
 import type { FC } from 'react';
 
 interface ColorPickerProps {

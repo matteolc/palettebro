@@ -4,8 +4,8 @@ import {
   RiMoonLine,
   RiSunLine,
 } from '@remixicon/react';
-import { formatSchemistToHex, randomUsableColor } from '@repo/theme-generator';
-import { ThemeVariantEnum } from '@repo/theme-generator/types';
+import { formatSchemistToHex, randomUsableColor } from '@palettebruh/theme-generator';
+import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
 import { useContext, useEffect, useState } from 'react';
 import { type BaseColors, PaletteContext } from './PaletteContext';
 import { PaletteSettings } from './PaletteSettings';

@@ -12,7 +12,7 @@ export default defineConfig({
     "react-dom",
     "@radix-ui/*",
     "@remixicon/react",
-    "@repo/color-picker",
-    "@repo/theme-generator"
+    "@palettebruh/color-picker",
+    "@palettebruh/theme-generator"
   ]
 }); 

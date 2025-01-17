@@ -1,5 +1,5 @@
 {
-  "name": "@repo/tailwind-theme",
+  "name": "@palettebruh/tailwind-theme",
   "version": "0.0.1",
   "private": true,
   "exports": {
@@ -15,9 +15,9 @@
   },
   "devDependencies": {
     "@adobe/leonardo-contrast-colors": "1.0.0",
-    "@repo/biome-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/theme-generator": "workspace:*",
+    "@palettebruh/biome-config": "workspace:*",
+    "@palettebruh/typescript-config": "workspace:*",
+    "@palettebruh/theme-generator": "workspace:*",
     "@types/culori": "^2.1.1",
     "chroma-js": "^3.1.2",
     "@types/chroma-js": "^2.4.4",

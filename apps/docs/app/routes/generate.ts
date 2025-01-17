@@ -1,4 +1,4 @@
-import { BASE_TOKENS } from '@repo/theme-toolbar';
+import { BASE_TOKENS } from '@palettebruh/theme-toolbar';
 import type { LoaderFunctionArgs } from '@vercel/remix';
 
 export async function action({ request }: LoaderFunctionArgs) {

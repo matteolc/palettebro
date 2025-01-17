@@ -1,5 +1,5 @@
-import type { Themes } from '@repo/theme-generator/types';
-import { ThemeVariantEnum } from '@repo/theme-generator/types';
+import type { Themes } from '@palettebruh/theme-generator/types';
+import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
 import colors from 'tailwindcss/colors';
 
 export const themes = {

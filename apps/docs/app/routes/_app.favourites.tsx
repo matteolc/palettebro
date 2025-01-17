@@ -1,7 +1,7 @@
 import { Form, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
-import { generatePaletteName } from '@repo/theme-generator/services/generate-palette-name';
-import { AnimatedPalette } from '@repo/theme-toolbar';
+import { generatePaletteName } from '@palettebruh/theme-generator/services/generate-palette-name';
+import { AnimatedPalette } from '@palettebruh/theme-toolbar';
 import type { ActionFunctionArgs, LoaderFunctionArgs } from '@vercel/remix';
 import { z } from 'zod';
 import {

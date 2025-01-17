@@ -1,3 +1,3 @@
 {
-  "extends": ["@repo/biome-config/react"]
+  "extends": ["@palettebruh/biome-config/react"]
 }

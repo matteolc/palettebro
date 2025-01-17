@@ -1,4 +1,4 @@
-import type { Themes } from '@repo/theme-generator/types';
+import type { Themes } from '@palettebruh/theme-generator/types';
 import pc from 'picocolors';
 import type { PluginOptions } from '..';
 import { DEFAULT_THEMES } from './const';

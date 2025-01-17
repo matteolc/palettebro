@@ -18,7 +18,7 @@ const config: Pick<
     },
   },
   plugins: [
-    require('@repo/tailwind-theme')({
+    require('@palettebruh/tailwind-theme')({
       themes: true,
       utils: true,
       darkTheme: 'dark',

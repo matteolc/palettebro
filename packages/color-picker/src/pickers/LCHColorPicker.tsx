@@ -3,7 +3,7 @@ import {
   lchToSchemist,
   range,
   schemistToLch,
-} from '@repo/theme-generator';
+} from '@palettebruh/theme-generator';
 import React, { useMemo } from 'react';
 import { BaseColorPicker } from '~/components';
 import type { SchemistBasedPickerProps } from '~/types';

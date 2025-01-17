@@ -1,10 +1,10 @@
-import { usePalette } from '@repo/theme-generator/palettes';
+import { usePalette } from '@palettebruh/theme-generator/palettes';
 import {
   type StaticThemePreset,
   type ThemeColorScheme,
   type ThemeVariant,
   ThemeVariantEnum,
-} from '@repo/theme-generator/types';
+} from '@palettebruh/theme-generator/types';
 import { getDarkLightDefaultTheme } from './get-dark-light-default-theme';
 
 export const getCustomPalette = (

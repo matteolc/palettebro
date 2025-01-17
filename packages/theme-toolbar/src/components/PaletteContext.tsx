@@ -1,9 +1,9 @@
-import type { usePalette } from '@repo/theme-generator/palettes';
+import type { usePalette } from '@palettebruh/theme-generator/palettes';
 import {
   type StaticThemePreset,
   type ThemeVariant,
   ThemeVariantEnum,
-} from '@repo/theme-generator/types';
+} from '@palettebruh/theme-generator/types';
 import { createContext, useMemo, useState } from 'react';
 import { getCustomPalette } from '../utils/get-custom-palette';
 

@@ -1,5 +1,5 @@
-import { getPalette } from '@repo/theme-generator/palettes';
-import type { Theme } from '@repo/theme-generator/types';
+import { getPalette } from '@palettebruh/theme-generator/palettes';
+import type { Theme } from '@palettebruh/theme-generator/types';
 import { colorToRawOklchString } from '../utils/oklch';
 import { DEFAULT_UTILITY_VALUES } from './const';
 

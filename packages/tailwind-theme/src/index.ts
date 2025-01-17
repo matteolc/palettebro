@@ -26,7 +26,7 @@ export default plugin.withOptions(
     }) => {
       console.log(
         '\n',
-        `🏄   ${pc.magenta('@repo/tailwind-theme')} ${pc.dim(version)}`,
+        `🏄   ${pc.magenta('@palettebruh/tailwind-theme')} ${pc.dim(version)}`,
       );
 
       if (options.utils) {
