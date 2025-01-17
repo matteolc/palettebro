@@ -1,1 +1,1 @@
-export { ColorPicker} from './components';
+export { ColorPicker } from './components';

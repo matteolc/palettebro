@@ -1,12 +1,12 @@
 import {
-  rgbToSchemist,
-  schemistToRgb,
   continuousGradient,
   range,
+  rgbToSchemist,
+  schemistToRgb,
 } from '@repo/theme-generator';
 import { type FC, useMemo, useState } from 'react';
-import type { SchemistBasedPickerProps } from '~/types';
 import { BaseColorPicker } from '~/components';
+import type { SchemistBasedPickerProps } from '~/types';
 
 const RGBColorPicker: FC<SchemistBasedPickerProps> = ({ value, onChange }) => {
   const color = schemistToRgb(value);

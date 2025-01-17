@@ -1,8 +1,8 @@
 import { formatSchemistToHex, parseColor } from '@repo/theme-generator';
 import type { FC } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/ui/tabs';
-import type { ColorPickerProps } from '~/types';
 import { tabs } from '~/const';
+import type { ColorPickerProps } from '~/types';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/ui/tabs';
 
 const ColorPicker: FC<ColorPickerProps> = ({ value, onChange }) => {
   const [colorFormat, schemistColor] = parseColor(value);

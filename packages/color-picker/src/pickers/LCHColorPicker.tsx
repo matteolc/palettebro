@@ -1,12 +1,12 @@
 import {
-  lchToSchemist,
-  schemistToLch,
   continuousGradient,
+  lchToSchemist,
   range,
+  schemistToLch,
 } from '@repo/theme-generator';
 import React, { useMemo } from 'react';
-import type { SchemistBasedPickerProps } from '~/types';
 import { BaseColorPicker } from '~/components';
+import type { SchemistBasedPickerProps } from '~/types';
 
 const LCHColorPicker: React.FC<SchemistBasedPickerProps> = ({
   value,

@@ -1,11 +1,14 @@
 import { formatSchemistToHex, parseColor } from '@repo/theme-generator';
 import type React from 'react';
 import { useState } from 'react';
+import type { SchemistBasedPickerProps } from '~/types';
 import { Button } from '~/ui/button';
 import { Input } from '~/ui/input';
-import type { SchemistBasedPickerProps } from '~/types';
 
-const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({ value, onChange }) => {
+const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({
+  value,
+  onChange,
+}) => {
   const [formattedValue, setFormattedValue] = useState(
     formatSchemistToHex(value),
   );

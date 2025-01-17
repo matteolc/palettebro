@@ -1,5 +1,5 @@
-import pantoneColors from '~/data/pantone-numbers.json';
 import { ColorGrid } from '~/components/ColorGrid';
+import pantoneColors from '~/data/pantone-numbers.json';
 import type { StringBasedPickerProps } from '~/types';
 
 export const PantoneColorPicker: React.FC<StringBasedPickerProps> = ({

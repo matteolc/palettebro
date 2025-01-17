@@ -1,12 +1,12 @@
 import {
-  hslToSchemist,
-  schemistToHsl,
   continuousGradient,
+  hslToSchemist,
   range,
+  schemistToHsl,
 } from '@repo/theme-generator';
 import React, { useMemo } from 'react';
-import type { SchemistBasedPickerProps } from '~/types';
 import { BaseColorPicker } from '~/components';
+import type { SchemistBasedPickerProps } from '~/types';
 
 const HSLColorPicker: React.FC<SchemistBasedPickerProps> = ({
   value,

@@ -1,5 +1,5 @@
-import ralColors from '~/data/ral.json';
 import { ColorGrid } from '~/components/ColorGrid';
+import ralColors from '~/data/ral.json';
 import type { StringBasedPickerProps } from '~/types';
 
 export const RALColorPicker: React.FC<StringBasedPickerProps> = ({
