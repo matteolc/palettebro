@@ -1,7 +1,7 @@
 {
   "name": "@palettebruh/theme-generator",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "exports": {
     "./palettes": "./src/palettes/index.ts",
     "./services/generate-palette-name": "./src/services/generate-palette-name.ts",
@@ -35,5 +35,13 @@
   "peerDependencies": {
     "react": "^18.3.1",
     "@types/react": "^18.3.12"
-  }
+  },
+  "authors": [
+    {
+      "name": "Matteo La Cognata",
+      "email": "matteo.lacognata@nearform.com",
+      "url": "https://github.com/matteolc"
+    }
+  ],
+  "license": "MIT"
 }

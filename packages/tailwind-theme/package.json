@@ -1,7 +1,7 @@
 {
   "name": "@palettebruh/tailwind-theme",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "exports": {
     ".": "./src/index.ts",
     "./themes": "./src/themes.ts"
@@ -26,5 +26,13 @@
     "tailwindcss": "^3.4.14",
     "tsup": "^8.3.5",
     "typescript": "5.6.3"
-  }
+  },
+  "authors": [
+    {
+      "name": "Matteo La Cognata",
+      "email": "matteo.lacognata@nearform.com",
+      "url": "https://github.com/matteolc"
+    }
+  ],
+  "license": "MIT"
 }

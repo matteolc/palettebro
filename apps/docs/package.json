@@ -1,6 +1,6 @@
 {
-  "name": "docs",
-  "private": true,
+  "name": "@palettebruh/docs",
+  "private": false,
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -88,5 +88,13 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  }
+  },
+  "authors": [
+    {
+      "name": "Matteo La Cognata",
+      "email": "matteo.lacognata@nearform.com",
+      "url": "https://github.com/matteolc"
+    }
+  ],
+  "license": "MIT"
 }

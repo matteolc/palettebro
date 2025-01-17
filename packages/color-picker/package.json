@@ -1,7 +1,7 @@
 {
   "name": "@palettebruh/color-picker",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "exports": {
     ".": "./src/index.ts"
   },
@@ -26,5 +26,13 @@
     "@radix-ui/react-slot": "^1.1.0",
     "react": "^18.3.1",
     "@palettebruh/theme-generator": "workspace:*"
-  }
+  },
+  "authors": [
+    {
+      "name": "Matteo La Cognata",
+      "email": "matteo.lacognata@nearform.com",
+      "url": "https://github.com/matteolc"
+    }
+  ],
+  "license": "MIT"
 }

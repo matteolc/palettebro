@@ -1,6 +1,7 @@
 {
-  "name": "turborepo-remix-saas-with-design-system",
-  "private": true,
+  "name": "palettebruh",
+  "private": false,
+  "version": "0.0.1",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -24,5 +25,14 @@
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=22"
-  }
+  },
+  "authors": [
+    {
+      "name": "Matteo La Cognata",
+      "email": "matteo.lacognata@nearform.com",
+      "url": "https://github.com/matteolc"
+    }
+  ],
+  "license": "MIT"
 }
+
