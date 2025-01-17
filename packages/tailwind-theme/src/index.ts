@@ -10,11 +10,11 @@ import type { Themes } from '@palettebruh/theme-generator/types';
 type PluginOptions = {
   themes: Themes;
   utils: boolean;
-  darkTheme: string | boolean;
+  darkTheme?: boolean;
 };
 
 export default plugin.withOptions(
-  (options: PluginOptions) =>
+  ({ utils, themes, darkTheme }: PluginOptions) =>
     ({
       addBase,
       addUtilities,
@@ -29,16 +29,14 @@ export default plugin.withOptions(
         `🏄   ${pc.magenta('@palettebruh/tailwind-theme')} ${pc.dim(version)}`,
       );
 
-      if (options.utils) {
+      if (utils) {
         addUtilities(utilities);
         console.log(`├─ ${pc.green('✔︎')} ${'Utility classes added'}`, '\n');
       }
 
-      if (options.themes) {
-        injectThemes(addBase, options);
-        console.log(`├─ ${pc.green('✔︎')} ${'Theme classes added'}`, '\n');
-      }
-      else {
+      if (themes) {
+        injectThemes(addBase, { themes, darkTheme });
+      } else {
         console.log(`├─ ${pc.red('✘')} ${'No themes added'}`, '\n');
       }
     },

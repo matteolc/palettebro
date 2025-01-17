@@ -1,7 +1,5 @@
-import type { Themes } from '@palettebruh/theme-generator/types';
 import pc from 'picocolors';
 import type { PluginOptions } from '..';
-import { DEFAULT_THEMES } from './const';
 import { generateThemeTokens } from './generate-theme-tokens';
 
 const THEME_ROOT = ':root';
@@ -9,38 +7,35 @@ const THEME_ROOT = ':root';
 const injectThemes = (
   // biome-ignore lint/suspicious/noExplicitAny: No will to type this
   addBase: (...args: any[]) => void,
-  options: PluginOptions,
+  { themes, darkTheme }: Pick<PluginOptions, 'themes' | 'darkTheme'>,
 ) => {
   const includedThemes = {};
 
-  for (const [theme, value] of Object.entries(options.themes)) {
+  for (const [theme, value] of Object.entries(themes)) {
     Object.assign(includedThemes, { [theme]: generateThemeTokens(value) });
   }
 
+  const DEFAULT_THEMES = Object.keys(themes);
+
   const themesToInject = {};
-  DEFAULT_THEMES.forEach((themeName, index) => {
+  DEFAULT_THEMES.forEach(([themeName, value], index) => {
     if (index === 0) {
       // first theme as root
       themesToInject[THEME_ROOT as keyof typeof themesToInject] =
         includedThemes[themeName as keyof typeof includedThemes];
     } else if (index === 1) {
       // auto dark
-      if (options.darkTheme) {
-        if (
-          DEFAULT_THEMES[0] !== options.darkTheme &&
-          DEFAULT_THEMES.includes(options.darkTheme as string)
-        ) {
+      if (darkTheme) {
+        if (DEFAULT_THEMES[0] !== 'dark' && DEFAULT_THEMES.includes('dark')) {
           Object.assign(themesToInject, {
             ['@media (prefers-color-scheme: dark)' as keyof typeof themesToInject]:
               {
                 [THEME_ROOT as keyof typeof themesToInject]:
-                  includedThemes[
-                    `${options.darkTheme}` as keyof typeof includedThemes
-                  ],
+                  includedThemes['dark' as keyof typeof includedThemes],
               },
           });
         }
-      } else if (options.darkTheme === false) {
+      } else if (darkTheme === false) {
         // disables prefers-color-scheme: dark
       } else {
         if (DEFAULT_THEMES[0] !== 'dark' && DEFAULT_THEMES.includes('dark')) {

@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "exports": {
-    ".": "./src/index.ts",
-    "./themes": "./src/themes.ts"
+    ".": "./src/index.ts"
   },
   "scripts": {
     "build": "tsup",

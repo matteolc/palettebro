@@ -1,6 +1,7 @@
 import type { usePalette } from '@palettebruh/theme-generator/palettes';
 import {
   type StaticThemePreset,
+  type Themes,
   type ThemeVariant,
   ThemeVariantEnum,
 } from '@palettebruh/theme-generator/types';
@@ -30,8 +31,9 @@ export const PaletteContext = createContext<PaletteContextType>({});
 
 export const PaletteProvider = ({
   lightOrDark,
+  themes,
   children,
-}: { lightOrDark?: string; children: React.ReactNode }) => {
+}: { lightOrDark?: string; themes: Themes; children: React.ReactNode }) => {
   const [baseColors, setBaseColorsState] = useState<BaseColors>({
     primary: '#663399',
     secondary: '#7da9c3',
@@ -45,6 +47,7 @@ export const PaletteProvider = ({
   const [reverse, setReverse] = useState<boolean>(false);
   const { palette } = getCustomPalette(
     baseColors,
+    themes,
     variant,
     isDark,
     preset,

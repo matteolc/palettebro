@@ -1,7 +1,3 @@
-import { themes } from '../themes';
-
-const DEFAULT_THEMES = Object.keys(themes);
-
 const DEFAULT_UTILITY_VALUES = {
   '--radius': '0.5rem',
   '--font-sans': 'Inter',
@@ -95,7 +91,6 @@ const PALETTE_COLORS = {
 };
 
 export {
-  DEFAULT_THEMES,
   DEFAULT_UTILITY_VALUES,
   SHADCN_COLOR_UTILITIES,
   PALETTE_COLORS,

@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react';
 /// <reference lib="dom" />
+import { useCallback, useEffect } from 'react';
 import type { Theme } from '../types';
 import { colorToRawOklchString } from '../utils/oklch';
 import { getPalette } from './getPalette';

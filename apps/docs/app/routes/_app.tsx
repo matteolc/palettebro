@@ -9,6 +9,7 @@ import type { FormProps as ToolbarFormProps } from '@palettebruh/theme-toolbar/t
 import type { ComponentType } from 'react';
 import { NavigationHeader } from '~/components/NavigationHeader';
 import { useHints } from '~/hooks/use-hints';
+import { themes } from '~/themes';
 
 const FormWrapper: ComponentType<ToolbarFormProps> = (props) => {
   return <Form {...(props as unknown as RemixFormProps)} />;
@@ -17,7 +18,7 @@ const FormWrapper: ComponentType<ToolbarFormProps> = (props) => {
 export default function Page() {
   const hints = useHints();
   return (
-    <PaletteProvider lightOrDark={hints.theme}>
+    <PaletteProvider lightOrDark={hints.theme} themes={themes}>
       <div className="min-h-screen flex flex-col">
         <NavigationHeader />
         <main className="w-full max-w-full mx-auto flex-1 flex flex-col mt-20">
