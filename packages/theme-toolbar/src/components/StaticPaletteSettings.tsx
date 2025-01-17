@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { PaletteContext } from './PaletteContext';
-import { Checkbox } from '../ui/checkbox';
 import { sentenceCase } from '../lib/string';
+import { Checkbox } from '../ui/checkbox';
 import {
   RadioCardGroup,
   RadioCardIndicator,
   RadioCardItem,
 } from '../ui/radio-card';
+import { PaletteContext } from './PaletteContext';
 
 export const StaticPaletteSettings = () => {
   const { preset, setPreset, reverse, setReverse } = useContext(PaletteContext);

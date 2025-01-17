@@ -1,11 +1,11 @@
 import { RiLockLine, RiLockUnlockLine, RiPaletteLine } from '@remixicon/react';
-import { ThemeVariantEnum } from '@repo/theme-generator/types';
 import { ColorPicker } from '@repo/color-picker';
+import { ThemeVariantEnum } from '@repo/theme-generator/types';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
-import { type BaseColors, PaletteContext } from './PaletteContext';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { sentenceCase } from '../lib/string';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { type BaseColors, PaletteContext } from './PaletteContext';
 import { TokenShades } from './TokenShades';
 
 export const ColorSwatch = ({

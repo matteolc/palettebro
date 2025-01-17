@@ -1,10 +1,10 @@
 import { RiEqualizerLine } from '@remixicon/react';
 import { ThemeVariantEnum } from '@repo/theme-generator/types';
 import { useContext } from 'react';
-import { PaletteContext } from './PaletteContext';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { DynamicPaletteSettings } from './DynamicPaletteSettings';
+import { PaletteContext } from './PaletteContext';
 import { StaticPaletteSettings } from './StaticPaletteSettings';
 
 export const PaletteSettings = () => {

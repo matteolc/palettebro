@@ -10,5 +10,3 @@ export * from './PaletteToolbarContext';
 export * from './StaticPaletteSettings';
 export * from './TokenColorPalette';
 export * from './TokenShades';
-
-

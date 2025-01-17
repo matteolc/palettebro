@@ -1,8 +1,8 @@
 import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
 import { RiCheckLine, RiClipboardLine } from '@remixicon/react';
-import { useContext, useState, type ComponentType } from 'react';
-import { PaletteContext } from './PaletteContext';
+import { type ComponentType, useContext, useState } from 'react';
 import { cn } from '../lib/cn';
+import { PaletteContext } from './PaletteContext';
 
 interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
@@ -162,7 +162,7 @@ export function FavoritePaletteCard({
   formAction = '/favourites',
 }: FavoritePaletteCardProps) {
   const FormEl = FormComponent || 'form';
-  
+
   const handleDelete = async (e: React.MouseEvent) => {
     if (onDelete) {
       e.preventDefault();

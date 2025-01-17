@@ -1,16 +1,16 @@
 import { RiPaletteFill } from '@remixicon/react';
-import { useContext } from 'react';
-import { PaletteContext } from './PaletteContext';
-import { sentenceCase } from '../lib/string';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { ColorPaletteShades } from './ColorPaletteShades';
 import {
   wcag2Contrast,
   wcag2ContrastGrade,
   wcag3Contrast,
   wcag3ContrastGrade,
 } from '@repo/theme-generator';
+import { useContext } from 'react';
+import { sentenceCase } from '../lib/string';
 import { Badge } from '../ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { ColorPaletteShades } from './ColorPaletteShades';
+import { PaletteContext } from './PaletteContext';
 
 const TokenColorPalette = ({ token }: { token: string }) => {
   const { palette } = useContext(PaletteContext);

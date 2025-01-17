@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { PaletteToolbarContext } from './PaletteToolbarContext';
 import { sentenceCase } from '../lib/string';
 import {
   RadioCardGroup,
@@ -7,6 +6,7 @@ import {
   RadioCardItem,
 } from '../ui/radio-card';
 import { Slider } from '../ui/slider';
+import { PaletteToolbarContext } from './PaletteToolbarContext';
 
 export const DynamicPaletteSettings = () => {
   const {

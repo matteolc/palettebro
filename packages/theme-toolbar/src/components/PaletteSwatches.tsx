@@ -1,8 +1,8 @@
 import { RiInformationLine, RiInformationOffLine } from '@remixicon/react';
 import { useState } from 'react';
+import { Skeleton } from '../ui/skeleton';
 import { ColorSwatch } from './ColorSwatch';
 import { BASE_TOKENS, STATUS_TOKENS } from './PaletteToolbar';
-import { Skeleton } from '../ui/skeleton';
 
 export const PaletteSwatches = ({
   onLockUnlock,

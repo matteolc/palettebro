@@ -4,13 +4,13 @@ import {
   RiMoonLine,
   RiSunLine,
 } from '@remixicon/react';
-import { ThemeVariantEnum } from '@repo/theme-generator/types';
 import { formatSchemistToHex, randomUsableColor } from '@repo/theme-generator';
+import { ThemeVariantEnum } from '@repo/theme-generator/types';
 import { useContext, useEffect, useState } from 'react';
 import { type BaseColors, PaletteContext } from './PaletteContext';
-import { PaletteToolbarContext } from './PaletteToolbarContext';
 import { PaletteSettings } from './PaletteSettings';
 import { PaletteSwatches } from './PaletteSwatches';
+import { PaletteToolbarContext } from './PaletteToolbarContext';
 
 const BASE_TOKENS = ['primary', 'secondary', 'accent', 'neutral'];
 const STATUS_TOKENS = ['info', 'success', 'warning', 'error'];

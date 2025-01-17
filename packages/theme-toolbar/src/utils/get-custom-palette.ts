@@ -1,9 +1,9 @@
 import { usePalette } from '@repo/theme-generator/palettes';
 import {
-  ThemeVariantEnum,
   type StaticThemePreset,
   type ThemeColorScheme,
   type ThemeVariant,
+  ThemeVariantEnum,
 } from '@repo/theme-generator/types';
 import { getDarkLightDefaultTheme } from './get-dark-light-default-theme';
 
