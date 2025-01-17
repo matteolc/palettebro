@@ -3,9 +3,9 @@ import {
   filterDeficiencyDeuter,
   filterDeficiencyProt,
   filterDeficiencyTrit,
-} from "culori/fn";
-import { rgbFromCulori, rgbToCulori } from "./culori";
-import type { RgbColor } from "./types";
+} from 'culori/fn';
+import { rgbFromCulori, rgbToCulori } from './culori';
+import type { RgbColor } from './types';
 
 const protanomalyFilter = filterDeficiencyProt<Culori.Rgb>();
 const deuteranomalyFilter = filterDeficiencyDeuter<Culori.Rgb>();

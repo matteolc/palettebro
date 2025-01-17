@@ -1,27 +1,27 @@
-import type { SchemistColor } from "../color/types";
-import nearestColor from "../color/nearest";
-import analogous from "./analogous";
-import color from "./color";
-import complementary from "./complementary";
-import contrasting from "./contrasting";
-import highlight from "./highlight";
-import hue from "./hue";
-import informative from "./informative";
-import lightness from "./lightness";
-import negative from "./negative";
-import positive from "./positive";
-import saturation from "./saturation";
-import shadow from "./shadow";
-import splitComplementaryLeft from "./splitComplementaryLeft";
-import splitComplementaryRight from "./splitComplementaryRight";
-import tetradLeft from "./tetradLeft";
-import tetradRight from "./tetradRight";
-import triadLeft from "./triadLeft";
-import triadRight from "./triadRight";
-import type { NodeDef } from "./types";
-import warning from "./warning";
-import { sentenceCase } from "../utils/strings";
-import { formatSchemistToHex } from "../color/formatting";
+import { formatSchemistToHex } from '../color/formatting';
+import nearestColor from '../color/nearest';
+import type { SchemistColor } from '../color/types';
+import { sentenceCase } from '../utils/strings';
+import analogous from './analogous';
+import color from './color';
+import complementary from './complementary';
+import contrasting from './contrasting';
+import highlight from './highlight';
+import hue from './hue';
+import informative from './informative';
+import lightness from './lightness';
+import negative from './negative';
+import positive from './positive';
+import saturation from './saturation';
+import shadow from './shadow';
+import splitComplementaryLeft from './splitComplementaryLeft';
+import splitComplementaryRight from './splitComplementaryRight';
+import tetradLeft from './tetradLeft';
+import tetradRight from './tetradRight';
+import triadLeft from './triadLeft';
+import triadRight from './triadRight';
+import type { NodeDef } from './types';
+import warning from './warning';
 
 export default {
   [analogous.type]: analogous,
@@ -73,10 +73,10 @@ export const defaultArgs = (def: NodeDef) =>
 export const generateName = (
   token: string | undefined,
   color: SchemistColor,
-  parentColorName?: string
+  parentColorName?: string,
 ) =>
   token
     ? parentColorName
-      ? token.replace("$", parentColorName)
+      ? token.replace('$', parentColorName)
       : token
     : sentenceCase(nearestColor(formatSchemistToHex(color)));

@@ -1,15 +1,15 @@
-import saturation from "../nodes/saturation";
-import tailwindScaleLight from "./tailwindScaleLight";
-import type { Preset } from "./types";
+import saturation from '../nodes/saturation';
+import tailwindScaleLight from './tailwindScaleLight';
+import type { Preset } from './types';
 
 export default {
-  label: "Neutral",
-  description: "Desaturated color with various lightness levels",
+  label: 'Neutral',
+  description: 'Desaturated color with various lightness levels',
   nodes: [
     {
       type: saturation.type,
       isHidden: true,
-      token: "neutral",
+      token: 'neutral',
       args: {
         amount: 5,
       },

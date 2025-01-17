@@ -1,29 +1,29 @@
-import informative from "../nodes/informative";
-import negative from "../nodes/negative";
-import positive from "../nodes/positive";
-import warning from "../nodes/warning";
-import type { Preset } from "./types";
+import informative from '../nodes/informative';
+import negative from '../nodes/negative';
+import positive from '../nodes/positive';
+import warning from '../nodes/warning';
+import type { Preset } from './types';
 
 export default {
-  label: "Semantic colors",
+  label: 'Semantic colors',
   description:
-    "Colors to convey information, positiveness, danger, negativeness",
+    'Colors to convey information, positiveness, danger, negativeness',
   nodes: [
     {
       type: informative.type,
-      token: "info",
+      token: 'info',
     },
     {
       type: positive.type,
-      token: "success",
+      token: 'success',
     },
     {
       type: warning.type,
-      token: "warning",
+      token: 'warning',
     },
     {
       type: negative.type,
-      token: "error",
+      token: 'error',
     },
   ],
 } as Preset;

@@ -1,10 +1,8 @@
 // @see https://github.com/akx/gradient/blob/master/src/culori.d.ts
-declare module "culori" {
+declare module 'culori' {
   export namespace Culori {
-
-
     export interface Oklch extends Color {
-      mode: "oklch";
+      mode: 'oklch';
       l: number;
       c: number;
       h: number;
@@ -15,10 +13,10 @@ declare module "culori" {
   export function oklch(color: string): Culori.Oklch | null;
 }
 
-declare module "culori/fn" {
+declare module 'culori/fn' {
   export namespace Culori {
     export interface Hsl extends Color {
-      mode: "hsl";
+      mode: 'hsl';
       h: number;
       s: number;
       l: number;
@@ -26,7 +24,7 @@ declare module "culori/fn" {
     }
 
     export interface Lab extends Color {
-      mode: "lab";
+      mode: 'lab';
       l: number;
       a: number;
       b: number;
@@ -34,7 +32,7 @@ declare module "culori/fn" {
     }
 
     export interface Lch extends Color {
-      mode: "lch";
+      mode: 'lch';
       l: number;
       c: number;
       h: number;
@@ -42,7 +40,7 @@ declare module "culori/fn" {
     }
 
     export interface Okhsl extends Color {
-      mode: "okhsl";
+      mode: 'okhsl';
       h: number;
       s: number;
       l: number;
@@ -50,7 +48,7 @@ declare module "culori/fn" {
     }
 
     export interface Oklab extends Color {
-      mode: "oklab";
+      mode: 'oklab';
       l: number;
       a: number;
       b: number;
@@ -58,7 +56,7 @@ declare module "culori/fn" {
     }
 
     export interface Oklch extends Color {
-      mode: "oklch";
+      mode: 'oklch';
       l: number;
       c: number;
       h: number;
@@ -66,7 +64,7 @@ declare module "culori/fn" {
     }
 
     export interface Rgb extends Color {
-      mode: "rgb";
+      mode: 'rgb';
       r: number;
       g: number;
       b: number;
@@ -97,7 +95,7 @@ declare module "culori/fn" {
 
   export function convertLabToLch(
     color: Culori.Oklab,
-    mode: "oklch"
+    mode: 'oklch',
   ): Culori.Oklch;
 
   export function convertLabToRgb(color: Culori.Lab): Culori.Rgb;
@@ -106,7 +104,7 @@ declare module "culori/fn" {
 
   export function convertLchToLab(
     color: Culori.Oklch,
-    mode: "oklab"
+    mode: 'oklab',
   ): Culori.Oklab;
 
   export function convertOkhslToOklab(color: Culori.Okhsl): Culori.Oklab;
@@ -123,24 +121,24 @@ declare module "culori/fn" {
 
   export function clampChroma<T extends Culori.Color>(
     color: T,
-    mode?: string
+    mode?: string,
   ): T;
 
   export function wcagContrast<T extends Culori.Color>(
     background: T,
-    foreground: T
+    foreground: T,
   ): number;
 
   export function filterDeficiencyProt<T extends Culori.Color>(
-    severity?: number
+    severity?: number,
   ): (color: T) => T;
 
   export function filterDeficiencyDeuter<T extends Culori.Color>(
-    severity?: number
+    severity?: number,
   ): (color: T) => T;
 
   export function filterDeficiencyTrit<T extends Culori.Color>(
-    severity?: number
+    severity?: number,
   ): (color: T) => T;
 
   export const modeLch: Culori.Definition;

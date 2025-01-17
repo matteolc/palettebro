@@ -1,17 +1,17 @@
-import complementary from "../nodes/complementary";
-import negative from "../nodes/negative";
-import saturation from "../nodes/saturation";
-import type { Preset } from "./types";
-import materialNeutralLight from "./materialNeutralLight";
-import materialTonesLight from "./materialTonesLight";
+import complementary from '../nodes/complementary';
+import negative from '../nodes/negative';
+import saturation from '../nodes/saturation';
+import materialNeutralLight from './materialNeutralLight';
+import materialTonesLight from './materialTonesLight';
+import type { Preset } from './types';
 
 export default {
-  label: "Material light",
-  description: "Variations inspired by Material You for light themes",
+  label: 'Material light',
+  description: 'Variations inspired by Material You for light themes',
   nodes: [
     {
       type: saturation.type,
-      token: "primary",
+      token: 'primary',
       isHidden: true,
       args: {
         amount: 40,
@@ -20,13 +20,13 @@ export default {
         ...materialTonesLight.nodes,
         {
           type: complementary.type,
-          token: "complementary",
+          token: 'complementary',
           isHidden: true,
           children: materialTonesLight.nodes,
         },
         {
           type: negative.type,
-          token: "error",
+          token: 'error',
           isHidden: true,
           children: materialTonesLight.nodes,
         },

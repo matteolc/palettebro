@@ -3,7 +3,7 @@ import {
   clampChroma,
   convertHslToRgb,
   convertRgbToHsl,
-} from "culori/fn";
+} from 'culori/fn';
 import {
   culoriLchToRgb,
   culoriOkhslToOklch,
@@ -17,8 +17,8 @@ import {
   lchToCulori,
   rgbFromCulori,
   rgbToCulori,
-} from "./culori";
-import type { HslColor, LchColor, RgbColor, SchemistColor } from "./types";
+} from './culori';
+import type { HslColor, LchColor, RgbColor, SchemistColor } from './types';
 
 export const rgbToSchemist = (color: RgbColor): SchemistColor => {
   const culoriRgb = rgbToCulori(color);
@@ -35,7 +35,7 @@ export const rgbToSchemist = (color: RgbColor): SchemistColor => {
 
 export const schemistToRgb = ({ h, s, l, a }: SchemistColor): RgbColor => {
   const hsl: Culori.Okhsl = {
-    mode: "okhsl",
+    mode: 'okhsl',
     h,
     s: s / 100,
     l: l / 100,
@@ -46,7 +46,7 @@ export const schemistToRgb = ({ h, s, l, a }: SchemistColor): RgbColor => {
       ...culoriOkhslToOklch(hsl),
       h,
       alpha: a,
-    })
+    }),
   );
 };
 

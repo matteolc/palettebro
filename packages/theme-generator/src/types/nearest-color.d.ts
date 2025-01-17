@@ -1,4 +1,4 @@
-declare module "nearest-color" {
+declare module 'nearest-color' {
   type Color = {
     name: string;
   };

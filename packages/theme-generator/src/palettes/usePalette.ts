@@ -1,8 +1,8 @@
+import { useCallback, useEffect } from 'react';
 /// <reference lib="dom" />
 import type { Theme } from '../types';
 import { colorToRawOklchString } from '../utils/oklch';
 import { getPalette } from './getPalette';
-import { useCallback, useEffect } from 'react';
 
 const useSetCssVars = () => {
   return useCallback((cssVars: Record<string, string>) => {

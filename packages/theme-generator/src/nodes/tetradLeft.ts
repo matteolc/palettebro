@@ -1,12 +1,12 @@
-import { rotateHue } from "../color/manipulation";
-import type { NodeDef } from "./types";
+import { rotateHue } from '../color/manipulation';
+import type { NodeDef } from './types';
 
 export default {
-  type: "ttl",
-  label: "Left tetrad",
-  description: "",
+  type: 'ttl',
+  label: 'Left tetrad',
+  description: '',
   params: [],
-  samples: "single",
+  samples: 'single',
   apply(color) {
     return rotateHue(color, -90);
   },

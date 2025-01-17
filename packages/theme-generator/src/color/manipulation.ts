@@ -1,6 +1,6 @@
-import { circular, circularInterval, clamp, closestAngle } from "../utils/math";
-import { rgbToSchemist } from "./conversion";
-import type { SchemistColor } from "./types";
+import { circular, circularInterval, clamp, closestAngle } from '../utils/math';
+import { rgbToSchemist } from './conversion';
+import type { SchemistColor } from './types';
 
 export const setHue = (color: SchemistColor, h: number) => ({
   ...color,
@@ -26,7 +26,7 @@ export const scaleLightness = (
   { h, l, ...color }: SchemistColor,
   amount: number,
   targetH: number,
-  hueShiftAmount = 0
+  hueShiftAmount = 0,
 ) => ({
   ...color,
   l: clamp(l + amount, 100),
@@ -34,7 +34,7 @@ export const scaleLightness = (
     ? circularInterval(
         h,
         targetH,
-        Math.abs(amount / 100) * (hueShiftAmount / 100)
+        Math.abs(amount / 100) * (hueShiftAmount / 100),
       )
     : h,
 });
@@ -43,25 +43,25 @@ export const highlightColor = (
   color: SchemistColor,
   temp: number,
   amount = 25,
-  hueShiftAmount = 15
+  hueShiftAmount = 15,
 ) => scaleLightness(color, amount, temperatureToHue(temp), hueShiftAmount);
 
 export const shadowColor = (
   color: SchemistColor,
   temp: number,
   amount = 25,
-  hueShiftAmount = 15
+  hueShiftAmount = 15,
 ) =>
   scaleLightness(
     color,
     -amount,
     circular(temperatureToHue(temp) + 180),
-    hueShiftAmount
+    hueShiftAmount,
   );
 
 export const contrastingColor = (
   { l, ...color }: SchemistColor,
-  amount = 80
+  amount = 80,
 ) => {
   const ratio = amount / 100;
 
@@ -110,11 +110,11 @@ export const temperatureToHue = (kelvins: number): number => {
     temperature >= 66
       ? 255
       : temperature <= 19
-      ? 0
-      : clamp(
-          138.5177312231 * Math.log(temperature - 10) - 305.0447927307,
-          255
-        );
+        ? 0
+        : clamp(
+            138.5177312231 * Math.log(temperature - 10) - 305.0447927307,
+            255,
+          );
 
   const color = rgbToSchemist({
     r: Math.round(r),

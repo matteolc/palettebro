@@ -1,9 +1,9 @@
-import staticPalette from "../presets/staticPalette";
+import type { SchemistColor } from '../color/types';
 import {
-  presetSamplesWithKeyAndName,
   presetSampleWithKeyAndNameHash,
-} from "../index";
-import type { SchemistColor } from "../color/types";
+  presetSamplesWithKeyAndName,
+} from '../index';
+import staticPalette from '../presets/staticPalette';
 
 export default (theme: {
   primaryColor: SchemistColor;
@@ -11,11 +11,11 @@ export default (theme: {
   accentColor?: SchemistColor;
   isDark: boolean;
   reverse: boolean;
-  preset: "split-complementary" | "tetrad" | "triad";
+  preset: 'split-complementary' | 'tetrad' | 'triad';
 }) => {
   const { primaryColor, isDark, reverse, preset } = theme;
 
-  const nodes = staticPalette({ primaryColor, isDark, reverse, preset }).nodes
+  const nodes = staticPalette({ primaryColor, isDark, reverse, preset }).nodes;
 
   return presetSampleWithKeyAndNameHash([
     ...presetSamplesWithKeyAndName(nodes, primaryColor),

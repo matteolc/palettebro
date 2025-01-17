@@ -1,25 +1,25 @@
-import complementary from "../nodes/complementary";
-import negative from "../nodes/negative";
-import saturation from "../nodes/saturation";
-import type { Preset } from "./types";
-import materialNeutralDark from "./materialNeutralDark";
-import materialTonesDark from "./materialTonesDark";
-import informative from "../nodes/informative";
-import positive from "../nodes/positive";
-import warning from "../nodes/warning";
-import tailwindScaleDark from "./tailwindScaleDark";
-import baseDark from "./baseDark";
-import tetradLeft from "../nodes/tetradLeft";
-import neutralScaleDark from "./neutralScaleDark";
+import complementary from '../nodes/complementary';
+import informative from '../nodes/informative';
+import negative from '../nodes/negative';
+import positive from '../nodes/positive';
+import saturation from '../nodes/saturation';
+import tetradLeft from '../nodes/tetradLeft';
+import warning from '../nodes/warning';
+import baseDark from './baseDark';
+import materialNeutralDark from './materialNeutralDark';
+import materialTonesDark from './materialTonesDark';
+import neutralScaleDark from './neutralScaleDark';
+import tailwindScaleDark from './tailwindScaleDark';
+import type { Preset } from './types';
 
 export default (options?: { saturation?: number }) =>
   ({
-    label: "Material dark with shades",
-    description: "Variations inspired by Material You for dark themes",
+    label: 'Material dark with shades',
+    description: 'Variations inspired by Material You for dark themes',
     nodes: [
       {
         type: saturation.type,
-        token: "primary",
+        token: 'primary',
         isHidden: true,
         args: {
           amount: options?.saturation ?? 80,
@@ -29,42 +29,42 @@ export default (options?: { saturation?: number }) =>
           ...tailwindScaleDark.nodes,
           {
             type: tetradLeft.type,
-            token: "accent",
+            token: 'accent',
             children: [...materialTonesDark.nodes, ...tailwindScaleDark.nodes],
           },
           {
             type: complementary.type,
-            token: "secondary",
+            token: 'secondary',
             isHidden: true,
             children: [...materialTonesDark.nodes, ...tailwindScaleDark.nodes],
           },
           {
             type: negative.type,
-            token: "error",
+            token: 'error',
             isHidden: true,
             children: [...materialTonesDark.nodes, ...tailwindScaleDark.nodes],
           },
           {
             type: informative.type,
-            token: "info",
+            token: 'info',
             isHidden: true,
             children: [...materialTonesDark.nodes, ...tailwindScaleDark.nodes],
           },
           {
             type: positive.type,
-            token: "success",
+            token: 'success',
             isHidden: true,
             children: [...materialTonesDark.nodes, ...tailwindScaleDark.nodes],
           },
           {
             type: warning.type,
-            token: "warning",
+            token: 'warning',
             isHidden: true,
             children: [...materialTonesDark.nodes, ...tailwindScaleDark.nodes],
           },
           {
             type: saturation.type,
-            token: "neutral",
+            token: 'neutral',
             args: {
               amount: 5,
             },
@@ -78,4 +78,4 @@ export default (options?: { saturation?: number }) =>
         ],
       },
     ],
-  } as Preset);
+  }) as Preset;

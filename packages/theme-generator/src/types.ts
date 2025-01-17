@@ -1,6 +1,6 @@
+import aiPalette from './palettes/dynamic';
 import muiPalette from './palettes/mui';
 import staticPalette from './palettes/static';
-import aiPalette from './palettes/dynamic';
 
 export type ThemeColorScheme = 'light' | 'dark';
 export type ThemeVariant = 'mui' | 'static' | 'dynamic';

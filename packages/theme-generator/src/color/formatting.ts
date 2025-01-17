@@ -1,10 +1,10 @@
-import { formatHex as culoriFormatHex } from "culori/fn";
-import { clamp, round } from "../utils/math";
-import { schemistToHsl, schemistToLch, schemistToRgb } from "./conversion";
-import { rgbToCulori } from "./culori";
-import type { HslColor, LchColor, RgbColor, SchemistColor } from "./types";
+import { formatHex as culoriFormatHex } from 'culori/fn';
+import { clamp, round } from '../utils/math';
+import { schemistToHsl, schemistToLch, schemistToRgb } from './conversion';
+import { rgbToCulori } from './culori';
+import type { HslColor, LchColor, RgbColor, SchemistColor } from './types';
 
-export type ColorFormat = "hex" | "hsl" | "lch" | "rgb";
+export type ColorFormat = 'hex' | 'hsl' | 'lch' | 'rgb';
 
 export const formatRgb = ({ r, g, b, a = 1 }: RgbColor, precision = 3) => {
   const rr = round(r, precision);
@@ -21,12 +21,12 @@ export const formatRgbToHex = (color: RgbColor) =>
 
 export const formatHsl = ({ h = 0, s, l }: HslColor, precision = 3) =>
   `hsl(${round(h, precision)} ${
-    s === undefined ? "none" : `${round(s, precision)}%`
-  } ${l === undefined ? "none" : `${round(l, precision)}%`})`;
+    s === undefined ? 'none' : `${round(s, precision)}%`
+  } ${l === undefined ? 'none' : `${round(l, precision)}%`})`;
 
 export const formatLch = ({ l, c, h = 0 }: LchColor, precision = 3) =>
-  `lch(${l === undefined ? "none" : `${round(l, precision)}%`} ${
-    c === undefined ? "none" : round(c, precision)
+  `lch(${l === undefined ? 'none' : `${round(l, precision)}%`} ${
+    c === undefined ? 'none' : round(c, precision)
   } ${round(h, precision)})`;
 
 export const formatSchemistToHex = (color: SchemistColor) =>
@@ -40,12 +40,12 @@ export const formatSchemist = (color: SchemistColor, precision = 3) =>
 export const formatSchemistTo = (
   color: SchemistColor,
   format: ColorFormat,
-  precision = 3
+  precision = 3,
 ) =>
-  format === "hex"
+  format === 'hex'
     ? formatSchemistToHex(color)
-    : format === "hsl"
-    ? formatHsl(schemistToHsl(color), precision)
-    : format === "lch"
-    ? formatLch(schemistToLch(color), precision)
-    : formatRgb(schemistToRgb(color), precision);
+    : format === 'hsl'
+      ? formatHsl(schemistToHsl(color), precision)
+      : format === 'lch'
+        ? formatLch(schemistToLch(color), precision)
+        : formatRgb(schemistToRgb(color), precision);

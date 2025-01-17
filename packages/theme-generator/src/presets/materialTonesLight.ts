@@ -1,35 +1,35 @@
-import lightness from "../nodes/lightness";
-import type { Preset } from "./types";
+import lightness from '../nodes/lightness';
+import type { Preset } from './types';
 
 // @see https://m3.material.io/styles/color/the-color-system/tokens
 export default {
-  label: "Material tones light",
-  description: "Tone variations for light themes",
+  label: 'Material tones light',
+  description: 'Tone variations for light themes',
   nodes: [
     {
       type: lightness.type,
-      token: "$",
+      token: '$',
       args: {
         amount: 40,
       },
     },
     {
       type: lightness.type,
-      token: "on-$",
+      token: 'on-$',
       args: {
         amount: 100,
       },
     },
     {
       type: lightness.type,
-      token: "$-container",
+      token: '$-container',
       args: {
         amount: 90,
       },
     },
     {
       type: lightness.type,
-      token: "on-$-container",
+      token: 'on-$-container',
       args: {
         amount: 10,
       },

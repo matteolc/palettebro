@@ -1,12 +1,12 @@
+import { schemistToRgb } from './color/conversion';
+import { formatRgbToHex } from './color/formatting';
+import nearestColor from './color/nearest';
+import type { SchemistColor } from './color/types';
 import defs, { generateName } from './nodes';
-import type { PresetNode } from './presets/types';
 import type { Args, NodeDef, Param } from './nodes/types';
+import type { PresetNode } from './presets/types';
 import { range } from './utils/generators';
 import { interval } from './utils/math';
-import type { SchemistColor } from './color/types';
-import { formatRgbToHex } from './color/formatting';
-import { schemistToRgb } from './color/conversion';
-import nearestColor from './color/nearest';
 
 export const sample = (def: NodeDef, color: SchemistColor, ratio?: number) =>
   def.apply(

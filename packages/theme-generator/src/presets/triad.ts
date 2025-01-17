@@ -1,18 +1,18 @@
-import triadLeft from "../nodes/triadLeft";
-import triadRight from "../nodes/triadRight";
-import type { Preset } from "./types";
+import triadLeft from '../nodes/triadLeft';
+import triadRight from '../nodes/triadRight';
+import type { Preset } from './types';
 
 export default {
-  label: "Triad",
-  description: "",
+  label: 'Triad',
+  description: '',
   nodes: [
     {
       type: triadLeft.type,
-      token: "left-$-triad",
+      token: 'left-$-triad',
     },
     {
       type: triadRight.type,
-      token: "right-$-triad",
+      token: 'right-$-triad',
     },
   ],
 } as Preset;

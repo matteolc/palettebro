@@ -1,10 +1,10 @@
-import { joinProperties } from "./utils/css";
-import { formatSchemist } from "./color/formatting";
-import { parseColor } from "./color/parsing";
-import type { SchemistColor } from "./color/types";
+import { formatSchemist } from './color/formatting';
+import { parseColor } from './color/parsing';
+import type { SchemistColor } from './color/types';
+import { joinProperties } from './utils/css';
 
 // biome-ignore lint/style/noNonNullAssertion: TODO
-export const defaultThemeColor = parseColor("#ffc208")[1]!;
+export const defaultThemeColor = parseColor('#ffc208')[1]!;
 
 export const overlayColor = (color: SchemistColor, isDark: boolean) =>
   formatSchemist({
@@ -16,25 +16,25 @@ export const overlayColor = (color: SchemistColor, isDark: boolean) =>
 
 export const duoThemeStyle = (
   background: SchemistColor,
-  foreground: SchemistColor
+  foreground: SchemistColor,
 ) => {
   const isDark = background.l < foreground.l;
 
   return joinProperties({
-    "--bg": formatSchemist(background),
-    "--bg-soft": formatSchemist({ ...foreground, a: 0.05 }),
-    "--bg-hard": formatSchemist({
+    '--bg': formatSchemist(background),
+    '--bg-soft': formatSchemist({ ...foreground, a: 0.05 }),
+    '--bg-hard': formatSchemist({
       ...background,
       l: isDark ? background.l - 2 : background.l + 2,
     }),
-    "--bg-neutral": formatSchemist({
+    '--bg-neutral': formatSchemist({
       ...background,
       s: 0.8 * background.s,
       l: isDark ? 100 - 0.85 * (100 - background.l) : 0.85 * background.l,
     }),
-    "--bg-overlay": overlayColor(background, isDark),
-    "--fg": formatSchemist(foreground),
-    "--fg-light": formatSchemist({ ...foreground, a: 0.75 }),
+    '--bg-overlay': overlayColor(background, isDark),
+    '--fg': formatSchemist(foreground),
+    '--fg-light': formatSchemist({ ...foreground, a: 0.75 }),
   });
 };
 

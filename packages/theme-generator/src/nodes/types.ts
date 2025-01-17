@@ -1,23 +1,23 @@
-import type { SchemistColor } from "../color/types";
+import type { SchemistColor } from '../color/types';
 
-export type SampleType = "single" | "discrete" | "continuous";
+export type SampleType = 'single' | 'discrete' | 'continuous';
 
 export type BooleanParam = {
-  type: "boolean";
+  type: 'boolean';
   name: string;
   label: string;
   default: boolean;
 };
 
 export type ColorParam = {
-  type: "color";
+  type: 'color';
   name: string;
   label: string;
   default: SchemistColor;
 };
 
 export type RangeParam = {
-  type: "range";
+  type: 'range';
   name: string;
   label: string;
   unit: string;
@@ -44,7 +44,7 @@ export type NodeDef = {
 };
 
 export type NodeOutput = [color: SchemistColor, name: string];
-export type NodeOutputRecord = Record<Node["id"], NodeOutput>;
+export type NodeOutputRecord = Record<Node['id'], NodeOutput>;
 
 export type Node = {
   id: string;

@@ -1,12 +1,12 @@
 import picocolors from 'picocolors';
-import { formatSchemistToHex } from '../color/formatting';
-import { parseColor } from '../color/parsing';
-import nearestColor from '../color/nearest';
 import { version } from '../../package.json';
+import { formatSchemistToHex } from '../color/formatting';
+import nearestColor from '../color/nearest';
+import { parseColor } from '../color/parsing';
 import {
-  ThemeVariantToPalette,
   type Theme,
   ThemeColorSchemeEnum,
+  ThemeVariantToPalette,
 } from '../types';
 
 export const getPalette = (props: { theme: Theme }) => {

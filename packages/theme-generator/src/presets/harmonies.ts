@@ -1,11 +1,11 @@
-import type { Preset } from "./types";
-import splitComplementary from "./splitComplementary";
-import tetrad from "./tetrad";
-import triad from "./triad";
+import splitComplementary from './splitComplementary';
+import tetrad from './tetrad';
+import triad from './triad';
+import type { Preset } from './types';
 
 export default {
-  label: "Harmonies",
-  description: "All available color harmonies",
+  label: 'Harmonies',
+  description: 'All available color harmonies',
   nodes: [
     tetrad.nodes[0],
     triad.nodes[0],

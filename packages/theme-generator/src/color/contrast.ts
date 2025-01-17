@@ -1,9 +1,9 @@
 import { APCAcontrast, sRGBtoY } from 'apca-w3';
 import { wcagContrast } from 'culori/fn';
-import { rgbToCulori } from './culori';
-import type { RgbColor } from './types';
-import { parseColor } from './parsing';
 import { schemistToRgb } from './conversion';
+import { rgbToCulori } from './culori';
+import { parseColor } from './parsing';
+import type { RgbColor } from './types';
 
 export type ContrastType = 'wcag2' | 'wcag3';
 

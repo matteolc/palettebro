@@ -1,12 +1,12 @@
-import { reddishColor } from "../color/manipulation";
-import type { NodeDef } from "./types";
+import { reddishColor } from '../color/manipulation';
+import type { NodeDef } from './types';
 
 export default {
-  type: "neg",
-  label: "Negative",
-  description: "A reddish color to convey negativeness",
+  type: 'neg',
+  label: 'Negative',
+  description: 'A reddish color to convey negativeness',
   params: [],
-  samples: "single",
+  samples: 'single',
   apply(color) {
     return reddishColor(color);
   },

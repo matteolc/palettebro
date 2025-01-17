@@ -1,22 +1,22 @@
-import type { Preset } from "./types";
-import triadLeft from "../nodes/triadLeft";
-import triadRight from "../nodes/triadRight";
-import neutral from "./neutral";
-import semanticPairs from "./semanticPairs";
-import states from "./states";
+import triadLeft from '../nodes/triadLeft';
+import triadRight from '../nodes/triadRight';
+import neutral from './neutral';
+import semanticPairs from './semanticPairs';
+import states from './states';
+import type { Preset } from './types';
 
 export default {
-  label: "Schemist theme",
-  description: "",
+  label: 'Schemist theme',
+  description: '',
   nodes: [
     {
       type: triadLeft.type,
-      token: "secondary",
+      token: 'secondary',
       children: states.nodes,
     },
     {
       type: triadRight.type,
-      token: "tertiary",
+      token: 'tertiary',
       children: states.nodes,
     },
     ...semanticPairs.nodes,
