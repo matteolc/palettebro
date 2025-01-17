@@ -1,5 +1,6 @@
-import { wcagContrast } from "culori";
+import { wcagContrast } from 'culori';
 
-const isDark = (color: string) => (wcagContrast(color, "black") < wcagContrast(color, "white"))
+const isDark = (color: string) =>
+  wcagContrast(color, 'black') < wcagContrast(color, 'white');
 
 export { isDark };

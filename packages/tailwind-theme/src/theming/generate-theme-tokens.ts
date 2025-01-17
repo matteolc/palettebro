@@ -1,7 +1,7 @@
-import { colorToRawOklchString } from '../utils/oklch';
-import type { Theme } from '@repo/theme-generator/types';
-import { DEFAULT_UTILITY_VALUES } from './const';
 import { getPalette } from '@repo/theme-generator/palettes';
+import type { Theme } from '@repo/theme-generator/types';
+import { colorToRawOklchString } from '../utils/oklch';
+import { DEFAULT_UTILITY_VALUES } from './const';
 
 const generateThemeTokens = (input: Theme) => {
   const result: Record<string, string> = {};

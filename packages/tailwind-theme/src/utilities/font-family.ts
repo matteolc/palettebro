@@ -1,4 +1,4 @@
-import defaultTheme from "tailwindcss/defaultTheme";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export const fontFamily = {
   sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],

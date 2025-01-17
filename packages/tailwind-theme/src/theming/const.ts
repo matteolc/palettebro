@@ -19,7 +19,9 @@ const generateColorVariants = (colorName: string) => ({
   light: `oklch(var(--${colorName}-light)/<alpha-value>)`,
   base: `oklch(var(--${colorName}-base)/<alpha-value>)`,
   dark: `oklch(var(--${colorName}-dark)/<alpha-value>)`,
-  ...Array.from({ length: 19 }, (_, i) => i * 50).reduce<Record<number, string>>((acc, shade) => {
+  ...Array.from({ length: 19 }, (_, i) => i * 50).reduce<
+    Record<number, string>
+  >((acc, shade) => {
     if (shade === 0) return acc;
     acc[shade] = `oklch(var(--${colorName}-${shade})/<alpha-value>)`;
     return acc;
@@ -52,7 +54,7 @@ const SHADCN_COLOR_UTILITIES = {
     Array.from({ length: 5 }, (_, i) => [
       String(i + 1),
       `oklch(var(--primary-rainbow-${i + 1}))`,
-    ])
+    ]),
   ),
   sidebar: {
     DEFAULT: 'oklch(var(--primary-100))',
@@ -83,7 +85,7 @@ const PALETTE_COLORS = {
       acc[color] = generateColorVariants(color);
       return acc;
     },
-    {} as Record<string, ReturnType<typeof generateColorVariants>>
+    {} as Record<string, ReturnType<typeof generateColorVariants>>,
   ),
   'base-100': 'oklch(var(--base-100)/<alpha-value>)',
   'base-200': 'oklch(var(--base-200)/<alpha-value>)',

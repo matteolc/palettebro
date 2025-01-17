@@ -2,10 +2,10 @@ import pc from 'picocolors';
 import plugin from 'tailwindcss/plugin';
 
 import { version } from '../package.json';
-import { injectThemes } from './theming/inject-themes';
 import { themes } from './themes';
-import { utilities } from './utilities';
 import { PALETTE_COLORS, SHADCN_COLOR_UTILITIES } from './theming/const';
+import { injectThemes } from './theming/inject-themes';
+import { utilities } from './utilities';
 
 type PluginOptions = {
   themes: boolean | string[];
