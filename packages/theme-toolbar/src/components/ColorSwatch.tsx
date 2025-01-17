@@ -75,7 +75,6 @@ export const ColorSwatch = ({
                   className="w-full bg-white border-neutral-200 p-2.5 shadow-md h-fit overflow-y-scroll"
                 >
                   <ColorPicker
-                    token={token}
                     value={palette[token].color}
                     onChange={(value: string) =>
                       palette[token].color !== value &&
