@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PaletteContext } from '~/PaletteContext';
+import { PaletteContext } from '@repo/theme-toolbar';
 import { Checkbox } from '~/components/ui/checkbox';
 import { sentenceCase } from '~/lib/string';
 import {

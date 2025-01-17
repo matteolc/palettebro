@@ -1,6 +1,6 @@
 import { RiPaletteFill } from '@remixicon/react';
 import { useContext } from 'react';
-import { PaletteContext } from '~/PaletteContext';
+import { PaletteContext } from '@repo/theme-toolbar';
 import { sentenceCase } from '~/lib/string';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { ColorPaletteShades } from './ColorPaletteShades';

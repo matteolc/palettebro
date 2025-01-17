@@ -1,7 +1,6 @@
 import muiPalette from './palettes/mui';
 import staticPalette from './palettes/static';
 import aiPalette from './palettes/dynamic';
-import type { ComponentType, FormHTMLAttributes } from 'react';
 
 export type ThemeColorScheme = 'light' | 'dark';
 export type ThemeVariant = 'mui' | 'static' | 'dynamic';
@@ -59,20 +58,3 @@ export type {
   HslColor,
   LchColor,
 } from './color/types';
-
-export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
-  fetcherKey?: string;
-  navigate?: boolean;
-}
-
-export interface FetcherResult<T> {
-  state: 'idle' | 'submitting' | 'loading';
-  data?: T;
-}
-
-export interface PaletteToolbarProps {
-  FormComponent: ComponentType<FormProps>;
-  useFetcher: <T>({ key }: { key: string }) => FetcherResult<T>;
-  generateEndpoint?: string;
-  favouritesEndpoint?: string;
-}

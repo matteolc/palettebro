@@ -2,7 +2,7 @@ import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
 import { Form } from '@remix-run/react';
 import { RiCheckLine, RiClipboardLine } from '@remixicon/react';
 import { useContext, useState } from 'react';
-import { PaletteContext } from '~/PaletteContext';
+import { PaletteContext } from '@repo/theme-toolbar';
 import { cn } from '~/lib/utils';
 
 interface AnimatedPaletteProps {

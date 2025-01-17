@@ -1,7 +1,7 @@
 import { RiEqualizerLine } from '@remixicon/react';
 import { ThemeVariantEnum } from '@repo/theme-generator/types';
 import { useContext } from 'react';
-import { PaletteContext } from '~/PaletteContext';
+import { PaletteContext } from '@repo/theme-toolbar';
 import {
   Popover,
   PopoverContent,

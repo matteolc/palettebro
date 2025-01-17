@@ -14,9 +14,8 @@
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-tabs": "^1.1.2",
     "@repo/biome-config": "workspace:*",
-    "@repo/theme-generator": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "^18.2.61",
+    "@types/react": "^18.3.12",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.17",
@@ -25,6 +24,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
-    "react": "^18.2.0"
+    "react": "^18.3.1",
+    "@repo/theme-generator": "workspace:*"
   }
 }

@@ -1,6 +1,5 @@
 import { Outlet } from '@remix-run/react';
-
-import { PaletteProvider } from '~/PaletteContext';
+import { PaletteProvider } from '@repo/theme-toolbar';
 import { PaletteToolbarProvider } from '~/PaletteToolbarContext';
 import { NavigationHeader } from '~/components/NavigationHeader';
 import { PaletteToolbar } from '~/components/palette/PaletteToolbar';

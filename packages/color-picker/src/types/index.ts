@@ -1,4 +1,4 @@
-import type { SchemistColor } from 'node_modules/@repo/theme-generator/src/color/types';
+import type { SchemistColor } from '@repo/theme-generator/types';
 import type { FC } from 'react';
 
 interface ColorPickerProps {
