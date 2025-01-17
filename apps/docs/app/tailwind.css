@@ -42,9 +42,6 @@
 }
 
 @layer base {
-  :root {
-    --radius: 0.5rem;
-  }
   html {
     @apply scroll-smooth;
   }

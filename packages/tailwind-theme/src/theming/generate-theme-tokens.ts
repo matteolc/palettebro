@@ -13,11 +13,8 @@ const generateThemeTokens = (input: Theme) => {
     });
   }
 
-  for (const item of Object.entries(DEFAULT_UTILITY_VALUES)) {
-    const [variable, value] = item;
-    if (!Object.hasOwn(input, variable)) {
-      result[variable] = value;
-    }
+  for (const [variable, value] of Object.entries(DEFAULT_UTILITY_VALUES)) {
+    result[variable] = value;
   }
 
   return result;

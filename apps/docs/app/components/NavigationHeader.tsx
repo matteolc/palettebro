@@ -55,7 +55,7 @@ const NavigationHeader = () => {
                       isActive
                         ? 'bg-primary-50/90 hover:bg-primary-50 text-primary-900'
                         : 'text-muted-foreground hover:text-primary-800',
-                      'px-2 py-1 rounded-sm text-sm font-medium transition-colors',
+                      'px-2 py-1 rounded-md text-sm font-medium transition-colors',
                     )
                   }
                 >

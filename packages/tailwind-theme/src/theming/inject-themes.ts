@@ -1,5 +1,5 @@
 import pc from 'picocolors';
-import type { PluginOptions } from '..';
+import type { PluginOptions } from '../types';
 import { generateThemeTokens } from './generate-theme-tokens';
 
 const THEME_ROOT = ':root';

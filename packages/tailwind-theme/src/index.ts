@@ -5,13 +5,7 @@ import { version } from '../package.json';
 import { PALETTE_COLORS, SHADCN_COLOR_UTILITIES } from './theming/const';
 import { injectThemes } from './theming/inject-themes';
 import { utilities } from './utilities';
-import type { Themes } from '@palettebruh/theme-generator/types';
-
-export type PluginOptions = {
-  themes: Themes;
-  utils: boolean;
-  darkTheme?: boolean;
-};
+import type { PluginOptions } from './types';
 
 export default plugin.withOptions(
   ({ utils, themes, darkTheme }: PluginOptions) =>
@@ -34,11 +28,7 @@ export default plugin.withOptions(
         console.log(`├─ ${pc.green('✔︎')} ${'Utility classes added'}`, '\n');
       }
 
-      if (themes) {
-        injectThemes(addBase, { themes, darkTheme });
-      } else {
-        console.log(`├─ ${pc.red('✘')} ${'No themes added'}`, '\n');
-      }
+      injectThemes(addBase, { themes, darkTheme });
     },
   () => ({
     theme: {
