@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import { themes } from './themes';
 
 const config: Pick<
   Config,
@@ -19,7 +20,7 @@ const config: Pick<
   },
   plugins: [
     require('@palettebruh/tailwind-theme')({
-      themes: true,
+      themes,
       utils: true,
       darkTheme: 'dark',
     }),

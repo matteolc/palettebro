@@ -10,11 +10,10 @@ const injectThemes = (
   // biome-ignore lint/suspicious/noExplicitAny: No will to type this
   addBase: (...args: any[]) => void,
   options: PluginOptions,
-  themes: Themes,
 ) => {
   const includedThemes = {};
 
-  for (const [theme, value] of Object.entries(themes)) {
+  for (const [theme, value] of Object.entries(options.themes)) {
     Object.assign(includedThemes, { [theme]: generateThemeTokens(value) });
   }
 
