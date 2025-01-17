@@ -4,6 +4,8 @@ import { defineConfig } from 'vite';
 import globPlugin from 'vite-plugin-glob';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+const isVercel = process.env.VERCEL === "1";
+
 declare module '@remix-run/node' {
   interface Future {
     v3_singleFetch: true;
@@ -15,7 +17,7 @@ export default defineConfig({
     globPlugin(),
     tsconfigPaths(),
     remix({
-      presets: [vercelPreset()],
+      ...isVercel && { presets: [vercelPreset()] },
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
@@ -25,25 +27,4 @@ export default defineConfig({
       },
     }),
   ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          // Create separate chunks for large dependencies
-          if (id.includes('node_modules')) {
-            if (id.includes('recharts')) {
-              return 'recharts';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'radix';
-            }
-            if (id.includes('framer-motion')) {
-              return 'framer';
-            }
-            return 'vendor';
-          }
-        },
-      },
-    },
-  },
 });

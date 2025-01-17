@@ -152,6 +152,9 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       framer-motion:
         specifier: ^11.14.4
         version: 11.14.4(react-dom@18.3.1)(react@18.3.1)

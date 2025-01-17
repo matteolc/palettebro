@@ -28,13 +28,43 @@ export async function generateHuemints({
     palette,
   };
 
-  const data = await fetch('https://api.huemint.com/color', {
-    method: 'POST',
-    body: JSON.stringify(cfg),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-  return data.json();
+    const response = await fetch('https://api.huemint.com/color', {
+      method: 'POST',
+      body: JSON.stringify(cfg),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      signal: controller.signal,
+    });  
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Read the response as an array buffer first
+    const buffer = await response.arrayBuffer();
+    const decoder = new TextDecoder();
+    const text = decoder.decode(buffer);
+
+    if (!text) {
+      throw new Error('Empty response received from server');
+    }
+
+    const json = JSON.parse(text);
+    return json;
+  } catch (error) {
+    console.error('Request failed:', error);
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('Request timed out after 10 seconds');
+    }
+    throw error;
+  }
 }
+

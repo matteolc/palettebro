@@ -20,7 +20,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
 
   const Wcag2Contrast = ({ bg, fg }: { bg: string; fg: string }) => {
     return (
-      <Badge className="text-inherit border-inherit border-opacity-40">
+      <Badge variant="outline" className="text-inherit border-none">
         WCAG2 {wcag2ContrastGrade(bg, fg)} ({wcag2Contrast(bg, fg)?.toFixed(1)})
       </Badge>
     );
@@ -28,7 +28,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
 
   const Wcag3Contrast = ({ bg, fg }: { bg: string; fg: string }) => {
     return (
-      <Badge className="text-inherit border-inherit">
+      <Badge variant="outline" className="text-inherit border-none">
         WCAG3 {wcag3ContrastGrade(bg, fg)} ({wcag3Contrast(bg, fg).toFixed(1)})
       </Badge>
     );
@@ -70,7 +70,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                     style={{
                       borderColor: `oklch(var(--${token}-text))`,
                     }}
-                    className="flex flex-col gap-y-1 mt-2"
+                    className="flex flex-col mt-2 justify-center items-center border rounded-md"
                   >
                     <Wcag2Contrast
                       bg={palette?.[`${token}${shade}`].color}
@@ -101,7 +101,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                   style={{
                     borderColor: `oklch(var(--on-${token}-container))`,
                   }}
-                  className="flex flex-col gap-y-1 mt-2"
+                  className="flex flex-col mt-2 justify-center items-center border rounded-md"
                 >
                   <Wcag2Contrast
                     bg={palette?.[`${token}-container`].color}
@@ -129,7 +129,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                   style={{
                     borderColor: `oklch(var(--${token}-container))`,
                   }}
-                  className="flex flex-col gap-y-1 mt-2"
+                  className="flex flex-col mt-2 justify-center items-center border rounded-md"
                 >
                   <Wcag2Contrast
                     bg={palette?.[`${token}-container`].color}
