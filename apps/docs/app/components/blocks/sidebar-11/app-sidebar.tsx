@@ -72,8 +72,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupLabel>Changes</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {data.changes.map((item, index) => (
-                <SidebarMenuItem key={index}>
+              {data.changes.map((item) => (
+                <SidebarMenuItem key={item.toString()}>
                   <SidebarMenuButton>
                     <File />
                     {item.file}
@@ -88,8 +88,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupLabel>Files</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {data.tree.map((item, index) => (
-                <Tree key={index} item={item} />
+              {data.tree.map((item) => (
+                <Tree key={item.toString()} item={item} />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -100,6 +100,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   );
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 function Tree({ item }: { item: string | any[] }) {
   const [name, ...items] = Array.isArray(item) ? item : [item];
 
@@ -130,8 +131,8 @@ function Tree({ item }: { item: string | any[] }) {
         </CollapsibleTrigger>
         <CollapsibleContent>
           <SidebarMenuSub>
-            {items.map((subItem, index) => (
-              <Tree key={index} item={subItem} />
+            {items.map((subItem) => (
+              <Tree key={subItem.toString()} item={subItem} />
             ))}
           </SidebarMenuSub>
         </CollapsibleContent>

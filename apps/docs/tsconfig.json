@@ -14,6 +14,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
+    "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {

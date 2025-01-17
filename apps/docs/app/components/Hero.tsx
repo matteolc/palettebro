@@ -15,7 +15,9 @@ export const Hero = () => {
         The best color palette generator for the web. Ever.
       </h1>
       <p className="mt-4 max-w-xl lg:text-xl text-2xl text-neutral-800">
-        Create infinite palettes. Save your favourite ones. See how they look with real components. Download all the colors as CSS token variables. Use them in your web project. It's that simple.
+        Create infinite palettes. Save your favourite ones. See how they look
+        with real components. Download all the colors as CSS token variables.
+        Use them in your web project. It's that simple.
       </p>
       <div className="block lg:hidden mt-8">
         To use Palettebruh please use a screen with a width of at least 1024px.

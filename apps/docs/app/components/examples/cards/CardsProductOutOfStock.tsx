@@ -54,8 +54,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
           </Badge>
           <img
             src="/product-1.jpg"
-            // biome-ignore lint/a11y/noRedundantAlt: <explanation>
-            alt="Product Image"
+            alt="Product"
             width="500"
             height="500"
             className="w-full h-64 object-cover"

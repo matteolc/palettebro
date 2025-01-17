@@ -14,8 +14,12 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading>Example component library</PageHeaderHeading>
         <PageHeaderDescription>
-          A collection of components made with <a href="https://ui.shadcn.com">shadcn/ui</a>{' '}
-          themed with <a href="https://ui.shadcn.com/docs/theming#css-variables">CSS variables</a>.
+          A collection of components made with{' '}
+          <a href="https://ui.shadcn.com">shadcn/ui</a> themed with{' '}
+          <a href="https://ui.shadcn.com/docs/theming#css-variables">
+            CSS variables
+          </a>
+          .
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">

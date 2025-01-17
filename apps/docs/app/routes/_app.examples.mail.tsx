@@ -1,12 +1,12 @@
 import { accounts, mails } from '~/components/examples/mail/data';
-import { Mail } from '~/components/examples/mail/mail';
+import { MailComponent } from '~/components/examples/mail/mail';
 import { Card } from '~/components/ui/card';
 
 export default function Page() {
   return (
     <Card className="shadow rounded-lg">
       <div className="hidden flex-col md:flex">
-        <Mail
+        <MailComponent
           accounts={accounts}
           mails={mails}
           defaultLayout={undefined}

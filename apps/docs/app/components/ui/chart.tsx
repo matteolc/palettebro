@@ -1,11 +1,7 @@
 import * as React from 'react';
+import type { JSX } from 'react/jsx-runtime';
 import * as RechartsPrimitive from 'recharts';
-import {
-  NameType,
-  Payload,
-  ValueType,
-} from 'recharts/types/component/DefaultTooltipContent';
-
+import { ClientOnly } from 'remix-utils/client-only';
 import { cn } from '~/lib/utils';
 
 // Format: { THEME_NAME: CSS_SELECTOR }
@@ -81,6 +77,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 
   return (
     <style
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(
@@ -356,6 +353,27 @@ function getPayloadConfigFromPayload(
   return configLabelKey in config
     ? config[configLabelKey]
     : config[key as keyof typeof config];
+}
+
+export function Chart(
+  props: JSX.IntrinsicAttributes &
+    Omit<
+      React.ClassAttributes<HTMLDivElement> &
+        React.HTMLAttributes<HTMLDivElement> & {
+          config: ChartConfig;
+          children: React.ComponentProps<
+            typeof RechartsPrimitive.ResponsiveContainer
+          >['children'];
+        },
+      'ref'
+    > &
+    React.RefAttributes<HTMLDivElement>,
+) {
+  return (
+    <ClientOnly fallback={<div>Loading chart...</div>}>
+      {() => <ChartContainer {...props} />}
+    </ClientOnly>
+  );
 }
 
 export {

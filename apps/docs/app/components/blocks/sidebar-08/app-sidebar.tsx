@@ -4,7 +4,7 @@ import {
   Command,
   Frame,
   LifeBuoy,
-  Map,
+  Map as MapIcon,
   PieChart,
   Send,
   Settings2,
@@ -145,7 +145,7 @@ const data = {
     {
       name: 'Travel',
       url: '#',
-      icon: Map,
+      icon: MapIcon,
     },
   ],
 };

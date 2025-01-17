@@ -1,6 +1,7 @@
 import { Form, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
 import { generatePaletteName } from '@repo/theme-generator/services/generate-palette-name';
+import { AnimatedPalette } from '@repo/theme-toolbar';
 import type { ActionFunctionArgs, LoaderFunctionArgs } from '@vercel/remix';
 import { z } from 'zod';
 import {
@@ -9,7 +10,6 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import { AnimatedPalette } from '@repo/theme-toolbar';
 import { Button } from '~/components/ui/button';
 import { favouritesCookie } from '~/lib/palette-store';
 

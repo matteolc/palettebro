@@ -1,12 +1,12 @@
 import { Form, Outlet, useFetcher } from '@remix-run/react';
-import type { ComponentType } from 'react';
+import type { FormProps as RemixFormProps } from '@remix-run/react';
 import {
   PaletteProvider,
   PaletteToolbar,
   PaletteToolbarProvider,
 } from '@repo/theme-toolbar';
 import type { FormProps as ToolbarFormProps } from '@repo/theme-toolbar/types';
-import type { FormProps as RemixFormProps } from '@remix-run/react';
+import type { ComponentType } from 'react';
 import { NavigationHeader } from '~/components/NavigationHeader';
 import { useHints } from '~/hooks/use-hints';
 
@@ -23,7 +23,10 @@ export default function Page() {
         <main className="w-full max-w-full mx-auto flex-1 flex flex-col mt-20">
           <Outlet />
           <PaletteToolbarProvider>
-            <PaletteToolbar FormComponent={FormWrapper} useFetcher={useFetcher} />
+            <PaletteToolbar
+              FormComponent={FormWrapper}
+              useFetcher={useFetcher}
+            />
           </PaletteToolbarProvider>
         </main>
         <footer className="w-full max-w-7xl mx-auto p-10 flex justify-center">

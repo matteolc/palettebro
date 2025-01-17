@@ -25,4 +25,25 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Create separate chunks for large dependencies
+          if (id.includes('node_modules')) {
+            if (id.includes('recharts')) {
+              return 'recharts';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'radix';
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer';
+            }
+            return 'vendor';
+          }
+        },
+      },
+    },
+  },
 });

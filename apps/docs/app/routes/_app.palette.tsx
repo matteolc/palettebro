@@ -1,12 +1,12 @@
 import { NavLink } from '@remix-run/react';
+import { BASE_TOKENS, STATUS_TOKENS } from '@repo/theme-toolbar';
+import { TokenColorPalette } from '@repo/theme-toolbar';
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import { BASE_TOKENS, STATUS_TOKENS } from '@repo/theme-toolbar';
-import { TokenColorPalette } from '@repo/theme-toolbar';
 import { Button } from '~/components/ui/button';
 import { loader as favouritesLoader } from '~/routes/_app.favourites';
 

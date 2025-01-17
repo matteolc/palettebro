@@ -161,7 +161,6 @@ export function AccountForm() {
                   <FormControl>
                     <Button
                       variant="outline"
-                      role="combobox"
                       className={cn(
                         'w-[200px] justify-between',
                         !field.value && 'text-muted-foreground',

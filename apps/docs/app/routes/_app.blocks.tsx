@@ -14,7 +14,8 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading>Building Blocks for the Web</PageHeaderHeading>
         <PageHeaderDescription>
-          Clean, modern building blocks built with <a href="https://ui.shadcn.com">shadcn/ui</a> and styled with{' '}
+          Clean, modern building blocks built with{' '}
+          <a href="https://ui.shadcn.com">shadcn/ui</a> and styled with{' '}
           <a href="/">Palettebruh</a>.
         </PageHeaderDescription>
         <PageActions>

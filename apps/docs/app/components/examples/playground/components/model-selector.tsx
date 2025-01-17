@@ -56,7 +56,6 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
         <PopoverTrigger asChild>
           <Button
             variant="outline"
-            role="combobox"
             aria-expanded={open}
             aria-label="Select a model"
             className="w-full justify-between"
@@ -131,9 +130,8 @@ interface ModelItemProps {
 
 function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   const ref = React.useRef<HTMLDivElement>(null);
-
   useMutationObserver(ref, (mutations) => {
-    mutations.forEach((mutation) => {
+    for (const mutation of mutations) {
       if (
         mutation.type === 'attributes' &&
         mutation.attributeName === 'aria-selected' &&
@@ -141,7 +139,7 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       ) {
         onPeek(model);
       }
-    });
+    }
   });
 
   return (

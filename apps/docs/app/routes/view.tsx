@@ -1,6 +1,6 @@
 import { Outlet } from '@remix-run/react';
-import React from 'react';
 import { PaletteProvider } from '@repo/theme-toolbar';
+import React from 'react';
 
 export default function Page() {
   return (
