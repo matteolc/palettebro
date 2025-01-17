@@ -5,74 +5,51 @@ import { generateThemeTokens } from './generate-theme-tokens';
 const THEME_ROOT = ':root';
 
 const injectThemes = (
-  // biome-ignore lint/suspicious/noExplicitAny: No will to type this
+  // biome-ignore lint/suspicious/noExplicitAny: Tailwind's addBase accepts various CSS-like objects
   addBase: (...args: any[]) => void,
   { themes, darkTheme }: Pick<PluginOptions, 'themes' | 'darkTheme'>,
 ) => {
-  const includedThemes = {};
-
+  // biome-ignore lint/suspicious/noExplicitAny: Theme values contain complex nested CSS properties
+  const includedThemes: Record<string, any> = {};
   for (const [theme, value] of Object.entries(themes)) {
     Object.assign(includedThemes, { [theme]: generateThemeTokens(value) });
   }
 
-  const DEFAULT_THEMES = Object.keys(themes);
+  const themeNames = Object.keys(themes);
+  // biome-ignore lint/suspicious/noExplicitAny: CSS selectors and values have complex nested structures
+  const themesToInject: Record<string, any> = {};
 
-  const themesToInject = {};
-  DEFAULT_THEMES.forEach(([themeName, value], index) => {
-    if (index === 0) {
-      // first theme as root
-      themesToInject[THEME_ROOT as keyof typeof themesToInject] =
-        includedThemes[themeName as keyof typeof includedThemes];
-    } else if (index === 1) {
-      // auto dark
-      if (darkTheme) {
-        if (DEFAULT_THEMES[0] !== 'dark' && DEFAULT_THEMES.includes('dark')) {
-          Object.assign(themesToInject, {
-            ['@media (prefers-color-scheme: dark)' as keyof typeof themesToInject]:
-              {
-                [THEME_ROOT as keyof typeof themesToInject]:
-                  includedThemes['dark' as keyof typeof includedThemes],
-              },
-          });
-        }
-      } else if (darkTheme === false) {
-        // disables prefers-color-scheme: dark
-      } else {
-        if (DEFAULT_THEMES[0] !== 'dark' && DEFAULT_THEMES.includes('dark')) {
-          Object.assign(themesToInject, {
-            ['@media (prefers-color-scheme: dark)' as keyof typeof themesToInject]:
-              {
-                [THEME_ROOT as keyof typeof themesToInject]:
-                  includedThemes['dark' as keyof typeof includedThemes],
-              },
-          });
-        }
-      }
-      // theme 0 with name
-      themesToInject[
-        `[data-theme=${DEFAULT_THEMES[0]}]` as keyof typeof themesToInject
-      ] = includedThemes[DEFAULT_THEMES[0] as keyof typeof includedThemes];
-      // theme 1 with name
-      themesToInject[
-        `[data-theme=${DEFAULT_THEMES[1]}]` as keyof typeof themesToInject
-      ] = includedThemes[DEFAULT_THEMES[1] as keyof typeof includedThemes];
-    } else {
-      themesToInject[
-        `[data-theme=${themeName}]` as keyof typeof themesToInject
-      ] = includedThemes[themeName as keyof typeof includedThemes];
-    }
-  });
+  // Set root theme (first theme)
+  if (themeNames.length > 0) {
+    const defaultTheme = themeNames[0];
+    themesToInject[THEME_ROOT] = includedThemes[defaultTheme];
+  }
+
+  // Handle dark mode
+  const hasDarkTheme = themeNames.includes('dark');
+  const shouldAddDarkMode =
+    darkTheme !== false && hasDarkTheme && themeNames[0] !== 'dark';
+
+  if (shouldAddDarkMode) {
+    themesToInject['@media (prefers-color-scheme: dark)'] = {
+      [THEME_ROOT]: includedThemes.dark,
+    };
+  }
+  // Add data-theme selectors for all themes
+  for (const themeName of themeNames) {
+    themesToInject[`[data-theme=${themeName}]`] = includedThemes[themeName];
+  }
 
   addBase(themesToInject);
 
-  if (DEFAULT_THEMES.length > 0) {
+  if (themeNames.length > 0) {
     console.log(
-      `├─ ${pc.green('✔︎')} ${DEFAULT_THEMES.length} ${
-        DEFAULT_THEMES.length > 1 ? 'themes' : 'theme'
+      `├─ ${pc.green('✔︎')} ${themeNames.length} ${
+        themeNames.length > 1 ? 'themes' : 'theme'
       } added`,
     );
   }
-  if (DEFAULT_THEMES.length === 0) {
+  if (themeNames.length === 0) {
     console.log(`├─ ${pc.yellow('ℹ︎')} All themes are disabled in config`);
   }
 };

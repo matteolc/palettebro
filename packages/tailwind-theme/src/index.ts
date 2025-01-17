@@ -7,7 +7,7 @@ import { injectThemes } from './theming/inject-themes';
 import { utilities } from './utilities';
 import type { Themes } from '@palettebruh/theme-generator/types';
 
-type PluginOptions = {
+export type PluginOptions = {
   themes: Themes;
   utils: boolean;
   darkTheme?: boolean;
@@ -51,5 +51,3 @@ export default plugin.withOptions(
     },
   }),
 );
-
-export type { PluginOptions };
