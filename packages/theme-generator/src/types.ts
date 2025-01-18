@@ -1,4 +1,4 @@
-import aiPalette from './palettes/dynamic';
+import dynamicPalette from './palettes/dynamic';
 import muiPalette from './palettes/mui';
 import staticPalette from './palettes/static';
 import { getMuiPalette } from './palettes/getMuiPalette';
@@ -17,7 +17,7 @@ export const ThemeVariantEnum = createEnum([
 export const ThemeVariantToPalette = {
   mui: getMuiPalette,
   static: staticPalette,
-  dynamic: aiPalette,
+  dynamic: dynamicPalette,
 };
 
 export type StaticThemePreset = 'split-complementary' | 'tetrad' | 'triad';

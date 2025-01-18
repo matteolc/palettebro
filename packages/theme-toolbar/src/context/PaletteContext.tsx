@@ -2,6 +2,7 @@ import type { usePalette } from '@palettebruh/theme-generator/palettes';
 import {
   type MuiThemePreset,
   type StaticThemePreset,
+  ThemeColorSchemeEnum,
   type Themes,
   type ThemeVariant,
   ThemeVariantEnum,
@@ -44,7 +45,8 @@ export const PaletteProvider = ({
 }: { lightOrDark?: string; themes: Themes; children: React.ReactNode }) => {
   const [isDark, setIsDark] = useState<boolean>(lightOrDark === 'dark');
   const [baseColors, setBaseColorsState] = useState<BaseColors>(
-    themes[isDark ? 'dark' : 'light'].baseColors,
+    themes[isDark ? ThemeColorSchemeEnum.dark : ThemeColorSchemeEnum.light]
+      .baseColors,
   );
   const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.static);
   const [preset, setPreset] = useState<StaticThemePreset | MuiThemePreset>(

@@ -125,6 +125,7 @@ export * from './color/parsing';
 export * from './color/conversion';
 export * from './utils/css';
 export * from './utils/generators';
+export * from './utils/strings';
 export * from './utils/oklch';
 export * from './color/manipulation';
 export * from './const';

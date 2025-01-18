@@ -14,15 +14,12 @@ export interface GenerateHuemintsParams {
   palette: string[];
 }
 
-export async function generateHuemints({
-  mode,
-  colors,
-  temperature,
-  page,
-  preset,
-  adjacency,
-  palette,
-}: GenerateHuemintsParams) {
+export async function generateHuemints(
+  params: GenerateHuemintsParams,
+): Promise<{ results: { palette: string[]; score: number }[] }> {
+  const { mode, colors, temperature, page, preset, adjacency, palette } =
+    params;
+
   const cfg = {
     preset,
     mode,

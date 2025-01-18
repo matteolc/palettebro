@@ -42,7 +42,7 @@ function BlocksNavLink({
     <Link
       to={`/blocks/${category.slug}`}
       key={category.slug}
-      className="flex h-7 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-4 text-center text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active=true]:bg-muted data-[active=true]:text-muted-foreground"
+      className="flex h-7 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-4 text-center text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active=true]:bg-secondary data-[active=true]:text-secondary-foreground"
       data-active={isActive}
     >
       {category.name}

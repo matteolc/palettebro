@@ -23,6 +23,8 @@ import {
 import { formatSchemistToHex } from '../color/formatting';
 import nearestColor from '../color/nearest';
 import scale from '../presets/scale';
+import tailwindScaleLight from '../presets/tailwindScaleLight';
+import tailwindScaleDark from '../presets/tailwindScaleDark';
 import {
   parseColor,
   presetSamplesWithKeyAndName,
@@ -82,18 +84,12 @@ const presetMap = (props: { hct: Hct; isDark: boolean; contrast: number }) => {
 
 export const getMuiPalette = ({
   primaryColor,
-  secondaryColor,
-  accentColor,
   isDark,
-  reverse,
   preset,
   contrast,
 }: {
   primaryColor: SchemistColor;
-  secondaryColor?: SchemistColor;
-  accentColor?: SchemistColor;
   isDark: boolean;
-  reverse: boolean;
   preset: MuiThemePreset;
   contrast: number;
 }) => {
@@ -106,12 +102,12 @@ export const getMuiPalette = ({
   // Generate shades for primary, secondary, and accent colors
   const generateShades = (color: SchemistColor | undefined, token: string) => {
     if (!color) return {};
+    const scaleNodes = isDark ? tailwindScaleDark.nodes : tailwindScaleLight.nodes;
     const presets = presetSampleWithKeyAndNameHash([
-      ...presetSamplesWithKeyAndName(scale.nodes, color),
+      ...presetSamplesWithKeyAndName(scaleNodes, color),
       ...presetSamplesWithKeyAndName(states.nodes, color),
     ]);
 
-    // Create new object with transformed keys
     return Object.entries(presets).reduce(
       (acc, [key, value]) => {
         const newKey = key.replace('$', token);

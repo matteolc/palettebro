@@ -6,5 +6,6 @@ import type { LoaderFunctionArgs } from '@vercel/remix';
 
 export async function action({ request }: LoaderFunctionArgs) {
   const formData = await request.formData();
-  return await generateHuemints(parseHuemintsFormData(formData));
+  const { results } = await generateHuemints(parseHuemintsFormData(formData));
+  return { results };
 }

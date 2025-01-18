@@ -94,7 +94,7 @@ function ExampleLink({
     <NavLink
       to={example.href}
       key={example.href}
-      className="flex h-7 items-center justify-center rounded-full px-4 text-center text-sm font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:bg-muted data-[active=true]:text-muted-foreground"
+      className="flex h-7 items-center justify-center rounded-full px-4 text-center text-sm font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:bg-secondary data-[active=true]:text-secondary-foreground"
       data-active={isActive}
     >
       {example.name}
