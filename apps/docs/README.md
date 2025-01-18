@@ -1,38 +1,19 @@
-# Remix
+# PaletteBruh Examples
 
-This directory is a brief example of a [Remix](https://remix.run/docs) site that can be deployed to Vercel with zero configuration.
+This directory contains examples of how to use PaletteBruh in your project.
 
-To get started, run the Remix cli with this template
+## Installation
 
-```sh
-npx create-remix@latest --template vercel/vercel/examples/remix
+```bash
+pnpm add @palettebruh/color-picker @palettebruh/theme-toolbar @palettebruh/tailwind-theme
 ```
 
-## Deploy Your Own
+## Documentation
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/remix&template=remix)
+For detailed information on each package, including API references, usage examples, and best practices, please refer to the individual package READMEs.
 
-_Live Example: https://remix-run-template.vercel.app_
+## Support
 
-You can also deploy using the [Vercel CLI](https://vercel.com/docs/cli):
+If you encounter any issues or have questions, please refer to the [Troubleshooting Guide](./docs/troubleshooting.md) or contact our support team at support@palettebruh.com.
 
-```sh
-npm i -g vercel
-vercel
-```
-
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
-npm install
-```
-
-Afterwards, start the Remix development server like so:
-
-```sh
-npm run dev
-```
-
-Open up [http://localhost:5173](http://localhost:5173) and you should be ready to go!
+Thank you for choosing PaletteBruh! We hope it helps you create stunning web applications with ease.

@@ -1,3 +1,9 @@
-# `@turbo/biome-config`
+# @palettebruh/biome-config
 
-Collection of internal biome configurations.
+Collection of internal Biome configurations.
+
+## Installation
+
+```bash
+pnpm add @palettebruh/biome-config
+```
