@@ -9,6 +9,8 @@ export const themes = {
     preset: StaticThemePresetEnum['split-complementary'],
     baseColors: {
       primary: colors.purple[500],
+      secondary: colors.blue[500],
+      accent: colors.green[500],
     },
   },
   dark: {
@@ -17,6 +19,8 @@ export const themes = {
     preset: StaticThemePresetEnum['split-complementary'],
     baseColors: {
       primary: colors.purple[500],
+      secondary: colors.blue[500],
+      accent: colors.green[500],
     },
   },
 } satisfies Themes;

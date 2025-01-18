@@ -1,11 +1,12 @@
 import { RiEqualizerLine } from '@remixicon/react';
 import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
 import { useContext } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../ui/tabs';
 import { DynamicPaletteSettings } from './DynamicPaletteSettings';
-import { PaletteContext } from './PaletteContext';
+import { PaletteContext } from '../../context/PaletteContext';
 import { StaticPaletteSettings } from './StaticPaletteSettings';
+import { MuiPaletteSettings } from './MuiPaletteSettings';
 
 export const PaletteSettings = () => {
   const { variant, setVariant } = useContext(PaletteContext);
@@ -26,6 +27,13 @@ export const PaletteSettings = () => {
           <TabsList className="bg-zinc-100 text-zinc-950">
             <TabsTrigger
               className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50"
+              value="mui"
+              onClick={() => setVariant?.(ThemeVariantEnum.mui)}
+            >
+              Material UI
+            </TabsTrigger>
+            <TabsTrigger
+              className="data-[state=active]:bg-zinc-950 data-[state=active]:text-zinc-50"
               value="static"
               onClick={() => setVariant?.(ThemeVariantEnum.static)}
             >
@@ -39,6 +47,9 @@ export const PaletteSettings = () => {
               Generative
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="mui">
+            <MuiPaletteSettings />
+          </TabsContent>
           <TabsContent value="static">
             <StaticPaletteSettings />
           </TabsContent>

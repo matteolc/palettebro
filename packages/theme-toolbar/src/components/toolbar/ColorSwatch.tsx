@@ -3,10 +3,11 @@ import { ColorPicker } from '@palettebruh/color-picker';
 import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
-import { sentenceCase } from '../lib/string';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
-import { type BaseColors, PaletteContext } from './PaletteContext';
+import { sentenceCase } from '@/lib/string';
+import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
+import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { TokenShades } from './TokenShades';
+import { getPaletteColor } from '@/utils/get-palette-color';
 
 export const ColorSwatch = ({
   token,
@@ -57,7 +58,7 @@ export const ColorSwatch = ({
               <input
                 type="text"
                 className="hidden"
-                defaultValue={isLocked ? palette[token].color : ''}
+                defaultValue={isLocked ? getPaletteColor(token, palette) : ''}
                 name={token}
               />
               <span className="text-md font-bold">{sentenceCase(token)}</span>
@@ -72,12 +73,12 @@ export const ColorSwatch = ({
                 </PopoverTrigger>
                 <PopoverContent
                   sideOffset={14}
-                  className="w-full bg-white border-neutral-200 p-2.5 shadow-md h-fit overflow-y-scroll"
+                  className="w-full bg-white border-zinc-200 p-2.5 shadow-md h-fit overflow-y-scroll"
                 >
                   <ColorPicker
-                    value={palette[token].color}
+                    value={getPaletteColor(token, palette)}
                     onChange={(value: string) =>
-                      palette[token].color !== value &&
+                      getPaletteColor(token, palette) !== value &&
                       setBaseColors?.({ [token]: value } as BaseColors)
                     }
                   />
@@ -102,7 +103,7 @@ export const ColorSwatch = ({
       </div>
 
       <PopoverContent
-        className="w-48 p-1 bg-white border-neutral-200"
+        className="w-48 p-1 bg-white border-zinc-200"
         sideOffset={14}
       >
         <TokenShades token={token} />

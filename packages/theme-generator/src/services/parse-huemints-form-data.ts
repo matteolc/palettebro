@@ -1,3 +1,4 @@
+import type { GenerativeThemePreset } from '../types';
 import type { GenerateHuemintsParams } from './generate-huemints';
 
 export function parseHuemintsFormData(
@@ -27,7 +28,7 @@ export function parseHuemintsFormData(
     colors,
     temperature,
     page,
-    preset,
+    preset: preset as GenerativeThemePreset,
     adjacency,
     palette,
   };

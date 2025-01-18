@@ -4,54 +4,44 @@ import {
   RiMoonLine,
   RiSunLine,
 } from '@remixicon/react';
-import { formatSchemistToHex, randomUsableColor } from '@palettebruh/theme-generator';
+import {
+  formatSchemistToHex,
+  randomUsableColor,
+} from '@palettebruh/theme-generator';
 import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
 import { useContext, useEffect, useState } from 'react';
-import { type BaseColors, PaletteContext } from './PaletteContext';
-import { PaletteSettings } from './PaletteSettings';
-import { PaletteSwatches } from './PaletteSwatches';
-import { PaletteToolbarContext } from './PaletteToolbarContext';
-
-const BASE_TOKENS = ['primary', 'secondary', 'accent', 'neutral'];
-const STATUS_TOKENS = ['info', 'success', 'warning', 'error'];
-
-interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
-  fetcherKey?: string;
-  navigate?: boolean;
-}
-
-interface FetcherResult<T> {
-  state: 'idle' | 'submitting' | 'loading';
-  data?: T;
-}
-
-interface PaletteToolbarProps {
-  FormComponent: React.ComponentType<FormProps>;
-  useFetcher: <T>({ key }: { key: string }) => FetcherResult<T>;
-  generateEndpoint?: string;
-  favouritesEndpoint?: string;
-}
-
-interface GenerateActionResponse {
-  results: {
-    palette: string[];
-  }[];
-}
+import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
+import { PaletteSettings } from './settings/PaletteSettings';
+import { PaletteSwatches } from './toolbar/PaletteSwatches';
+import { GenerativePaletteContext } from '@/context/GenerativePaletteContext';
+import type { FormProps } from '@/types';
 
 const PaletteToolbar = ({
   FormComponent,
   useFetcher,
   generateEndpoint = '/generate',
   favouritesEndpoint = '/favourites',
-}: PaletteToolbarProps) => {
+}: {
+  FormComponent: React.ComponentType<FormProps>;
+  useFetcher: <T>({ key }: { key: string }) => {
+    state: 'idle' | 'submitting' | 'loading';
+    data?: T;
+  };
+  generateEndpoint?: string;
+  favouritesEndpoint?: string;
+}) => {
   const { setIsDark, isDark, setBaseColors, variant, palette } =
     useContext(PaletteContext);
   const { temperature, profile, preset, adjacency, page, numColors } =
-    useContext(PaletteToolbarContext);
+    useContext(GenerativePaletteContext);
   const [generatedPalettes, setGeneratedPalettes] = useState<
     { palette: string[] }[] | undefined
   >([]);
-  const generateFetcher = useFetcher<GenerateActionResponse>({
+  const generateFetcher = useFetcher<{
+    results: {
+      palette: string[];
+    }[];
+  }>({
     key: 'generate',
   });
 
@@ -229,4 +219,4 @@ const PaletteToolbar = ({
   );
 };
 
-export { PaletteToolbar, BASE_TOKENS, STATUS_TOKENS };
+export { PaletteToolbar };

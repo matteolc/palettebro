@@ -19,6 +19,7 @@
     "@langchain/community": "0.3.15",
     "@langchain/core": "0.3.15",
     "@langchain/openai": "0.3.15",
+    "@material/material-color-utilities": "0.3.0",
     "apca-w3": "^0.1.9",
     "culori": "^4.0.1",
     "nearest-color": "^0.4.4",

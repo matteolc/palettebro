@@ -4,10 +4,35 @@ import { formatSchemistToHex } from '../color/formatting';
 import nearestColor from '../color/nearest';
 import { parseColor } from '../color/parsing';
 import {
+  type MuiThemePreset,
+  type SchemistColor,
+  type StaticThemePreset,
   type Theme,
   ThemeColorSchemeEnum,
-  ThemeVariantToPalette,
 } from '../types';
+import { getMuiPalette } from './getMuiPalette';
+import staticPalette from './static';
+import dynamicPalette from './dynamic';
+
+const logColor = (
+  type: string,
+  color: string | undefined,
+  parsedColor: SchemistColor | undefined,
+) => {
+  if (!color) return;
+  if (!parsedColor) return;
+
+  const colorName = nearestColor(formatSchemistToHex(parsedColor));
+  console.log(
+    ` ├─ ${picocolors.green('✔︎')} Generating theme for ${type} color: ${picocolors.dim(
+      colorName,
+    )} (${picocolors.dim(color)})`,
+  );
+  console.log(
+    `%c${type} (input)\n${formatSchemistToHex(parsedColor)}`,
+    `color: #000000; background-color: ${formatSchemistToHex(parsedColor)}; padding: 0.5rem;`,
+  );
+};
 
 export const getPalette = (props: { theme: Theme }) => {
   const {
@@ -15,93 +40,53 @@ export const getPalette = (props: { theme: Theme }) => {
     reverse,
     preset,
     baseColors: { primary, secondary, accent },
+    variant,
+    'color-scheme': colorScheme,
+    contrast,
   } = props.theme;
 
   if (debug) {
     console.log(
       '\n',
-      `🏄   ${picocolors.magenta('@palettebruh/theme-generator')} ${picocolors.dim(
-        version,
-      )}`,
+      `🏄   ${picocolors.magenta('@palettebruh/theme-generator')} ${picocolors.dim(version)}`,
     );
   }
 
   const [_, primaryColor] = parseColor(primary);
-  if (!primaryColor) {
-    return {};
-  }
-  const primaryColorName = nearestColor(formatSchemistToHex(primaryColor));
+  if (!primaryColor) return {};
+
+  const secondaryColor =
+    variant === 'dynamic' && secondary ? parseColor(secondary)[1] : undefined;
+  const accentColor =
+    variant === 'dynamic' && accent ? parseColor(accent)[1] : undefined;
 
   if (debug) {
-    console.log(
-      ` ├─ ${picocolors.green(
-        '✔︎',
-      )} Generating theme for primary color: ${picocolors.dim(
-        primaryColorName,
-      )} (${picocolors.dim(primary)})`,
-    );
-    console.log(
-      `%cPrimary (input)\n${formatSchemistToHex(primaryColor)}`,
-      `color: #000000; background-color: ${formatSchemistToHex(primaryColor)}; padding: 0.5rem;`,
-    );
+    logColor('primary', primary, primaryColor);
+    logColor('secondary', secondary, secondaryColor);
+    logColor('accent', accent, accentColor);
   }
 
-  let secondaryColor: ReturnType<typeof parseColor>[1];
-
-  if (secondary && props.theme.variant === 'dynamic') {
-    const parsed = parseColor(secondary);
-    if (parsed[1]) {
-      secondaryColor = parsed[1];
-      const secondaryColorName = nearestColor(
-        formatSchemistToHex(secondaryColor),
-      );
-      if (debug) {
-        console.log(
-          ` ├─ ${picocolors.green(
-            '✔︎',
-          )} Generating theme for secondary color: ${picocolors.dim(
-            secondaryColorName,
-          )} (${picocolors.dim(secondary)})`,
-        );
-        console.log(
-          `%cSecondary (input)\n${formatSchemistToHex(secondaryColor)}`,
-          `color: #000000; background-color: ${formatSchemistToHex(secondaryColor)}; padding: 0.5rem;`,
-        );
-      }
-    }
-  }
-
-  let accentColor: ReturnType<typeof parseColor>[1];
-
-  if (accent && props.theme.variant === 'dynamic') {
-    const parsed = parseColor(accent);
-    if (parsed[1]) {
-      accentColor = parsed[1];
-      const accentColorName = nearestColor(formatSchemistToHex(accentColor));
-      if (debug) {
-        console.log(
-          ` ├─ ${picocolors.green(
-            '✔︎',
-          )} Generating theme for accent color: ${picocolors.dim(
-            accentColorName,
-          )} (${picocolors.dim(accent)})`,
-        );
-        console.log(
-          `%cAccent (input)\n${formatSchemistToHex(accentColor)}`,
-          `color: #000000; background-color: ${formatSchemistToHex(accentColor)}; padding: 0.5rem;`,
-        );
-      }
-    }
-  }
-
-  const palette = ThemeVariantToPalette[props.theme.variant]({
+  const paletteProps = {
     primaryColor,
     secondaryColor,
     accentColor,
     reverse: reverse ?? false,
-    preset: preset ?? 'split-complementary',
-    isDark: props.theme['color-scheme'] === ThemeColorSchemeEnum.dark,
-  });
+    isDark: colorScheme === ThemeColorSchemeEnum.dark,
+    contrast: contrast ?? 0.0,
+  };
+
+  const palette =
+    variant === 'mui'
+      ? getMuiPalette({ ...paletteProps, preset: preset as MuiThemePreset })
+      : variant === 'static'
+        ? staticPalette({
+            ...paletteProps,
+            preset: preset as StaticThemePreset,
+          })
+        : dynamicPalette({
+            ...paletteProps,
+            preset: preset as StaticThemePreset,
+          });
   if (debug) {
     for (const [key, value] of Object.entries(palette)) {
       console.log(

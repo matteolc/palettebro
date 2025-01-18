@@ -5,6 +5,7 @@ import {
 } from '../index';
 import dynamicPalette from '../presets/dynamicPalette';
 import semanticPairs from '../presets/semanticPairs';
+import type { StaticThemePreset } from '../types';
 
 export default (theme: {
   primaryColor: SchemistColor;
@@ -12,7 +13,7 @@ export default (theme: {
   accentColor?: SchemistColor;
   isDark: boolean;
   reverse: boolean;
-  preset: 'split-complementary' | 'tetrad' | 'triad';
+  preset: StaticThemePreset;
 }) => {
   const { primaryColor, secondaryColor, accentColor, isDark } = theme;
 

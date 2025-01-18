@@ -1,9 +1,15 @@
+import type {
+  GenerativeThemeMode,
+  GenerativeThemePage,
+  GenerativeThemePreset,
+} from '../types';
+
 export interface GenerateHuemintsParams {
-  mode: 'diffusion' | 'transformer' | 'random';
+  mode: GenerativeThemeMode;
   colors: number;
   temperature: number;
-  page: 'website-magazine' | 'brand-2' | 'brand-3' | 'website-1';
-  preset: string;
+  page: GenerativeThemePage;
+  preset: GenerativeThemePreset;
   adjacency: string[];
   palette: string[];
 }
@@ -37,10 +43,10 @@ export async function generateHuemints({
       body: JSON.stringify(cfg),
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
       },
       signal: controller.signal,
-    });  
+    });
 
     clearTimeout(timeoutId);
 
@@ -67,4 +73,3 @@ export async function generateHuemints({
     throw error;
   }
 }
-

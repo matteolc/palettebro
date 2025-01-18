@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-import { sentenceCase } from '../lib/string';
-import { Checkbox } from '../ui/checkbox';
+import { sentenceCase } from '../../lib/string';
+import { Checkbox } from '../../ui/checkbox';
 import {
   RadioCardGroup,
   RadioCardIndicator,
   RadioCardItem,
-} from '../ui/radio-card';
-import { PaletteContext } from './PaletteContext';
+} from '../../ui/radio-card';
+import { PaletteContext } from '../../context/PaletteContext';
+import { StaticThemePresetEnum } from '@palettebruh/theme-generator/types';
 
 export const StaticPaletteSettings = () => {
   const { preset, setPreset, reverse, setReverse } = useContext(PaletteContext);
@@ -21,7 +22,7 @@ export const StaticPaletteSettings = () => {
         onValueChange={setPreset}
         className="text-lg mb-4"
       >
-        {['split-complementary', 'tetrad', 'triad'].map((p) => (
+        {Object.keys(StaticThemePresetEnum).map((p) => (
           <RadioCardItem
             key={p}
             value={p}
@@ -34,17 +35,7 @@ export const StaticPaletteSettings = () => {
       </RadioCardGroup>
       <div className="flex flex-row items-center justify-between text-zinc-950">
         <div className="text-lg mb-2 font-bold">Reverse</div>
-        <Checkbox
-          checked={reverse}
-          onCheckedChange={setReverse}
-          style={
-            {
-              '--primary': '14.08% 0.0044 285.82',
-              '--on-primary': '100% 0 0',
-            } as React.CSSProperties
-          }
-          className=""
-        />
+        <Checkbox checked={reverse} onCheckedChange={setReverse} />
       </div>
     </>
   );

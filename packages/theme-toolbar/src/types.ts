@@ -5,4 +5,6 @@ export type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   action?: string;
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   children?: React.ReactNode;
+  fetcherKey?: string;
+  navigate?: boolean;
 };

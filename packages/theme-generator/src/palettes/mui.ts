@@ -6,6 +6,7 @@ import {
 import materialDarkWithShades from '../presets/materialDarkWithShades';
 import materialLightWithShades from '../presets/materialLightWithShades';
 import semanticPairs from '../presets/semanticPairs';
+import type { StaticThemePreset } from '../types';
 
 export default (theme: {
   primaryColor: SchemistColor;
@@ -13,7 +14,7 @@ export default (theme: {
   accentColor?: SchemistColor;
   isDark: boolean;
   reverse: boolean;
-  preset: 'split-complementary' | 'tetrad' | 'triad';
+  preset: StaticThemePreset;
 }) => {
   const { primaryColor, isDark } = theme;
 

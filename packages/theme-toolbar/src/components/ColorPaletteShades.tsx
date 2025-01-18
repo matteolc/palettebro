@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useContext } from 'react';
-import { PaletteContext } from './PaletteContext';
+import { PaletteContext } from '@/context/PaletteContext';
 
 const hints = {
   'neutral-100': 'Default background',

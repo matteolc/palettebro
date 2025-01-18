@@ -4,6 +4,7 @@ import {
   presetSamplesWithKeyAndName,
 } from '../index';
 import staticPalette from '../presets/staticPalette';
+import type { StaticThemePreset } from '../types';
 
 export default (theme: {
   primaryColor: SchemistColor;
@@ -11,7 +12,7 @@ export default (theme: {
   accentColor?: SchemistColor;
   isDark: boolean;
   reverse: boolean;
-  preset: 'split-complementary' | 'tetrad' | 'triad';
+  preset: StaticThemePreset;
 }) => {
   const { primaryColor, isDark, reverse, preset } = theme;
 

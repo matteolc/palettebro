@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { sentenceCase } from '../lib/string';
+import { sentenceCase } from '../../lib/string';
 import {
   RadioCardGroup,
   RadioCardIndicator,
   RadioCardItem,
-} from '../ui/radio-card';
-import { Slider } from '../ui/slider';
-import { PaletteToolbarContext } from './PaletteToolbarContext';
+} from '../../ui/radio-card';
+import { Slider } from '../../ui/slider';
+import { GenerativePaletteContext } from '../../context/GenerativePaletteContext';
 
 export const DynamicPaletteSettings = () => {
   const {
@@ -18,7 +18,7 @@ export const DynamicPaletteSettings = () => {
     setProfile,
     page,
     setPage,
-  } = useContext(PaletteToolbarContext);
+  } = useContext(GenerativePaletteContext);
 
   if (!temperature) return null;
   if (!setTemperature) return null;
@@ -83,12 +83,6 @@ export const DynamicPaletteSettings = () => {
           <div className="text-lg  mb-2">{temperature}</div>
         </div>
         <Slider
-          style={
-            {
-              '--primary': '14.08% 0.0044 285.82',
-              '--primary-50': '97.5% 0.0044 285.82',
-            } as React.CSSProperties
-          }
           value={[temperature]}
           min={0}
           step={0.1}

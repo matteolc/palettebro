@@ -6,13 +6,14 @@ import {
   wcag3ContrastGrade,
 } from '@palettebruh/theme-generator';
 import { useContext } from 'react';
-import { sentenceCase } from '../lib/string';
-import { Badge } from '../ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { ColorPaletteShades } from './ColorPaletteShades';
-import { PaletteContext } from './PaletteContext';
+import { sentenceCase } from '@/lib/string';
+import { Badge } from '@/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
+import { ColorPaletteShades } from '@/components/ColorPaletteShades';
+import { PaletteContext } from '@/context/PaletteContext';
+import { getPaletteColor } from '@/utils/get-palette-color';
 
-const TokenColorPalette = ({ token }: { token: string }) => {
+export const TokenColorPalette = ({ token }: { token: string }) => {
   const { palette } = useContext(PaletteContext);
   const name = palette?.[token]?.name;
 
@@ -20,7 +21,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
 
   const Wcag2Contrast = ({ bg, fg }: { bg: string; fg: string }) => {
     return (
-      <Badge variant="outline" className="text-inherit border-none">
+      <Badge className="text-inherit border-none">
         WCAG2 {wcag2ContrastGrade(bg, fg)} ({wcag2Contrast(bg, fg)?.toFixed(1)})
       </Badge>
     );
@@ -28,7 +29,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
 
   const Wcag3Contrast = ({ bg, fg }: { bg: string; fg: string }) => {
     return (
-      <Badge variant="outline" className="text-inherit border-none">
+      <Badge className="text-inherit border-none">
         WCAG3 {wcag3ContrastGrade(bg, fg)} ({wcag3Contrast(bg, fg).toFixed(1)})
       </Badge>
     );
@@ -38,7 +39,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
     <Card>
       <CardHeader>
         <CardTitle>
-          <h3 className="text-xl font-bold flex items-center text-neutral-800">
+          <h3 className="text-xl font-bold flex items-center">
             <RiPaletteFill
               className="mr-2"
               style={{ color: `oklch(var(--${token}))` }}
@@ -64,7 +65,9 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                   <div className="text-xl font-bold">
                     {shade ? sentenceCase(shade.substring(1)) : 'Base'}
                   </div>
-                  <div>{palette?.[`${token}${shade}`].name}</div>
+                  <div>
+                    {getPaletteColor(`${token}${shade}`, palette, 'name')}
+                  </div>
 
                   <div
                     style={{
@@ -73,12 +76,12 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                     className="flex flex-col mt-2 justify-center items-center border rounded-md"
                   >
                     <Wcag2Contrast
-                      bg={palette?.[`${token}${shade}`].color}
-                      fg={palette?.[`${token}-text`].color}
+                      bg={getPaletteColor(`${token}${shade}`, palette)}
+                      fg={getPaletteColor(`${token}-text`, palette)}
                     />
                     <Wcag3Contrast
-                      bg={palette?.[`${token}${shade}`].color}
-                      fg={palette?.[`${token}-text`].color}
+                      bg={getPaletteColor(`${token}${shade}`, palette)}
+                      fg={getPaletteColor(`${token}-text`, palette)}
                     />
                   </div>
                 </div>
@@ -96,7 +99,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
             >
               <div className="flex flex-col justify-center items-center">
                 <div className="text-xl font-bold">Container</div>
-                <div>{palette?.[`${token}-container`].name}</div>
+                <div>{getPaletteColor(`${token}-container`, palette)}</div>
                 <div
                   style={{
                     borderColor: `oklch(var(--on-${token}-container))`,
@@ -104,12 +107,12 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                   className="flex flex-col mt-2 justify-center items-center border rounded-md"
                 >
                   <Wcag2Contrast
-                    bg={palette?.[`${token}-container`].color}
-                    fg={palette?.[`on-${token}-container`].color}
+                    bg={getPaletteColor(`${token}-container`, palette)}
+                    fg={getPaletteColor(`on-${token}-container`, palette)}
                   />
                   <Wcag3Contrast
-                    bg={palette?.[`${token}-container`].color}
-                    fg={palette?.[`on-${token}-container`].color}
+                    bg={getPaletteColor(`${token}-container`, palette)}
+                    fg={getPaletteColor(`on-${token}-container`, palette)}
                   />
                 </div>
               </div>
@@ -123,7 +126,7 @@ const TokenColorPalette = ({ token }: { token: string }) => {
             >
               <div className="flex flex-col justify-center items-center">
                 <div className="text-xl font-bold">On Container</div>
-                <div>{palette?.[`on-${token}-container`].name}</div>
+                <div>{getPaletteColor(`on-${token}-container`, palette)}</div>
 
                 <div
                   style={{
@@ -132,12 +135,12 @@ const TokenColorPalette = ({ token }: { token: string }) => {
                   className="flex flex-col mt-2 justify-center items-center border rounded-md"
                 >
                   <Wcag2Contrast
-                    bg={palette?.[`${token}-container`].color}
-                    fg={palette?.[`on-${token}-container`].color}
+                    bg={getPaletteColor(`${token}-container`, palette)}
+                    fg={getPaletteColor(`on-${token}-container`, palette)}
                   />
                   <Wcag3Contrast
-                    bg={palette?.[`${token}-container`].color}
-                    fg={palette?.[`on-${token}-container`].color}
+                    bg={getPaletteColor(`${token}-container`, palette)}
+                    fg={getPaletteColor(`on-${token}-container`, palette)}
                   />
                 </div>
               </div>
@@ -149,5 +152,3 @@ const TokenColorPalette = ({ token }: { token: string }) => {
     </Card>
   );
 };
-
-export { TokenColorPalette };

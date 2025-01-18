@@ -1,19 +1,11 @@
 import aiPalette from './palettes/dynamic';
 import muiPalette from './palettes/mui';
 import staticPalette from './palettes/static';
+import { getMuiPalette } from './palettes/getMuiPalette';
+import { createEnum } from './utils/create-enum';
 
 export type ThemeColorScheme = 'light' | 'dark';
 export type ThemeVariant = 'mui' | 'static' | 'dynamic';
-
-export const createEnum = <T extends readonly string[]>(values: T) => {
-  return values.reduce(
-    (acc, value) => {
-      acc[value as T[number]] = value;
-      return acc;
-    },
-    {} as { [key in T[number]]: key },
-  );
-};
 
 export const ThemeColorSchemeEnum = createEnum(['light', 'dark'] as const);
 export const ThemeVariantEnum = createEnum([
@@ -23,12 +15,23 @@ export const ThemeVariantEnum = createEnum([
 ] as const);
 
 export const ThemeVariantToPalette = {
-  mui: muiPalette,
+  mui: getMuiPalette,
   static: staticPalette,
   dynamic: aiPalette,
 };
 
 export type StaticThemePreset = 'split-complementary' | 'tetrad' | 'triad';
+
+export type MuiThemePreset =
+  | 'content'
+  | 'expressive'
+  | 'fidelity'
+  | 'fruit-salad'
+  | 'monochrome'
+  | 'neutral'
+  | 'rainbow'
+  | 'tonal-spot'
+  | 'vibrant';
 
 export const StaticThemePresetEnum = createEnum([
   'split-complementary',
@@ -36,12 +39,59 @@ export const StaticThemePresetEnum = createEnum([
   'triad',
 ] as const);
 
+export const MuiThemePresetEnum = createEnum([
+  'content',
+  'expressive',
+  'fidelity',
+  'fruit-salad',
+  'monochrome',
+  'neutral',
+  'rainbow',
+  'tonal-spot',
+  'vibrant',
+] as const);
+
+export type GenerativeThemeMode = 'transformer' | 'diffusion' | 'creative';
+export const GenerativeThemeModeEnum = createEnum([
+  'transformer',
+  'diffusion',
+  'creative',
+] as const);
+
+export type GenerativeThemePage = 'website-magazine' | 'brand-2' | 'brand-3' | 'website-1';
+export const GenerativeThemePageEnum = createEnum([
+  'website-magazine',
+  'brand-2',
+  'brand-3',
+  'website-1',
+] as const);
+
+export type GenerativeThemePreset =
+  | 'default'
+  | 'high-contrast'
+  | 'bright-light'
+  | 'pastel'
+  | 'vibrant'
+  | 'dark'
+  | 'hyper-color';
+
+export const GenerativeThemePresetEnum = createEnum([
+  'default',
+  'high-contrast',
+  'bright-light',
+  'pastel',
+  'vibrant',
+  'dark',
+  'hyper-color',
+] as const);
+
 export type Theme = {
   'color-scheme': ThemeColorScheme;
   variant: ThemeVariant;
-  preset?: StaticThemePreset;
+  preset?: StaticThemePreset | MuiThemePreset;
   reverse?: boolean;
   debug?: boolean;
+  contrast?: number;
   baseColors: {
     primary: string;
     secondary?: string;
