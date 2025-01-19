@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { RGBColorPicker } from '../../pickers/RGBColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';

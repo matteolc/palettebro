@@ -3,6 +3,7 @@ import type {
   GenerativeThemePage,
   GenerativeThemePreset,
 } from '../types';
+import nodeFetch from 'node-fetch';
 
 export interface GenerateHuemintsParams {
   mode: GenerativeThemeMode;
@@ -35,7 +36,7 @@ export async function generateHuemints(
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-    const response = await fetch('https://api.huemint.com/color', {
+    const response = await nodeFetch('https://api.huemint.com/color', {
       method: 'POST',
       body: JSON.stringify(cfg),
       headers: {

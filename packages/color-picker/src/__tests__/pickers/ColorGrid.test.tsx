@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ColorGrid } from '../../components/ColorGrid';
 import { describe, it, expect, beforeEach, vi } from 'vitest';

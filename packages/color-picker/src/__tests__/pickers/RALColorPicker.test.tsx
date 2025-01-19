@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { RALColorPicker } from '../../pickers/RALColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
