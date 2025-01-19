@@ -144,6 +144,8 @@ export default function Page() {
                       { hex: palette.secondary },
                       { hex: palette.primary },
                     ]}
+                    FormComponent={Form}
+                    formAction="/favourites"
                   />
                 ))}
               </div>
