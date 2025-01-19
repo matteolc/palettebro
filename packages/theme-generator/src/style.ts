@@ -1,5 +1,5 @@
 import { formatSchemist } from './color/formatting';
-import { parseColor } from './color/parsing';
+import { parseColor } from './color/parse-color';
 import type { SchemistColor } from './color/types';
 import { joinProperties } from './utils/css';
 

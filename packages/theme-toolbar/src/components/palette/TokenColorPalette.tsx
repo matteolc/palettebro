@@ -36,7 +36,7 @@ export const TokenColorPalette = ({ token }: { token: string }) => {
   };
 
   return (
-    <Card>
+    <Card className="border-neutral-100">
       <CardHeader>
         <CardTitle>
           <h3 className="text-xl font-bold flex items-center">

@@ -102,6 +102,8 @@ export type Theme = {
 
 export type Themes = Record<string, Theme>;
 
+export type Palette = Record<string, { color: string; name: string }>;
+
 export type {
   SchemistColor,
   RgbColor,

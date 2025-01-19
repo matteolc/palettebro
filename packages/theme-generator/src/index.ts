@@ -1,6 +1,5 @@
 import { schemistToRgb } from './color/conversion';
 import { formatRgbToHex } from './color/formatting';
-import nearestColor from './color/nearest';
 import type { SchemistColor } from './color/types';
 import defs, { generateName } from './nodes';
 import type { Args, NodeDef, Param } from './nodes/types';
@@ -118,14 +117,6 @@ export const presetSampleWithKeyAndNameHash = (
     ]),
   );
 
-export { nearestColor };
-export * from './color/contrast';
-export * from './color/formatting';
-export * from './color/parsing';
-export * from './color/conversion';
-export * from './utils/css';
-export * from './utils/generators';
-export * from './utils/strings';
-export * from './utils/oklch';
-export * from './color/manipulation';
+export * from './color';
+export * from './utils';
 export * from './const';

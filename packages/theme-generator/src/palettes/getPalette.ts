@@ -1,10 +1,11 @@
 import picocolors from 'picocolors';
 import { version } from '../../package.json';
 import { formatSchemistToHex } from '../color/formatting';
-import nearestColor from '../color/nearest';
-import { parseColor } from '../color/parsing';
+import { nearestColorName } from '../color/nearest-color-name';
+import { parseColor } from '../color/parse-color';
 import {
   type MuiThemePreset,
+  type Palette,
   type SchemistColor,
   type StaticThemePreset,
   type Theme,
@@ -22,7 +23,7 @@ const logColor = (
   if (!color) return;
   if (!parsedColor) return;
 
-  const colorName = nearestColor(formatSchemistToHex(parsedColor));
+  const colorName = nearestColorName(formatSchemistToHex(parsedColor));
   console.log(
     ` ├─ ${picocolors.green('✔︎')} Generating theme for ${type} color: ${picocolors.dim(
       colorName,
@@ -34,7 +35,7 @@ const logColor = (
   );
 };
 
-export const getPalette = (props: { theme: Theme }) => {
+export const getPalette = (props: { theme: Theme }): Palette => {
   const {
     debug,
     reverse,
@@ -88,6 +89,7 @@ export const getPalette = (props: { theme: Theme }) => {
             preset: preset as StaticThemePreset,
           });
   if (debug) {
+    console.dir(palette, { depth: null });
     for (const [key, value] of Object.entries(palette)) {
       console.log(
         `%c${picocolors.dim(key)}\n${value.name}`,

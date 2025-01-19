@@ -1,4 +1,5 @@
 import { Outlet } from '@remix-run/react';
+import type { MetaFunction } from '@vercel/remix';
 import {
   PageActions,
   PageHeader,
@@ -7,6 +8,15 @@ import {
 } from '~/components/PageHeader';
 import { BlocksNav } from '~/components/blocks/blocks-nav';
 import { Button } from '~/components/ui/button';
+import { generateMeta } from '~/utils/meta-utils';
+
+export const meta: MetaFunction = () => {
+  return generateMeta({
+    title: 'UI Blocks',
+    description:
+      'Preview and test your color palettes with our collection of UI blocks and components. See how your colors work in real-world scenarios.',
+  });
+};
 
 export default function Page() {
   return (

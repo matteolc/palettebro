@@ -13,13 +13,26 @@ import { getHints } from './hooks/use-hints';
 import '~/tailwind.css';
 import { getDomainUrl } from './lib/get-domain-url';
 
-export const meta: MetaFunction = () => [
-  { title: 'Palette Bruh' },
-  {
-    name: 'description',
-    content: 'The best palette generator for the web. Ever.',
-  },
-];
+export const meta: MetaFunction = () => {
+  const title = "Palette Bruh - The Best Color Palette Generator";
+  const description = "Create infinite palettes, save favorites, preview with real components, and export as CSS variables. The most powerful color palette generator for web projects.";
+  
+  return [
+    { title },
+    { name: "description", content: description },
+    { name: "og:title", content: title },
+    { name: "og:description", content: description },
+    { name: "og:type", content: "website" },
+    { name: "og:site_name", content: "Palette Bruh" },
+    { property: "og:image", content: "/og-image.jpg" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: "/og-image.jpg" },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    { charSet: "utf-8" },
+  ];
+};
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const locales = getClientLocales(request);

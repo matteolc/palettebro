@@ -1,5 +1,5 @@
 import { formatSchemistToHex } from '../color/formatting';
-import nearestColor from '../color/nearest';
+import { nearestColorName } from '../color/nearest-color-name';
 import type { SchemistColor } from '../color/types';
 import { sentenceCase } from '../utils/strings';
 import analogous from './analogous';
@@ -79,4 +79,4 @@ export const generateName = (
     ? parentColorName
       ? token.replace('$', parentColorName)
       : token
-    : sentenceCase(nearestColor(formatSchemistToHex(color)));
+    : sentenceCase(nearestColorName(formatSchemistToHex(color)));

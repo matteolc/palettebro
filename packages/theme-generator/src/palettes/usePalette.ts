@@ -1,8 +1,8 @@
 /// <reference lib="dom" />
 import { useCallback, useEffect } from 'react';
 import type { Theme } from '../types';
-import { colorToRawOklchString } from '../utils/oklch';
 import { getPalette } from './getPalette';
+import { paletteToCssVars } from '../utils/palette-to-css-vars';
 
 const useSetCssVars = () => {
   return useCallback((cssVars: Record<string, string>) => {
@@ -18,13 +18,7 @@ const useSetCssVars = () => {
 export const usePalette = (props: { theme: Theme }) => {
   const setCssVars = useSetCssVars();
   const palette = getPalette({ theme: props.theme });
-
-  const cssVars: Record<string, string> = {};
-  for (const [key, value] of Object.entries(palette)) {
-    Object.assign(cssVars, {
-      [`--${key}`]: colorToRawOklchString(value.color),
-    });
-  }
+  const cssVars = paletteToCssVars(palette);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {

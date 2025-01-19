@@ -2,7 +2,7 @@ import { Form, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
 import { generatePaletteName } from '@palettebruh/theme-generator/services';
 import { AnimatedPalette } from '@palettebruh/theme-toolbar';
-import type { ActionFunctionArgs, LoaderFunctionArgs } from '@vercel/remix';
+import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from '@vercel/remix';
 import { z } from 'zod';
 import {
   PageActions,
@@ -12,6 +12,7 @@ import {
 } from '~/components/PageHeader';
 import { Button } from '~/components/ui/button';
 import { favouritesCookie } from '~/lib/palette-store';
+import { generateMeta } from '~/utils/meta-utils';
 
 const paletteSchema = z.object({
   name: z.string().optional(),
@@ -24,6 +25,13 @@ const paletteSchema = z.object({
 const schema = z.object({
   palettes: z.array(paletteSchema).optional(),
 });
+
+export const meta: MetaFunction = () => {
+  return generateMeta({
+    title: 'Favorite Palettes',
+    description: 'View and manage your saved color palettes. Create beautiful color combinations for your web projects and save them for later use.',
+  });
+};
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const cookieHeader = request.headers.get('Cookie');

@@ -1,0 +1,1 @@
+export type ColorFormat = 'hex' | 'hsl' | 'lch' | 'rgb';

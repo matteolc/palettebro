@@ -10,7 +10,7 @@ const find = nearestColor.from(
   ),
 );
 
-export default (hex: string) => {
+export const nearestColorName = (hex: string) => {
   try {
     return find(hex).name;
   } catch (e) {

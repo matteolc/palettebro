@@ -21,7 +21,7 @@ import {
   type SchemistColor,
 } from '../types';
 import { formatSchemistToHex } from '../color/formatting';
-import nearestColor from '../color/nearest';
+import { nearestColorName } from '../color/nearest-color-name';
 import scale from '../presets/scale';
 import tailwindScaleLight from '../presets/tailwindScaleLight';
 import tailwindScaleDark from '../presets/tailwindScaleDark';
@@ -31,6 +31,7 @@ import {
   presetSampleWithKeyAndNameHash,
 } from '../index';
 import states from '../presets/states';
+import semanticPairs from '../presets/semanticPairs';
 
 type PresetKey =
   | 'content'
@@ -102,7 +103,9 @@ export const getMuiPalette = ({
   // Generate shades for primary, secondary, and accent colors
   const generateShades = (color: SchemistColor | undefined, token: string) => {
     if (!color) return {};
-    const scaleNodes = isDark ? tailwindScaleDark.nodes : tailwindScaleLight.nodes;
+    const scaleNodes = isDark
+      ? tailwindScaleDark.nodes
+      : tailwindScaleLight.nodes;
     const presets = presetSampleWithKeyAndNameHash([
       ...presetSamplesWithKeyAndName(scaleNodes, color),
       ...presetSamplesWithKeyAndName(states.nodes, color),
@@ -118,122 +121,141 @@ export const getMuiPalette = ({
     );
   };
 
+  const generateSemanticPairs = (
+    color: SchemistColor | undefined,
+    token: string,
+  ) => {
+    if (!color) return {};
+    const presets = presetSampleWithKeyAndNameHash([
+      ...presetSamplesWithKeyAndName(semanticPairs.nodes, color),
+    ]);
+
+    return Object.entries(presets).reduce(
+      (acc, [key, value]) => {
+        const newKey = key.replace('$', token);
+        acc[newKey] = value;
+        return acc;
+      },
+      {} as Record<string, { name: string; color: string }>,
+    );
+  };
+
   // Transform into a hash map of color tokens
   return {
     primary: {
-      name: nearestColor(hexFromArgb(scheme.primary)),
+      name: nearestColorName(hexFromArgb(scheme.primary)),
       color: hexFromArgb(scheme.primary),
     },
     'on-primary': {
-      name: nearestColor(hexFromArgb(scheme.onPrimary)),
+      name: nearestColorName(hexFromArgb(scheme.onPrimary)),
       color: hexFromArgb(scheme.onPrimary),
     },
     'primary-container': {
-      name: nearestColor(hexFromArgb(scheme.primaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.primaryContainer)),
       color: hexFromArgb(scheme.primaryContainer),
     },
     'on-primary-container': {
-      name: nearestColor(hexFromArgb(scheme.onPrimaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.onPrimaryContainer)),
       color: hexFromArgb(scheme.onPrimaryContainer),
     },
     secondary: {
-      name: nearestColor(hexFromArgb(scheme.secondary)),
+      name: nearestColorName(hexFromArgb(scheme.secondary)),
       color: hexFromArgb(scheme.secondary),
     },
     'on-secondary': {
-      name: nearestColor(hexFromArgb(scheme.onSecondary)),
+      name: nearestColorName(hexFromArgb(scheme.onSecondary)),
       color: hexFromArgb(scheme.onSecondary),
     },
     'secondary-container': {
-      name: nearestColor(hexFromArgb(scheme.secondaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.secondaryContainer)),
       color: hexFromArgb(scheme.secondaryContainer),
     },
     'on-secondary-container': {
-      name: nearestColor(hexFromArgb(scheme.onSecondaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.onSecondaryContainer)),
       color: hexFromArgb(scheme.onSecondaryContainer),
     },
     accent: {
-      name: nearestColor(hexFromArgb(scheme.tertiary)),
+      name: nearestColorName(hexFromArgb(scheme.tertiary)),
       color: hexFromArgb(scheme.tertiary),
     },
     'on-accent': {
-      name: nearestColor(hexFromArgb(scheme.onTertiary)),
+      name: nearestColorName(hexFromArgb(scheme.onTertiary)),
       color: hexFromArgb(scheme.onTertiary),
     },
     'accent-container': {
-      name: nearestColor(hexFromArgb(scheme.tertiaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.tertiaryContainer)),
       color: hexFromArgb(scheme.tertiaryContainer),
     },
     'on-accent-container': {
-      name: nearestColor(hexFromArgb(scheme.onTertiaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.onTertiaryContainer)),
       color: hexFromArgb(scheme.onTertiaryContainer),
     },
     tertiary: {
-      name: nearestColor(hexFromArgb(scheme.tertiary)),
+      name: nearestColorName(hexFromArgb(scheme.tertiary)),
       color: hexFromArgb(scheme.tertiary),
     },
     'on-tertiary': {
-      name: nearestColor(hexFromArgb(scheme.onTertiary)),
+      name: nearestColorName(hexFromArgb(scheme.onTertiary)),
       color: hexFromArgb(scheme.onTertiary),
     },
     'tertiary-container': {
-      name: nearestColor(hexFromArgb(scheme.tertiaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.tertiaryContainer)),
       color: hexFromArgb(scheme.tertiaryContainer),
     },
     'on-tertiary-container': {
-      name: nearestColor(hexFromArgb(scheme.onTertiaryContainer)),
+      name: nearestColorName(hexFromArgb(scheme.onTertiaryContainer)),
       color: hexFromArgb(scheme.onTertiaryContainer),
     },
     error: {
-      name: nearestColor(hexFromArgb(scheme.error)),
+      name: nearestColorName(hexFromArgb(scheme.error)),
       color: hexFromArgb(scheme.error),
     },
     'on-error': {
-      name: nearestColor(hexFromArgb(scheme.onError)),
+      name: nearestColorName(hexFromArgb(scheme.onError)),
       color: hexFromArgb(scheme.onError),
     },
     'error-container': {
-      name: nearestColor(hexFromArgb(scheme.errorContainer)),
+      name: nearestColorName(hexFromArgb(scheme.errorContainer)),
       color: hexFromArgb(scheme.errorContainer),
     },
     'on-error-container': {
-      name: nearestColor(hexFromArgb(scheme.onErrorContainer)),
+      name: nearestColorName(hexFromArgb(scheme.onErrorContainer)),
       color: hexFromArgb(scheme.onErrorContainer),
     },
     background: {
-      name: nearestColor(hexFromArgb(scheme.background)),
+      name: nearestColorName(hexFromArgb(scheme.background)),
       color: hexFromArgb(scheme.background),
     },
     'on-background': {
-      name: nearestColor(hexFromArgb(scheme.onBackground)),
+      name: nearestColorName(hexFromArgb(scheme.onBackground)),
       color: hexFromArgb(scheme.onBackground),
     },
     surface: {
-      name: nearestColor(hexFromArgb(scheme.surface)),
+      name: nearestColorName(hexFromArgb(scheme.surface)),
       color: hexFromArgb(scheme.surface),
     },
     'on-surface': {
-      name: nearestColor(hexFromArgb(scheme.onSurface)),
+      name: nearestColorName(hexFromArgb(scheme.onSurface)),
       color: hexFromArgb(scheme.onSurface),
     },
     'surface-variant': {
-      name: nearestColor(hexFromArgb(scheme.surfaceVariant)),
+      name: nearestColorName(hexFromArgb(scheme.surfaceVariant)),
       color: hexFromArgb(scheme.surfaceVariant),
     },
     'on-surface-variant': {
-      name: nearestColor(hexFromArgb(scheme.onSurfaceVariant)),
+      name: nearestColorName(hexFromArgb(scheme.onSurfaceVariant)),
       color: hexFromArgb(scheme.onSurfaceVariant),
     },
     neutral: {
-      name: nearestColor(hexFromArgb(scheme.surface)),
-      color: hexFromArgb(scheme.surface),
+      name: nearestColorName(hexFromArgb(scheme.background)),
+      color: hexFromArgb(scheme.background),
     },
     outline: {
-      name: nearestColor(hexFromArgb(scheme.outline)),
+      name: nearestColorName(hexFromArgb(scheme.outline)),
       color: hexFromArgb(scheme.outline),
     },
     'outline-variant': {
-      name: nearestColor(hexFromArgb(scheme.outlineVariant)),
+      name: nearestColorName(hexFromArgb(scheme.outlineVariant)),
       color: hexFromArgb(scheme.outlineVariant),
     },
     ...generateShades(parseColor(hexFromArgb(scheme.primary))[1], 'primary'),
@@ -242,11 +264,13 @@ export const getMuiPalette = ({
       'secondary',
     ),
     ...generateShades(parseColor(hexFromArgb(scheme.tertiary))[1], 'accent'),
-    ...generateShades(parseColor(hexFromArgb(scheme.surface))[1], 'neutral'),
+    ...generateShades(parseColor(hexFromArgb(scheme.background))[1], 'neutral'),
+    // TODO: Fix state colors
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'error'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'success'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'warning'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'info'),
+    ...generateSemanticPairs(parseColor(hexFromArgb(scheme.primary))[1], ''),
   } as {
     [k: string]: {
       name: string;

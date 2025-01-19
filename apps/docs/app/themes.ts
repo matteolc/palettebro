@@ -6,6 +6,7 @@ export const themes = {
   light: {
     'color-scheme': 'light' as const,
     variant: ThemeVariantEnum.static,
+    debug: true,
     preset: StaticThemePresetEnum['split-complementary'],
     baseColors: {
       primary: colors.purple[500],
@@ -16,6 +17,7 @@ export const themes = {
   dark: {
     'color-scheme': 'dark' as const,
     variant: ThemeVariantEnum.static,
+    debug: true,
     preset: StaticThemePresetEnum['split-complementary'],
     baseColors: {
       primary: colors.purple[500],
