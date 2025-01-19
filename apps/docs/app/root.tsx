@@ -17,7 +17,7 @@ export const meta: MetaFunction = () => [
   { title: 'Palette Bruh' },
   {
     name: 'description',
-    content: 'A palette generator for the web',
+    content: 'The best palette generator for the web. Ever.',
   },
 ];
 

@@ -3,6 +3,7 @@ import { vercelPreset } from '@vercel/remix/vite';
 import { defineConfig } from 'vite';
 import globPlugin from 'vite-plugin-glob';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { remixDevTools } from 'remix-development-tools';
 
 const isVercel = process.env.VERCEL === "1";
 
@@ -14,6 +15,7 @@ declare module '@remix-run/node' {
 
 export default defineConfig({
   plugins: [
+    remixDevTools(),
     globPlugin(),
     tsconfigPaths(),
     remix({
@@ -27,4 +29,15 @@ export default defineConfig({
       },
     }),
   ],
+  ssr: {
+    resolve: {
+      conditions: ['workerd', 'worker', 'browser'],
+    },
+  },
+  resolve: {
+    mainFields: ['browser', 'module', 'main'],
+  },
+  build: {
+    minify: true,
+  },
 });
