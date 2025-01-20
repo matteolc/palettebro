@@ -15,6 +15,7 @@ import tetradRight from '../nodes/tetradRight';
 import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
 import warning from '../nodes/warning';
+import background from './background';
 import baseLight from './baseLight';
 import rainbow from './rainbow';
 import states from './states';
@@ -106,7 +107,10 @@ export default (options?: {
                 args: {
                   amount: 5,
                 },
-                children: shadeNodes,
+                children: [
+                  ...shadeNodes,
+                  ...background({ isDark: options?.isDark ?? false }).nodes,
+                ],
               },
             ],
           },

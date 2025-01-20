@@ -1,4 +1,4 @@
-import type { ContrastType } from '../_contrast';
+import type { ContrastType } from './types';
 import type { Wcag3Level } from './const';
 
 import {

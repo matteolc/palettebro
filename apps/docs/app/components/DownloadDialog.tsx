@@ -9,30 +9,32 @@ import {
 } from './ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { ScrollArea } from './ui/scroll-area';
+import { useContext } from 'react';
 
-const downloadOptions = [
-  {
-    id: 'simple',
-    label: 'Simple CSS',
-    description: 'Basic CSS custom properties',
-    preview: `:root {
-  --primary-50: oklch(0.97 0.01 0);
-  --primary-100: oklch(0.93 0.02 0);
-  --primary-200: oklch(0.89 0.03 0);
-  --primary-300: oklch(0.85 0.04 0);
-  --primary-400: oklch(0.81 0.05 0);
-  --primary-500: oklch(0.77 0.06 0);
-  --primary-600: oklch(0.73 0.07 0);
-  --primary-700: oklch(0.69 0.08 0);
-  --primary-800: oklch(0.65 0.09 0);
-  --primary-900: oklch(0.61 0.1 0);
-}`
-  },
-  {
-    id: 'material',
-    label: 'Material UI',
-    description: 'Compatible with Material UI theme',
-    preview: `const theme = createTheme({
+import { PaletteContext } from '@palettebruh/theme-toolbar';
+import { paletteToCssVars } from '@palettebruh/theme-generator';
+
+export function DownloadDialog() {
+  const { palette } = useContext(PaletteContext);
+
+  if (!palette) return null;
+
+  const downloadOptions = [
+    {
+      id: 'simple',
+      label: 'Simple CSS',
+      description: 'Basic CSS custom properties',
+      preview: `:root {
+${Object.entries(paletteToCssVars(palette))
+  .map(([key, value]) => `  ${key}: oklch(${value});`)
+  .join('\n')}
+}`,
+    },
+    {
+      id: 'material',
+      label: 'Material UI',
+      description: 'Compatible with Material UI theme',
+      preview: `const theme = createTheme({
   palette: {
     primary: {
       50: 'oklch(0.97 0.01 0)',
@@ -47,13 +49,13 @@ const downloadOptions = [
       900: 'oklch(0.61 0.1 0)',
     },
   },
-});`
-  },
-  {
-    id: 'shadcn',
-    label: 'shadcn/ui',
-    description: 'Compatible with shadcn/ui components',
-    preview: `/** @type {import('tailwindcss').Config} */
+});`,
+    },
+    {
+      id: 'shadcn',
+      label: 'shadcn/ui',
+      description: 'Compatible with shadcn/ui components',
+      preview: `/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
@@ -73,17 +75,16 @@ module.exports = {
       },
     },
   },
-}`
-  }
-];
+}`,
+    },
+  ];
 
-export function DownloadDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button size="sm">Download</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[625px]">
+      <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
           <DialogTitle>Download Palette</DialogTitle>
           <DialogDescription>
@@ -117,4 +118,4 @@ export function DownloadDialog() {
       </DialogContent>
     </Dialog>
   );
-} 
+}

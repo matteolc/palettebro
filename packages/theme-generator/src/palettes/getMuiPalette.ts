@@ -17,12 +17,12 @@ import {
 } from '@material/material-color-utilities';
 import {
   MuiThemePresetEnum,
+  type Palette,
   type MuiThemePreset,
   type SchemistColor,
 } from '../types';
 import { formatSchemistToHex } from '../color/formatting';
 import { nearestColorName } from '../color/nearest-color-name';
-import scale from '../presets/scale';
 import tailwindScaleLight from '../presets/tailwindScaleLight';
 import tailwindScaleDark from '../presets/tailwindScaleDark';
 import {
@@ -32,6 +32,7 @@ import {
 } from '../index';
 import states from '../presets/states';
 import semanticPairs from '../presets/semanticPairs';
+import rainbow from '../presets/rainbow';
 
 type PresetKey =
   | 'content'
@@ -100,6 +101,15 @@ export const getMuiPalette = ({
   const presetKey = (MuiThemePresetEnum[preset] as PresetKey) || 'fruit-salad';
   const scheme = presetMap({ hct, isDark, contrast })[presetKey];
 
+  const formatPalette = (presets: Palette, token: string) => Object.entries(presets).reduce(
+    (acc, [key, value]) => {
+      const newKey = key.replace('$', token);
+      acc[newKey] = value;
+      return acc;
+    },
+    {} as Record<string, { name: string; color: string }>,
+    );
+
   // Generate shades for primary, secondary, and accent colors
   const generateShades = (color: SchemistColor | undefined, token: string) => {
     if (!color) return {};
@@ -111,14 +121,7 @@ export const getMuiPalette = ({
       ...presetSamplesWithKeyAndName(states.nodes, color),
     ]);
 
-    return Object.entries(presets).reduce(
-      (acc, [key, value]) => {
-        const newKey = key.replace('$', token);
-        acc[newKey] = value;
-        return acc;
-      },
-      {} as Record<string, { name: string; color: string }>,
-    );
+    return formatPalette(presets, token);
   };
 
   const generateSemanticPairs = (
@@ -130,14 +133,16 @@ export const getMuiPalette = ({
       ...presetSamplesWithKeyAndName(semanticPairs.nodes, color),
     ]);
 
-    return Object.entries(presets).reduce(
-      (acc, [key, value]) => {
-        const newKey = key.replace('$', token);
-        acc[newKey] = value;
-        return acc;
-      },
-      {} as Record<string, { name: string; color: string }>,
-    );
+    return formatPalette(presets, token);
+  };
+
+  const generateChartColors = (color: SchemistColor | undefined, token: string) => {
+    if (!color) return {};
+    const presets = presetSampleWithKeyAndNameHash([
+      ...presetSamplesWithKeyAndName(rainbow.nodes, color),
+    ]);
+
+    return formatPalette(presets, token);
   };
 
   // Transform into a hash map of color tokens
@@ -271,6 +276,7 @@ export const getMuiPalette = ({
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'warning'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'info'),
     ...generateSemanticPairs(parseColor(hexFromArgb(scheme.primary))[1], ''),
+    ...generateChartColors(parseColor(hexFromArgb(scheme.primary))[1], 'primary'),
   } as {
     [k: string]: {
       name: string;

@@ -25,8 +25,8 @@ const generateColorVariants = (colorName: string) => ({
 });
 
 const SHADCN_COLOR_UTILITIES = {
-  background: 'oklch(var(--primary-50)/<alpha-value>)',
-  foreground: 'oklch(var(--neutral-700)/<alpha-value>)',
+  background: 'oklch(var(--background)/<alpha-value>)',
+  foreground: 'oklch(var(--on-background)/<alpha-value>)',
   card: {
     DEFAULT: 'oklch(var(--primary-50))',
     foreground: 'oklch(var(--neutral-700))',
