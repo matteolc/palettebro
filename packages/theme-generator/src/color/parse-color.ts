@@ -4,25 +4,33 @@ import { hslFromCulori, lchFromCulori, rgbFromCulori } from './culori';
 import type { ColorFormat } from './formatting';
 import type { SchemistColor } from './types';
 
-export const parseColor = (
-  color: string,
-): [format: ColorFormat, color: SchemistColor] | [] => {
-  const hex = parseHex(color);
+export const parseColor = (color: string): [string, SchemistColor | undefined] => {
+  try {
+    // Add input validation
+    if (!color || typeof color !== 'string') {
+      throw new Error('Invalid color input');
+    }
+    
+    const hex = parseHex(color);
 
-  if (hex) {
-    return ['hex', rgbToSchemist(rgbFromCulori(hex))];
-  }
+    if (hex) {
+      return ['hex', rgbToSchemist(rgbFromCulori(hex))];
+    }
 
-  const parsed = parse(color);
+    const parsed = parse(color);
 
-  switch (parsed?.mode) {
-    case 'rgb':
-      return ['rgb', rgbToSchemist(rgbFromCulori(parsed))];
-    case 'hsl':
-      return ['hsl', hslToSchemist(hslFromCulori(parsed))];
-    case 'lch':
-      return ['lch', lchToSchemist(lchFromCulori(parsed))];
-    default:
-      return [];
+    switch (parsed?.mode) {
+      case 'rgb':
+        return ['rgb', rgbToSchemist(rgbFromCulori(parsed))];
+      case 'hsl':
+        return ['hsl', hslToSchemist(hslFromCulori(parsed))];
+      case 'lch':
+        return ['lch', lchToSchemist(lchFromCulori(parsed))];
+      default:
+        return [color, undefined];
+    }
+  } catch (error) {
+    console.warn(`Color parsing failed for "${color}":`, error);
+    return [color, undefined];
   }
 };
