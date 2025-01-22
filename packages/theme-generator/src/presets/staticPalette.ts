@@ -10,18 +10,18 @@ import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
 import type { ThemePalette } from '../types';
 import background from './background';
-import materialScale from './materialScale';
 import materialTones from './materialTones';
 import outlineScale from './outlineScale';
 import rainbow from './rainbow';
 import shadowAndScrim from './shadowAndScrim';
 import surface from './surface';
+import tailwindScale from './tailwindScale';
 import type { Preset } from './types';
 
 export default (options?: ThemePalette) => {
   const shadeNodes = [
     ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...materialScale({ reverseLightDarkShades: options?.reverseLightDarkShades }).nodes
+    ...tailwindScale({ reverseLightDarkShades: options?.reverseLightDarkShades }).nodes,
   ]
 
   const secondaryNode = {

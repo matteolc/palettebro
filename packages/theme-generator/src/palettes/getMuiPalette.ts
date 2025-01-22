@@ -79,7 +79,7 @@ export const getMuiPalette = (theme: ThemePalette) => {
   const hct = Hct.fromInt(argb);
 
   const presetKey = (MuiThemePresetEnum[theme.preset as MuiThemePreset] ||
-    'fruit-salad') as MuiThemePreset;
+    'fidelity') as MuiThemePreset;
   const scheme = presetMap({
     hct,
     isDark: theme.isDark,
