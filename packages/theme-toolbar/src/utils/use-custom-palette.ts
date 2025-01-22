@@ -1,11 +1,10 @@
 import { usePalette } from '@palettebro/theme-generator/palettes';
-import {
-  ThemeVariantEnum,
-  type MuiThemePreset,
-  type StaticThemePreset,
-  type ThemeColorScheme,
-  type Themes,
-  type ThemeVariant,
+import type {
+  MuiThemePreset,
+  StaticThemePreset,
+  ThemeColorScheme,
+  Themes,
+  ThemeVariant,
 } from '@palettebro/theme-generator/types';
 
 export const useCustomPalette = (props: {

@@ -5,7 +5,6 @@ import {
 } from '../index';
 import dynamicPalette from '../presets/dynamicPalette';
 import semanticPairs from '../presets/semanticPairs';
-import type { StaticThemePreset } from '../types';
 
 export const getDynamicPalette = (theme: {
   primaryColor: SchemistColor;
@@ -13,7 +12,6 @@ export const getDynamicPalette = (theme: {
   accentColor?: SchemistColor;
   isDark: boolean;
   reverse: boolean;
-  preset: StaticThemePreset;
 }) => {
   const { primaryColor, secondaryColor, accentColor, isDark } = theme;
 

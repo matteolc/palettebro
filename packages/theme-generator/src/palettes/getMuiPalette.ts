@@ -1,6 +1,5 @@
 import {
   argbFromHex,
-  themeFromSourceColor,
   hexFromArgb,
   type DynamicScheme,
   SchemeTonalSpot,
@@ -13,7 +12,6 @@ import {
   SchemeFidelity,
   SchemeExpressive,
   SchemeContent,
-  SchemeAndroid,
   type TonalPalette,
 } from '@material/material-color-utilities';
 import {
@@ -36,17 +34,6 @@ import states from '../presets/states';
 import semanticPairs from '../presets/semanticPairs';
 import rainbow from '../presets/rainbow';
 
-type PresetKey =
-  | 'content'
-  | 'expressive'
-  | 'fidelity'
-  | 'fruit-salad'
-  | 'monochrome'
-  | 'neutral'
-  | 'rainbow'
-  | 'tonal-spot'
-  | 'vibrant';
-
 // Create a type for the scheme constructor
 type SchemeConstructor = new (
   hct: Hct,
@@ -55,7 +42,7 @@ type SchemeConstructor = new (
 ) => DynamicScheme;
 
 // Map preset keys to their scheme constructors
-const schemeConstructors: Record<PresetKey, SchemeConstructor> = {
+const schemeConstructors: Record<MuiThemePreset, SchemeConstructor> = {
   content: SchemeContent,
   expressive: SchemeExpressive,
   fidelity: SchemeFidelity,
@@ -79,10 +66,10 @@ const createScheme = (
 const presetMap = (props: { hct: Hct; isDark: boolean; contrast: number }) => {
   return Object.entries(schemeConstructors).reduce(
     (schemes, [key, Constructor]) => {
-      schemes[key as PresetKey] = createScheme(Constructor, props);
+      schemes[key as MuiThemePreset] = createScheme(Constructor, props);
       return schemes;
     },
-    {} as Record<PresetKey, DynamicScheme>,
+    {} as Record<MuiThemePreset, DynamicScheme>,
   );
 };
 
@@ -100,7 +87,8 @@ export const getMuiPalette = ({
   const argb = argbFromHex(formatSchemistToHex(primaryColor));
   const hct = Hct.fromInt(argb);
 
-  const presetKey = (MuiThemePresetEnum[preset] as PresetKey) || 'fruit-salad';
+  const presetKey =
+    (MuiThemePresetEnum[preset] as MuiThemePreset) || 'fruit-salad';
   const scheme = presetMap({ hct, isDark, contrast })[presetKey];
 
   const tonesFromPalette = (palette: TonalPalette, token: string) => {

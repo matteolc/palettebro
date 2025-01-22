@@ -84,10 +84,7 @@ export const getPalette = (props: { theme: Theme }): Palette => {
             ...paletteProps,
             preset: preset as StaticThemePreset,
           })
-        : getDynamicPalette({
-            ...paletteProps,
-            preset: preset as StaticThemePreset,
-          });
+        : getDynamicPalette(paletteProps);
   if (debug) {
     for (const [key, value] of Object.entries(palette)) {
       console.info(
