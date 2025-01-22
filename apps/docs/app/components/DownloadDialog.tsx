@@ -13,6 +13,7 @@ import { useContext } from 'react';
 
 import { PaletteContext } from '@palettebro/theme-toolbar';
 import { paletteToCssVars } from '@palettebro/theme-generator';
+import { TW_COLOR_UTILITIES } from '@palettebro/tailwind-theme';
 
 export function DownloadDialog() {
   const { palette } = useContext(PaletteContext);
@@ -26,55 +27,35 @@ export function DownloadDialog() {
       description: 'Basic CSS custom properties',
       preview: `:root {
 ${Object.entries(paletteToCssVars(palette))
-  .map(([key, value]) => `  ${key}: oklch(${value});`)
-  .join('\n')}
+    .map(([key, value]) => `  ${key}: oklch(${value});`)
+    .join('\n')}
 }`,
     },
     {
-      id: 'material',
-      label: 'Material UI',
-      description: 'Compatible with Material UI theme',
-      preview: `const theme = createTheme({
-  palette: {
-    primary: {
-      50: 'oklch(0.97 0.01 0)',
-      100: 'oklch(0.93 0.02 0)',
-      200: 'oklch(0.89 0.03 0)',
-      300: 'oklch(0.85 0.04 0)',
-      400: 'oklch(0.81 0.05 0)',
-      500: 'oklch(0.77 0.06 0)',
-      600: 'oklch(0.73 0.07 0)',
-      700: 'oklch(0.69 0.08 0)',
-      800: 'oklch(0.65 0.09 0)',
-      900: 'oklch(0.61 0.1 0)',
-    },
-  },
-});`,
-    },
-    {
-      id: 'shadcn',
-      label: 'shadcn/ui',
-      description: 'Compatible with shadcn/ui components',
+      id: 'tailwind',
+      label: 'Tailwind CSS',
+      description: 'Compatible with Tailwind CSS',
       preview: `/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: 'oklch(0.97 0.01 0)',
-          100: 'oklch(0.93 0.02 0)',
-          200: 'oklch(0.89 0.03 0)',
-          300: 'oklch(0.85 0.04 0)',
-          400: 'oklch(0.81 0.05 0)',
-          500: 'oklch(0.77 0.06 0)',
-          600: 'oklch(0.73 0.07 0)',
-          700: 'oklch(0.69 0.08 0)',
-          800: 'oklch(0.65 0.09 0)',
-          900: 'oklch(0.61 0.1 0)',
-        },
-      },
+        primary: ${JSON.stringify(palette, null, 2).replace(/\n/g, '\n        ')}
+      }
+    }
+  }
+}`,
     },
-  },
+    {
+      id: 'shadcn',
+      label: 'shadcn/ui',
+      description: 'Compatible with shadcn/ui components',
+      preview: `@layer base {
+  :root {
+${Object.entries(TW_COLOR_UTILITIES)
+    .map(([key, value]) => `    --${key}: ${value};`)
+    .join('\n')}
+  }
 }`,
     },
   ];
@@ -105,11 +86,15 @@ module.exports = {
                 <p className="text-sm">
                   {option.description}
                 </p>
-                <ScrollArea className="h-[320px] w-full rounded-md border text-sm">
-                  <pre className="p-4">
-                    <code>{option.preview}</code>
-                  </pre>
-                </ScrollArea>
+                <div className="relative rounded-md border">
+                  <ScrollArea className="h-[320px] w-[650px]">
+                    <div className="min-w-max">
+                      <pre className="p-4">
+                        <code className="whitespace-pre font-mono text-sm">{option.preview}</code>
+                      </pre>
+                    </div>
+                  </ScrollArea>
+                </div>
                 <Button>Download {option.label}</Button>
               </div>
             </TabsContent>
