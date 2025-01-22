@@ -181,13 +181,13 @@ export function MailComponent({
               <TabsList className="ml-auto">
                 <TabsTrigger
                   value="all"
-                  className="text-zinc-600 dark:text-zinc-200"
+                  className="text-muted"
                 >
                   All mail
                 </TabsTrigger>
                 <TabsTrigger
                   value="unread"
-                  className="text-zinc-600 dark:text-zinc-200"
+                  className="text-muted"
                 >
                   Unread
                 </TabsTrigger>

@@ -1,20 +1,15 @@
 import type { SchemistColor } from '../color/types';
 import color from '../nodes/color';
-import highlight from '../nodes/highlight';
-import informative from '../nodes/informative';
+import lightness from '../nodes/lightness';
 import negative from '../nodes/negative';
-import positive from '../nodes/positive';
 import saturation from '../nodes/saturation';
-import warning from '../nodes/warning';
-import baseLight from './baseLight';
-import materialNeutralLight from './materialNeutralLight';
-import materialTonesLight from './materialTonesLight';
-import neutralScaleLight from './neutralScaleLight';
+import background from './background';
+import materialScale from './materialScale';
+import materialTones from './materialTones';
+import outlineScale from './outlineScale';
 import rainbow from './rainbow';
-import states from './states';
-import staticTones from './staticTones';
-import tailwindScaleDark from './tailwindScaleDark';
-import tailwindScaleLight from './tailwindScaleLight';
+import shadowAndScrim from './shadowAndScrim';
+import surface from './surface';
 import type { Preset } from './types';
 
 export default (options?: {
@@ -27,69 +22,47 @@ export default (options?: {
   lightness?: number;
 }) => {
   const lightNodes = [
-    ...staticTones.nodes,
-    ...states.nodes,
-    ...tailwindScaleLight.nodes,
+    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
+    ...materialScale({ isDark: options?.isDark ?? false }).nodes,
   ];
 
   const darkNodes = [
-    ...staticTones.nodes,
-    ...states.nodes,
-    ...tailwindScaleDark.nodes,
+    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
+    ...materialScale({ isDark: options?.isDark ?? false }).nodes,
   ];
 
   const shadeNodes = options?.isDark ? darkNodes : lightNodes;
 
-  const nodes =
-    options?.token === 'primary'
-      ? [
-          ...shadeNodes,
-          ...rainbow.nodes,
-          {
-            type: saturation.type,
-            isHidden: true,
-            args: {
-              amount: 30,
-            },
-            children: [
-              ...baseLight.nodes,
-              {
-                type: highlight.type,
-                isHidden: false,
-                token: 'neutral',
-                args: {
-                  amount: 5,
-                },
-                children: shadeNodes,
-              },
-            ],
-          },
-          {
-            type: negative.type,
-            token: 'error',
-            isHidden: false,
-            children: shadeNodes,
-          },
-          {
-            type: informative.type,
-            token: 'info',
-            isHidden: false,
-            children: shadeNodes,
-          },
-          {
-            type: positive.type,
-            token: 'success',
-            isHidden: false,
-            children: shadeNodes,
-          },
-          {
-            type: warning.type,
-            token: 'warning',
-            isHidden: false,
-            children: shadeNodes,
-          },
-        ]
-      : shadeNodes;
+  const nodes = options?.token === 'primary' ? [
+    ...shadeNodes,
+    ...rainbow.nodes,
+    {
+      type: lightness.type,
+      token: 'inverse-primary',
+      args: {
+        amount: options?.isDark ? 40 : 80,
+      },
+    },
+    {
+      type: negative.type,
+      token: 'error',
+      isHidden: false,
+      children: shadeNodes,
+    },
+    {
+      type: saturation.type,
+      isHidden: true,
+      args: {
+        amount: options?.isDark ? 8 : 12.5,
+      },
+      children: [
+        ...background({ isDark: options?.isDark ?? false }).nodes,
+        ...surface({ isDark: options?.isDark ?? false }).nodes,
+        ...outlineScale({ isDark: options?.isDark ?? false }).nodes,
+        ...shadowAndScrim({ isDark: options?.isDark ?? false }).nodes,
+      ],
+    },
+  ] : shadeNodes;
 
   const startColor =
     options?.token === 'primary'
@@ -99,8 +72,8 @@ export default (options?: {
         : options?.accentColor;
 
   return {
-    label: 'Spot palette',
-    description: 'A static palette with a primary color',
+    label: 'Dynamic palette',
+    description: 'A dynamic palette that can generate primary, secondary, or accent color schemes',
     nodes: [
       {
         type: color.type,
