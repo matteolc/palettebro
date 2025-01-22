@@ -346,7 +346,6 @@ export const getMuiPalette = ({
     //   'secondary',
     // ),
     // ...generateShades(parseColor(hexFromArgb(scheme.tertiary))[1], 'accent'),
-    ...generateShades(parseColor(hexFromArgb(scheme.surfaceDim))[1], 'neutral'),
     // TODO: Fix state colors
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'error'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'success'),

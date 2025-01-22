@@ -8,6 +8,30 @@ const DEFAULT_UTILITY_VALUES = {
   '--border-angle': '0deg',
 };
 
+const MUI_SURFACE_TOKENS = {
+  surface: 'oklch(var(--surface)/<alpha-value>)',
+  'surface-dim': 'oklch(var(--surface-dim)/<alpha-value>)',
+  'surface-bright': 'oklch(var(--surface-bright)/<alpha-value>)',
+  'surface-container-highest':
+    'oklch(var(--surface-container-highest)/<alpha-value>)',
+  'surface-container-high':
+    'oklch(var(--surface-container-high)/<alpha-value>)',
+  'surface-container': 'oklch(var(--surface-container)/<alpha-value>)',
+  'surface-container-low': 'oklch(var(--surface-container-low)/<alpha-value>)',
+  'surface-container-lowest':
+    'oklch(var(--surface-container-lowest)/<alpha-value>)',
+  'on-surface': 'oklch(var(--on-surface)/<alpha-value>)',
+  'surface-variant': 'oklch(var(--surface-variant)/<alpha-value>)',
+  'on-surface-variant': 'oklch(var(--on-surface-variant)/<alpha-value>)',
+  'inverse-surface': 'oklch(var(--inverse-surface)/<alpha-value>)',
+  'inverse-on-surface': 'oklch(var(--inverse-on-surface)/<alpha-value>)',
+  outline: 'oklch(var(--outline)/<alpha-value>)',
+  'outline-variant': 'oklch(var(--outline-variant)/<alpha-value>)',
+  shadow: 'oklch(var(--shadow)/<alpha-value>)',
+  scrim: 'oklch(var(--scrim)/<alpha-value>)',
+  'surface-tint': 'oklch(var(--surface-tint)/<alpha-value>)',
+};
+
 const generateMuiColorShades = (colorName: string) => ({
   ...MATERIAL_TONES.reduce<Record<number, string>>((acc, tone) => {
     acc[tone] = `oklch(var(--${colorName}-${tone})/<alpha-value>)`;
@@ -44,12 +68,12 @@ const SHADCN_COLOR_UTILITIES = {
     foreground: 'oklch(var(--on-surface))',
   },
   popover: {
-    DEFAULT: 'oklch(var(--primary-50))',
-    foreground: 'oklch(var(--neutral-700))',
+    DEFAULT: 'oklch(var(--surface-container-lowest))',
+    foreground: 'oklch(var(--on-surface))',
   },
   muted: {
-    DEFAULT: 'oklch(var(--secondary)/<alpha-value>)',
-    foreground: 'oklch(var(--on-secondary)/<alpha-value>)',
+    DEFAULT: 'oklch(var(--on-secondary)/<alpha-value>)',
+    foreground: 'oklch(var(--secondary)/<alpha-value>)',
   },
   destructive: {
     DEFAULT: 'oklch(var(--error)/<alpha-value>)',
@@ -65,38 +89,24 @@ const SHADCN_COLOR_UTILITIES = {
     ]),
   ),
   sidebar: {
-    DEFAULT: 'oklch(var(--primary-100))',
-    foreground: 'oklch(var(--neutral-700))',
+    DEFAULT: 'oklch(var(--surface-container))',
+    foreground: 'oklch(var(--on-surface))',
     primary: 'oklch(var(--primary))',
     'primary-foreground': 'oklch(var(--on-primary))',
     accent: 'oklch(var(--accent))',
     'accent-foreground': 'oklch(var(--on-accent))',
-    border: 'oklch(var(--neutral-200))',
-    ring: 'oklch(var(--neutral-100))',
+    border: 'oklch(var(--surface-container-high))',
+    ring: 'oklch(var(--outline-variant))',
   },
 };
-
-const colorNames = [
-  'primary',
-  'secondary',
-  'accent',
-  'neutral',
-  'info',
-  'success',
-  'warning',
-  'error',
-];
 
 const PALETTE_COLORS = {
   ...generateMUIColorVariants('primary'),
   ...generateMUIColorVariants('secondary'),
   ...generateMUIColorVariants('accent'),
-  ...generateMUIColorVariants('neutral'),
-  // ...generateMUIColorVariants('info'),
-  // ...generateMUIColorVariants('success'),
-  // ...generateMUIColorVariants('warning'),
   ...generateMUIColorVariants('error'),
-  ...colorNames.reduce<
+  ...MUI_SURFACE_TOKENS,
+  ...['primary', 'secondary', 'accent', 'error'].reduce<
     Record<
       string,
       {
@@ -113,10 +123,6 @@ const PALETTE_COLORS = {
     };
     return acc;
   }, {}),
-  'base-100': 'oklch(var(--surface-container-highest)/<alpha-value>)',
-  'base-200': 'oklch(var(--surface-container)/<alpha-value>)',
-  'base-300': 'oklch(var(--surface-container-lowest)/<alpha-value>)',
-  'base-foreground': 'oklch(var(--on-surface)/<alpha-value>)',
 };
 
 export { DEFAULT_UTILITY_VALUES, SHADCN_COLOR_UTILITIES, PALETTE_COLORS };

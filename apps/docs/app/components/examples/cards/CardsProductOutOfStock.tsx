@@ -31,11 +31,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
       <Star
         // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
         key={index}
-        color={
-          index < currentRating
-            ? 'oklch(var(--accent))'
-            : 'oklch(var(--neutral))'
-        }
+        color={'oklch(var(--accent))'}
         fill={index < currentRating ? 'oklch(var(--accent))' : 'none'}
         size={20}
       />

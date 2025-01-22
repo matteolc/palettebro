@@ -19,9 +19,7 @@ export function CardsProduct() {
       />
       <div className="flex justify-between items-baseline">
         <CardTitle className="font-bold text-2xl">Fancy Watch</CardTitle>
-        <Badge
-          className="text-sm py-1 px-2 rounded-full bg-accent text-on-accent"
-        >
+        <Badge className="text-sm py-1 px-2 rounded-full bg-accent text-on-accent">
           Category
         </Badge>
       </div>
@@ -31,38 +29,11 @@ export function CardsProduct() {
       <div className="flex justify-between items-center">
         <div className="text-xl font-semibold">$99</div>
         <div className="flex gap-1">
-          <StarIcon
-            className="w-5 h-5"
-            style={{
-              color: 'oklch(var(--accent))',
-              fill: 'oklch(var(--accent))',
-            }}
-          />
-          <StarIcon
-            className="w-5 h-5"
-            style={{
-              color: 'oklch(var(--accent))',
-              fill: 'oklch(var(--accent))',
-            }}
-          />
-          <StarIcon
-            className="w-5 h-5"
-            style={{
-              color: 'oklch(var(--accent))',
-              fill: 'oklch(var(--accent))',
-            }}
-          />
-          <StarIcon
-            className="w-5 h-5"
-            style={{
-              color: 'oklch(var(--accent))',
-              fill: 'oklch(var(--accent))',
-            }}
-          />
-          <StarIcon
-            className="w-5 h-5"
-            style={{ color: 'oklch(var(--neutral))' }}
-          />
+          <StarIcon className="w-5 h-5 text-accent fill-accent" />
+          <StarIcon className="w-5 h-5 text-accent fill-accent" />
+          <StarIcon className="w-5 h-5 text-accent fill-accent" />
+          <StarIcon className="w-5 h-5 text-accent fill-accent" />
+          <StarIcon className="w-5 h-5 text-accent" />
         </div>
       </div>
     </Card>

@@ -46,7 +46,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-background text-primary overscroll-none;
+    @apply bg-background text-on-surface overscroll-none;
     /* font-feature-settings: "rlig" 1, "calt" 1; */
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;

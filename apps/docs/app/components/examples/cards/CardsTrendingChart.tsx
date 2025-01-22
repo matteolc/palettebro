@@ -63,7 +63,7 @@ export function CardsTrendingChart() {
             <CartesianGrid
               vertical={false}
               opacity={1}
-              stroke="oklch(var(--neutral-200))"
+              stroke="oklch(var(--accent)/0.2)"
               strokeDasharray={'4 4'}
             />
             <XAxis

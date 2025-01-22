@@ -1,11 +1,9 @@
 import type { Wcag2Grade } from './types';
-import { CONTRAST_GRADES } from './const';
+import { Wcag2Level } from './const';
 
 export function wcag2Grade(contrastLevel: number): Wcag2Grade {
-  for (const [threshold, grade] of Object.entries(CONTRAST_GRADES)) {
-    if (contrastLevel >= Number(threshold)) {
-      return grade;
-    }
-  }
+  if (contrastLevel >= Wcag2Level.aaa) return 'AAA';
+  if (contrastLevel >= Wcag2Level.aa) return 'AA';
+  if (contrastLevel >= Wcag2Level.aa18) return 'AA18';
   return 'KO';
 }

@@ -3,7 +3,8 @@ import { sentenceCase } from '@/lib/string';
 import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 import { getPaletteColor } from '@/utils/get-palette-color';
 import clsx from 'clsx';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { ContrastDialog } from './ContrastDialog';
 
 interface ColorBoxProps {
   token: string;
@@ -23,25 +24,39 @@ const ColorBox = ({
   borderRadius,
 }: ColorBoxProps) => {
   const { palette } = useContext(PaletteContext);
+  const [showContrastDialog, setShowContrastDialog] = useState(false);
   const color = getPaletteColor(token, palette);
   const textColor = labelToken ? getPaletteColor(labelToken, palette) : 'white';
   const colorName = getPaletteColor(token, palette, 'name');
 
+  const handleInteraction = () => {
+    setShowContrastDialog(true);
+  };
+
   return (
-    <div className={clsx('flex flex-col', className)}>
-      <div
-        className={clsx('relative h-32 text-sm', borderRadius)}
-        style={{ backgroundColor: color, color: textColor }}
-      >
-        <span className="absolute top-2 left-2">
-          <div className="flex flex-col">
-            {label}
-            <div className="text-xs">{colorName}</div>
+    <>
+      <div className={clsx('flex flex-col', className)}>
+        <button
+          type="button"
+          className={clsx('relative h-32 text-sm cursor-pointer w-full', borderRadius)}
+          style={{ backgroundColor: color, color: textColor }}
+          onClick={handleInteraction}
+        >
+          <div className="absolute top-2 left-2 flex flex-col items-start max-w-[calc(100%-1rem)] w-full">
+            <span className="text-lg font-bold truncate w-full text-left">{label}</span>
+            <span className="text-xs font-normal text-left truncate w-full">{colorName}</span>
           </div>
-        </span>
-        <span className="absolute bottom-2 right-2">{code}</span>
+          <span className="absolute bottom-2 right-2">{code}</span>
+        </button>
       </div>
-    </div>
+      <ContrastDialog
+        isOpen={showContrastDialog}
+        onClose={() => setShowContrastDialog(false)}
+        backgroundColor={color}
+        foregroundColor={textColor}
+        colorName={label}
+      />
+    </>
   );
 };
 
@@ -51,8 +66,11 @@ export const MuiColorPalette = () => {
       <CardHeader>
         <CardTitle>
           <h3 className="text-xl font-bold flex items-center">
-            Material UI Palette
+            Color Tokens
           </h3>
+          <p className="text-sm text-outline max-w-2xl">
+            Color tokens are semantic variables that represent specific colors in your design system. They help maintain consistency and make it easier to update colors across your entire application.
+          </p>
         </CardTitle>
       </CardHeader>
 

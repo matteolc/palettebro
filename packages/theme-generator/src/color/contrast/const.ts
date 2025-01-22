@@ -32,16 +32,9 @@ const wcag3To2Equivalences = {
   [Wcag3Level.ko]: Wcag2Level.ko,
 };
 
-const CONTRAST_GRADES: Record<string, Wcag2Grade> = {
-  [Wcag2Level.aaa]: 'AAA',
-  [Wcag2Level.aa]: 'AA',
-  [Wcag2Level.aa18]: 'AA18',
-} as const;
-
 export {
   Wcag2Level,
   Wcag3Level,
   wcag2To3Equivalences,
   wcag3To2Equivalences,
-  CONTRAST_GRADES,
 };

@@ -84,9 +84,9 @@ module.exports = {
       <DialogTrigger asChild>
         <Button size="sm">Download</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[800px]">
+      <DialogContent className="sm:max-w-[700px]">
         <DialogHeader>
-          <DialogTitle>Download Palette</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">Download Palette</DialogTitle>
           <DialogDescription>
             Choose a format to download your color palette
           </DialogDescription>
@@ -102,10 +102,10 @@ module.exports = {
           {downloadOptions.map((option) => (
             <TabsContent key={option.id} value={option.id}>
               <div className="flex flex-col gap-4">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm">
                   {option.description}
                 </p>
-                <ScrollArea className="h-[320px] w-full rounded-md border">
+                <ScrollArea className="h-[320px] w-full rounded-md border text-sm">
                   <pre className="p-4">
                     <code>{option.preview}</code>
                   </pre>

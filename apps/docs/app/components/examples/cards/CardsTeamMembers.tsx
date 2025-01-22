@@ -23,6 +23,49 @@ import {
   PopoverTrigger,
 } from '~/components/ui/popover';
 
+const teamMembers = [
+  {
+    name: "Sofia Davis",
+    email: "m@example.com",
+    avatar: "/avatars/01.png",
+    fallback: "OM",
+    role: "Owner"
+  },
+  {
+    name: "Jackson Lee",
+    email: "p@example.com",
+    avatar: "/avatars/02.png",
+    fallback: "JL",
+    role: "Member"
+  },
+  {
+    name: "Isabella Nguyen",
+    email: "i@example.com",
+    avatar: "/avatars/03.png",
+    fallback: "IN",
+    role: "Member"
+  }
+];
+
+const roles = [
+  {
+    name: "Viewer",
+    description: "Can view and comment."
+  },
+  {
+    name: "Developer",
+    description: "Can view, comment and edit."
+  },
+  {
+    name: "Billing",
+    description: "Can view, comment and manage billing."
+  },
+  {
+    name: "Owner",
+    description: "Admin-level access to all resources."
+  }
+];
+
 export function CardsTeamMembers() {
   return (
     <Card>
@@ -33,167 +76,48 @@ export function CardsTeamMembers() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
-        <div className="flex items-center justify-between space-x-4">
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-8 w-8">
-              <AvatarImage src="/avatars/01.png" alt="Image" />
-              <AvatarFallback>OM</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="text-sm font-medium leading-none">Sofia Davis</p>
-              <p className="text-sm text-muted-foreground">m@example.com</p>
+        {teamMembers.map((member) => (
+          <div key={member.toString()} className="flex items-center justify-between space-x-4">
+            <div className="flex items-center space-x-4">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src={member.avatar} alt="Image" />
+                <AvatarFallback>{member.fallback}</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="text-sm font-medium leading-none">{member.name}</p>
+                <p className="text-sm text-muted-foreground">{member.email}</p>
+              </div>
             </div>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="sm" className="ml-auto group">
+                  {member.role} <ChevronDown className="text-muted-foreground group-hover:text-muted" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="p-0" align="end">
+                <Command>
+                  <CommandInput placeholder="Select new role..." />
+                  <CommandList>
+                    <CommandEmpty>No roles found.</CommandEmpty>
+                    <CommandGroup className="p-1.5">
+                      {roles.map((role) => (
+                        <CommandItem
+                          key={role.toString()}
+                          className="teamaspace-y-1 flex flex-col items-start px-4 gap-y-1 group"
+                        >
+                          <p>{role.name}</p>
+                          <p className="text-xs group-hover:text-muted">
+                            {role.description}
+                          </p>
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </PopoverContent>
+            </Popover>
           </div>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" size="sm" className="ml-auto">
-                Owner <ChevronDown className="text-muted-foreground" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-0" align="end">
-              <Command>
-                <CommandInput placeholder="Select new role..." />
-                <CommandList>
-                  <CommandEmpty>No roles found.</CommandEmpty>
-                  <CommandGroup>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view and comment.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and edit.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and manage billing.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
-                        Admin-level access to all resources.
-                      </p>
-                    </CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-        </div>
-        <div className="flex items-center justify-between space-x-4">
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-8 w-8">
-              <AvatarImage src="/avatars/02.png" alt="Image" />
-              <AvatarFallback>JL</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="text-sm font-medium leading-none">Jackson Lee</p>
-              <p className="text-sm text-muted-foreground">p@example.com</p>
-            </div>
-          </div>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" size="sm" className="ml-auto">
-                Member <ChevronDown className="text-muted-foreground" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-0" align="end">
-              <Command>
-                <CommandInput placeholder="Select new role..." />
-                <CommandList>
-                  <CommandEmpty>No roles found.</CommandEmpty>
-                  <CommandGroup className="p-1.5">
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view and comment.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and edit.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and manage billing.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
-                        Admin-level access to all resources.
-                      </p>
-                    </CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-        </div>
-        <div className="flex items-center justify-between space-x-4">
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-8 w-8">
-              <AvatarImage src="/avatars/03.png" alt="Image" />
-              <AvatarFallback>IN</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="text-sm font-medium leading-none">
-                Isabella Nguyen
-              </p>
-              <p className="text-sm text-muted-foreground">i@example.com</p>
-            </div>
-          </div>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" size="sm" className="ml-auto">
-                Member <ChevronDown className="text-muted-foreground" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-0" align="end">
-              <Command>
-                <CommandInput placeholder="Select new role..." />
-                <CommandList>
-                  <CommandEmpty>No roles found.</CommandEmpty>
-                  <CommandGroup className="p-1.5">
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view and comment.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and edit.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and manage billing.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
-                        Admin-level access to all resources.
-                      </p>
-                    </CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-        </div>
+        ))}
       </CardContent>
     </Card>
   );

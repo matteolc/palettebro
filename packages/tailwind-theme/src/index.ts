@@ -29,14 +29,6 @@ export default plugin.withOptions(
       }
 
       injectThemes(addBase, { themes, darkTheme });
-
-      console.dir(
-        {
-          ...PALETTE_COLORS,
-          ...SHADCN_COLOR_UTILITIES,
-        },
-        { depth: null },
-      );
     },
   () => ({
     theme: {

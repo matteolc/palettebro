@@ -7,5 +7,5 @@ export const DEFAULT_GENERATIVE_PRESET = 'default';
 export const DEFAULT_GENERATIVE_NUM_COLORS = 3;
 export const DEFAULT_GENERATIVE_TEMPERATURE = 1.2;
 
-export const BASE_TOKENS = ['primary', 'secondary', 'accent', 'neutral'];
+export const BASE_TOKENS = ['primary', 'secondary', 'accent', 'surface'];
 export const STATUS_TOKENS = ['info', 'success', 'warning', 'error'];

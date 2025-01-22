@@ -23,7 +23,7 @@ export function MailList({ items }: MailListProps) {
             type="button"
             key={item.id}
             className={cn(
-              'flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent',
+              'group flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent hover:text-accent-foreground',
               mail.selected === item.id && 'bg-muted',
             )}
             onClick={() =>
@@ -46,7 +46,7 @@ export function MailList({ items }: MailListProps) {
                     'ml-auto text-xs',
                     mail.selected === item.id
                       ? 'text-foreground'
-                      : 'text-muted-foreground',
+                      : 'text-muted-foreground group-hover:text-accent-foreground',
                   )}
                 >
                   {formatDistanceToNow(new Date(item.date), {
@@ -56,13 +56,13 @@ export function MailList({ items }: MailListProps) {
               </div>
               <div className="text-xs font-medium">{item.subject}</div>
             </div>
-            <div className="line-clamp-2 text-xs text-muted-foreground">
+            <div className="line-clamp-2 text-xs text-muted-foreground group-hover:text-accent-foreground">
               {item.text.substring(0, 300)}
             </div>
             {item.labels.length ? (
               <div className="flex items-center gap-2">
                 {item.labels.map((label) => (
-                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
+                  <Badge key={label} variant={getBadgeVariantFromLabel(label)} className="group-hover:text-accent-foreground">
                     {label}
                   </Badge>
                 ))}
