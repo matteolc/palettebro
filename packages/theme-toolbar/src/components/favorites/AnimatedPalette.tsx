@@ -36,7 +36,6 @@ export function AnimatedPalette({
       onDelete(name);
     }
   };
-
   return (
     <div className="group grid grid-rows-8 gap-2 h-64 w-48">
       <div
@@ -45,7 +44,7 @@ export function AnimatedPalette({
           className,
         )}
       >
-        {colors.map((color, index) => (
+        {[...colors].reverse().map((color, index) => (
           <div
             key={color.hex}
             className={cn(
