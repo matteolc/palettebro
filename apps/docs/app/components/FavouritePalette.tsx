@@ -4,7 +4,7 @@ import type { FormProps } from '@remix-run/react';
 import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
 import { type ComponentType, useContext } from 'react';
 
-export function FavoritePalette({
+export function FavouritePalette({
   colors,
   name,
   className,

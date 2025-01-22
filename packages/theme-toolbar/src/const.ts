@@ -1,4 +1,4 @@
-export const DEFAULT_STATIC_PRESET = 'split-complementary';
+export const DEFAULT_STATIC_PRESET = 'tetrad';
 export const DEFAULT_MUI_PRESET = 'fruit-salad';
 export const DEFAULT_CONTRAST = 0.0;
 export const DEFAULT_GENERATIVE_MODE = 'transformer';

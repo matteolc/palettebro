@@ -48,11 +48,11 @@ export const PaletteProvider = ({
     themes[isDark ? ThemeColorSchemeEnum.dark : ThemeColorSchemeEnum.light]
       .baseColors,
   );
-  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.mui);
+  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.static);
   const [preset, setPreset] = useState<StaticThemePreset | MuiThemePreset>(
-    DEFAULT_MUI_PRESET,
+    DEFAULT_STATIC_PRESET,
   );
-  const [reverse, setReverse] = useState<boolean>(false);
+  const [reverse, setReverse] = useState<boolean>(true);
   const [contrast, setContrast] = useState<number>(DEFAULT_CONTRAST);
 
   const { palette } = getCustomPalette({

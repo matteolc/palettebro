@@ -1,4 +1,3 @@
-import { NavLink } from '@remix-run/react';
 import {
   PageActions,
   PageHeader,
@@ -8,7 +7,7 @@ import {
 import { generateMeta } from '~/utils/meta-utils';
 import type { MetaFunction } from '@vercel/remix';
 import { DownloadDialog } from '~/components/DownloadDialog';
-import { Palette } from '~/components/Palette';
+import { ThemePalette } from '@palettebro/theme-toolbar';
 
 export const meta: MetaFunction = () => {
   return generateMeta({
@@ -34,7 +33,7 @@ export default function Page() {
       </PageHeader>
 
       <div className="container mt-8">
-        <Palette />
+        <ThemePalette />
       </div>
     </>
   );

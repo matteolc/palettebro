@@ -1,6 +1,5 @@
 import type { MetaFunction } from '@vercel/remix';
 import { Hero } from '~/components/Hero';
-import { Isomorph } from '~/components/Isomorph';
 
 export const meta: MetaFunction = () => {
   return [
@@ -25,9 +24,6 @@ export default function Index() {
           <Hero />
         </div>
       </div>
-      {/* <div className="w-0 lg:w-full fixed flex justify-end">
-        <Isomorph />
-      </div> */}
     </>
   );
 }
