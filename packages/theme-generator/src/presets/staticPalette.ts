@@ -11,13 +11,11 @@ import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
 import background from './background';
 import materialScale from './materialScale';
+import materialTones from './materialTones';
 import outlineScale from './outlineScale';
 import rainbow from './rainbow';
 import shadowAndScrim from './shadowAndScrim';
-import staticTones from './staticTones';
 import surface from './surface';
-import tailwindScaleDark from './tailwindScaleDark';
-import tailwindScaleLight from './tailwindScaleLight';
 import type { Preset } from './types';
 
 export default (options?: {
@@ -29,14 +27,12 @@ export default (options?: {
   reverse: boolean;
 }) => {
   const lightNodes = [
-    ...staticTones.nodes,
-    // ...tailwindScaleLight.nodes,
+    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
     ...materialScale({ isDark: options?.isDark ?? false }).nodes,
   ];
 
   const darkNodes = [
-    ...staticTones.nodes,
-    // ...tailwindScaleDark.nodes,
+    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
     ...materialScale({ isDark: options?.isDark ?? false }).nodes,
   ];
 
@@ -101,6 +97,7 @@ export default (options?: {
             isHidden: false,
             children: shadeNodes,
           },
+          ...background({ isDark: options?.isDark ?? false }).nodes,
           {
             type: saturation.type,
             isHidden: true,
@@ -108,7 +105,6 @@ export default (options?: {
               amount: options?.isDark ? 8 : 12.5,
             },
             children: [
-              ...background({ isDark: options?.isDark ?? false }).nodes,
               ...surface({ isDark: options?.isDark ?? false }).nodes,
               ...outlineScale({ isDark: options?.isDark ?? false }).nodes,
               ...shadowAndScrim({ isDark: options?.isDark ?? false }).nodes,
