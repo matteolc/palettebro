@@ -1,6 +1,5 @@
 import {
   CardsActivityGoal,
-  CardsAlert,
   CardsAreaChart,
   CardsAreaChartIteractive,
   CardsCalendar,

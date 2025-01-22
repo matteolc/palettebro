@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Skeleton } from '@/ui/skeleton';
 import { ColorSwatch } from './ColorSwatch';
 import { BASE_TOKENS, STATUS_TOKENS } from '@/const';
+import { SimpleColorSwatch } from './SimpleColorSwatch';
 
 export const PaletteSwatches = ({
   onLockUnlock,
@@ -13,7 +14,7 @@ export const PaletteSwatches = ({
   return (
     <>
       {showStatePalette ? (
-        <div className="mx-4 flex flex-row gap-1">
+        <div className="ml-4 flex flex-row gap-1">
           {STATUS_TOKENS.map((token) =>
             isLoading ? (
               <Skeleton
@@ -30,7 +31,7 @@ export const PaletteSwatches = ({
           )}
         </div>
       ) : (
-        <div className="mx-4 flex flex-row gap-1">
+        <div className="flex flex-row gap-1">
           {BASE_TOKENS.map((token) =>
             isLoading ? (
               <Skeleton
@@ -38,19 +39,19 @@ export const PaletteSwatches = ({
                 className="h-[52px] w-48 rounded-lg bg-zinc-200"
               />
             ) : (
-              <ColorSwatch token={token} key={token} />
+              <SimpleColorSwatch token={token} key={token} />
             ),
           )}
         </div>
       )}
 
-      <button
+      {/* <button
         type="button"
         className="px-1 py-2 rounded-full"
         onClick={() => setShowStatePalette?.(!showStatePalette)}
       >
         {showStatePalette ? <RiInformationOffLine /> : <RiInformationLine />}
-      </button>
+      </button> */}
     </>
   );
 };

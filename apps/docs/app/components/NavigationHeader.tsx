@@ -5,6 +5,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useState } from 'react';
 import { Button, buttonVariants } from './ui/button';
 import { Separator } from './ui/separator';
+import { sentenceCase } from '@palettebruh/theme-generator';
 
 const NavigationHeader = () => {
   const { scrollY } = useScroll();
@@ -27,7 +28,7 @@ const NavigationHeader = () => {
       className={clsx(
         'left-0 max-w-2xl right-0 py-1  fixed inset-x-3 top-4 z-50 mx-auto flex justify-center overflow-hidden rounded-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1.03)] will-change-transform',
         isScrolled
-          ? 'bg-background/95 lg:max-w-3xl lg:border-neutral-200/60 lg:bg-background/95 lg:shadow-xl lg:shadow-black/5 lg:border '
+          ? 'bg-background/95 lg:max-w-3xl lg:border-border lg:bg-background/95 lg:shadow-xl lg:shadow-black/5 lg:border '
           : 'lg:max-w-full bg-white/0',
       )}
     >
@@ -45,45 +46,21 @@ const NavigationHeader = () => {
             </h2>
           </Link>
           <div className="hidden lg:flex gap-4 items-center">
-            <ul className="flex gap-x-2 text-lg font-semibold items-center bg-primary/10 px-2 py-0.5 rounded-lg border border-primary-400/10">
-              {['palette', 'examples', 'blocks'].map((item) => (
+            <ul className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
+              {['palette', 'examples', 'blocks', 'favourites'].map((item) => (
                 <NavLink
                   to={`/${item}`}
                   key={item}
                   className={({ isActive, isPending }) =>
                     clsx(
-                      isActive
-                        ? 'bg-primary-50/90 hover:bg-primary-50 text-primary-900'
-                        : 'text-muted-foreground hover:text-primary-800',
-                      'px-2 py-1 rounded-md text-sm font-medium transition-colors',
+                      isActive ? 'bg-background text-foreground shadow' : '',
+                      'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
                     )
                   }
                 >
-                  {item}
+                  {sentenceCase(item)}
                 </NavLink>
               ))}
-              <Separator
-                orientation="vertical"
-                className="mx-1 hidden h-4 md:flex"
-              />
-
-              <NavLink
-                to="/favourites"
-                className={({ isActive, isPending }) =>
-                  clsx(
-                    buttonVariants({ variant: 'ghost', size: 'sm' }),
-                    'justify-start mx-0 cursor-pointer pl-1.5',
-
-                    isActive
-                      ? 'text-secondary-800 hover:bg-transparent hover:text-secondary-600'
-                      : 'hover:text-secondary-800 hover:animate-pulse hover:bg-transparent',
-                    isPending ? 'animate-pulse' : '',
-                    'text-secondary-600 text-sm font-medium transition-colors',
-                  )
-                }
-              >
-                <RiHeartFill className="inline-block size-5" />
-              </NavLink>
             </ul>
           </div>
         </motion.nav>

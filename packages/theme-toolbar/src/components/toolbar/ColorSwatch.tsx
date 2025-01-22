@@ -48,7 +48,7 @@ export const ColorSwatch = ({
       <div
         style={{
           backgroundColor: `oklch(var(--${token}))`,
-          color: `oklch(var(--${token}-text))`,
+          color: `oklch(var(--on-${token}))`,
         }}
         className={clsx(classes, 'min-w-48 px-2.5 py-1.5 rounded-lg')}
       >

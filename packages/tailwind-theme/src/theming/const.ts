@@ -1,3 +1,5 @@
+import { MATERIAL_TONES } from '@palettebruh/theme-generator';
+
 const DEFAULT_UTILITY_VALUES = {
   '--radius': '0.5rem',
   '--font-sans': 'Inter',
@@ -6,15 +8,20 @@ const DEFAULT_UTILITY_VALUES = {
   '--border-angle': '0deg',
 };
 
-const generateColorVariants = (colorName: string) => ({
-  DEFAULT: `oklch(var(--${colorName})/<alpha-value>)`,
-  content: `oklch(var(--${colorName}-content)/<alpha-value>)`,
-  foreground: `oklch(var(--on-${colorName})/<alpha-value>)`,
-  container: `oklch(var(--${colorName}-container)/<alpha-value>)`,
-  'container-foreground': `oklch(var(--on-${colorName}-container)/<alpha-value>)`,
-  light: `oklch(var(--${colorName}-light)/<alpha-value>)`,
-  base: `oklch(var(--${colorName}-base)/<alpha-value>)`,
-  dark: `oklch(var(--${colorName}-dark)/<alpha-value>)`,
+const generateMuiColorShades = (colorName: string) => ({
+  ...MATERIAL_TONES.reduce<Record<number, string>>((acc, tone) => {
+    acc[tone] = `oklch(var(--${colorName}-${tone})/<alpha-value>)`;
+    return acc;
+  }, {}),
+});
+
+const generateMUIColorVariants = (colorName: string) => ({
+  [`on-${colorName}`]: `oklch(var(--on-${colorName})/<alpha-value>)`,
+  [`${colorName}-container`]: `oklch(var(--${colorName}-container)/<alpha-value>)`,
+  [`on-${colorName}-container`]: `oklch(var(--on-${colorName}-container)/<alpha-value>)`,
+});
+
+const generateTailwindColorShades = (colorName: string) => ({
   ...Array.from({ length: 19 }, (_, i) => i * 50).reduce<
     Record<number, string>
   >((acc, shade) => {
@@ -24,28 +31,33 @@ const generateColorVariants = (colorName: string) => ({
   }, {}),
 });
 
+const generateShadcnColorVariants = (colorName: string) => ({
+  DEFAULT: `oklch(var(--${colorName})/<alpha-value>)`,
+  foreground: `oklch(var(--on-${colorName})/<alpha-value>)`,
+});
+
 const SHADCN_COLOR_UTILITIES = {
   background: 'oklch(var(--background)/<alpha-value>)',
   foreground: 'oklch(var(--on-background)/<alpha-value>)',
   card: {
-    DEFAULT: 'oklch(var(--primary-50))',
-    foreground: 'oklch(var(--neutral-700))',
+    DEFAULT: 'oklch(var(--surface-container-low))',
+    foreground: 'oklch(var(--on-surface))',
   },
   popover: {
     DEFAULT: 'oklch(var(--primary-50))',
     foreground: 'oklch(var(--neutral-700))',
   },
   muted: {
-    DEFAULT: 'oklch(var(--neutral-200)/<alpha-value>)',
-    foreground: 'oklch(var(--neutral-500)/<alpha-value>)',
+    DEFAULT: 'oklch(var(--secondary)/<alpha-value>)',
+    foreground: 'oklch(var(--on-secondary)/<alpha-value>)',
   },
   destructive: {
     DEFAULT: 'oklch(var(--error)/<alpha-value>)',
     foreground: 'oklch(var(--on-error)/<alpha-value>)',
   },
-  border: 'oklch(var(--neutral-200)/<alpha-value>)',
-  input: 'oklch(var(--neutral-200)/<alpha-value>)',
-  ring: 'oklch(var(--neutral-100)/<alpha-value>)',
+  border: 'oklch(var(--surface-container-high)/<alpha-value>)',
+  input: 'oklch(var(--outline)/<alpha-value>)',
+  ring: 'oklch(var(--outline-variant)/<alpha-value>)',
   chart: Object.fromEntries(
     Array.from({ length: 5 }, (_, i) => [
       String(i + 1),
@@ -76,22 +88,35 @@ const colorNames = [
 ];
 
 const PALETTE_COLORS = {
-  ...colorNames.reduce(
-    (acc, color) => {
-      acc[color] = generateColorVariants(color);
-      return acc;
-    },
-    {} as Record<string, ReturnType<typeof generateColorVariants>>,
-  ),
-  'base-100': 'oklch(var(--base-100)/<alpha-value>)',
-  'base-200': 'oklch(var(--base-200)/<alpha-value>)',
-  'base-300': 'oklch(var(--base-300)/<alpha-value>)',
+  ...generateMUIColorVariants('primary'),
+  ...generateMUIColorVariants('secondary'),
+  ...generateMUIColorVariants('accent'),
+  ...generateMUIColorVariants('neutral'),
+  // ...generateMUIColorVariants('info'),
+  // ...generateMUIColorVariants('success'),
+  // ...generateMUIColorVariants('warning'),
+  ...generateMUIColorVariants('error'),
+  ...colorNames.reduce<
+    Record<
+      string,
+      {
+        DEFAULT: string;
+        foreground: string;
+        container?: string;
+        [key: string | number]: string | undefined;
+      }
+    >
+  >((acc, color) => {
+    acc[color] = {
+      ...generateShadcnColorVariants(color),
+      ...generateMuiColorShades(color),
+    };
+    return acc;
+  }, {}),
+  'base-100': 'oklch(var(--surface-container-highest)/<alpha-value>)',
+  'base-200': 'oklch(var(--surface-container)/<alpha-value>)',
+  'base-300': 'oklch(var(--surface-container-lowest)/<alpha-value>)',
   'base-foreground': 'oklch(var(--on-surface)/<alpha-value>)',
-  ring: 'oklch(var(--r)/<alpha-value>)',
 };
 
-export {
-  DEFAULT_UTILITY_VALUES,
-  SHADCN_COLOR_UTILITIES,
-  PALETTE_COLORS,
-};
+export { DEFAULT_UTILITY_VALUES, SHADCN_COLOR_UTILITIES, PALETTE_COLORS };

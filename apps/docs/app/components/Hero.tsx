@@ -5,16 +5,16 @@ export const Hero = () => {
     <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
       <Badge variant="outline" className="mb-4 text-md rounded-full">
         <span className="relative flex h-3 w-3 mr-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-300" />
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-40 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-30" />
         </span>
         Introducing Palettebruh 1.0
       </Badge>
 
-      <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-5xl lg:leading-tight bg-gradient-to-r from-accent-700 via-secondary-500 to-accent-300 text-transparent bg-clip-text">
+      <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-5xl lg:leading-tight bg-gradient-to-r from-accent-70 via-secondary-50 to-accent-30 text-transparent bg-clip-text">
         The best color palette generator for the web. Ever.
       </h1>
-      <p className="mt-4 max-w-xl lg:text-xl text-2xl text-neutral-800">
+      <p className="mt-4 max-w-xl lg:text-xl text-2xl text-secondary">
         Create infinite palettes. Save your favourite ones. See how they look
         with real components. Download all the colors as CSS token variables.
         Use them in your web project. It's that simple.

@@ -1,16 +1,14 @@
 import { NavLink } from '@remix-run/react';
-import { BASE_TOKENS, STATUS_TOKENS } from '@palettebruh/theme-toolbar';
-import { TokenColorPalette } from '@palettebruh/theme-toolbar';
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import { Button } from '~/components/ui/button';
 import { generateMeta } from '~/utils/meta-utils';
 import type { MetaFunction } from '@vercel/remix';
 import { DownloadDialog } from '~/components/DownloadDialog';
+import { Palette } from '~/components/Palette';
 
 export const meta: MetaFunction = () => {
   return generateMeta({
@@ -35,10 +33,8 @@ export default function Page() {
         </PageActions>
       </PageHeader>
 
-      <div className="container mt-8 flex flex-col gap-y-4">
-        {[...BASE_TOKENS, ...STATUS_TOKENS].map((token) => (
-          <TokenColorPalette token={token} key={token} />
-        ))}
+      <div className="container mt-8">
+        <Palette />
       </div>
     </>
   );

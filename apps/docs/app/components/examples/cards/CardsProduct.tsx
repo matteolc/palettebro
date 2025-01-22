@@ -20,11 +20,7 @@ export function CardsProduct() {
       <div className="flex justify-between items-baseline">
         <CardTitle className="font-bold text-2xl">Fancy Watch</CardTitle>
         <Badge
-          className="text-sm py-1 px-2 rounded-full"
-          style={{
-            backgroundColor: 'oklch(var(--info-container))',
-            color: 'oklch(var(--on-info-container))',
-          }}
+          className="text-sm py-1 px-2 rounded-full bg-accent text-on-accent"
         >
           Category
         </Badge>

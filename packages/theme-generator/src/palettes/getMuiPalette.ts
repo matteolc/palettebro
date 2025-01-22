@@ -14,6 +14,7 @@ import {
   SchemeExpressive,
   SchemeContent,
   SchemeAndroid,
+  type TonalPalette,
 } from '@material/material-color-utilities';
 import {
   MuiThemePresetEnum,
@@ -26,6 +27,7 @@ import { nearestColorName } from '../color/nearest-color-name';
 import tailwindScaleLight from '../presets/tailwindScaleLight';
 import tailwindScaleDark from '../presets/tailwindScaleDark';
 import {
+  MATERIAL_TONES,
   parseColor,
   presetSamplesWithKeyAndName,
   presetSampleWithKeyAndNameHash,
@@ -101,13 +103,28 @@ export const getMuiPalette = ({
   const presetKey = (MuiThemePresetEnum[preset] as PresetKey) || 'fruit-salad';
   const scheme = presetMap({ hct, isDark, contrast })[presetKey];
 
-  const formatPalette = (presets: Palette, token: string) => Object.entries(presets).reduce(
-    (acc, [key, value]) => {
-      const newKey = key.replace('$', token);
-      acc[newKey] = value;
-      return acc;
-    },
-    {} as Record<string, { name: string; color: string }>,
+  const tonesFromPalette = (palette: TonalPalette, token: string) => {
+    return MATERIAL_TONES.reduce(
+      (acc, tone) => {
+        const color = palette.tone(tone);
+        acc[`${token}-${tone}`] = {
+          name: nearestColorName(hexFromArgb(color)),
+          color: hexFromArgb(color),
+        };
+        return acc;
+      },
+      {} as Record<string, { name: string; color: string }>,
+    );
+  };
+
+  const formatPalette = (presets: Palette, token: string) =>
+    Object.entries(presets).reduce(
+      (acc, [key, value]) => {
+        const newKey = key.replace('$', token);
+        acc[newKey] = value;
+        return acc;
+      },
+      {} as Record<string, { name: string; color: string }>,
     );
 
   // Generate shades for primary, secondary, and accent colors
@@ -136,7 +153,10 @@ export const getMuiPalette = ({
     return formatPalette(presets, token);
   };
 
-  const generateChartColors = (color: SchemistColor | undefined, token: string) => {
+  const generateChartColors = (
+    color: SchemistColor | undefined,
+    token: string,
+  ) => {
     if (!color) return {};
     const presets = presetSampleWithKeyAndNameHash([
       ...presetSamplesWithKeyAndName(rainbow.nodes, color),
@@ -150,6 +170,11 @@ export const getMuiPalette = ({
     primary: {
       name: nearestColorName(hexFromArgb(scheme.primary)),
       color: hexFromArgb(scheme.primary),
+    },
+    ...tonesFromPalette(scheme.primaryPalette, 'primary'),
+    'inverse-primary': {
+      name: nearestColorName(hexFromArgb(scheme.inversePrimary)),
+      color: hexFromArgb(scheme.inversePrimary),
     },
     'on-primary': {
       name: nearestColorName(hexFromArgb(scheme.onPrimary)),
@@ -167,6 +192,7 @@ export const getMuiPalette = ({
       name: nearestColorName(hexFromArgb(scheme.secondary)),
       color: hexFromArgb(scheme.secondary),
     },
+    ...tonesFromPalette(scheme.secondaryPalette, 'secondary'),
     'on-secondary': {
       name: nearestColorName(hexFromArgb(scheme.onSecondary)),
       color: hexFromArgb(scheme.onSecondary),
@@ -179,26 +205,11 @@ export const getMuiPalette = ({
       name: nearestColorName(hexFromArgb(scheme.onSecondaryContainer)),
       color: hexFromArgb(scheme.onSecondaryContainer),
     },
-    accent: {
-      name: nearestColorName(hexFromArgb(scheme.tertiary)),
-      color: hexFromArgb(scheme.tertiary),
-    },
-    'on-accent': {
-      name: nearestColorName(hexFromArgb(scheme.onTertiary)),
-      color: hexFromArgb(scheme.onTertiary),
-    },
-    'accent-container': {
-      name: nearestColorName(hexFromArgb(scheme.tertiaryContainer)),
-      color: hexFromArgb(scheme.tertiaryContainer),
-    },
-    'on-accent-container': {
-      name: nearestColorName(hexFromArgb(scheme.onTertiaryContainer)),
-      color: hexFromArgb(scheme.onTertiaryContainer),
-    },
     tertiary: {
       name: nearestColorName(hexFromArgb(scheme.tertiary)),
       color: hexFromArgb(scheme.tertiary),
     },
+    ...tonesFromPalette(scheme.tertiaryPalette, 'tertiary'),
     'on-tertiary': {
       name: nearestColorName(hexFromArgb(scheme.onTertiary)),
       color: hexFromArgb(scheme.onTertiary),
@@ -239,6 +250,34 @@ export const getMuiPalette = ({
       name: nearestColorName(hexFromArgb(scheme.surface)),
       color: hexFromArgb(scheme.surface),
     },
+    'surface-dim': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceDim)),
+      color: hexFromArgb(scheme.surfaceDim),
+    },
+    'surface-bright': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceBright)),
+      color: hexFromArgb(scheme.surfaceBright),
+    },
+    'surface-container-lowest': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceContainerLowest)),
+      color: hexFromArgb(scheme.surfaceContainerLowest),
+    },
+    'surface-container-low': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceContainerLow)),
+      color: hexFromArgb(scheme.surfaceContainerLow),
+    },
+    'surface-container': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceContainer)),
+      color: hexFromArgb(scheme.surfaceContainer),
+    },
+    'surface-container-high': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceContainerHigh)),
+      color: hexFromArgb(scheme.surfaceContainerHigh),
+    },
+    'surface-container-highest': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceContainerHighest)),
+      color: hexFromArgb(scheme.surfaceContainerHighest),
+    },
     'on-surface': {
       name: nearestColorName(hexFromArgb(scheme.onSurface)),
       color: hexFromArgb(scheme.onSurface),
@@ -251,9 +290,13 @@ export const getMuiPalette = ({
       name: nearestColorName(hexFromArgb(scheme.onSurfaceVariant)),
       color: hexFromArgb(scheme.onSurfaceVariant),
     },
-    neutral: {
-      name: nearestColorName(hexFromArgb(scheme.background)),
-      color: hexFromArgb(scheme.background),
+    'inverse-surface': {
+      name: nearestColorName(hexFromArgb(scheme.inverseSurface)),
+      color: hexFromArgb(scheme.inverseSurface),
+    },
+    'inverse-on-surface': {
+      name: nearestColorName(hexFromArgb(scheme.inverseOnSurface)),
+      color: hexFromArgb(scheme.inverseOnSurface),
     },
     outline: {
       name: nearestColorName(hexFromArgb(scheme.outline)),
@@ -263,20 +306,57 @@ export const getMuiPalette = ({
       name: nearestColorName(hexFromArgb(scheme.outlineVariant)),
       color: hexFromArgb(scheme.outlineVariant),
     },
-    ...generateShades(parseColor(hexFromArgb(scheme.primary))[1], 'primary'),
-    ...generateShades(
-      parseColor(hexFromArgb(scheme.secondary))[1],
-      'secondary',
-    ),
-    ...generateShades(parseColor(hexFromArgb(scheme.tertiary))[1], 'accent'),
-    ...generateShades(parseColor(hexFromArgb(scheme.background))[1], 'neutral'),
+    shadow: {
+      name: nearestColorName(hexFromArgb(scheme.shadow)),
+      color: hexFromArgb(scheme.shadow),
+    },
+    scrim: {
+      name: nearestColorName(hexFromArgb(scheme.scrim)),
+      color: hexFromArgb(scheme.scrim),
+    },
+    'surface-tint': {
+      name: nearestColorName(hexFromArgb(scheme.surfaceTint)),
+      color: hexFromArgb(scheme.surfaceTint),
+    },
+    // Custom colors
+    accent: {
+      name: nearestColorName(hexFromArgb(scheme.tertiary)),
+      color: hexFromArgb(scheme.tertiary),
+    },
+    ...tonesFromPalette(scheme.tertiaryPalette, 'accent'),
+    'on-accent': {
+      name: nearestColorName(hexFromArgb(scheme.onTertiary)),
+      color: hexFromArgb(scheme.onTertiary),
+    },
+    'accent-container': {
+      name: nearestColorName(hexFromArgb(scheme.tertiaryContainer)),
+      color: hexFromArgb(scheme.tertiaryContainer),
+    },
+    'on-accent-container': {
+      name: nearestColorName(hexFromArgb(scheme.onTertiaryContainer)),
+      color: hexFromArgb(scheme.onTertiaryContainer),
+    },
+    neutral: {
+      name: nearestColorName(hexFromArgb(scheme.surfaceDim)),
+      color: hexFromArgb(scheme.surfaceDim),
+    },
+    // ...generateShades(parseColor(hexFromArgb(scheme.primary))[1], 'primary'),
+    // ...generateShades(
+    //   parseColor(hexFromArgb(scheme.secondary))[1],
+    //   'secondary',
+    // ),
+    // ...generateShades(parseColor(hexFromArgb(scheme.tertiary))[1], 'accent'),
+    ...generateShades(parseColor(hexFromArgb(scheme.surfaceDim))[1], 'neutral'),
     // TODO: Fix state colors
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'error'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'success'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'warning'),
     ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'info'),
-    ...generateSemanticPairs(parseColor(hexFromArgb(scheme.primary))[1], ''),
-    ...generateChartColors(parseColor(hexFromArgb(scheme.primary))[1], 'primary'),
+    //...generateSemanticPairs(parseColor(hexFromArgb(scheme.primary))[1], ''),
+    ...generateChartColors(
+      parseColor(hexFromArgb(scheme.primary))[1],
+      'primary',
+    ),
   } as {
     [k: string]: {
       name: string;

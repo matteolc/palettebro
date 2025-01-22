@@ -1,5 +1,4 @@
 export { CardsActivityGoal } from './CardsActivityGoal';
-export { CardsAlert } from './CardsAlert';
 export { CardsAreaChart } from './CardsAreaChart';
 export { CardsAreaChartIteractive } from './CardsAreaChartInteractive';
 export { CardsCalendar } from './CardsCalendar';

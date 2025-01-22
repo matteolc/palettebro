@@ -55,7 +55,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gradient-to-bl home-gradient min-h-fit antialiased">
+      <body className="min-h-fit antialiased">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

@@ -13,9 +13,9 @@
 }
 
 .title-gradient {
-  --tw-gradient-to: oklch(var(--secondary-700)) var(--tw-gradient-to-position);
-  --tw-gradient-from: oklch(var(--accent-800)) var(--tw-gradient-from-position);
-  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-500))
+  --tw-gradient-to: oklch(var(--secondary-70)) var(--tw-gradient-to-position);
+  --tw-gradient-from: oklch(var(--accent-80)) var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-50))
     var(--tw-gradient-via-position), var(--tw-gradient-to);
   animation: gradient 4s ease infinite;
   background-size: 200% 200%;
@@ -46,7 +46,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground overscroll-none;
+    @apply bg-background text-primary overscroll-none;
     /* font-feature-settings: "rlig" 1, "calt" 1; */
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;

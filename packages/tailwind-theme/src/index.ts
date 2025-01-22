@@ -29,13 +29,21 @@ export default plugin.withOptions(
       }
 
       injectThemes(addBase, { themes, darkTheme });
+
+      console.dir(
+        {
+          ...PALETTE_COLORS,
+          ...SHADCN_COLOR_UTILITIES,
+        },
+        { depth: null },
+      );
     },
   () => ({
     theme: {
       extend: {
         colors: {
-          ...SHADCN_COLOR_UTILITIES,
           ...PALETTE_COLORS,
+          ...SHADCN_COLOR_UTILITIES,
         },
       },
     },

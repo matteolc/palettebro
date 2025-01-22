@@ -86,133 +86,135 @@ const PaletteToolbar = ({
   return (
     <div className="fixed bottom-0 left-0 md:mb-4 right-0 flex justify-center z-50">
       <div className="items-center gap-2 rounded-lg px-2 py-1 hidden lg:flex bg-white backdrop-blur-md shadow-lg">
-        <div className="flex items-center justify-center text-zinc-900">
-          <FormComponent
-            noValidate
-            fetcherKey="generate"
-            navigate={false}
-            action={generateEndpoint}
-            method="POST"
-          >
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={profile}
-              name="mode"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={preset}
-              name="preset"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={numColors}
-              name="colors"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={temperature}
-              name="temperature"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={adjacency}
-              name="adjacency"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={page}
-              name="page"
-            />
+        <div className="flex items-center justify-start gap-x-6">
+          <div className="flex items-center justify-center text-zinc-900">
+            <FormComponent
+              noValidate
+              fetcherKey="generate"
+              navigate={false}
+              action={generateEndpoint}
+              method="POST"
+            >
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={profile}
+                name="mode"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={preset}
+                name="preset"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={numColors}
+                name="colors"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={temperature}
+                name="temperature"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={adjacency}
+                name="adjacency"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={page}
+                name="page"
+              />
 
-            {variant === ThemeVariantEnum.dynamic ? (
-              <button
-                className="px-1 py-2"
-                type={shouldSubmit ? 'submit' : 'button'}
-                onClick={popPalette}
-              >
-                <RiMagicLine
-                  className={
-                    variant !== ThemeVariantEnum.dynamic ? 'text-gray-400' : ''
-                  }
-                />
-              </button>
-            ) : (
-              <button
-                className="px-1 py-2"
-                type="button"
-                onClick={handleRandomize}
-              >
-                <RiMagicLine />
-              </button>
-            )}
-          </FormComponent>
-          <PaletteSettings />
-          <FormComponent
-            noValidate
-            fetcherKey="favourites"
-            navigate={false}
-            action={favouritesEndpoint}
-            method="POST"
-          >
-            <input type="hidden" name="intent" value="ADD" />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={palette?.primary.color}
-              name="primary"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={palette?.secondary.color}
-              name="secondary"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={palette?.accent.color}
-              name="accent"
-            />
-            <input
-              type="text"
-              readOnly
-              className="hidden"
-              value={palette?.neutral.color}
-              name="neutral"
-            />
-            <button type="submit" className="pl-1 pr-2.5 py-2">
-              <RiHeartLine />
+              {variant === ThemeVariantEnum.dynamic ? (
+                <button
+                  className="px-1 py-2"
+                  type={shouldSubmit ? 'submit' : 'button'}
+                  onClick={popPalette}
+                >
+                  <RiMagicLine
+                    className={
+                      variant !== ThemeVariantEnum.dynamic
+                        ? 'text-gray-400'
+                        : ''
+                    }
+                  />
+                </button>
+              ) : (
+                <button
+                  className="px-1 py-2"
+                  type="button"
+                  onClick={handleRandomize}
+                >
+                  <RiMagicLine />
+                </button>
+              )}
+            </FormComponent>
+            <PaletteSettings />
+            <button
+              type="button"
+              className="px-1 py-2"
+              onClick={() => setIsDark?.(!isDark)}
+            >
+              {isDark ? <RiMoonLine /> : <RiSunLine />}
             </button>
-          </FormComponent>
-
+            <FormComponent
+              noValidate
+              fetcherKey="favourites"
+              navigate={false}
+              action={favouritesEndpoint}
+              method="POST"
+            >
+              <input type="hidden" name="intent" value="ADD" />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={palette?.primary.color}
+                name="primary"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={palette?.secondary.color}
+                name="secondary"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={palette?.accent.color}
+                name="accent"
+              />
+              <input
+                type="text"
+                readOnly
+                className="hidden"
+                value={palette?.neutral.color}
+                name="neutral"
+              />
+              <button type="submit" className="px-1 py-2">
+                <RiHeartLine />
+              </button>
+            </FormComponent>
+          </div>
           <PaletteSwatches
             onLockUnlock={resetGeneratedPalettes}
             isLoading={isGeneratorLoading}
           />
-
-          <button
-            type="button"
-            className="pl-1 pr-2.5 py-2"
-            onClick={() => setIsDark?.(!isDark)}
-          >
-            {isDark ? <RiMoonLine /> : <RiSunLine />}
-          </button>
         </div>
       </div>
     </div>

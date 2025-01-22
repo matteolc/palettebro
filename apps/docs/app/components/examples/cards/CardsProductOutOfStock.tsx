@@ -47,7 +47,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
       <CardHeader className="relative p-0">
         <div className="relative overflow-hidden rounded-t-lg">
           <Badge
-            variant="destructive"
+            variant="accent"
             className="absolute top-3 left-3 z-10 px-2 py-1"
           >
             {category}
@@ -75,7 +75,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
 
         <CardFooter>
           <Button className="w-full">
-            <span style={{ color: 'oklch(var(--on-primary))' }}>
+            <span className="text-on-primary">
               Add to cart
             </span>
           </Button>
