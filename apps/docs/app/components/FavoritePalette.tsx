@@ -1,10 +1,10 @@
-import { cn } from '@/lib/cn';
-import { PaletteContext } from '@/context/PaletteContext';
+import { cn } from '~/lib/utils';
+import { PaletteContext } from '@palettebro/theme-toolbar';
+import type { FormProps } from '@remix-run/react';
 import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
 import { type ComponentType, useContext } from 'react';
-import type { FormProps } from '@/types';
 
-export function AnimatedPalette({
+export function FavoritePalette({
   colors,
   name,
   className,

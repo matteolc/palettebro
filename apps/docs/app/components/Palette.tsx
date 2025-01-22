@@ -1,5 +1,5 @@
-import { MuiColorPalette } from '@palettebro/theme-toolbar';
+import { ThemePalette } from '@palettebro/theme-toolbar';
 
 export const Palette = () => {
-  return <MuiColorPalette />;
+  return <ThemePalette />;
 };

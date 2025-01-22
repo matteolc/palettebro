@@ -1,7 +1,6 @@
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
 import { generatePaletteName } from '@palettebro/theme-generator/services';
-import { AnimatedPalette } from '@palettebro/theme-toolbar';
 import type {
   ActionFunctionArgs,
   LoaderFunctionArgs,
@@ -17,6 +16,7 @@ import {
 import { Button } from '~/components/ui/button';
 import { favouritesCookie } from '~/lib/palette-store';
 import { generateMeta } from '~/utils/meta-utils';
+import { FavoritePalette } from '~/components/FavoritePalette';
 
 const paletteSchema = z.object({
   name: z.string().optional(),
@@ -155,7 +155,7 @@ export default function Page() {
             ) : (
               <div className="flex flex-row gap-4 gap-y-12 mb-8 flex-wrap">
                 {palettes?.map((palette, index) => (
-                  <AnimatedPalette
+                  <FavoritePalette
                     name={palette.name || `Palette ${index + 1}`}
                     key={palette.toString()}
                     colors={[

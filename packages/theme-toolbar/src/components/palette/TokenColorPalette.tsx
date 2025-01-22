@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { sentenceCase } from '@/lib/string';
 import { Badge } from '@/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
-import { ColorPaletteShades } from '@/components/ColorPaletteShades';
+import { ColorPaletteShades } from './ColorPaletteShades';
 import { PaletteContext } from '@/context/PaletteContext';
 import { getPaletteColor } from '@/utils/get-palette-color';
 

@@ -1,2 +1,1 @@
-export * from './TokenColorPalette';
-export * from './MuiColorPalette';
+export * from './ThemePalette';
