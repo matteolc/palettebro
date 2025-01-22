@@ -1,8 +1,12 @@
-import { Form, useLoaderData } from '@remix-run/react';
+import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
 import { generatePaletteName } from '@palettebruh/theme-generator/services';
 import { AnimatedPalette } from '@palettebruh/theme-toolbar';
-import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from '@vercel/remix';
+import type {
+  ActionFunctionArgs,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from '@vercel/remix';
 import { z } from 'zod';
 import {
   PageActions,
@@ -28,7 +32,8 @@ const schema = z.object({
 export const meta: MetaFunction = () => {
   return generateMeta({
     title: 'Favorite Palettes',
-    description: 'View and manage your saved color palettes. Create beautiful color combinations for your web projects and save them for later use.',
+    description:
+      'View and manage your saved color palettes. Create beautiful color combinations for your web projects and save them for later use.',
   });
 };
 
@@ -58,7 +63,7 @@ export async function action({ request }: ActionFunctionArgs) {
     }
     case 'DELETE_ALL':
       cookie.palettes = [];
-      return new Response('Palette added', {
+      return new Response('Palettes deleted', {
         headers: {
           'Set-Cookie': await favouritesCookie.serialize(cookie),
         },
@@ -105,6 +110,15 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Page() {
   const { palettes } = useLoaderData<typeof loader>();
+  const fetcher = useFetcher();
+
+  const isDeletingAll =
+    fetcher.state === 'submitting' &&
+    fetcher.formData?.get('intent') === 'DELETE_ALL';
+
+  if (isDeletingAll) {
+    return <div>Deleting all palettes...</div>;
+  }
 
   return (
     <div className="">
@@ -114,7 +128,7 @@ export default function Page() {
           Your saved color combinations.
         </PageHeaderDescription>
         <PageActions>
-          <Form method="POST" action="/favourites">
+          <fetcher.Form method="POST" action="/favourites">
             <input type="hidden" name="intent" value="DELETE_ALL" />
             <Button
               size="sm"
@@ -124,7 +138,7 @@ export default function Page() {
             >
               Delete all
             </Button>
-          </Form>
+          </fetcher.Form>
         </PageActions>
       </PageHeader>
       <div id="blocks" className="border-grid scroll-mt-24 border-b">

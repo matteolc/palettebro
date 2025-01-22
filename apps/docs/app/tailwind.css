@@ -2,20 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.home-gradient {
-  --tw-gradient-to: oklch(var(--accent-100)) var(--tw-gradient-to-position);
-  --tw-gradient-from: oklch(var(--primary-50)) var(--tw-gradient-from-position);
-  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--primary-100))
-    var(--tw-gradient-via-position), var(--tw-gradient-to);
-  animation: gradient 8s ease infinite;
-  background-size: 200% 200%;
-  background-repeat: no-repeat;
-}
-
 .title-gradient {
-  --tw-gradient-to: oklch(var(--secondary-70)) var(--tw-gradient-to-position);
-  --tw-gradient-from: oklch(var(--accent-80)) var(--tw-gradient-from-position);
-  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-50))
+  --tw-gradient-to: oklch(var(--accent-40)) var(--tw-gradient-to-position);
+  --tw-gradient-from: oklch(var(--primary-50)) var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-40))
     var(--tw-gradient-via-position), var(--tw-gradient-to);
   animation: gradient 4s ease infinite;
   background-size: 200% 200%;
@@ -39,6 +29,16 @@
     filter: brightness(300%);
     filter: hue-rotate(50deg);
   }
+}
+
+.home-gradient {
+  --tw-gradient-to: oklch(var(--accent-90)) var(--tw-gradient-to-position);
+  --tw-gradient-from: oklch(var(--secondary-80)) var(--tw-gradient-from-position);
+  --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--primary-100))
+    var(--tw-gradient-via-position), var(--tw-gradient-to);
+  animation: gradient 8s ease infinite;
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
 }
 
 @layer base {
