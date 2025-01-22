@@ -5,53 +5,45 @@ import {
 } from '../index';
 import dynamicPalette from '../presets/dynamicPalette';
 import semanticPairs from '../presets/semanticPairs';
+import type { ThemePalette } from '../types';
 
-export const getDynamicPalette = (theme: {
-  primaryColor: SchemistColor;
-  secondaryColor?: SchemistColor;
-  accentColor?: SchemistColor;
-  isDark: boolean;
-  reverse: boolean;
-}) => {
-  const { primaryColor, secondaryColor, accentColor, isDark } = theme;
-
-  const primaryNodes = dynamicPalette({
-    token: 'primary',
-    isDark,
+export const getDynamicPalette = (theme: ThemePalette) => {
+  const {
     primaryColor,
-  }).nodes;
-  const presets = [
-    ...presetSamplesWithKeyAndName(primaryNodes, primaryColor),
+    secondaryColor,
+    accentColor,
+  } = theme;
+
+  return presetSampleWithKeyAndNameHash([
+    ...presetSamplesWithKeyAndName(
+      dynamicPalette({
+        token: 'primary',
+        ...theme,
+      }).nodes,
+      primaryColor,
+    ),
     ...presetSamplesWithKeyAndName(semanticPairs.nodes, primaryColor),
-  ];
-
-  if (secondaryColor) {
-    const secondaryNodes = dynamicPalette({
-      token: 'secondary',
-      isDark,
-      secondaryColor,
-    }).nodes;
-    presets.push(
-      ...[
-        ...presetSamplesWithKeyAndName(secondaryNodes, secondaryColor),
-        ...presetSamplesWithKeyAndName(semanticPairs.nodes, secondaryColor),
-      ],
-    );
-  }
-
-  if (accentColor) {
-    const accentNodes = dynamicPalette({
-      token: 'accent',
-      isDark,
-      accentColor,
-    }).nodes;
-    presets.push(
-      ...[
-        ...presetSamplesWithKeyAndName(accentNodes, accentColor),
-        ...presetSamplesWithKeyAndName(semanticPairs.nodes, accentColor),
-      ],
-    );
-  }
-
-  return presetSampleWithKeyAndNameHash(presets);
+    ...(secondaryColor
+      ? [
+          ...presetSamplesWithKeyAndName(
+            dynamicPalette({
+              token: 'secondary',
+              ...theme,
+            }).nodes,
+            secondaryColor,
+          ),
+        ]
+      : []),
+    ...(accentColor
+      ? [
+          ...presetSamplesWithKeyAndName(
+            dynamicPalette({
+              token: 'accent',
+              ...theme,
+            }).nodes,
+            accentColor,
+          ),
+        ]
+      : []),
+  ]);
 };

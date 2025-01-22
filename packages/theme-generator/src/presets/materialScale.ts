@@ -3,9 +3,9 @@ import type { Preset } from './types';
 import { MATERIAL_TONES } from '../const';
 
 export default (options?: {
-  isDark: boolean;
+  reverseLightDarkShades?: boolean;
 }) => {
-  const { isDark } = options ?? { isDark: false };
+  const { reverseLightDarkShades } = options ?? { isDark: false, reverseLightDarkShades: false };
 
   return {
     label: 'Material Scale',
@@ -14,7 +14,7 @@ export default (options?: {
       type: lightness.type,
       token: `$-${tone}`,
       args: {
-        amount: isDark ? tone : 100 - tone,
+        amount: reverseLightDarkShades ? 100 - tone : tone,
       },
     })),
   } as Preset;

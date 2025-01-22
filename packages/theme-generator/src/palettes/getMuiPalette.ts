@@ -19,6 +19,7 @@ import {
   type Palette,
   type MuiThemePreset,
   type SchemistColor,
+  type ThemePalette,
 } from '../types';
 import { formatSchemistToHex } from '../color/formatting';
 import { nearestColorName } from '../color/nearest-color-name';
@@ -73,23 +74,17 @@ const presetMap = (props: { hct: Hct; isDark: boolean; contrast: number }) => {
   );
 };
 
-export const getMuiPalette = ({
-  primaryColor,
-  isDark,
-  preset,
-  contrast,
-}: {
-  primaryColor: SchemistColor;
-  isDark: boolean;
-  preset: MuiThemePreset;
-  contrast: number;
-}) => {
-  const argb = argbFromHex(formatSchemistToHex(primaryColor));
+export const getMuiPalette = (theme: ThemePalette) => {
+  const argb = argbFromHex(formatSchemistToHex(theme.primaryColor));
   const hct = Hct.fromInt(argb);
 
-  const presetKey =
-    (MuiThemePresetEnum[preset] as MuiThemePreset) || 'fruit-salad';
-  const scheme = presetMap({ hct, isDark, contrast })[presetKey];
+  const presetKey = (MuiThemePresetEnum[theme.preset as MuiThemePreset] ||
+    'fruit-salad') as MuiThemePreset;
+  const scheme = presetMap({
+    hct,
+    isDark: theme.isDark,
+    contrast: theme.contrast ?? 0.0,
+  })[presetKey];
 
   const tonesFromPalette = (palette: TonalPalette, token: string) => {
     return MATERIAL_TONES.reduce(
@@ -118,7 +113,7 @@ export const getMuiPalette = ({
   // Generate shades for primary, secondary, and accent colors
   const generateShades = (color: SchemistColor | undefined, token: string) => {
     if (!color) return {};
-    const scaleNodes = isDark
+    const scaleNodes = theme.isDark
       ? tailwindScaleDark.nodes
       : tailwindScaleLight.nodes;
     const presets = presetSampleWithKeyAndNameHash([

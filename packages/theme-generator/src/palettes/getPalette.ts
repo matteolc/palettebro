@@ -10,6 +10,7 @@ import {
   type StaticThemePreset,
   type Theme,
   ThemeColorSchemeEnum,
+  type ThemePalette,
 } from '../types';
 import { getMuiPalette } from './getMuiPalette';
 import { getStaticPalette } from './getStaticPalette';
@@ -44,6 +45,7 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     variant,
     'color-scheme': colorScheme,
     contrast,
+    reverseLightDarkShades
   } = props.theme;
 
   if (debug) {
@@ -74,17 +76,23 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     reverse: reverse ?? false,
     isDark: colorScheme === ThemeColorSchemeEnum.dark,
     contrast: contrast ?? 0.0,
-  };
+    reverseLightDarkShades,
+    preset
+  } satisfies ThemePalette;
 
-  const palette =
-    variant === 'mui'
-      ? getMuiPalette({ ...paletteProps, preset: preset as MuiThemePreset })
-      : variant === 'static'
-        ? getStaticPalette({
-            ...paletteProps,
-            preset: preset as StaticThemePreset,
-          })
-        : getDynamicPalette(paletteProps);
+  const palette = (() => {
+    switch (variant) {
+      case 'mui':
+        return getMuiPalette(paletteProps);
+      case 'static':
+        return getStaticPalette(paletteProps);
+      case 'dynamic':
+        return getDynamicPalette(paletteProps);
+      default:
+        return getStaticPalette(paletteProps);
+    }
+  })();
+
   if (debug) {
     for (const [key, value] of Object.entries(palette)) {
       console.info(

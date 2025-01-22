@@ -1,3 +1,4 @@
+import type { SchemistColor } from './color';
 import { getDynamicPalette } from './palettes/getDynamicPalette';
 import { getMuiPalette } from './palettes/getMuiPalette';
 import { getStaticPalette } from './palettes/getStaticPalette';
@@ -57,7 +58,11 @@ export const GenerativeThemeModeEnum = createEnum([
   'creative',
 ] as const);
 
-export type GenerativeThemePage = 'website-magazine' | 'brand-2' | 'brand-3' | 'website-1';
+export type GenerativeThemePage =
+  | 'website-magazine'
+  | 'brand-2'
+  | 'brand-3'
+  | 'website-1';
 export const GenerativeThemePageEnum = createEnum([
   'website-magazine',
   'brand-2',
@@ -91,6 +96,7 @@ export type Theme = {
   reverse?: boolean;
   debug?: boolean;
   contrast?: number;
+  reverseLightDarkShades?: boolean;
   baseColors: {
     primary: string;
     secondary?: string;
@@ -98,6 +104,13 @@ export type Theme = {
     neutral?: string;
   };
 };
+
+export type ThemePalette = {
+  primaryColor: SchemistColor;
+  secondaryColor?: SchemistColor;
+  accentColor?: SchemistColor;
+  isDark: boolean;
+} & Pick<Theme, 'preset' | 'contrast' | 'reverse' | 'debug' | 'reverseLightDarkShades'>;
 
 export type Themes = Record<string, Theme>;
 

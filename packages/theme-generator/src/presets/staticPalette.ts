@@ -1,4 +1,3 @@
-import type { SchemistColor } from '../color/types';
 import color from '../nodes/color';
 import lightness from '../nodes/lightness';
 import negative from '../nodes/negative';
@@ -9,7 +8,7 @@ import tetradLeft from '../nodes/tetradLeft';
 import tetradRight from '../nodes/tetradRight';
 import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
-import type { StaticThemePreset } from '../types';
+import type { ThemePalette } from '../types';
 import background from './background';
 import materialScale from './materialScale';
 import materialTones from './materialTones';
@@ -19,25 +18,11 @@ import shadowAndScrim from './shadowAndScrim';
 import surface from './surface';
 import type { Preset } from './types';
 
-export default (options?: {
-  primaryColor?: SchemistColor;
-  saturation?: number;
-  lightness?: number;
-  isDark: boolean;
-  preset: StaticThemePreset;
-  reverse: boolean;
-}) => {
-  const lightNodes = [
+export default (options?: ThemePalette) => {
+  const shadeNodes = [
     ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...materialScale({ isDark: options?.isDark ?? false }).nodes,
-  ];
-
-  const darkNodes = [
-    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...materialScale({ isDark: options?.isDark ?? false }).nodes,
-  ];
-
-  const shadeNodes = options?.isDark ? darkNodes : lightNodes;
+    ...materialScale({ reverseLightDarkShades: options?.reverseLightDarkShades }).nodes
+  ]
 
   const secondaryNode = {
     token: 'secondary',

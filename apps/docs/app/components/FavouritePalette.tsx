@@ -85,7 +85,7 @@ export function FavouritePalette({
               <input type="hidden" name="intent" value="DELETE" />
               <input type="hidden" name="palette" value={name} />
               <button type="submit">
-                <RiDeleteBin6Line className="h-4 w-4 hover:text-primary-950" />
+                <RiDeleteBin6Line className="h-4 w-4 hover:text-error" />
               </button>
             </FormEl>
           </div>
