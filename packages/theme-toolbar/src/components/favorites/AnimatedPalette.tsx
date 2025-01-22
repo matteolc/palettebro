@@ -60,9 +60,9 @@ export function AnimatedPalette({
       </div>
 
       <div className="text-lg font-semibold">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between text-foreground">
           {name}
-          <div className="flex gap-2 items-baseline">
+          <div className="flex gap-2 items-center">
             <button
               type="button"
               onClick={() =>
@@ -72,13 +72,14 @@ export function AnimatedPalette({
                   accent: colors[2].hex,
                 })
               }
+              className="opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <RiEyeLine className="hidden group-hover:block h-4 w-4 hover:text-primary-950" />
+              <RiEyeLine className="h-4 w-4 hover:text-accent" />
             </button>
             <FormEl
               method="POST"
               action={formAction}
-              className="hidden group-hover:block"
+              className="opacity-0 group-hover:opacity-100 transition-opacity"
               onSubmit={handleDelete}
             >
               <input type="hidden" name="intent" value="DELETE" />
