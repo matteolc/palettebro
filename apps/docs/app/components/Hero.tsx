@@ -8,7 +8,7 @@ export const Hero = () => {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-40 opacity-75" />
           <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-30" />
         </span>
-        Introducing Palettebruh 1.0
+        Introducing Palettebro 1.0
       </Badge>
 
       <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-5xl lg:leading-tight bg-gradient-to-r title-gradient text-transparent bg-clip-text">
@@ -20,7 +20,7 @@ export const Hero = () => {
         Use them in your web project. It's that simple.
       </p>
       <div className="block lg:hidden mt-8">
-        To use Palettebruh please use a screen with a width of at least 1024px.
+        To use Palettebro please use a screen with a width of at least 1024px.
       </div>
     </div>
   );

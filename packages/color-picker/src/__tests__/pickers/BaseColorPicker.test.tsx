@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BaseColorPicker } from '../../components/BaseColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { SchemistColor } from '@palettebruh/theme-generator/types';
+import type { SchemistColor } from '@palettebro/theme-generator/types';
 
 describe('BaseColorPicker', () => {
   const mockOnChange = vi.fn();

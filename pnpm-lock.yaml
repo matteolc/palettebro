@@ -35,13 +35,13 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.9.1
         version: 3.9.1(react-hook-form@7.54.1)
-      '@palettebruh/tailwind-theme':
+      '@palettebro/tailwind-theme':
         specifier: workspace:*
         version: link:../../packages/tailwind-theme
-      '@palettebruh/theme-generator':
+      '@palettebro/theme-generator':
         specifier: workspace:*
         version: link:../../packages/theme-generator
-      '@palettebruh/theme-toolbar':
+      '@palettebro/theme-toolbar':
         specifier: workspace:*
         version: link:../../packages/theme-toolbar
       '@radix-ui/react-alert-dialog':
@@ -210,10 +210,10 @@ importers:
         specifier: ^3.24.1
         version: 3.24.1
     devDependencies:
-      '@palettebruh/biome-config':
+      '@palettebro/biome-config':
         specifier: workspace:*
         version: link:../../packages/biome-config
-      '@palettebruh/typescript-config':
+      '@palettebro/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@remix-run/dev':
@@ -261,7 +261,7 @@ importers:
 
   packages/color-picker:
     dependencies:
-      '@palettebruh/theme-generator':
+      '@palettebro/theme-generator':
         specifier: workspace:*
         version: link:../theme-generator
       '@radix-ui/react-slot':
@@ -271,10 +271,10 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1
     devDependencies:
-      '@palettebruh/biome-config':
+      '@palettebro/biome-config':
         specifier: workspace:*
         version: link:../biome-config
-      '@palettebruh/typescript-config':
+      '@palettebro/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@radix-ui/react-slider':
@@ -334,13 +334,13 @@ importers:
       '@adobe/leonardo-contrast-colors':
         specifier: 1.0.0
         version: 1.0.0
-      '@palettebruh/biome-config':
+      '@palettebro/biome-config':
         specifier: workspace:*
         version: link:../biome-config
-      '@palettebruh/theme-generator':
+      '@palettebro/theme-generator':
         specifier: workspace:*
         version: link:../theme-generator
-      '@palettebruh/typescript-config':
+      '@palettebro/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/chroma-js':
@@ -407,10 +407,10 @@ importers:
         specifier: ^3.24.1
         version: 3.24.1
     devDependencies:
-      '@palettebruh/biome-config':
+      '@palettebro/biome-config':
         specifier: workspace:*
         version: link:../biome-config
-      '@palettebruh/typescript-config':
+      '@palettebro/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/apca-w3':
@@ -428,10 +428,10 @@ importers:
 
   packages/theme-toolbar:
     dependencies:
-      '@palettebruh/color-picker':
+      '@palettebro/color-picker':
         specifier: workspace:*
         version: link:../color-picker
-      '@palettebruh/theme-generator':
+      '@palettebro/theme-generator':
         specifier: workspace:*
         version: link:../theme-generator
       '@radix-ui/react-checkbox':
@@ -474,10 +474,10 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0
     devDependencies:
-      '@palettebruh/biome-config':
+      '@palettebro/biome-config':
         specifier: workspace:*
         version: link:../biome-config
-      '@palettebruh/typescript-config':
+      '@palettebro/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/react':

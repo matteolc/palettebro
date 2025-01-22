@@ -5,12 +5,12 @@ import {
   DEFAULT_GENERATIVE_TEMPERATURE,
 } from '@/const';
 import { DEFAULT_GENERATIVE_NUM_COLORS } from '@/const';
-import { ADJACENCY_MAP } from '@palettebruh/theme-generator';
+import { ADJACENCY_MAP } from '@palettebro/theme-generator';
 import type {
   GenerativeThemeMode,
   GenerativeThemePage,
   GenerativeThemePreset,
-} from '@palettebruh/theme-generator/types';
+} from '@palettebro/theme-generator/types';
 import { createContext, useEffect, useState } from 'react';
 
 type GenerativePaletteContextType = {

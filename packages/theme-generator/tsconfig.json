@@ -1,5 +1,5 @@
 {
-  "extends": "@palettebruh/typescript-config/base.json",
+  "extends": "@palettebro/typescript-config/base.json",
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"],
 }

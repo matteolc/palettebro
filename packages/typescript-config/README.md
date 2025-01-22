@@ -1,9 +1,9 @@
-# @palettebruh/typescript-config
+# @palettebro/typescript-config
 
 Collection of internal TypeScript configurations.
 
 ## Installation
 
 ```bash
-pnpm add @palettebruh/typescript-config
+pnpm add @palettebro/typescript-config
 ```

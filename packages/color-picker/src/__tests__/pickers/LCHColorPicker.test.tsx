@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { LCHColorPicker } from '../../pickers/LCHColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { SchemistColor } from '@palettebruh/theme-generator/types';
+import type { SchemistColor } from '@palettebro/theme-generator/types';
 
 describe('LCHColorPicker', () => {
   const mockOnChange = vi.fn();

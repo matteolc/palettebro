@@ -9,7 +9,7 @@ import { GenerativePaletteContext } from '../../context/GenerativePaletteContext
 import {
   GenerativeThemePageEnum,
   GenerativeThemePresetEnum,
-} from '@palettebruh/theme-generator/types';
+} from '@palettebro/theme-generator/types';
 import { SettingsSection } from './SettingsSection';
 import { SettingsSlider } from './SettingsSlider';
 

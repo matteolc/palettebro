@@ -1,4 +1,4 @@
-import { formatSchemistToHex, parseColor } from '@palettebruh/theme-generator';
+import { formatSchemistToHex, parseColor } from '@palettebro/theme-generator';
 import type React from 'react';
 import { useState } from 'react';
 import type { SchemistBasedPickerProps } from '~/types';

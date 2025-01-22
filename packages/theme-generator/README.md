@@ -1,4 +1,4 @@
-# @palettebruh/theme-generator
+# @palettebro/theme-generator
 
 A powerful color palette generator with support for Material You-inspired themes, OKLCH color space, and dynamic color relationships.
 
@@ -17,7 +17,7 @@ A powerful color palette generator with support for Material You-inspired themes
 ## Installation
 
 ```bash
-pnpm add @palettebruh/theme-generator
+pnpm add @palettebro/theme-generator
 ```
 
 ## Usage
@@ -25,8 +25,8 @@ pnpm add @palettebruh/theme-generator
 ### Basic Theme Generation
 
 ```ts
-import { usePalette } from '@palettebruh/theme-generator/palettes';
-import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
+import { usePalette } from '@palettebro/theme-generator/palettes';
+import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
 
 const { palette } = usePalette({
   theme: {
@@ -95,7 +95,7 @@ import {
   colorToRawOklchString,
   formatSchemistToHex,
   parseColor
-} from '@palettebruh/theme-generator';
+} from '@palettebro/theme-generator';
 
 // Convert colors between formats
 const oklchColor = colorToRawOklchString('#663399');
@@ -115,7 +115,7 @@ import {
   wcag3Contrast,
   wcag2ContrastGrade,
   wcag3ContrastGrade
-} from '@palettebruh/theme-generator';
+} from '@palettebro/theme-generator';
 
 const contrast = wcag2Contrast(backgroundColor, foregroundColor);
 const grade = wcag2ContrastGrade(backgroundColor, foregroundColor);

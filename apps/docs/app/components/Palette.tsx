@@ -1,4 +1,4 @@
-import { MuiColorPalette } from '@palettebruh/theme-toolbar';
+import { MuiColorPalette } from '@palettebro/theme-toolbar';
 
 export const Palette = () => {
   return <MuiColorPalette />;

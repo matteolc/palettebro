@@ -10,7 +10,7 @@ import {
   wcag2ContrastGrade,
   wcag3Contrast,
   wcag3ContrastGrade,
-} from '@palettebruh/theme-generator';
+} from '@palettebro/theme-generator';
 
 const ContrastBadge = ({ bg, fg }: { bg: string; fg: string }) => {
   const wcag2Score = wcag2Contrast(bg, fg) ?? 0;

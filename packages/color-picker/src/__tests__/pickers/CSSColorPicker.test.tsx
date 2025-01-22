@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { CSSColorPicker } from '../../pickers/CSSColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { SchemistColor } from '@palettebruh/theme-generator/types';
-import { formatSchemistToHex } from '@palettebruh/theme-generator';
+import type { SchemistColor } from '@palettebro/theme-generator/types';
+import { formatSchemistToHex } from '@palettebro/theme-generator';
 
 describe('CSSColorPicker', () => {
   const mockOnChange = vi.fn();

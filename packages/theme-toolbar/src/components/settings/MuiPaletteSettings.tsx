@@ -3,8 +3,8 @@ import {
   RadioCardGroup,
   RadioCardItem,
 } from '@/ui/radio-card';
-import { MuiThemePresetEnum } from '@palettebruh/theme-generator/types';
-import { sentenceCase } from '@palettebruh/theme-generator';
+import { MuiThemePresetEnum } from '@palettebro/theme-generator/types';
+import { sentenceCase } from '@palettebro/theme-generator';
 import { useContext } from 'react';
 import { PaletteContext } from '@/context/PaletteContext';
 import { SettingsSection } from './SettingsSection';

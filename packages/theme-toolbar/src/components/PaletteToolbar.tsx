@@ -7,8 +7,8 @@ import {
 import {
   formatSchemistToHex,
   randomUsableColor,
-} from '@palettebruh/theme-generator';
-import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
+} from '@palettebro/theme-generator';
+import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
 import { useContext, useEffect, useState } from 'react';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { PaletteSettings } from './settings/PaletteSettings';

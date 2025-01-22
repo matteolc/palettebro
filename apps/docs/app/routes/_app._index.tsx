@@ -4,12 +4,12 @@ import { Isomorph } from '~/components/Isomorph';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Palettebruh - AI-Powered Color Palette Generator' },
+    { title: 'Palettebro - AI-Powered Color Palette Generator' },
     {
       description:
         'Generate beautiful and harmonious color palettes using AI. Create, customize, and export color schemes for your design projects with ease.',
     },
-    { 'og:title': 'Palettebruh - AI-Powered Color Palette Generator' },
+    { 'og:title': 'Palettebro - AI-Powered Color Palette Generator' },
     {
       'og:description':
         'Generate beautiful and harmonious color palettes using AI. Create, customize, and export color schemes for your design projects with ease.',

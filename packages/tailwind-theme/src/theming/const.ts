@@ -1,4 +1,4 @@
-import { MATERIAL_TONES } from '@palettebruh/theme-generator';
+import { MATERIAL_TONES } from '@palettebro/theme-generator';
 
 const DEFAULT_UTILITY_VALUES = {
   '--radius': '0.5rem',

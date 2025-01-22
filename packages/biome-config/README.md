@@ -1,9 +1,9 @@
-# @palettebruh/biome-config
+# @palettebro/biome-config
 
 Collection of internal Biome configurations.
 
 ## Installation
 
 ```bash
-pnpm add @palettebruh/biome-config
+pnpm add @palettebro/biome-config
 ```

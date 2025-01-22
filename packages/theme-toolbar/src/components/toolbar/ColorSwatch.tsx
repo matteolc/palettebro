@@ -1,6 +1,6 @@
 import { RiLockLine, RiLockUnlockLine, RiPaletteLine } from '@remixicon/react';
-import { ColorPicker } from '@palettebruh/color-picker';
-import { ThemeVariantEnum } from '@palettebruh/theme-generator/types';
+import { ColorPicker } from '@palettebro/color-picker';
+import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@/lib/string';

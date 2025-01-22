@@ -1,4 +1,4 @@
-# @palettebruh/theme-toolbar
+# @palettebro/theme-toolbar
 
 A React component library for managing and customizing color palettes in your application.
 
@@ -15,13 +15,13 @@ A React component library for managing and customizing color palettes in your ap
 ## Installation
 
 ```bash
-pnpm add @palettebruh/theme-toolbar
+pnpm add @palettebro/theme-toolbar
 ```
 
 ## Usage
 
 ```tsx
-import { PaletteProvider, PaletteToolbar, PaletteToolbarProvider } from '@palettebruh/theme-toolbar';
+import { PaletteProvider, PaletteToolbar, PaletteToolbarProvider } from '@palettebro/theme-toolbar';
 
 function App() {
   return (

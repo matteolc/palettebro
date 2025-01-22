@@ -1,4 +1,4 @@
-# @palettebruh/tailwind-theme
+# @palettebro/tailwind-theme
 
 A powerful Tailwind CSS plugin for managing color themes with OKLCH color space support.
 
@@ -14,7 +14,7 @@ A powerful Tailwind CSS plugin for managing color themes with OKLCH color space 
 ## Installation
 
 ```bash
-pnpm add @palettebruh/tailwind-theme
+pnpm add @palettebro/tailwind-theme
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ const config: Config = {
         // ...your content configuration
     ],
     plugins: [
-        require('@palettebruh/tailwind-theme')({
+        require('@palettebro/tailwind-theme')({
             themes,
             utils: true,
             darkTheme: true,
@@ -49,8 +49,8 @@ Define your themes in a separate file (e.g., `themes.ts`):
 ```ts
 // themes.ts
 
-import type { Themes } from '@palettebruh/theme-generator/types';
-import { StaticThemePresetEnum, ThemeVariantEnum } from '@palettebruh/theme-generator/types';
+import type { Themes } from '@palettebro/theme-generator/types';
+import { StaticThemePresetEnum, ThemeVariantEnum } from '@palettebro/theme-generator/types';
 import colors from 'tailwindcss/colors';
 
 export const themes = {

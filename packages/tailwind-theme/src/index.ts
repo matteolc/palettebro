@@ -20,7 +20,7 @@ export default plugin.withOptions(
     }) => {
       console.log(
         '\n',
-        `🏄   ${pc.magenta('@palettebruh/tailwind-theme')} ${pc.dim(version)}`,
+        `🏄   ${pc.magenta('@palettebro/tailwind-theme')} ${pc.dim(version)}`,
       );
 
       if (utils) {

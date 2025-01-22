@@ -1,4 +1,4 @@
-import type { Themes } from '@palettebruh/theme-generator/types';
+import type { Themes } from '@palettebro/theme-generator/types';
 
 export type PluginOptions = {
   themes: Themes;

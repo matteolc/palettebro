@@ -1,4 +1,4 @@
-import type { SchemistColor } from '@palettebruh/theme-generator/types';
+import type { SchemistColor } from '@palettebro/theme-generator/types';
 import type React from 'react';
 import { useEffect, useMemo } from 'react';
 import { Slider } from '~/components/ColorSlider';

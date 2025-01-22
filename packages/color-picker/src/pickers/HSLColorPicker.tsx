@@ -3,7 +3,7 @@ import {
   hslToSchemist,
   range,
   schemistToHsl,
-} from '@palettebruh/theme-generator';
+} from '@palettebro/theme-generator';
 import React, { useMemo } from 'react';
 import { BaseColorPicker } from '~/components';
 import type { SchemistBasedPickerProps } from '~/types';

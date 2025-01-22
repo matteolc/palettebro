@@ -5,7 +5,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useState } from 'react';
 import { Button, buttonVariants } from './ui/button';
 import { Separator } from './ui/separator';
-import { sentenceCase } from '@palettebruh/theme-generator';
+import { sentenceCase } from '@palettebro/theme-generator';
 
 const NavigationHeader = () => {
   const { scrollY } = useScroll();
@@ -42,7 +42,7 @@ const NavigationHeader = () => {
         >
           <Link to="/">
             <h2 className="cursor-pointer title-gradient text-3xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">
-              🌈 Palettebruh
+              🌈 Palettebro
             </h2>
           </Link>
           <div className="hidden lg:flex gap-4 items-center">

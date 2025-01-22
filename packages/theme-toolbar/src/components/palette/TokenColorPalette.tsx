@@ -4,7 +4,7 @@ import {
   wcag2ContrastGrade,
   wcag3Contrast,
   wcag3ContrastGrade,
-} from '@palettebruh/theme-generator';
+} from '@palettebro/theme-generator';
 import { useContext } from 'react';
 import { sentenceCase } from '@/lib/string';
 import { Badge } from '@/ui/badge';

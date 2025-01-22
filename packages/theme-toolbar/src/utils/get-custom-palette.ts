@@ -1,4 +1,4 @@
-import { usePalette } from '@palettebruh/theme-generator/palettes';
+import { usePalette } from '@palettebro/theme-generator/palettes';
 import {
   ThemeVariantEnum,
   type MuiThemePreset,
@@ -6,7 +6,7 @@ import {
   type ThemeColorScheme,
   type Themes,
   type ThemeVariant,
-} from '@palettebruh/theme-generator/types';
+} from '@palettebro/theme-generator/types';
 
 export const getCustomPalette = (props: {
   colors: Record<string, string>;

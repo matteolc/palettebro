@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HSLColorPicker } from '../../pickers/HSLColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { SchemistColor } from '@palettebruh/theme-generator/types';
+import type { SchemistColor } from '@palettebro/theme-generator/types';
 
 describe('HSLColorPicker', () => {
   const mockOnChange = vi.fn();

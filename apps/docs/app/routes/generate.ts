@@ -1,7 +1,7 @@
 import {
   generateHuemints,
   parseHuemintsFormData,
-} from '@palettebruh/theme-generator/services';
+} from '@palettebro/theme-generator/services';
 import type { LoaderFunctionArgs } from '@vercel/remix';
 
 export async function action({ request }: LoaderFunctionArgs) {

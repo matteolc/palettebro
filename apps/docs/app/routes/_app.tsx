@@ -4,8 +4,8 @@ import {
   PaletteProvider,
   PaletteToolbar,
   PaletteToolbarProvider,
-} from '@palettebruh/theme-toolbar';
-import type { FormProps as ToolbarFormProps } from '@palettebruh/theme-toolbar/types';
+} from '@palettebro/theme-toolbar';
+import type { FormProps as ToolbarFormProps } from '@palettebro/theme-toolbar/types';
 import type { ComponentType } from 'react';
 import { NavigationHeader } from '~/components/NavigationHeader';
 import { useHints } from '~/hooks/use-hints';

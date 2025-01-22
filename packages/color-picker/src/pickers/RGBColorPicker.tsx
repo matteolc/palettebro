@@ -3,7 +3,7 @@ import {
   range,
   rgbToSchemist,
   schemistToRgb,
-} from '@palettebruh/theme-generator';
+} from '@palettebro/theme-generator';
 import { type FC, useMemo, useState } from 'react';
 import { BaseColorPicker } from '~/components';
 import type { SchemistBasedPickerProps } from '~/types';

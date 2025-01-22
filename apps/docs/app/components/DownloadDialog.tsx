@@ -11,8 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { ScrollArea } from './ui/scroll-area';
 import { useContext } from 'react';
 
-import { PaletteContext } from '@palettebruh/theme-toolbar';
-import { paletteToCssVars } from '@palettebruh/theme-generator';
+import { PaletteContext } from '@palettebro/theme-toolbar';
+import { paletteToCssVars } from '@palettebro/theme-generator';
 
 export function DownloadDialog() {
   const { palette } = useContext(PaletteContext);

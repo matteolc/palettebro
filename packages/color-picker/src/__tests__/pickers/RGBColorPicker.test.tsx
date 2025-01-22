@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { RGBColorPicker } from '../../pickers/RGBColorPicker';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { SchemistColor } from '@palettebruh/theme-generator/types';
+import type { SchemistColor } from '@palettebro/theme-generator/types';
 
 describe('RGBColorPicker', () => {
   const mockOnChange = vi.fn();

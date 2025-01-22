@@ -11,17 +11,17 @@ Welcome to the official documentation for PaletteBruh, a comprehensive color pal
 
 ## Packages
 
-### @palettebruh/color-picker
+### @palettebro/color-picker
 A versatile color picker component supporting multiple color formats and providing an intuitive interface for color selection.
 
 [Learn more about color-picker →](../packages/color-picker)
 
-### @palettebruh/theme-toolbar
+### @palettebro/theme-toolbar
 React components for managing and customizing color palettes with features like WCAG contrast checking and favorites system.
 
 [Learn more about theme-toolbar →](../packages/theme-toolbar)
 
-### @palettebruh/tailwind-theme
+### @palettebro/tailwind-theme
 Tailwind CSS plugin for implementing dynamic theming with semantic color tokens and utility classes.
 
 [Learn more about tailwind-theme →](../packages/tailwind-theme)
@@ -31,7 +31,7 @@ Tailwind CSS plugin for implementing dynamic theming with semantic color tokens 
 1. Install the core packages:
 
 ```bash
-pnpm add @palettebruh/color-picker @palettebruh/theme-toolbar @palettebruh/tailwind-theme
+pnpm add @palettebro/color-picker @palettebro/theme-toolbar @palettebro/tailwind-theme
 ```
 
 2. Configure your project:
@@ -52,6 +52,6 @@ For detailed information on each package, including API references, usage exampl
 
 ## Support
 
-If you encounter any issues or have questions, please refer to the [Troubleshooting Guide](./docs/troubleshooting.md) or contact our support team at support@palettebruh.com.
+If you encounter any issues or have questions, please refer to the [Troubleshooting Guide](./docs/troubleshooting.md) or contact our support team at support@palettebro.com.
 
 Thank you for choosing PaletteBruh! We hope it helps you create stunning web applications with ease.

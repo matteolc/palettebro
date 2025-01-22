@@ -19,7 +19,7 @@ const config: Pick<
     },
   },
   plugins: [
-    require('@palettebruh/tailwind-theme')({
+    require('@palettebro/tailwind-theme')({
       themes,
       utils: true,
       darkTheme: true,

@@ -1,4 +1,4 @@
-# @palettebruh/color-picker
+# @palettebro/color-picker
 
 A versatile color picker component library for React applications, supporting multiple color formats and providing an intuitive interface for color selection.
 
@@ -16,13 +16,13 @@ A versatile color picker component library for React applications, supporting mu
 ## Installation
 
 ```bash
-pnpm add @palettebruh/color-picker
+pnpm add @palettebro/color-picker
 ```
 
 ## Usage
 
 ```tsx
-import { ColorPicker } from '@palettebruh/color-picker';
+import { ColorPicker } from '@palettebro/color-picker';
 import { useState } from 'react';
 
 function App() {

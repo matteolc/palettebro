@@ -1,5 +1,5 @@
 import { Outlet } from '@remix-run/react';
-import { PaletteProvider } from '@palettebruh/theme-toolbar';
+import { PaletteProvider } from '@palettebro/theme-toolbar';
 import React from 'react';
 import { themes } from '~/themes';
 

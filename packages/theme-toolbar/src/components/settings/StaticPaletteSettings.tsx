@@ -7,7 +7,7 @@ import {
   RadioCardItem,
 } from '@/ui/radio-card';
 import { PaletteContext } from '@/context/PaletteContext';
-import { StaticThemePresetEnum } from '@palettebruh/theme-generator/types';
+import { StaticThemePresetEnum } from '@palettebro/theme-generator/types';
 import { SettingsSection } from './SettingsSection';
 
 export const StaticPaletteSettings = () => {
