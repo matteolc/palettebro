@@ -43,14 +43,14 @@ const injectThemes = (
   addBase(themesToInject);
 
   if (themeNames.length > 0) {
-    console.log(
+    console.info(
       `├─ ${pc.green('✔︎')} ${themeNames.length} ${
         themeNames.length > 1 ? 'themes' : 'theme'
       } added`,
     );
   }
   if (themeNames.length === 0) {
-    console.log(`├─ ${pc.yellow('ℹ︎')} All themes are disabled in config`);
+    console.warn(`├─ ${pc.yellow('ℹ︎')} All themes are disabled in config`);
   }
 };
 

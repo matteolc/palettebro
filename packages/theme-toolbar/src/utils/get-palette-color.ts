@@ -9,7 +9,7 @@ export const getPaletteColor = (
 
   // check if token key exists in palette else log the token
   if (!palette?.[token]) {
-    console.log(`Warning: ${token} not found in palette`);
+    console.warn(`Warning: ${token} not found in palette`);
     return 'transparent';
   }
 

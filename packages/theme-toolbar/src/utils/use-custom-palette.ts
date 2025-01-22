@@ -8,7 +8,7 @@ import {
   type ThemeVariant,
 } from '@palettebro/theme-generator/types';
 
-export const getCustomPalette = (props: {
+export const useCustomPalette = (props: {
   colors: Record<string, string>;
   themes: Themes;
   variant: ThemeVariant;
@@ -26,8 +26,7 @@ export const getCustomPalette = (props: {
       theme: {
         ...currentTheme,
         'color-scheme': isDark ? 'dark' : ('light' as ThemeColorScheme),
-        debug: false,
-        variant: variant ?? ThemeVariantEnum.static,
+        variant,
         preset,
         reverse,
         contrast,

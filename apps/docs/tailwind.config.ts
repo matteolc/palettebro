@@ -22,7 +22,7 @@ const config: Pick<
     require('@palettebro/tailwind-theme')({
       themes,
       utils: true,
-      darkTheme: true,
+      addThemes: false,
     }),
   ],
 };

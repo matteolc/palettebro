@@ -9,6 +9,7 @@ import tetradLeft from '../nodes/tetradLeft';
 import tetradRight from '../nodes/tetradRight';
 import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
+import type { StaticThemePreset } from '../types';
 import background from './background';
 import materialScale from './materialScale';
 import materialTones from './materialTones';
@@ -23,7 +24,7 @@ export default (options?: {
   saturation?: number;
   lightness?: number;
   isDark: boolean;
-  preset: 'split-complementary' | 'tetrad' | 'triad';
+  preset: StaticThemePreset;
   reverse: boolean;
 }) => {
   const lightNodes = [
@@ -110,24 +111,6 @@ export default (options?: {
               ...shadowAndScrim({ isDark: options?.isDark ?? false }).nodes,
             ],
           },
-          // {
-          //   type: informative.type,
-          //   token: 'info',
-          //   isHidden: false,
-          //   children: shadeNodes,
-          // },
-          // {
-          //   type: positive.type,
-          //   token: 'success',
-          //   isHidden: false,
-          //   children: shadeNodes,
-          // },
-          // {
-          //   type: warning.type,
-          //   token: 'warning',
-          //   isHidden: false,
-          //   children: shadeNodes,
-          // },
         ],
       },
     ],

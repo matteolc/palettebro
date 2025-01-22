@@ -1,7 +1,6 @@
-import dynamicPalette from './palettes/dynamic';
-import muiPalette from './palettes/mui';
-import staticPalette from './palettes/static';
+import { getDynamicPalette } from './palettes/getDynamicPalette';
 import { getMuiPalette } from './palettes/getMuiPalette';
+import { getStaticPalette } from './palettes/getStaticPalette';
 import { createEnum } from './utils/create-enum';
 
 export type ThemeColorScheme = 'light' | 'dark';
@@ -16,8 +15,8 @@ export const ThemeVariantEnum = createEnum([
 
 export const ThemeVariantToPalette = {
   mui: getMuiPalette,
-  static: staticPalette,
-  dynamic: dynamicPalette,
+  static: getStaticPalette,
+  dynamic: getDynamicPalette,
 };
 
 export type StaticThemePreset = 'split-complementary' | 'tetrad' | 'triad';

@@ -6,7 +6,7 @@ import {
 import staticPalette from '../presets/staticPalette';
 import type { StaticThemePreset } from '../types';
 
-export default (theme: {
+export const getStaticPalette = (theme: {
   primaryColor: SchemistColor;
   secondaryColor?: SchemistColor;
   accentColor?: SchemistColor;

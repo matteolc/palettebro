@@ -7,7 +7,7 @@ import dynamicPalette from '../presets/dynamicPalette';
 import semanticPairs from '../presets/semanticPairs';
 import type { StaticThemePreset } from '../types';
 
-export default (theme: {
+export const getDynamicPalette = (theme: {
   primaryColor: SchemistColor;
   secondaryColor?: SchemistColor;
   accentColor?: SchemistColor;

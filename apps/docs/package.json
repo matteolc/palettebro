@@ -53,6 +53,7 @@
     "cmdk": "1.0.0",
     "cookie": "^1.0.2",
     "date-fns": "^4.1.0",
+    "@faker-js/faker": "^9.4.0",
     "framer-motion": "^11.14.4",
     "intl-parse-accept-language": "^1.0.0",
     "isbot": "^5",

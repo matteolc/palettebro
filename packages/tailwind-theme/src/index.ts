@@ -7,8 +7,13 @@ import { injectThemes } from './theming/inject-themes';
 import { utilities } from './utilities';
 import type { PluginOptions } from './types';
 
+export const TW_COLOR_UTILITIES = {
+  ...PALETTE_COLORS,
+  ...SHADCN_COLOR_UTILITIES,
+};
+
 export default plugin.withOptions(
-  ({ utils, themes, darkTheme }: PluginOptions) =>
+  ({ utils, themes, darkTheme, addThemes }: PluginOptions) =>
     ({
       addBase,
       addUtilities,
@@ -18,25 +23,28 @@ export default plugin.withOptions(
       // biome-ignore lint/suspicious/noExplicitAny: No will to type this
       addUtilities: (...args: any[]) => void;
     }) => {
-      console.log(
+      console.info(
         '\n',
         `🏄   ${pc.magenta('@palettebro/tailwind-theme')} ${pc.dim(version)}`,
       );
 
       if (utils) {
         addUtilities(utilities);
-        console.log(`├─ ${pc.green('✔︎')} ${'Utility classes added'}`, '\n');
+        console.info(`├─ ${pc.green('✔︎')} ${'Utility classes added'}`, '\n');
       }
 
-      injectThemes(addBase, { themes, darkTheme });
+      if (addThemes) {
+        injectThemes(addBase, { themes, darkTheme });
+      }
+
+      if (Object.values(themes).some((theme) => theme.debug)) {
+        console.info(TW_COLOR_UTILITIES);
+      }
     },
   () => ({
     theme: {
       extend: {
-        colors: {
-          ...PALETTE_COLORS,
-          ...SHADCN_COLOR_UTILITIES,
-        },
+        colors: TW_COLOR_UTILITIES,
       },
     },
   }),

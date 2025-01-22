@@ -22,6 +22,9 @@ export const usePalette = (props: { theme: Theme }) => {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
+    if (props.theme.debug) {
+      console.info(cssVars);
+    }
     setCssVars(cssVars);
   }, [cssVars]);
 

@@ -5,9 +5,10 @@ import colors from 'tailwindcss/colors';
 export const themes = {
   light: {
     'color-scheme': 'light' as const,
-    variant: ThemeVariantEnum.mui,
-    debug: false,
-    preset: MuiThemePresetEnum['fruit-salad'],
+    variant: ThemeVariantEnum.static,
+    debug: true,
+    preset: StaticThemePresetEnum.tetrad,
+    reverse: true,
     baseColors: {
       primary: colors.purple[500],
       secondary: colors.blue[500],
@@ -16,9 +17,10 @@ export const themes = {
   },
   dark: {
     'color-scheme': 'dark' as const,
-    variant: ThemeVariantEnum.mui,
-    debug: false,
-    preset: MuiThemePresetEnum['fruit-salad'],
+    variant: ThemeVariantEnum.static,
+    debug: true,
+    preset: StaticThemePresetEnum.tetrad,
+    reverse: true,
     baseColors: {
       primary: colors.purple[500],
       secondary: colors.blue[500],

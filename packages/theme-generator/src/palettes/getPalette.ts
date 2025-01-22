@@ -12,8 +12,8 @@ import {
   ThemeColorSchemeEnum,
 } from '../types';
 import { getMuiPalette } from './getMuiPalette';
-import staticPalette from './static';
-import dynamicPalette from './dynamic';
+import { getStaticPalette } from './getStaticPalette';
+import { getDynamicPalette } from './getDynamicPalette';
 
 const logColor = (
   type: string,
@@ -24,12 +24,12 @@ const logColor = (
   if (!parsedColor) return;
 
   const colorName = nearestColorName(formatSchemistToHex(parsedColor));
-  console.log(
+  console.info(
     ` ├─ ${picocolors.green('✔︎')} Generating theme for ${type} color: ${picocolors.dim(
       colorName,
     )} (${picocolors.dim(color)})`,
   );
-  console.log(
+  console.info(
     `%c${type} (input)\n${formatSchemistToHex(parsedColor)}`,
     `color: #000000; background-color: ${formatSchemistToHex(parsedColor)}; padding: 0.5rem;`,
   );
@@ -47,7 +47,7 @@ export const getPalette = (props: { theme: Theme }): Palette => {
   } = props.theme;
 
   if (debug) {
-    console.log(
+    console.info(
       '\n',
       `🏄   ${picocolors.magenta('@palettebro/theme-generator')} ${picocolors.dim(version)}`,
     );
@@ -80,18 +80,17 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     variant === 'mui'
       ? getMuiPalette({ ...paletteProps, preset: preset as MuiThemePreset })
       : variant === 'static'
-        ? staticPalette({
+        ? getStaticPalette({
             ...paletteProps,
             preset: preset as StaticThemePreset,
           })
-        : dynamicPalette({
+        : getDynamicPalette({
             ...paletteProps,
             preset: preset as StaticThemePreset,
           });
   if (debug) {
-    console.dir(palette, { depth: null });
     for (const [key, value] of Object.entries(palette)) {
-      console.log(
+      console.info(
         `%c${picocolors.dim(key)}\n${value.name}`,
         `color: #000000; background-color: ${value.color}; padding: 0.5rem;`,
       );

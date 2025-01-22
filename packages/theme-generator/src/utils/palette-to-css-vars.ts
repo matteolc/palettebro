@@ -8,6 +8,5 @@ export const paletteToCssVars = (palette: Palette) => {
       [`--${key}`]: colorToRawOklchString(value.color),
     });
   }
-  console.dir(cssVars, { depth: null });
   return cssVars;
 };

@@ -8,7 +8,7 @@ import {
   ThemeVariantEnum,
 } from '@palettebro/theme-generator/types';
 import { createContext, useEffect, useMemo, useState } from 'react';
-import { getCustomPalette } from '../utils/get-custom-palette';
+import { useCustomPalette } from '../utils/use-custom-palette';
 import {
   DEFAULT_CONTRAST,
   DEFAULT_MUI_PRESET,
@@ -55,7 +55,7 @@ export const PaletteProvider = ({
   const [reverse, setReverse] = useState<boolean>(true);
   const [contrast, setContrast] = useState<number>(DEFAULT_CONTRAST);
 
-  const { palette } = getCustomPalette({
+  const { palette } = useCustomPalette({
     colors: baseColors,
     themes,
     variant,
