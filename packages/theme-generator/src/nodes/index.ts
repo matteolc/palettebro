@@ -18,6 +18,7 @@ import splitComplementaryLeft from './splitComplementaryLeft';
 import splitComplementaryRight from './splitComplementaryRight';
 import tetradLeft from './tetradLeft';
 import tetradRight from './tetradRight';
+import tone from './tone';
 import triadLeft from './triadLeft';
 import triadRight from './triadRight';
 import type { NodeDef } from './types';
@@ -40,6 +41,7 @@ export default {
   [splitComplementaryRight.type]: splitComplementaryRight,
   [tetradLeft.type]: tetradLeft,
   [tetradRight.type]: tetradRight,
+  [tone.type]: tone,
   [triadLeft.type]: triadLeft,
   [triadRight.type]: triadRight,
   [warning.type]: warning,
@@ -65,6 +67,7 @@ export const defList = [
   saturation,
   hue,
   color,
+  tone,
 ];
 
 export const defaultArgs = (def: NodeDef) =>

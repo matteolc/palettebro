@@ -81,7 +81,6 @@ Displays a color palette with shades and contrast information.
 - primary
 - secondary
 - accent
-- neutral
 
 ### Status Tokens
 - info

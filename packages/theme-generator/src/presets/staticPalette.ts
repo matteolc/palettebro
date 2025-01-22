@@ -1,12 +1,7 @@
 import type { SchemistColor } from '../color/types';
-import analogous from '../nodes/analogous';
 import color from '../nodes/color';
-import contrasting from '../nodes/contrasting';
-import highlight from '../nodes/highlight';
-import informative from '../nodes/informative';
 import lightness from '../nodes/lightness';
 import negative from '../nodes/negative';
-import positive from '../nodes/positive';
 import saturation from '../nodes/saturation';
 import splitComplementaryLeft from '../nodes/splitComplementaryLeft';
 import splitComplementaryRight from '../nodes/splitComplementaryRight';
@@ -14,12 +9,13 @@ import tetradLeft from '../nodes/tetradLeft';
 import tetradRight from '../nodes/tetradRight';
 import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
-import warning from '../nodes/warning';
 import background from './background';
-import baseLight from './baseLight';
+import materialScale from './materialScale';
+import outlineScale from './outlineScale';
 import rainbow from './rainbow';
-import states from './states';
+import shadowAndScrim from './shadowAndScrim';
 import staticTones from './staticTones';
+import surface from './surface';
 import tailwindScaleDark from './tailwindScaleDark';
 import tailwindScaleLight from './tailwindScaleLight';
 import type { Preset } from './types';
@@ -34,14 +30,14 @@ export default (options?: {
 }) => {
   const lightNodes = [
     ...staticTones.nodes,
-    ...states.nodes,
-    ...tailwindScaleLight.nodes,
+    // ...tailwindScaleLight.nodes,
+    ...materialScale({ isDark: options?.isDark ?? false }).nodes,
   ];
 
   const darkNodes = [
     ...staticTones.nodes,
-    ...states.nodes,
-    ...tailwindScaleDark.nodes,
+    // ...tailwindScaleDark.nodes,
+    ...materialScale({ isDark: options?.isDark ?? false }).nodes,
   ];
 
   const shadeNodes = options?.isDark ? darkNodes : lightNodes;
@@ -90,30 +86,15 @@ export default (options?: {
         children: [
           ...shadeNodes,
           ...rainbow.nodes,
+          {
+            type: lightness.type,
+            token: 'inverse-primary',
+            args: {
+              amount: options?.isDark ? 40 : 80,
+            },
+          },
           secondaryNode,
           accentNode,
-          {
-            type: saturation.type,
-            isHidden: true,
-            args: {
-              amount: 30,
-            },
-            children: [
-              ...baseLight.nodes,
-              {
-                type: highlight.type,
-                isHidden: false,
-                token: 'neutral',
-                args: {
-                  amount: 5,
-                },
-                children: [
-                  ...shadeNodes,
-                  ...background({ isDark: options?.isDark ?? false }).nodes,
-                ],
-              },
-            ],
-          },
           {
             type: negative.type,
             token: 'error',
@@ -121,23 +102,36 @@ export default (options?: {
             children: shadeNodes,
           },
           {
-            type: informative.type,
-            token: 'info',
-            isHidden: false,
-            children: shadeNodes,
+            type: saturation.type,
+            isHidden: true,
+            args: {
+              amount: options?.isDark ? 8 : 12.5,
+            },
+            children: [
+              ...background({ isDark: options?.isDark ?? false }).nodes,
+              ...surface({ isDark: options?.isDark ?? false }).nodes,
+              ...outlineScale({ isDark: options?.isDark ?? false }).nodes,
+              ...shadowAndScrim({ isDark: options?.isDark ?? false }).nodes,
+            ],
           },
-          {
-            type: positive.type,
-            token: 'success',
-            isHidden: false,
-            children: shadeNodes,
-          },
-          {
-            type: warning.type,
-            token: 'warning',
-            isHidden: false,
-            children: shadeNodes,
-          },
+          // {
+          //   type: informative.type,
+          //   token: 'info',
+          //   isHidden: false,
+          //   children: shadeNodes,
+          // },
+          // {
+          //   type: positive.type,
+          //   token: 'success',
+          //   isHidden: false,
+          //   children: shadeNodes,
+          // },
+          // {
+          //   type: warning.type,
+          //   token: 'warning',
+          //   isHidden: false,
+          //   children: shadeNodes,
+          // },
         ],
       },
     ],

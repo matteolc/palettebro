@@ -14,7 +14,7 @@ export const Hero = () => {
       <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-5xl lg:leading-tight bg-gradient-to-r from-accent-70 via-secondary-50 to-accent-30 text-transparent bg-clip-text">
         The best color palette generator for the web. Ever.
       </h1>
-      <p className="mt-4 max-w-xl lg:text-xl text-2xl text-secondary">
+      <p className="mt-4 max-w-xl lg:text-xl text-2xl">
         Create infinite palettes. Save your favourite ones. See how they look
         with real components. Download all the colors as CSS token variables.
         Use them in your web project. It's that simple.

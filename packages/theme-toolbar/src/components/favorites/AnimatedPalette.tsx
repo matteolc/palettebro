@@ -68,9 +68,9 @@ export function AnimatedPalette({
               type="button"
               onClick={() =>
                 setBaseColors?.({
-                  primary: colors[3].hex,
-                  secondary: colors[2].hex,
-                  accent: colors[1].hex,
+                  primary: colors[0].hex,
+                  secondary: colors[1].hex,
+                  accent: colors[2].hex,
                 })
               }
             >

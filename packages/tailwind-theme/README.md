@@ -89,10 +89,6 @@ The plugin provides semantic color tokens that can be used in your Tailwind clas
 - `primary` - Primary brand color
 - `secondary` - Secondary brand color
 - `accent` - Accent color
-- `neutral` - Neutral/gray colors
-- `info` - Information color
-- `success` - Success color
-- `warning` - Warning color
 - `error` - Error color
 
 Each color token includes variants:

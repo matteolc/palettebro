@@ -19,7 +19,6 @@ const paletteSchema = z.object({
   primary: z.string(),
   secondary: z.string(),
   accent: z.string(),
-  neutral: z.string(),
 });
 
 const schema = z.object({
@@ -75,7 +74,7 @@ export async function action({ request }: ActionFunctionArgs) {
         });
       }
 
-      const { primary, secondary, accent, neutral } = parsed.data;
+      const { primary, secondary, accent } = parsed.data;
 
       const response = await generatePaletteName({
         primary,
@@ -90,7 +89,6 @@ export async function action({ request }: ActionFunctionArgs) {
           primary,
           secondary,
           accent,
-          neutral,
         },
       ];
 
@@ -147,10 +145,9 @@ export default function Page() {
                     name={palette.name || `Palette ${index + 1}`}
                     key={palette.toString()}
                     colors={[
-                      { hex: palette.neutral },
-                      { hex: palette.accent },
-                      { hex: palette.secondary },
                       { hex: palette.primary },
+                      { hex: palette.secondary },
+                      { hex: palette.accent },
                     ]}
                     FormComponent={Form}
                     formAction="/favourites"

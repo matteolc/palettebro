@@ -55,7 +55,6 @@ type Theme = {
     primary: string;
     secondary?: string;
     accent?: string;
-    neutral?: string;
   };
 };
 ```
@@ -69,7 +68,6 @@ The generator provides semantic color tokens that follow Material Design princip
   - `primary` - Primary brand color
   - `secondary` - Secondary brand color
   - `accent` - Accent color
-  - `neutral` - Neutral/gray colors
 
 - Status Colors:
   - `info` - Information color

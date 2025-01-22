@@ -25,9 +25,9 @@ export default function Index() {
           <Hero />
         </div>
       </div>
-      <div className="w-0 lg:w-full fixed flex justify-end">
+      {/* <div className="w-0 lg:w-full fixed flex justify-end">
         <Isomorph />
-      </div>
+      </div> */}
     </>
   );
 }

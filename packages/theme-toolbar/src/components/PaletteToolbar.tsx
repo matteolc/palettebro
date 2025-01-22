@@ -199,13 +199,6 @@ const PaletteToolbar = ({
                 value={palette?.accent.color}
                 name="accent"
               />
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={palette?.neutral.color}
-                name="neutral"
-              />
               <button type="submit" className="px-1 py-2">
                 <RiHeartLine />
               </button>

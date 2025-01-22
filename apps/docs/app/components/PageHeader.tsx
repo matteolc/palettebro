@@ -38,7 +38,7 @@ function PageHeaderDescription({
   return (
     <p
       className={cn(
-        'max-w-2xl text-balance text-lg font-light text-secondary',
+        'max-w-2xl text-balance text-lg font-light text-inverse-surface',
         className,
       )}
       {...props}

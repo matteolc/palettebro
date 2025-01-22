@@ -290,14 +290,14 @@ export const MuiColorPalette = () => {
                   token="on-surface-variant"
                   label="On Surface Variant"
                   code="NV-30"
-                  labelToken="surface-variant"
+                  labelToken="surface"
                   className="h-16"
                 />
                 <ColorBox
                   token="outline"
                   label="Outline"
                   code="NV-50"
-                  labelToken="neutral-50"
+                  labelToken="surface"
                   className="h-16"
                 />
                 <ColorBox
@@ -317,7 +317,7 @@ export const MuiColorPalette = () => {
                   token="inverse-surface"
                   label="Inverse Surface"
                   code="N-20"
-                  labelToken="neutral-50"
+                  labelToken="surface"
                   borderRadius="rounded-t-md"
                 />
                 <ColorBox
@@ -325,14 +325,14 @@ export const MuiColorPalette = () => {
                   label="Inverse On Surface"
                   code="N-95"
                   className="h-16"
-                  labelToken="neutral-950"
+                  labelToken="on-surface"
                 />
                 <ColorBox
                   token="inverse-primary"
                   label="Inverse Primary"
                   code="P-80"
                   className="h-16"
-                  labelToken="neutral-950"
+                  labelToken="on-surface"
                 />
               </div>
 
