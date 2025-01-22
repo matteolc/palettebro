@@ -8,7 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { getPaletteColor } from '@/utils/get-palette-color';
 
-export const SimpleColorSwatch = ({
+export const PaletteToolbarColorSwatch = ({
   token,
   onLockUnlock,
 }: { token: string; onLockUnlock?: () => void }) => {

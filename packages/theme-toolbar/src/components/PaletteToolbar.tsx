@@ -12,9 +12,11 @@ import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
 import { useContext, useEffect, useState } from 'react';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { PaletteSettings } from './settings/PaletteSettings';
-import { PaletteSwatches } from './toolbar/PaletteSwatches';
 import { GenerativePaletteContext } from '@/context/GenerativePaletteContext';
 import type { FormProps } from '@/types';
+import { PaletteToolbarColorSwatch } from './PaletteToolbarColorSwatch';
+import { BASE_TOKENS } from '@/const';
+import { Skeleton } from '@/ui/skeleton';
 
 const PaletteToolbar = ({
   FormComponent,
@@ -204,10 +206,22 @@ const PaletteToolbar = ({
               </button>
             </FormComponent>
           </div>
-          <PaletteSwatches
-            onLockUnlock={resetGeneratedPalettes}
-            isLoading={isGeneratorLoading}
-          />
+          <div className="flex flex-row gap-1">
+            {BASE_TOKENS.map((token) =>
+              isGeneratorLoading ? (
+                <Skeleton
+                  key={token}
+                  className="h-[52px] w-48 rounded-lg bg-zinc-200"
+                />
+              ) : (
+                <PaletteToolbarColorSwatch
+                  token={token}
+                  key={token}
+                  onLockUnlock={resetGeneratedPalettes}
+                />
+              ),
+            )}
+          </div>
         </div>
       </div>
     </div>
