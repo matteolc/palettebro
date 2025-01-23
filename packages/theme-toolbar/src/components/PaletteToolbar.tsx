@@ -7,6 +7,7 @@ import {
 import {
   formatSchemistToHex,
   randomUsableColor,
+  type SchemistColor,
 } from '@palettebro/theme-generator';
 import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
 import { useContext, useEffect, useState } from 'react';
@@ -61,7 +62,7 @@ const PaletteToolbar = ({
     const result = generatedPalettes?.[0];
     if (!result) return;
 
-    const palette = result.palette;
+    const { palette } = result;
     setBaseColors?.({
       primary: palette[0],
       secondary: palette[1],
@@ -79,9 +80,9 @@ const PaletteToolbar = ({
 
   const resetGeneratedPalettes = () => setGeneratedPalettes([]);
 
-  const handleRandomize = () =>
+  const handleSetBaseColors = (color: SchemistColor) =>
     setBaseColors?.({
-      primary: formatSchemistToHex(randomUsableColor()),
+      primary: formatSchemistToHex(color),
     } as BaseColors);
 
   const shouldSubmit = generatedPalettes?.length === 0;
@@ -142,29 +143,40 @@ const PaletteToolbar = ({
                 name="page"
               />
 
-              {variant === ThemeVariantEnum.dynamic ? (
-                <button
-                  className="px-1 py-2"
-                  type={shouldSubmit ? 'submit' : 'button'}
-                  onClick={popPalette}
-                >
-                  <RiMagicLine
-                    className={
-                      variant !== ThemeVariantEnum.dynamic
-                        ? 'text-gray-400'
-                        : ''
-                    }
-                  />
-                </button>
-              ) : (
-                <button
-                  className="px-1 py-2"
-                  type="button"
-                  onClick={handleRandomize}
-                >
-                  <RiMagicLine />
-                </button>
-              )}
+              {(() => {
+                switch (variant) {
+                  case ThemeVariantEnum.dynamic:
+                    return (
+                      <button
+                        className="px-1 py-2"
+                        type={shouldSubmit ? 'submit' : 'button'}
+                        onClick={popPalette}
+                      >
+                        <RiMagicLine />
+                      </button>
+                    );
+                  case ThemeVariantEnum.kobayashi:
+                    return (
+                      <button
+                        className="px-1 py-2"
+                        type="button"
+                        onClick={() => handleSetBaseColors(randomUsableColor())}
+                      >
+                        <RiMagicLine />
+                      </button>
+                    );
+                  default:
+                    return (
+                      <button
+                        className="px-1 py-2"
+                        type="button"
+                        onClick={() => handleSetBaseColors(randomUsableColor())}
+                      >
+                        <RiMagicLine />
+                      </button>
+                    );
+                }
+              })()}
             </FormComponent>
             {/* Settings */}
             <PaletteSettings />
@@ -176,7 +188,7 @@ const PaletteToolbar = ({
               className="px-1 py-2"
               onClick={() => setIsDark?.(!isDark)}
             >
-              {isDark ? <RiMoonLine /> : <RiSunLine />}
+              {isDark ? <RiSunLine /> : <RiMoonLine />}
             </button>
             {/* Favourites */}
             <FormComponent

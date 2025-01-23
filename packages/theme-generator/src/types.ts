@@ -5,19 +5,21 @@ import { getStaticPalette } from './palettes/getStaticPalette';
 import { createEnum } from './utils/create-enum';
 
 export type ThemeColorScheme = 'light' | 'dark';
-export type ThemeVariant = 'mui' | 'static' | 'dynamic';
+export type ThemeVariant = 'mui' | 'static' | 'dynamic' | 'kobayashi';
 
 export const ThemeColorSchemeEnum = createEnum(['light', 'dark'] as const);
 export const ThemeVariantEnum = createEnum([
   'mui',
   'static',
   'dynamic',
+  'kobayashi',
 ] as const);
 
 export const ThemeVariantToPalette = {
   mui: getMuiPalette,
   static: getStaticPalette,
   dynamic: getDynamicPalette,
+  kobayashi: getDynamicPalette,
 };
 
 export type StaticThemePreset = 'split-complementary' | 'tetrad' | 'triad';
@@ -132,6 +134,41 @@ export type ThemePalette = {
 export type Themes = Record<ThemeColorScheme, Theme>;
 
 export type Palette = Record<string, { color: string; name: string }>;
+
+export type KobayashiImage =
+  | 'pretty'
+  | 'casual'
+  | 'dynamic'
+  | 'gorgeous'
+  | 'ethnic'
+  | 'romantic'
+  | 'natural'
+  | 'elegant'
+  | 'chich'
+  | 'classic'
+  | 'dandy'
+  | 'formal'
+  | 'clear'
+  | 'cool-casual'
+  | 'modern';
+
+export const KobayashiImageEnum = createEnum([
+  'pretty',
+  'casual',
+  'dynamic',
+  'gorgeous',
+  'ethnic',
+  'romantic',
+  'natural',
+  'elegant',
+  'chich',
+  'classic',
+  'dandy',
+  'formal',
+  'clear',
+  'cool-casual',
+  'modern',
+] as const);
 
 export type {
   SchemistColor,

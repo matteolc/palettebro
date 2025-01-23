@@ -13,11 +13,11 @@ import shadowAndScrim from './shadowAndScrim';
 import tailwindScale from './tailwindScale';
 import surface from './surface';
 import type { Preset } from './types';
+import semanticPairs from './semanticPairs';
 
 export default (
   options?: ThemePalette & { token: 'primary' | 'secondary' | 'accent' },
 ) => {
-
   const scaleNodes = (() => {
     switch (options?.colorShadesPreset) {
       case ColorShadesPresetEnum.mui:
@@ -44,6 +44,7 @@ export default (
     options?.token === 'primary'
       ? [
           ...shadeNodes,
+          ...semanticPairs.nodes,
           ...rainbow.nodes,
           {
             type: lightness.type,
@@ -56,7 +57,9 @@ export default (
             type: negative.type,
             token: 'error',
             isHidden: false,
-            children: shadeNodes,
+            children: [
+              ...materialTones({ isDark: options?.isDark ?? false }).nodes,
+            ],
           },
           {
             type: saturation.type,
@@ -72,7 +75,7 @@ export default (
             ],
           },
         ]
-      : shadeNodes;
+      : [...shadeNodes, ...semanticPairs.nodes];
 
   const startColor =
     options?.token === 'primary'

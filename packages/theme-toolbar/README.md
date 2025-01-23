@@ -21,19 +21,19 @@ pnpm add @palettebro/theme-toolbar
 ## Usage
 
 ```tsx
-import { PaletteProvider, PaletteToolbar, PaletteToolbarProvider } from '@palettebro/theme-toolbar';
+import { PaletteProvider, PaletteToolbar, GenerativePaletteContextProvider } from '@palettebro/theme-toolbar';
 
 function App() {
   return (
     <PaletteProvider themes={themes}>
-      <PaletteToolbarProvider>
+      <GenerativePaletteContextProvider>
         <PaletteToolbar
           FormComponent={FormComponent}
           useFetcher={useFetcher}
           generateEndpoint="/generate"
           favouritesEndpoint="/favourites"
         />
-      </PaletteToolbarProvider>
+      </GenerativePaletteContextProvider>
     </PaletteProvider>
   );
 }

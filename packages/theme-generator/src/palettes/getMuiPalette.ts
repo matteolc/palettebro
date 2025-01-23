@@ -23,16 +23,12 @@ import {
 } from '../types';
 import { formatSchemistToHex } from '../color/formatting';
 import { nearestColorName } from '../color/nearest-color-name';
-import tailwindScaleLight from '../presets/tailwindScaleLight';
-import tailwindScaleDark from '../presets/tailwindScaleDark';
 import {
   MATERIAL_TONES,
   parseColor,
   presetSamplesWithKeyAndName,
   presetSampleWithKeyAndNameHash,
 } from '../index';
-import states from '../presets/states';
-import semanticPairs from '../presets/semanticPairs';
 import rainbow from '../presets/rainbow';
 
 // Create a type for the scheme constructor
@@ -110,42 +106,18 @@ export const getMuiPalette = (theme: ThemePalette) => {
       {} as Record<string, { name: string; color: string }>,
     );
 
-  // Generate shades for primary, secondary, and accent colors
-  const generateShades = (color: SchemistColor | undefined, token: string) => {
-    if (!color) return {};
-    const scaleNodes = theme.isDark
-      ? tailwindScaleDark.nodes
-      : tailwindScaleLight.nodes;
-    const presets = presetSampleWithKeyAndNameHash([
-      ...presetSamplesWithKeyAndName(scaleNodes, color),
-      ...presetSamplesWithKeyAndName(states.nodes, color),
-    ]);
-
-    return formatPalette(presets, token);
-  };
-
-  const generateSemanticPairs = (
-    color: SchemistColor | undefined,
-    token: string,
-  ) => {
-    if (!color) return {};
-    const presets = presetSampleWithKeyAndNameHash([
-      ...presetSamplesWithKeyAndName(semanticPairs.nodes, color),
-    ]);
-
-    return formatPalette(presets, token);
-  };
-
   const generateChartColors = (
     color: SchemistColor | undefined,
     token: string,
   ) => {
     if (!color) return {};
-    const presets = presetSampleWithKeyAndNameHash([
-      ...presetSamplesWithKeyAndName(rainbow.nodes, color),
-    ]);
 
-    return formatPalette(presets, token);
+    return formatPalette(
+      presetSampleWithKeyAndNameHash([
+        ...presetSamplesWithKeyAndName(rainbow.nodes, color),
+      ]),
+      token,
+    );
   };
 
   // Transform into a hash map of color tokens
@@ -319,22 +291,6 @@ export const getMuiPalette = (theme: ThemePalette) => {
       name: nearestColorName(hexFromArgb(scheme.onTertiaryContainer)),
       color: hexFromArgb(scheme.onTertiaryContainer),
     },
-    neutral: {
-      name: nearestColorName(hexFromArgb(scheme.surfaceDim)),
-      color: hexFromArgb(scheme.surfaceDim),
-    },
-    // ...generateShades(parseColor(hexFromArgb(scheme.primary))[1], 'primary'),
-    // ...generateShades(
-    //   parseColor(hexFromArgb(scheme.secondary))[1],
-    //   'secondary',
-    // ),
-    // ...generateShades(parseColor(hexFromArgb(scheme.tertiary))[1], 'accent'),
-    // TODO: Fix state colors
-    ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'error'),
-    ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'success'),
-    ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'warning'),
-    ...generateShades(parseColor(hexFromArgb(scheme.error))[1], 'info'),
-    //...generateSemanticPairs(parseColor(hexFromArgb(scheme.primary))[1], ''),
     ...generateChartColors(
       parseColor(hexFromArgb(scheme.primary))[1],
       'primary',

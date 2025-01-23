@@ -5,36 +5,27 @@ import {
   RadioCardIndicator,
   RadioCardItem,
 } from '../../ui/radio-card';
-import { GenerativePaletteContext } from '../../context/GenerativePaletteContext';
-import {
-  GenerativeThemePageEnum,
-  GenerativeThemePresetEnum,
-} from '@palettebro/theme-generator/types';
+import { KobayashiImageEnum } from '@palettebro/theme-generator/types';
 import { SettingsSection } from './SettingsSection';
-import { SettingsSlider } from './SettingsSlider';
+import { KobayashiPaletteContext } from '@/context/KobayashiPaletteContext';
 
-export const DynamicPaletteSettings = () => {
-  const {
-    temperature,
-    setTemperature,
-    preset,
-    setPreset,
-    page,
-    setPage,
-  } = useContext(GenerativePaletteContext);
+export const KobayashiPaletteSettings = () => {
+  const { word, words, setWord, image, setImage } = useContext(
+    KobayashiPaletteContext,
+  );
 
-  if (!temperature || !setTemperature) return null;
+  if (!word || !setImage) return null;
 
   return (
     <div className="grid grid-cols-2 gap-2">
       <div>
-        <SettingsSection title="Preset">
+        <SettingsSection title="Image">
           <RadioCardGroup
-            value={preset}
-            onValueChange={setPreset}
-            className="text-lg"
+            value={image}
+            onValueChange={setImage}
+            className="text-lg grid grid-cols-2 gap-x-2"
           >
-            {Object.keys(GenerativeThemePresetEnum).map((p) => (
+            {Object.keys(KobayashiImageEnum).map((p) => (
               <RadioCardItem
                 key={p}
                 value={p}
@@ -49,13 +40,13 @@ export const DynamicPaletteSettings = () => {
       </div>
 
       <div>
-        <SettingsSection title="Variant">
+        <SettingsSection title="Word">
           <RadioCardGroup
-            value={page}
-            onValueChange={setPage}
+            value={word}
+            onValueChange={setWord}
             className="text-lg"
           >
-            {Object.keys(GenerativeThemePageEnum).map((p) => (
+            {words.slice(0, 5).map((p) => (
               <RadioCardItem
                 key={p}
                 value={p}
@@ -67,17 +58,6 @@ export const DynamicPaletteSettings = () => {
             ))}
           </RadioCardGroup>
         </SettingsSection>
-      </div>
-
-      <div className="col-span-2">
-        <SettingsSlider
-          title="Temperature"
-          value={temperature}
-          onChange={setTemperature}
-          min={0}
-          max={2.4}
-          step={0.1}
-        />
       </div>
     </div>
   );

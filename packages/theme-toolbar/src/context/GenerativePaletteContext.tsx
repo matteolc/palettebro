@@ -40,7 +40,7 @@ export const GenerativePaletteContext =
     numColors: DEFAULT_GENERATIVE_NUM_COLORS,
   });
 
-export const PaletteToolbarProvider = ({
+export const GenerativePaletteContextProvider = ({
   children,
 }: { children: React.ReactNode }) => {
   const [profile, setProfile] = useState<GenerativeThemeMode>(

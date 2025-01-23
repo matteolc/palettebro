@@ -7,6 +7,7 @@ import { DynamicPaletteSettings } from './DynamicPaletteSettings';
 import { PaletteContext } from '@/context/PaletteContext';
 import { StaticPaletteSettings } from './StaticPaletteSettings';
 import { MuiPaletteSettings } from './MuiPaletteSettings';
+import { KobayashiPaletteSettings } from './KobayashiPaletteSettings';
 
 const PALETTE_TABS = [
   {
@@ -23,6 +24,11 @@ const PALETTE_TABS = [
     value: ThemeVariantEnum.dynamic,
     label: 'Generative',
     content: <DynamicPaletteSettings />,
+  },
+  {
+    value: ThemeVariantEnum.kobayashi,
+    label: 'Kobayashi',
+    content: <KobayashiPaletteSettings />,
   },
 ] as const;
 

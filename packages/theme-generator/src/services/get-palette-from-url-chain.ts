@@ -3,6 +3,7 @@ import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableSequence } from '@langchain/core/runnables';
 import { z } from 'zod';
 import { ChatOpenAIClient } from './openai';
+import { getPaletteTool } from './get-palette-tool';
 
 export const getPaletteFromUrlChain = () => {
   const zodSchema = z.object({
@@ -17,11 +18,13 @@ export const getPaletteFromUrlChain = () => {
     temperature: 1.2,
   });
 
+  const llmWithTools = llm.bindTools([getPaletteTool]);
+
   const chain = RunnableSequence.from([
     ChatPromptTemplate.fromTemplate(
       'You are a talented designer and artist known for your creative and visually striking color palettes.\n{format_instructions}\n{url}\n{question}',
     ),
-    llm,
+    llmWithTools,
     parser,
   ]);
 

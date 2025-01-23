@@ -116,10 +116,6 @@ export default function Page() {
     fetcher.state === 'submitting' &&
     fetcher.formData?.get('intent') === 'DELETE_ALL';
 
-  if (isDeletingAll) {
-    return <div>Deleting all palettes...</div>;
-  }
-
   return (
     <div className="">
       <PageHeader>
@@ -144,7 +140,7 @@ export default function Page() {
       <div id="blocks" className="border-grid scroll-mt-24 border-b">
         <div className="container-wrapper">
           <div className="container flex items-center py-4">
-            {palettes.length === 0 ? (
+            {(palettes.length === 0 || isDeletingAll)? (
               <div className="text-center py-12 text-muted-foreground mx-auto">
                 No favorites yet. Save some palettes to see them here.
                 <br />

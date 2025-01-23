@@ -100,7 +100,9 @@ export default (options?: ThemePalette) => {
             type: negative.type,
             token: 'error',
             isHidden: false,
-            children: shadeNodes,
+            children: [
+              ...materialTones({ isDark: options?.isDark ?? false }).nodes,
+            ],
           },
           ...background({ isDark: options?.isDark ?? false }).nodes,
           {

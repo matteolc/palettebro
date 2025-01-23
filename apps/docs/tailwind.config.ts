@@ -8,8 +8,8 @@ const config: Pick<
   darkMode: 'class',
   content: [
     './app/**/*.tsx',
-    '../../packages/color-picker/**/*.{js,ts,jsx,tsx}',
-    '../../packages/theme-toolbar/**/*.{js,ts,jsx,tsx}',
+    '../../packages/color-picker/src/**/*.{js,ts,jsx,tsx}',
+    '../../packages/theme-toolbar/src/**/*.{js,ts,jsx,tsx}',
     '!../../packages/**/node_modules',
   ],
   variants: {
