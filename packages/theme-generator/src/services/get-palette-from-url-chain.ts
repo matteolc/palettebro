@@ -4,9 +4,12 @@ import { RunnableSequence } from '@langchain/core/runnables';
 import { z } from 'zod';
 import { ChatOpenAIClient } from './openai';
 
-export const getGeneratorChain = () => {
+export const getPaletteFromUrlChain = () => {
   const zodSchema = z.object({
-    name: z.string().describe('The name of the palette'),
+    primaryColor: z.string().describe('The primary color of the palette'),
+    secondaryColor: z.string().describe('The secondary color of the palette'),
+    accentColor: z.string().describe('The accent color of the palette'),
+    isDark: z.boolean().describe('Whether the palette is dark'),
   });
 
   const parser = StructuredOutputParser.fromZodSchema(zodSchema);
@@ -16,7 +19,7 @@ export const getGeneratorChain = () => {
 
   const chain = RunnableSequence.from([
     ChatPromptTemplate.fromTemplate(
-      'You are a talented designer and artist known for your creative and visually striking color palettes.\n{format_instructions}\n{primary_color}\n{secondary_color}\n{question}',
+      'You are a talented designer and artist known for your creative and visually striking color palettes.\n{format_instructions}\n{url}\n{question}',
     ),
     llm,
     parser,

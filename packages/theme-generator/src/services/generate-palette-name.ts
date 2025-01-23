@@ -11,7 +11,8 @@ export const generatePaletteName = async (props: {
 
   return await withRetry(() =>
     chain.invoke({
-      question: 'Please generate a name for this color palette.',
+      question:
+        'Your task is to come up with a compelling name for a color palette composed of primary, secondary, and accent colors. Please generate a unique and evocative name for the color palette.',
       format_instructions: parser.getFormatInstructions(),
       primary_color: primary,
       secondary_color: secondary,

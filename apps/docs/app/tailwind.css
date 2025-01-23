@@ -61,9 +61,9 @@
   }
   
   .title-gradient-mui {
-    --tw-gradient-to: oklch(var(--accent-40)) var(--tw-gradient-to-position);
+    --tw-gradient-to: oklch(var(--accent-60)) var(--tw-gradient-to-position);
     --tw-gradient-from: oklch(var(--primary-50)) var(--tw-gradient-from-position);
-    --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-40))
+    --tw-gradient-stops: var(--tw-gradient-from), oklch(var(--secondary-60))
       var(--tw-gradient-via-position), var(--tw-gradient-to);
   }
   

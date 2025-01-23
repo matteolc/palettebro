@@ -4,14 +4,14 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@palettebro/theme-generator';
 import { PaletteContext } from '@palettebro/theme-toolbar';
+import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
 
 const NavigationHeader = () => {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
-  const { variant } = useContext(PaletteContext);
+  const { variant, colorShadesPreset } = useContext(PaletteContext);
 
   useMotionValueEvent(scrollY, 'change', (current) => {
-    const diff = current - (scrollY.getPrevious() ?? 0);
     if (current === 0) {
       setIsScrolled(false);
     } else if (current > 0 && !isScrolled) {
@@ -20,7 +20,9 @@ const NavigationHeader = () => {
   });
 
   const gradient =
-    variant === 'mui' ? 'title-gradient-mui' : 'title-gradient-tw';
+    colorShadesPreset === ColorShadesPresetEnum.mui
+      ? 'title-gradient-mui'
+      : 'title-gradient-tw';
 
   return (
     <motion.header
