@@ -1,15 +1,14 @@
 import { Link, NavLink } from '@remix-run/react';
-import { RiHeartFill } from '@remixicon/react';
 import clsx from 'clsx';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useState } from 'react';
-import { Button, buttonVariants } from './ui/button';
-import { Separator } from './ui/separator';
+import { useContext, useState } from 'react';
 import { sentenceCase } from '@palettebro/theme-generator';
+import { PaletteContext } from '@palettebro/theme-toolbar';
 
 const NavigationHeader = () => {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const { variant } = useContext(PaletteContext);
 
   useMotionValueEvent(scrollY, 'change', (current) => {
     const diff = current - (scrollY.getPrevious() ?? 0);
@@ -20,11 +19,14 @@ const NavigationHeader = () => {
     }
   });
 
+  const gradient =
+    variant === 'mui' ? 'title-gradient-mui' : 'title-gradient-tw';
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
       className={clsx(
         'left-0 max-w-2xl right-0 py-1 fixed inset-x-3 top-4 z-50 mx-auto flex justify-center overflow-hidden rounded-lg transition-all duration-300',
         isScrolled
@@ -41,7 +43,12 @@ const NavigationHeader = () => {
           )}
         >
           <Link to="/">
-            <h2 className="cursor-pointer title-gradient text-3xl font-bold leading-relaxed bg-gradient-to-r text-transparent bg-clip-text">
+            <h2
+              className={clsx(
+                gradient,
+                'cursor-pointer title-gradient text-3xl font-bold leading-relaxed text-transparent bg-clip-text',
+              )}
+            >
               🌈 Palettebro
             </h2>
           </Link>
