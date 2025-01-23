@@ -68,7 +68,7 @@ ${Object.entries(TW_COLOR_UTILITIES)
       <DialogContent className="sm:max-w-[700px]">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">Download Palette</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-inverse-surface">
             Choose a format to download your color palette
           </DialogDescription>
         </DialogHeader>

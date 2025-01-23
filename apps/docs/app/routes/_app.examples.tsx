@@ -35,7 +35,7 @@ export default function Page() {
           <Button asChild size="sm">
             <NavLink to="/docs">Get Started</NavLink>
           </Button>
-          <Button asChild size="sm" variant="ghost">
+          <Button asChild size="sm" variant="link">
             <NavLink to="/blocks">Browse Blocks</NavLink>
           </Button>
         </PageActions>
