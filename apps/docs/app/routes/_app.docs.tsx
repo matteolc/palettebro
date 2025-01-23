@@ -23,7 +23,7 @@ export default function Page() {
         </PageActions>
       </PageHeader>
       <div className="border-grid border-b">
-        <div className="container py-4"></div>
+        <div className="container py-4"/>
       </div>
       <div className="py-8 container">
         <Outlet />
