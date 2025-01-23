@@ -1,4 +1,4 @@
-import { Outlet } from '@remix-run/react';
+import { Link, Outlet } from '@remix-run/react';
 import type { MetaFunction } from '@vercel/remix';
 import {
   PageActions,
@@ -30,7 +30,7 @@ export default function Page() {
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <a href="#blocks">Browse Blocks</a>
+            <Link to="/examples">Browse Examples</Link>
           </Button>
         </PageActions>
       </PageHeader>

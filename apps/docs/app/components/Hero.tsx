@@ -3,6 +3,9 @@ import { Badge } from './ui/badge';
 import { PaletteContext } from '@palettebro/theme-toolbar';
 import clsx from 'clsx';
 import { useContext } from 'react';
+import { PageActions } from './PageHeader';
+import { Button } from './ui/button';
+import { NavLink } from '@remix-run/react';
 
 export const Hero = () => {
   const { variant } = useContext(PaletteContext);
@@ -13,7 +16,10 @@ export const Hero = () => {
 
   return (
     <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
-      <Badge variant="outline" className="mb-4 text-md rounded-full text-accent">
+      <Badge
+        variant="outline"
+        className="mb-4 text-md rounded-full text-accent"
+      >
         <span className="relative flex h-3 w-3 mr-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-accent" />
           <span className="relative inline-flex rounded-full h-3 w-3 bg-accent" />
@@ -37,6 +43,14 @@ export const Hero = () => {
       <div className="block lg:hidden mt-8">
         To use Palettebro please use a screen with a width of at least 1024px.
       </div>
+      <PageActions>
+        <Button asChild size="sm">
+          <NavLink to="/docs">Get Started</NavLink>
+        </Button>
+        <Button asChild size="sm" variant="link">
+          <NavLink to="/examples">Examples</NavLink>
+        </Button>
+      </PageActions>
     </div>
   );
 };
