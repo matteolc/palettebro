@@ -2,24 +2,42 @@ import color from '../nodes/color';
 import lightness from '../nodes/lightness';
 import negative from '../nodes/negative';
 import saturation from '../nodes/saturation';
-import type { ThemePalette } from '../types';
+import { ColorShadesPresetEnum, type ThemePalette } from '../types';
 import background from './background';
+import bootstrapScale from './bootstrapScale';
 import materialScale from './materialScale';
 import materialTones from './materialTones';
 import outlineScale from './outlineScale';
 import rainbow from './rainbow';
 import shadowAndScrim from './shadowAndScrim';
+import tailwindScale from './tailwindScale';
 import surface from './surface';
 import type { Preset } from './types';
 
 export default (
   options?: ThemePalette & { token: 'primary' | 'secondary' | 'accent' },
 ) => {
+
+  const scaleNodes = (() => {
+    switch (options?.colorShadesPreset) {
+      case ColorShadesPresetEnum.mui:
+        return materialScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes;
+      case ColorShadesPresetEnum.bootstrap:
+        return bootstrapScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes;
+      default:
+        return tailwindScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes;
+    }
+  })();
+
   const shadeNodes = [
     ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...materialScale({
-      reverseLightDarkShades: options?.reverseLightDarkShades,
-    }).nodes,
+    ...scaleNodes,
   ];
 
   const nodes =

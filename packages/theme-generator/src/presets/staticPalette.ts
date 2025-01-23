@@ -17,17 +17,27 @@ import rainbow from './rainbow';
 import shadowAndScrim from './shadowAndScrim';
 import surface from './surface';
 import tailwindScale from './tailwindScale';
+import bootstrapScale from './bootstrapScale';
 import type { Preset } from './types';
 
 export default (options?: ThemePalette) => {
-  const scaleNodes =
-    options?.colorShadesPreset === ColorShadesPresetEnum.mui
-      ? materialScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes
-      : tailwindScale({
+  const scaleNodes = (() => {
+    switch (options?.colorShadesPreset) {
+      case ColorShadesPresetEnum.mui:
+        return materialScale({
           reverseLightDarkShades: options?.reverseLightDarkShades,
         }).nodes;
+      case ColorShadesPresetEnum.bootstrap:
+        return bootstrapScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes;
+      default:
+        return tailwindScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes;
+    }
+  })();
+
   const shadeNodes = [
     ...materialTones({ isDark: options?.isDark ?? false }).nodes,
     ...scaleNodes,

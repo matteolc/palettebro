@@ -14,16 +14,16 @@ export const ThemePalette = () => {
 
   const getShadesLabelToken = (shade: number) => {
     if (!reverseLightDarkShades) {
-      return shade >= 80 ? "scrim" : undefined;
+      return shade >= 80 ? 'scrim' : undefined;
     }
-    return shade <= 20 ? "scrim" : undefined;
+    return shade <= 20 ? 'scrim' : undefined;
   };
 
   const getTailwindShadesLabelToken = (shade: number) => {
     if (!reverseLightDarkShades) {
-      return shade <= 400 ? "scrim" : undefined;
+      return shade <= 400 ? 'scrim' : undefined;
     }
-    return shade >= 600 ? "scrim" : undefined;
+    return shade >= 600 ? 'scrim' : undefined;
   };
 
   return (
@@ -903,6 +903,201 @@ export const ThemePalette = () => {
                       className="h-16"
                       borderRadius="rounded-r-md"
                       labelToken={getTailwindShadesLabelToken(950)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {colorShadesPreset === ColorShadesPresetEnum.bootstrap && (
+            <div className="mt-8 space-y-8">
+              <div className="space-y-1">
+                {/* Primary Shades */}
+                <div className="space-y-1">
+                  <div className="text-sm font-medium">Primary</div>
+                  <div className="grid grid-cols-[repeat(9,minmax(0,1fr))] gap-0">
+                    <PaletteColor
+                      token="primary-100"
+                      label="100"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(100)}
+                      borderRadius="rounded-l-md"
+                    />
+                    <PaletteColor
+                      token="primary-200"
+                      label="200"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(200)}
+                    />
+                    <PaletteColor
+                      token="primary-300"
+                      label="300"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(300)}
+                    />
+                    <PaletteColor
+                      token="primary-400"
+                      label="400"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(400)}
+                    />
+                    <PaletteColor
+                      token="primary-500"
+                      label="500"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(500)}
+                    />
+                    <PaletteColor
+                      token="primary-600"
+                      label="600"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(600)}
+                    />
+                    <PaletteColor
+                      token="primary-700"
+                      label="700"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(700)}
+                    />
+                    <PaletteColor
+                      token="primary-800"
+                      label="800"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(800)}
+                    />
+                    <PaletteColor
+                      token="primary-900"
+                      label="900"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(900)}
+                      borderRadius="rounded-r-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Secondary Shades */}
+                <div className="space-y-1 mt-8">
+                  <div className="text-sm font-medium">Secondary</div>
+                  <div className="grid grid-cols-[repeat(9,minmax(0,1fr))] gap-0">
+                    <PaletteColor
+                      token="secondary-100"
+                      label="100"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(100)}
+                      borderRadius="rounded-l-md"
+                    />
+                    <PaletteColor
+                      token="secondary-200"
+                      label="200"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(200)}
+                    />
+                    <PaletteColor
+                      token="secondary-300"
+                      label="300"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(300)}
+                    />
+                    <PaletteColor
+                      token="secondary-400"
+                      label="400"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(400)}
+                    />
+                    <PaletteColor
+                      token="secondary-500"
+                      label="500"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(500)}
+                    />
+                    <PaletteColor
+                      token="secondary-600"
+                      label="600"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(600)}
+                    />
+                    <PaletteColor
+                      token="secondary-700"
+                      label="700"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(700)}
+                    />
+                    <PaletteColor
+                      token="secondary-800"
+                      label="800"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(800)}
+                    />
+                    <PaletteColor
+                      token="secondary-900"
+                      label="900"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(900)}
+                      borderRadius="rounded-r-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Accent Shades */}
+                <div className="space-y-1 mt-8">
+                  <div className="text-sm font-medium">Accent</div>
+                  <div className="grid grid-cols-[repeat(9,minmax(0,1fr))] gap-0">
+                    <PaletteColor
+                      token="accent-100"
+                      label="100"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(100)}
+                      borderRadius="rounded-l-md"
+                    />
+                    <PaletteColor
+                      token="accent-200"
+                      label="200"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(200)}
+                    />
+                    <PaletteColor
+                      token="accent-300"
+                      label="300"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(300)}
+                    />
+                    <PaletteColor
+                      token="accent-400"
+                      label="400"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(400)}
+                    />
+                    <PaletteColor
+                      token="accent-500"
+                      label="500"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(500)}
+                    />
+                    <PaletteColor
+                      token="accent-600"
+                      label="600"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(600)}
+                    />
+                    <PaletteColor
+                      token="accent-700"
+                      label="700"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(700)}
+                    />
+                    <PaletteColor
+                      token="accent-800"
+                      label="800"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(800)}
+                    />
+                    <PaletteColor
+                      token="accent-900"
+                      label="900"
+                      className="h-16"
+                      labelToken={getTailwindShadesLabelToken(900)}
+                      borderRadius="rounded-r-md"
                     />
                   </div>
                 </div>
