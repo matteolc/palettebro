@@ -1,4 +1,10 @@
-import { MATERIAL_TONES } from '@palettebro/theme-generator';
+import {
+  MATERIAL_TONES,
+  TAILWIND_TONES,
+  BOOTSTRAP_TONES,
+} from '@palettebro/theme-generator';
+import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
+import type { ColorShadesPreset } from '@palettebro/theme-generator/types';
 
 const DEFAULT_UTILITY_VALUES = {
   '--radius': '0.5rem',
@@ -32,30 +38,23 @@ const MUI_SURFACE_TOKENS = {
   'surface-tint': 'oklch(var(--surface-tint)/<alpha-value>)',
 };
 
-const generateMuiColorShades = (colorName: string) => ({
-  ...MATERIAL_TONES.reduce<Record<number, string>>((acc, tone) => {
+const getColorShades = (colorName: string, tones: number[]) => ({
+  ...tones.reduce<Record<number, string>>((acc, tone) => {
     acc[tone] = `oklch(var(--${colorName}-${tone})/<alpha-value>)`;
     return acc;
   }, {}),
 });
 
-const generateMUIColorVariants = (colorName: string) => ({
+const createColorShadesFn = (tones: number[]) => (colorName: string) =>
+  getColorShades(colorName, tones);
+
+const getDefaultColorVariants = (colorName: string) => ({
   [`on-${colorName}`]: `oklch(var(--on-${colorName})/<alpha-value>)`,
   [`${colorName}-container`]: `oklch(var(--${colorName}-container)/<alpha-value>)`,
   [`on-${colorName}-container`]: `oklch(var(--on-${colorName}-container)/<alpha-value>)`,
 });
 
-const generateTailwindColorShades = (colorName: string) => ({
-  ...Array.from({ length: 19 }, (_, i) => i * 50).reduce<
-    Record<number, string>
-  >((acc, shade) => {
-    if (shade === 0) return acc;
-    acc[shade] = `oklch(var(--${colorName}-${shade})/<alpha-value>)`;
-    return acc;
-  }, {}),
-});
-
-const generateShadcnColorVariants = (colorName: string) => ({
+const getShadcnColorVariants = (colorName: string) => ({
   DEFAULT: `oklch(var(--${colorName})/<alpha-value>)`,
   foreground: `oklch(var(--on-${colorName})/<alpha-value>)`,
 });
@@ -100,29 +99,43 @@ const SHADCN_COLOR_UTILITIES = {
   },
 };
 
-const PALETTE_COLORS = {
-  ...generateMUIColorVariants('primary'),
-  ...generateMUIColorVariants('secondary'),
-  ...generateMUIColorVariants('accent'),
-  ...generateMUIColorVariants('error'),
-  ...MUI_SURFACE_TOKENS,
-  ...['primary', 'secondary', 'accent', 'error'].reduce<
-    Record<
-      string,
-      {
-        DEFAULT: string;
-        foreground: string;
-        container?: string;
-        [key: string | number]: string | undefined;
-      }
-    >
-  >((acc, color) => {
-    acc[color] = {
-      ...generateShadcnColorVariants(color),
-      ...generateMuiColorShades(color),
-    };
-    return acc;
-  }, {}),
+const COLOR_SHADES_FN_MAP = {
+  [ColorShadesPresetEnum.mui]: createColorShadesFn(MATERIAL_TONES),
+  [ColorShadesPresetEnum.tailwind]: createColorShadesFn(TAILWIND_TONES),
+  [ColorShadesPresetEnum.bootstrap]: createColorShadesFn(BOOTSTRAP_TONES),
+} as const;
+
+const BASE_COLORS = ['primary', 'secondary', 'accent', 'error'] as const;
+
+const getPaletteColors = (colorShadesPreset: ColorShadesPreset) => {
+  const colorShadesFn =
+    COLOR_SHADES_FN_MAP[colorShadesPreset] ??
+    createColorShadesFn(TAILWIND_TONES);
+
+  return {
+    ...BASE_COLORS.reduce(
+      (acc, color) => Object.assign(acc, getDefaultColorVariants(color)),
+      {},
+    ),
+    ...MUI_SURFACE_TOKENS,
+    ...BASE_COLORS.reduce<
+      Record<
+        string,
+        {
+          DEFAULT: string;
+          foreground: string;
+          container?: string;
+          [key: string | number]: string | undefined;
+        }
+      >
+    >((acc, color) => {
+      acc[color] = {
+        ...getShadcnColorVariants(color),
+        ...colorShadesFn(color),
+      };
+      return acc;
+    }, {}),
+  };
 };
 
-export { DEFAULT_UTILITY_VALUES, SHADCN_COLOR_UTILITIES, PALETTE_COLORS };
+export { DEFAULT_UTILITY_VALUES, SHADCN_COLOR_UTILITIES, getPaletteColors };

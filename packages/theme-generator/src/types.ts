@@ -129,7 +129,7 @@ export type ThemePalette = {
   | 'colorShadesPreset'
 >;
 
-export type Themes = Record<string, Theme>;
+export type Themes = Record<ThemeColorScheme, Theme>;
 
 export type Palette = Record<string, { color: string; name: string }>;
 

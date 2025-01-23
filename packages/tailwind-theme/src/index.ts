@@ -2,15 +2,19 @@ import pc from 'picocolors';
 import plugin from 'tailwindcss/plugin';
 
 import { version } from '../package.json';
-import { PALETTE_COLORS, SHADCN_COLOR_UTILITIES } from './theming/const';
+import { getPaletteColors, SHADCN_COLOR_UTILITIES } from './theming/const';
 import { injectThemes } from './theming/inject-themes';
 import { utilities } from './utilities';
 import type { PluginOptions } from './types';
+import {
+  type ColorShadesPreset,
+  ColorShadesPresetEnum,
+} from '@palettebro/theme-generator/types';
 
-export const TW_COLOR_UTILITIES = {
-  ...PALETTE_COLORS,
+export const getColorUtilities = (colorShadesPreset: ColorShadesPreset) => ({
+  ...getPaletteColors(colorShadesPreset),
   ...SHADCN_COLOR_UTILITIES,
-};
+});
 
 export default plugin.withOptions(
   ({ utils, themes, darkTheme, addThemes }: PluginOptions) =>
@@ -36,16 +40,20 @@ export default plugin.withOptions(
       if (addThemes) {
         injectThemes(addBase, { themes, darkTheme });
       }
+    },
+  ({ themes }: PluginOptions) => {
+    const colorShadesPreset =
+      themes.light.colorShadesPreset ?? ColorShadesPresetEnum.tailwind;
 
-      if (Object.values(themes).some((theme) => theme.debug)) {
-        console.info(TW_COLOR_UTILITIES);
-      }
-    },
-  () => ({
-    theme: {
-      extend: {
-        colors: TW_COLOR_UTILITIES,
+    if (Object.values(themes).some((theme) => theme.debug)) {
+      console.info(getColorUtilities(colorShadesPreset));
+    }
+    return {
+      theme: {
+        extend: {
+          colors: getColorUtilities(colorShadesPreset),
+        },
       },
-    },
-  }),
+    };
+  },
 );

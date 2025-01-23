@@ -13,7 +13,8 @@ import { useContext } from 'react';
 
 import { PaletteContext } from '@palettebro/theme-toolbar';
 import { paletteToCssVars } from '@palettebro/theme-generator';
-import { TW_COLOR_UTILITIES } from '@palettebro/tailwind-theme';
+import { getColorUtilities } from '@palettebro/tailwind-theme';
+import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
 
 export function DownloadDialog() {
   const { palette } = useContext(PaletteContext);
@@ -27,8 +28,8 @@ export function DownloadDialog() {
       description: 'Basic CSS custom properties',
       preview: `:root {
 ${Object.entries(paletteToCssVars(palette))
-    .map(([key, value]) => `  ${key}: oklch(${value});`)
-    .join('\n')}
+  .map(([key, value]) => `  ${key}: oklch(${value});`)
+  .join('\n')}
 }`,
     },
     {
@@ -52,9 +53,9 @@ module.exports = {
       description: 'Compatible with shadcn/ui components',
       preview: `@layer base {
   :root {
-${Object.entries(TW_COLOR_UTILITIES)
-    .map(([key, value]) => `    --${key}: ${value};`)
-    .join('\n')}
+${Object.entries(getColorUtilities(ColorShadesPresetEnum.tailwind))
+  .map(([key, value]) => `    --${key}: ${value};`)
+  .join('\n')}
   }
 }`,
     },
@@ -67,7 +68,9 @@ ${Object.entries(TW_COLOR_UTILITIES)
       </DialogTrigger>
       <DialogContent className="sm:max-w-[700px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">Download Palette</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            Download Palette
+          </DialogTitle>
           <DialogDescription className="text-inverse-surface">
             Choose a format to download your color palette
           </DialogDescription>
@@ -83,14 +86,14 @@ ${Object.entries(TW_COLOR_UTILITIES)
           {downloadOptions.map((option) => (
             <TabsContent key={option.id} value={option.id}>
               <div className="flex flex-col gap-4">
-                <p className="text-sm">
-                  {option.description}
-                </p>
+                <p className="text-sm">{option.description}</p>
                 <div className="relative rounded-md border">
                   <ScrollArea className="h-[320px] w-[650px]">
                     <div className="min-w-max">
                       <pre className="p-4">
-                        <code className="whitespace-pre font-mono text-sm">{option.preview}</code>
+                        <code className="whitespace-pre font-mono text-sm">
+                          {option.preview}
+                        </code>
                       </pre>
                     </div>
                   </ScrollArea>
