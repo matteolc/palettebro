@@ -64,17 +64,6 @@ The main toolbar component for managing colors.
 />
 ```
 
-### TokenColorPalette
-
-Displays a color palette with shades and contrast information.
-
-```tsx
-<TokenColorPalette
-  colors={colors}
-  onChange={onChange}
-/>
-```
-
 ## Color Tokens
 
 ### Base Tokens

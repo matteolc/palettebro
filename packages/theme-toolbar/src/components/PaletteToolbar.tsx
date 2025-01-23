@@ -17,6 +17,7 @@ import type { FormProps } from '@/types';
 import { PaletteToolbarColorSwatch } from './PaletteToolbarColorSwatch';
 import { BASE_TOKENS } from '@/const';
 import { Skeleton } from '@/ui/skeleton';
+import { ColorShadesSettings } from './settings/ColorShadesSettings';
 
 const PaletteToolbar = ({
   FormComponent,
@@ -90,6 +91,7 @@ const PaletteToolbar = ({
       <div className="items-center gap-2 rounded-lg px-2 py-1 hidden lg:flex bg-white backdrop-blur-md shadow-lg">
         <div className="flex items-center justify-start gap-x-6">
           <div className="flex items-center justify-center text-zinc-900">
+            {/* Generate */}
             <FormComponent
               noValidate
               fetcherKey="generate"
@@ -164,7 +166,11 @@ const PaletteToolbar = ({
                 </button>
               )}
             </FormComponent>
+            {/* Settings */}
             <PaletteSettings />
+            {/* Color shades settings */}
+            <ColorShadesSettings />
+            {/* Light/Dark mode toggle */}
             <button
               type="button"
               className="px-1 py-2"
@@ -172,6 +178,7 @@ const PaletteToolbar = ({
             >
               {isDark ? <RiMoonLine /> : <RiSunLine />}
             </button>
+            {/* Favourites */}
             <FormComponent
               noValidate
               fetcherKey="favourites"
@@ -206,6 +213,7 @@ const PaletteToolbar = ({
               </button>
             </FormComponent>
           </div>
+          {/* Color swatches */}
           <div className="flex flex-row gap-1">
             {BASE_TOKENS.map((token) =>
               isGeneratorLoading ? (

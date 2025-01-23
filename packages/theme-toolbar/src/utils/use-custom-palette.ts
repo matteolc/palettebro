@@ -1,5 +1,6 @@
 import { usePalette } from '@palettebro/theme-generator/palettes';
 import type {
+  ColorShadesPreset,
   MuiThemePreset,
   StaticThemePreset,
   ThemeColorScheme,
@@ -15,8 +16,20 @@ export const useCustomPalette = (props: {
   preset?: StaticThemePreset | MuiThemePreset;
   reverse?: boolean;
   contrast?: number;
+  colorShadesPreset?: ColorShadesPreset;
+  reverseLightDarkShades?: boolean;
 }) => {
-  const { colors, themes, variant, isDark, preset, reverse, contrast } = props;
+  const {
+    colors,
+    themes,
+    variant,
+    isDark,
+    preset,
+    reverse,
+    contrast,
+    colorShadesPreset,
+    reverseLightDarkShades,
+  } = props;
 
   const currentTheme = themes[isDark ? 'dark' : 'light'];
 
@@ -29,6 +42,8 @@ export const useCustomPalette = (props: {
         preset,
         reverse,
         contrast,
+        colorShadesPreset,
+        reverseLightDarkShades,
         baseColors: {
           ...currentTheme.baseColors,
           ...colors,

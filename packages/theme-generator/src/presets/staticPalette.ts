@@ -8,8 +8,9 @@ import tetradLeft from '../nodes/tetradLeft';
 import tetradRight from '../nodes/tetradRight';
 import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
-import type { ThemePalette } from '../types';
+import { ColorShadesPresetEnum, type ThemePalette } from '../types';
 import background from './background';
+import materialScale from './materialScale';
 import materialTones from './materialTones';
 import outlineScale from './outlineScale';
 import rainbow from './rainbow';
@@ -19,10 +20,18 @@ import tailwindScale from './tailwindScale';
 import type { Preset } from './types';
 
 export default (options?: ThemePalette) => {
+  const scaleNodes =
+    options?.colorShadesPreset === ColorShadesPresetEnum.mui
+      ? materialScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes
+      : tailwindScale({
+          reverseLightDarkShades: options?.reverseLightDarkShades,
+        }).nodes;
   const shadeNodes = [
     ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...tailwindScale({ reverseLightDarkShades: options?.reverseLightDarkShades }).nodes,
-  ]
+    ...scaleNodes,
+  ];
 
   const secondaryNode = {
     token: 'secondary',

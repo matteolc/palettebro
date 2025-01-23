@@ -2,13 +2,28 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 import { PaletteColor } from './PaletteColor';
 import { useContext } from 'react';
 import { PaletteContext } from '@/context/PaletteContext';
-import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
+import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
 
 export const ThemePalette = () => {
-  const { isDark, variant } = useContext(PaletteContext);
+  const { isDark, colorShadesPreset, reverseLightDarkShades } =
+    useContext(PaletteContext);
 
   const getCode = (lightCode: string, darkCode: string) => {
     return isDark ? darkCode : lightCode;
+  };
+
+  const getShadesLabelToken = (shade: number) => {
+    if (!reverseLightDarkShades) {
+      return shade >= 80 ? "scrim" : undefined;
+    }
+    return shade <= 20 ? "scrim" : undefined;
+  };
+
+  const getTailwindShadesLabelToken = (shade: number) => {
+    if (!reverseLightDarkShades) {
+      return shade <= 400 ? "scrim" : undefined;
+    }
+    return shade >= 600 ? "scrim" : undefined;
   };
 
   return (
@@ -307,7 +322,7 @@ export const ThemePalette = () => {
           </div>
 
           {/* Color Shades */}
-          {variant !== ThemeVariantEnum.static && (
+          {colorShadesPreset === ColorShadesPresetEnum.mui && (
             <div className="mt-8 space-y-8">
               <div className="space-y-1">
                 {/* Primary Shades */}
@@ -319,98 +334,110 @@ export const ThemePalette = () => {
                       label="0"
                       className="h-16"
                       borderRadius="rounded-l-md"
+                      labelToken={getShadesLabelToken(0)}
                     />
                     <PaletteColor
                       token="primary-5"
                       label="5"
                       className="h-16"
+                      labelToken={getShadesLabelToken(5)}
                     />
                     <PaletteColor
                       token="primary-10"
                       label="10"
                       className="h-16"
+                      labelToken={getShadesLabelToken(10)}
                     />
                     <PaletteColor
                       token="primary-15"
                       label="15"
                       className="h-16"
+                      labelToken={getShadesLabelToken(15)}
                     />
                     <PaletteColor
                       token="primary-20"
                       label="20"
                       className="h-16"
+                      labelToken={getShadesLabelToken(20)}
                     />
                     <PaletteColor
                       token="primary-25"
                       label="25"
                       className="h-16"
+                      labelToken={getShadesLabelToken(25)}
                     />
                     <PaletteColor
                       token="primary-30"
                       label="30"
                       className="h-16"
+                      labelToken={getShadesLabelToken(30)}
                     />
                     <PaletteColor
                       token="primary-35"
                       label="35"
                       className="h-16"
+                      labelToken={getShadesLabelToken(35)}
                     />
                     <PaletteColor
                       token="primary-40"
                       label="40"
                       className="h-16"
+                      labelToken={getShadesLabelToken(40)}
                     />
                     <PaletteColor
                       token="primary-50"
                       label="50"
                       className="h-16"
+                      labelToken={getShadesLabelToken(50)}
                     />
                     <PaletteColor
                       token="primary-60"
                       label="60"
                       className="h-16"
+                      labelToken={getShadesLabelToken(60)}
                     />
                     <PaletteColor
                       token="primary-70"
                       label="70"
                       className="h-16"
+                      labelToken={getShadesLabelToken(70)}
                     />
                     <PaletteColor
                       token="primary-80"
                       label="80"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(80)}
                     />
                     <PaletteColor
                       token="primary-90"
                       label="90"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(90)}
                     />
                     <PaletteColor
                       token="primary-95"
                       label="95"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(95)}
                     />
                     <PaletteColor
                       token="primary-98"
                       label="98"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(98)}
                     />
                     <PaletteColor
                       token="primary-99"
                       label="99"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(99)}
                     />
                     <PaletteColor
                       token="primary-100"
                       label="100"
                       className="h-16"
                       borderRadius="rounded-r-md"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(100)}
                     />
                   </div>
                 </div>
@@ -424,98 +451,110 @@ export const ThemePalette = () => {
                       label="0"
                       className="h-16"
                       borderRadius="rounded-l-md"
+                      labelToken={getShadesLabelToken(0)}
                     />
                     <PaletteColor
                       token="secondary-5"
                       label="5"
                       className="h-16"
+                      labelToken={getShadesLabelToken(5)}
                     />
                     <PaletteColor
                       token="secondary-10"
                       label="10"
                       className="h-16"
+                      labelToken={getShadesLabelToken(10)}
                     />
                     <PaletteColor
                       token="secondary-15"
                       label="15"
                       className="h-16"
+                      labelToken={getShadesLabelToken(15)}
                     />
                     <PaletteColor
                       token="secondary-20"
                       label="20"
                       className="h-16"
+                      labelToken={getShadesLabelToken(20)}
                     />
                     <PaletteColor
                       token="secondary-25"
                       label="25"
                       className="h-16"
+                      labelToken={getShadesLabelToken(25)}
                     />
                     <PaletteColor
                       token="secondary-30"
                       label="30"
                       className="h-16"
+                      labelToken={getShadesLabelToken(30)}
                     />
                     <PaletteColor
                       token="secondary-35"
                       label="35"
                       className="h-16"
+                      labelToken={getShadesLabelToken(35)}
                     />
                     <PaletteColor
                       token="secondary-40"
                       label="40"
                       className="h-16"
+                      labelToken={getShadesLabelToken(40)}
                     />
                     <PaletteColor
                       token="secondary-50"
                       label="50"
                       className="h-16"
+                      labelToken={getShadesLabelToken(50)}
                     />
                     <PaletteColor
                       token="secondary-60"
                       label="60"
                       className="h-16"
+                      labelToken={getShadesLabelToken(60)}
                     />
                     <PaletteColor
                       token="secondary-70"
                       label="70"
                       className="h-16"
+                      labelToken={getShadesLabelToken(70)}
                     />
                     <PaletteColor
                       token="secondary-80"
                       label="80"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(80)}
                     />
                     <PaletteColor
                       token="secondary-90"
                       label="90"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(90)}
                     />
                     <PaletteColor
                       token="secondary-95"
                       label="95"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(95)}
                     />
                     <PaletteColor
                       token="secondary-98"
                       label="98"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(98)}
                     />
                     <PaletteColor
                       token="secondary-99"
                       label="99"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(99)}
                     />
                     <PaletteColor
                       token="secondary-100"
                       label="100"
                       className="h-16"
                       borderRadius="rounded-r-md"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(100)}
                     />
                   </div>
                 </div>
@@ -529,94 +568,110 @@ export const ThemePalette = () => {
                       label="0"
                       className="h-16"
                       borderRadius="rounded-l-md"
+                      labelToken={getShadesLabelToken(0)}
                     />
-                    <PaletteColor token="accent-5" label="5" className="h-16" />
+                    <PaletteColor
+                      token="accent-5"
+                      label="5"
+                      className="h-16"
+                      labelToken={getShadesLabelToken(5)}
+                    />
                     <PaletteColor
                       token="accent-10"
                       label="10"
                       className="h-16"
+                      labelToken={getShadesLabelToken(10)}
                     />
                     <PaletteColor
                       token="accent-15"
                       label="15"
                       className="h-16"
+                      labelToken={getShadesLabelToken(15)}
                     />
                     <PaletteColor
                       token="accent-20"
                       label="20"
                       className="h-16"
+                      labelToken={getShadesLabelToken(20)}
                     />
                     <PaletteColor
                       token="accent-25"
                       label="25"
                       className="h-16"
+                      labelToken={getShadesLabelToken(25)}
                     />
                     <PaletteColor
                       token="accent-30"
                       label="30"
                       className="h-16"
+                      labelToken={getShadesLabelToken(30)}
                     />
                     <PaletteColor
                       token="accent-35"
                       label="35"
                       className="h-16"
+                      labelToken={getShadesLabelToken(35)}
                     />
                     <PaletteColor
                       token="accent-40"
                       label="40"
                       className="h-16"
+                      labelToken={getShadesLabelToken(40)}
                     />
                     <PaletteColor
                       token="accent-50"
                       label="50"
                       className="h-16"
+                      labelToken={getShadesLabelToken(50)}
                     />
                     <PaletteColor
                       token="accent-60"
                       label="60"
                       className="h-16"
+                      labelToken={getShadesLabelToken(60)}
                     />
                     <PaletteColor
                       token="accent-70"
                       label="70"
                       className="h-16"
+                      labelToken={getShadesLabelToken(70)}
                     />
                     <PaletteColor
                       token="accent-80"
                       label="80"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(80)}
                     />
                     <PaletteColor
                       token="accent-90"
                       label="90"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(90)}
                     />
                     <PaletteColor
                       token="accent-95"
                       label="95"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(95)}
                     />
                     <PaletteColor
                       token="accent-98"
                       label="98"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(98)}
                     />
                     <PaletteColor
                       token="accent-99"
                       label="99"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(99)}
                     />
                     <PaletteColor
                       token="accent-100"
                       label="100"
                       className="h-16"
                       borderRadius="rounded-r-md"
-                      labelToken="scrim"
+                      labelToken={getShadesLabelToken(100)}
                     />
                   </div>
                 </div>
@@ -624,7 +679,7 @@ export const ThemePalette = () => {
             </div>
           )}
 
-          {variant === ThemeVariantEnum.static && (
+          {colorShadesPreset === ColorShadesPresetEnum.tailwind && (
             <div className="mt-8 space-y-8">
               <div className="space-y-1">
                 {/* Primary Shades */}
@@ -636,61 +691,68 @@ export const ThemePalette = () => {
                       label="50"
                       className="h-16"
                       borderRadius="rounded-l-md"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(50)}
                     />
                     <PaletteColor
                       token="primary-100"
                       label="100"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(100)}
                     />
                     <PaletteColor
                       token="primary-200"
                       label="200"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(200)}
                     />
                     <PaletteColor
                       token="primary-300"
                       label="300"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(300)}
                     />
                     <PaletteColor
                       token="primary-400"
                       label="400"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(400)}
                     />
                     <PaletteColor
                       token="primary-500"
                       label="500"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(500)}
                     />
                     <PaletteColor
                       token="primary-600"
                       label="600"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(600)}
                     />
                     <PaletteColor
                       token="primary-700"
                       label="700"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(700)}
                     />
                     <PaletteColor
                       token="primary-800"
                       label="800"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(800)}
                     />
                     <PaletteColor
                       token="primary-900"
                       label="900"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(900)}
                     />
                     <PaletteColor
                       token="primary-950"
                       label="950"
                       className="h-16"
                       borderRadius="rounded-r-md"
+                      labelToken={getTailwindShadesLabelToken(950)}
                     />
                   </div>
                 </div>
@@ -704,61 +766,68 @@ export const ThemePalette = () => {
                       label="50"
                       className="h-16"
                       borderRadius="rounded-l-md"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(50)}
                     />
                     <PaletteColor
                       token="secondary-100"
                       label="100"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(100)}
                     />
                     <PaletteColor
                       token="secondary-200"
                       label="200"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(200)}
                     />
                     <PaletteColor
                       token="secondary-300"
                       label="300"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(300)}
                     />
                     <PaletteColor
                       token="secondary-400"
                       label="400"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(400)}
                     />
                     <PaletteColor
                       token="secondary-500"
                       label="500"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(500)}
                     />
                     <PaletteColor
                       token="secondary-600"
                       label="600"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(600)}
                     />
                     <PaletteColor
                       token="secondary-700"
                       label="700"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(700)}
                     />
                     <PaletteColor
                       token="secondary-800"
                       label="800"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(800)}
                     />
                     <PaletteColor
                       token="secondary-900"
                       label="900"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(900)}
                     />
                     <PaletteColor
                       token="secondary-950"
                       label="950"
                       className="h-16"
                       borderRadius="rounded-r-md"
+                      labelToken={getTailwindShadesLabelToken(950)}
                     />
                   </div>
                 </div>
@@ -772,61 +841,68 @@ export const ThemePalette = () => {
                       label="50"
                       className="h-16"
                       borderRadius="rounded-l-md"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(50)}
                     />
                     <PaletteColor
                       token="accent-100"
                       label="100"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(100)}
                     />
                     <PaletteColor
                       token="accent-200"
                       label="200"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(200)}
                     />
                     <PaletteColor
                       token="accent-300"
                       label="300"
                       className="h-16"
-                      labelToken="scrim"
+                      labelToken={getTailwindShadesLabelToken(300)}
                     />
                     <PaletteColor
                       token="accent-400"
                       label="400"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(400)}
                     />
                     <PaletteColor
                       token="accent-500"
                       label="500"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(500)}
                     />
                     <PaletteColor
                       token="accent-600"
                       label="600"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(600)}
                     />
                     <PaletteColor
                       token="accent-700"
                       label="700"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(700)}
                     />
                     <PaletteColor
                       token="accent-800"
                       label="800"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(800)}
                     />
                     <PaletteColor
                       token="accent-900"
                       label="900"
                       className="h-16"
+                      labelToken={getTailwindShadesLabelToken(900)}
                     />
                     <PaletteColor
                       token="accent-950"
                       label="950"
                       className="h-16"
                       borderRadius="rounded-r-md"
+                      labelToken={getTailwindShadesLabelToken(950)}
                     />
                   </div>
                 </div>

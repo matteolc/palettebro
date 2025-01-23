@@ -89,6 +89,14 @@ export const GenerativeThemePresetEnum = createEnum([
   'hyper-color',
 ] as const);
 
+export type ColorShadesPreset = 'tailwind' | 'mui' | 'bootstrap';
+
+export const ColorShadesPresetEnum = createEnum([
+  'tailwind',
+  'mui',
+  'bootstrap',
+] as const);
+
 export type Theme = {
   'color-scheme': ThemeColorScheme;
   variant: ThemeVariant;
@@ -97,6 +105,7 @@ export type Theme = {
   debug?: boolean;
   contrast?: number;
   reverseLightDarkShades?: boolean;
+  colorShadesPreset?: ColorShadesPreset;
   baseColors: {
     primary: string;
     secondary?: string;
@@ -110,7 +119,15 @@ export type ThemePalette = {
   secondaryColor?: SchemistColor;
   accentColor?: SchemistColor;
   isDark: boolean;
-} & Pick<Theme, 'preset' | 'contrast' | 'reverse' | 'debug' | 'reverseLightDarkShades'>;
+} & Pick<
+  Theme,
+  | 'preset'
+  | 'contrast'
+  | 'reverse'
+  | 'debug'
+  | 'reverseLightDarkShades'
+  | 'colorShadesPreset'
+>;
 
 export type Themes = Record<string, Theme>;
 

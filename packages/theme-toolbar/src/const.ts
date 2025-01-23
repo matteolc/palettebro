@@ -1,9 +1,19 @@
-export const DEFAULT_STATIC_PRESET = 'tetrad';
-export const DEFAULT_MUI_PRESET = 'fidelity';
+import {
+  ColorShadesPresetEnum,
+  GenerativeThemeModeEnum,
+  GenerativeThemePageEnum,
+  GenerativeThemePresetEnum,
+  MuiThemePresetEnum,
+  StaticThemePresetEnum,
+} from '@palettebro/theme-generator/types';
+
+export const DEFAULT_STATIC_PRESET = StaticThemePresetEnum.tetrad;
+export const DEFAULT_MUI_PRESET = MuiThemePresetEnum.fidelity;
+export const DEFAULT_COLOR_SHADES_PRESET = ColorShadesPresetEnum.tailwind;
 export const DEFAULT_CONTRAST = 0.0;
-export const DEFAULT_GENERATIVE_MODE = 'transformer';
-export const DEFAULT_GENERATIVE_PAGE = 'brand-2';
-export const DEFAULT_GENERATIVE_PRESET = 'default';
+export const DEFAULT_GENERATIVE_MODE = GenerativeThemeModeEnum.transformer;
+export const DEFAULT_GENERATIVE_PAGE = GenerativeThemePageEnum['brand-2'];
+export const DEFAULT_GENERATIVE_PRESET = GenerativeThemePresetEnum.default;
 export const DEFAULT_GENERATIVE_NUM_COLORS = 3;
 export const DEFAULT_GENERATIVE_TEMPERATURE = 1.2;
 

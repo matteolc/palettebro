@@ -1,5 +1,7 @@
 import type { usePalette } from '@palettebro/theme-generator/palettes';
 import {
+  type ColorShadesPreset,
+  ColorShadesPresetEnum,
   type MuiThemePreset,
   type StaticThemePreset,
   ThemeColorSchemeEnum,
@@ -10,6 +12,7 @@ import {
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { useCustomPalette } from '../utils/use-custom-palette';
 import {
+  DEFAULT_COLOR_SHADES_PRESET,
   DEFAULT_CONTRAST,
   DEFAULT_MUI_PRESET,
   DEFAULT_STATIC_PRESET,
@@ -34,6 +37,10 @@ type PaletteContextType = {
   isDark?: boolean;
   contrast?: number;
   setContrast?: (contrast: number) => void;
+  colorShadesPreset?: ColorShadesPreset;
+  setColorShadesPreset?: (preset: ColorShadesPreset) => void;
+  reverseLightDarkShades?: boolean;
+  setReverseLightDarkShades?: (reverse: boolean) => void;
 };
 
 export const PaletteContext = createContext<PaletteContextType>({});
@@ -54,6 +61,12 @@ export const PaletteProvider = ({
   );
   const [reverse, setReverse] = useState<boolean>(true);
   const [contrast, setContrast] = useState<number>(DEFAULT_CONTRAST);
+  const [colorShadesPreset, setColorShadesPreset] = useState<ColorShadesPreset>(
+    DEFAULT_COLOR_SHADES_PRESET,
+  );
+  const [reverseLightDarkShades, setReverseLightDarkShades] = useState<boolean>(
+    false,
+  );
 
   const { palette } = useCustomPalette({
     colors: baseColors,
@@ -63,6 +76,8 @@ export const PaletteProvider = ({
     preset,
     reverse,
     contrast,
+    colorShadesPreset,
+    reverseLightDarkShades,
   });
 
   const contextValue = useMemo(
@@ -80,17 +95,32 @@ export const PaletteProvider = ({
       setPreset,
       contrast,
       setContrast,
+      colorShadesPreset,
+      setColorShadesPreset,
+      reverseLightDarkShades,
+      setReverseLightDarkShades,
     }),
-    [palette, isDark, variant, reverse, preset, contrast],
+    [
+      palette,
+      isDark,
+      variant,
+      reverse,
+      preset,
+      contrast,
+      colorShadesPreset,
+      reverseLightDarkShades,
+    ],
   );
 
   useEffect(() => {
     switch (variant) {
       case ThemeVariantEnum.mui:
         setPreset(DEFAULT_MUI_PRESET);
+        setColorShadesPreset(ColorShadesPresetEnum.mui);
         break;
       case ThemeVariantEnum.static:
         setPreset(DEFAULT_STATIC_PRESET);
+        setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
         break;
     }
   }, [variant]);

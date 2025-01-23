@@ -45,7 +45,8 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     variant,
     'color-scheme': colorScheme,
     contrast,
-    reverseLightDarkShades
+    reverseLightDarkShades,
+    colorShadesPreset,
   } = props.theme;
 
   if (debug) {
@@ -77,7 +78,8 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     isDark: colorScheme === ThemeColorSchemeEnum.dark,
     contrast: contrast ?? 0.0,
     reverseLightDarkShades,
-    preset
+    preset,
+    colorShadesPreset,
   } satisfies ThemePalette;
 
   const palette = (() => {
