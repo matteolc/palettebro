@@ -53,7 +53,7 @@ const NavigationHeader = () => {
             </h2>
           </Link>
           <div className="hidden lg:flex gap-4 items-center">
-            <ul className="inline-flex h-9 items-center justify-center rounded-lg bg-primary-container p-1 text-primary">
+            <ul className="inline-flex h-9 items-center justify-center rounded-lg bg-primary-container p-1 text-on-primary-container">
               {['palette', 'examples', 'blocks', 'favourites'].map((item) => (
                 <NavLink
                   to={`/${item}`}
