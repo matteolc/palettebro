@@ -23,9 +23,11 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading>Color Palette Reference</PageHeaderHeading>
         <PageHeaderDescription>
-          A complete reference of all color tokens and their shades offered by Palettebro. Colors include{' '}
+          A complete reference of all color tokens and their shades offered by
+          Palettebro. Click on a color token to view{' '}
           <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a> and{' '}
-          <a href="https://www.w3.org/TR/WCAG3/">WCAG 3.0</a> accessibility ratings.
+          <a href="https://www.w3.org/TR/WCAG3/">WCAG 3.0</a> accessibility
+          ratings.
         </PageHeaderDescription>
         <PageActions>
           <DownloadDialog />
