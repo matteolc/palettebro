@@ -26,50 +26,52 @@ export const DynamicPaletteSettings = () => {
   if (!temperature || !setTemperature) return null;
 
   return (
-    <div className="grid grid-cols-2 gap-2">
-      <div>
-        <SettingsSection title="Preset">
-          <RadioCardGroup
-            value={preset}
-            onValueChange={setPreset}
-            className="text-lg"
-          >
-            {Object.keys(GenerativeThemePresetEnum).map((p) => (
-              <RadioCardItem
-                key={p}
-                value={p}
-                className="flex items-center gap-3 py-2 text-zinc-950"
-              >
-                <RadioCardIndicator />
-                <span>{sentenceCase(p.split('-').join(' '))}</span>
-              </RadioCardItem>
-            ))}
-          </RadioCardGroup>
-        </SettingsSection>
+    <div className="flex flex-col h-[28rem]">
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <SettingsSection title="Preset">
+            <RadioCardGroup
+              value={preset}
+              onValueChange={setPreset}
+              className="text-sm"
+            >
+              {Object.keys(GenerativeThemePresetEnum).map((p) => (
+                <RadioCardItem
+                  key={p}
+                  value={p}
+                  className="flex items-center gap-3 py-2 text-zinc-950"
+                >
+                  <RadioCardIndicator />
+                  <span>{sentenceCase(p.split('-').join(' '))}</span>
+                </RadioCardItem>
+              ))}
+            </RadioCardGroup>
+          </SettingsSection>
+        </div>
+
+        <div>
+          <SettingsSection title="Variant">
+            <RadioCardGroup
+              value={page}
+              onValueChange={setPage}
+              className="text-lg grid grid-cols-1 gap-x-2"
+            >
+              {Object.keys(GenerativeThemePageEnum).map((p) => (
+                <RadioCardItem
+                  key={p}
+                  value={p}
+                  className="flex items-center gap-3 py-2 text-zinc-950 text-sm"
+                >
+                  <RadioCardIndicator />
+                  <span>{sentenceCase(p.split('-').join(' '))}</span>
+                </RadioCardItem>
+              ))}
+            </RadioCardGroup>
+          </SettingsSection>
+        </div>
       </div>
 
-      <div>
-        <SettingsSection title="Variant">
-          <RadioCardGroup
-            value={page}
-            onValueChange={setPage}
-            className="text-lg"
-          >
-            {Object.keys(GenerativeThemePageEnum).map((p) => (
-              <RadioCardItem
-                key={p}
-                value={p}
-                className="flex items-center gap-3 py-2 text-zinc-950"
-              >
-                <RadioCardIndicator />
-                <span>{sentenceCase(p.split('-').join(' '))}</span>
-              </RadioCardItem>
-            ))}
-          </RadioCardGroup>
-        </SettingsSection>
-      </div>
-
-      <div className="col-span-2">
+      <div className="mt-auto pt-4">
         <SettingsSlider
           title="Temperature"
           value={temperature}

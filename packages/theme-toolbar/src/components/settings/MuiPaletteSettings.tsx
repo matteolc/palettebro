@@ -15,12 +15,12 @@ export const MuiPaletteSettings = () => {
     useContext(PaletteContext);
 
   return (
-    <div>
+    <div className="flex flex-col h-[28rem]">
       <SettingsSection title="Preset">
         <RadioCardGroup
           value={preset}
           onValueChange={setPreset}
-          className="text-lg grid grid-cols-2 gap-2"
+          className="text-sm grid grid-cols-2 gap-2"
         >
           {Object.keys(MuiThemePresetEnum).map((p) => (
             <RadioCardItem
@@ -35,14 +35,16 @@ export const MuiPaletteSettings = () => {
         </RadioCardGroup>
       </SettingsSection>
 
-      <SettingsSlider
-        title="Contrast"
-        value={contrast ?? 0}
-        onChange={setContrast ?? (() => {})}
-        min={-1.0}
-        max={1.0}
-        step={0.1}
-      />
+      <div className="mt-auto pt-4">
+        <SettingsSlider
+          title="Contrast"
+          value={contrast ?? 0}
+          onChange={setContrast ?? (() => {})}
+          min={-1.0}
+          max={1.0}
+          step={0.1}
+        />
+      </div>
     </div>
   );
 };

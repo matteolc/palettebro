@@ -6,7 +6,7 @@ export const themes = {
   light: {
     'color-scheme': 'light' as const,
     variant: ThemeVariantEnum.static,
-    debug: true,
+    debug: false,
     preset: StaticThemePresetEnum.tetrad,
     reverse: true,
     baseColors: {
@@ -18,7 +18,7 @@ export const themes = {
   dark: {
     'color-scheme': 'dark' as const,
     variant: ThemeVariantEnum.static,
-    debug: true,
+    debug: false,
     preset: StaticThemePresetEnum.tetrad,
     reverse: true,
     baseColors: {

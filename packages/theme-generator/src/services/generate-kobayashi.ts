@@ -19,11 +19,18 @@ export function generateKobayashi(params: GenerateKobayashiParams) {
   >;
   const combinations = imageMap[word] || imageMap.default || [];
 
-  // Convert each combination to HEX colors
-  return combinations.map((combination: string[]) => {
-    return combination
+  // Convert each combination to HEX colors and format as results
+  const results = combinations.map((combination: string[]) => {
+    const palette = combination
       .map((colorCode: string) => {
         if (!colorCode) return '';
+
+        // Handle neutral colors (N) differently as they don't use the slash format
+        if (colorCode.startsWith('N')) {
+          const hue = 'N' as const;
+          const tone = colorCode.slice(1) as keyof (typeof KOBAYASHI_COLOR_MAP)['N'];
+          return KOBAYASHI_COLOR_MAP[hue][tone];
+        }
 
         // Split the color code into hue and tone (e.g., "R/P" -> ["R", "P"])
         const [hue, tone] = colorCode.split('/') as [
@@ -31,18 +38,14 @@ export function generateKobayashi(params: GenerateKobayashiParams) {
           string,
         ];
 
-        // Get the color from the COLOR_MAP
-        if (hue === 'N') {
-          // Handle neutral colors which have a different structure
-          return KOBAYASHI_COLOR_MAP[hue][
-            tone as keyof (typeof KOBAYASHI_COLOR_MAP)['N']
-          ];
-        }
-
         return KOBAYASHI_COLOR_MAP[hue][
           tone as keyof (typeof KOBAYASHI_COLOR_MAP)[keyof typeof KOBAYASHI_COLOR_MAP]
         ];
       })
       .filter(Boolean); // Remove empty strings
+
+    return { palette };
   });
+
+  return { results };
 }

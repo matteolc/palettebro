@@ -19,6 +19,7 @@ import { PaletteToolbarColorSwatch } from './PaletteToolbarColorSwatch';
 import { BASE_TOKENS } from '@/const';
 import { Skeleton } from '@/ui/skeleton';
 import { ColorShadesSettings } from './settings/ColorShadesSettings';
+import { KobayashiPaletteContext } from '@/context';
 
 const PaletteToolbar = ({
   FormComponent,
@@ -38,6 +39,7 @@ const PaletteToolbar = ({
     useContext(PaletteContext);
   const { temperature, profile, preset, adjacency, page, numColors } =
     useContext(GenerativePaletteContext);
+  const { word, image } = useContext(KobayashiPaletteContext);
   const [generatedPalettes, setGeneratedPalettes] = useState<
     { palette: string[] }[] | undefined
   >([]);
@@ -63,6 +65,11 @@ const PaletteToolbar = ({
     if (!result) return;
 
     const { palette } = result;
+    console.dir({
+      primary: palette[0],
+      secondary: palette[1],
+      accent: palette[2],
+    }, { depth: null });
     setBaseColors?.({
       primary: palette[0],
       secondary: palette[1],
@@ -100,49 +107,59 @@ const PaletteToolbar = ({
               action={generateEndpoint}
               method="POST"
             >
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={profile}
-                name="mode"
-              />
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={preset}
-                name="preset"
-              />
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={numColors}
-                name="colors"
-              />
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={temperature}
-                name="temperature"
-              />
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={adjacency}
-                name="adjacency"
-              />
-              <input
-                type="text"
-                readOnly
-                className="hidden"
-                value={page}
-                name="page"
-              />
-
+              <input type="hidden" name="mode" value={variant} />
+              {variant === ThemeVariantEnum.kobayashi && (
+                <>
+                  <input type="hidden" name="image" value={image} />
+                  <input type="hidden" name="word" value={word} />
+                </>
+              )}
+              {variant === ThemeVariantEnum.dynamic && (
+                <>
+                  <input
+                    type="text"
+                    readOnly
+                    className="hidden"
+                    value={profile}
+                    name="mode"
+                  />
+                  <input
+                    type="text"
+                    readOnly
+                    className="hidden"
+                    value={preset}
+                    name="preset"
+                  />
+                  <input
+                    type="text"
+                    readOnly
+                    className="hidden"
+                    value={numColors}
+                    name="colors"
+                  />
+                  <input
+                    type="text"
+                    readOnly
+                    className="hidden"
+                    value={temperature}
+                    name="temperature"
+                  />
+                  <input
+                    type="text"
+                    readOnly
+                    className="hidden"
+                    value={adjacency}
+                    name="adjacency"
+                  />
+                  <input
+                    type="text"
+                    readOnly
+                    className="hidden"
+                    value={page}
+                    name="page"
+                  />
+                </>
+              )}
               {(() => {
                 switch (variant) {
                   case ThemeVariantEnum.dynamic:
@@ -159,8 +176,8 @@ const PaletteToolbar = ({
                     return (
                       <button
                         className="px-1 py-2"
-                        type="button"
-                        onClick={() => handleSetBaseColors(randomUsableColor())}
+                        type={shouldSubmit ? 'submit' : 'button'}
+                        onClick={popPalette}
                       >
                         <RiMagicLine />
                       </button>
