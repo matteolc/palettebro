@@ -11,6 +11,8 @@ import {
   type Theme,
   ThemeColorSchemeEnum,
   type ThemePalette,
+  ThemeVariantEnum,
+  ThemeVariantToPalette,
 } from '../types';
 import { getMuiPalette } from './getMuiPalette';
 import { getStaticPalette } from './getStaticPalette';
@@ -24,11 +26,12 @@ const logColor = (
   if (!color) return;
   if (!parsedColor) return;
 
-  const colorName = nearestColorName(formatSchemistToHex(parsedColor));
+  const hexColor = formatSchemistToHex(parsedColor);
+  const colorName = nearestColorName(hexColor);
   console.info(
-    ` ├─ ${picocolors.green('✔︎')} Generating theme for ${type} color: ${picocolors.dim(
+    ` ├─ ${picocolors.green('✔︎')} Generating theme for ${type} color ${color}: ${picocolors.dim(
       colorName,
-    )} (${picocolors.dim(color)})`,
+    )} (${picocolors.dim(hexColor)})`,
   );
   console.info(
     `%c${type} (input)\n${formatSchemistToHex(parsedColor)}`,
@@ -64,11 +67,9 @@ export const getPalette = (props: { theme: Theme }): Palette => {
   const accentColor =
     variant === 'dynamic' && accent ? parseColor(accent)[1] : undefined;
 
-  if (debug) {
-    logColor('primary', primary, primaryColor);
-    logColor('secondary', secondary, secondaryColor);
-    logColor('accent', accent, accentColor);
-  }
+  logColor('primary', primary, primaryColor);
+  logColor('secondary', secondary, secondaryColor);
+  logColor('accent', accent, accentColor);
 
   const paletteProps = {
     primaryColor,
@@ -82,18 +83,7 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     colorShadesPreset,
   } satisfies ThemePalette;
 
-  const palette = (() => {
-    switch (variant) {
-      case 'mui':
-        return getMuiPalette(paletteProps);
-      case 'static':
-        return getStaticPalette(paletteProps);
-      case 'dynamic':
-        return getDynamicPalette(paletteProps);
-      default:
-        return getStaticPalette(paletteProps);
-    }
-  })();
+  const palette = ThemeVariantToPalette[variant](paletteProps);
 
   if (debug) {
     for (const [key, value] of Object.entries(palette)) {

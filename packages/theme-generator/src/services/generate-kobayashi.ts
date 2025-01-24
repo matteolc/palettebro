@@ -47,5 +47,7 @@ export function generateKobayashi(params: GenerateKobayashiParams) {
     return { palette };
   });
 
+  console.dir(results, { depth: null });
+
   return { results };
 }

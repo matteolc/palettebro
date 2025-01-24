@@ -1,7 +1,10 @@
 import { createContext, useEffect, useState } from 'react';
 import type { KobayashiImage } from '@palettebro/theme-generator/types';
 import { KobayashiImageEnum } from '@palettebro/theme-generator/types';
-import { KOBAYASHI_COLOR_COMBINATIONS_MAP, KOBAYASHI_LIFESTYLE_KEYWORDS } from '@palettebro/theme-generator';
+import {
+  KOBAYASHI_COLOR_COMBINATIONS_MAP,
+  KOBAYASHI_LIFESTYLE_KEYWORDS,
+} from '@palettebro/theme-generator';
 
 type KobayashiPaletteContextType = {
   word: string;
@@ -27,10 +30,16 @@ export const KobayashiPaletteContextProvider = ({
   const [word, setWord] = useState(
     KOBAYASHI_LIFESTYLE_KEYWORDS[KobayashiImageEnum.pretty][0],
   );
-  const words = Object.keys(KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<string, string[][]>);
+  const words = Object.keys(
+    KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<string, string[][]>,
+  );
 
   useEffect(() => {
-    setWord(Object.keys(KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<string, string[][]>)[0]);
+    setWord(
+      Object.keys(
+        KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<string, string[][]>,
+      )[0],
+    );
   }, [image]);
 
   return (

@@ -227,14 +227,14 @@ const PaletteToolbar = ({
                 type="text"
                 readOnly
                 className="hidden"
-                value={palette?.secondary.color}
+                value={palette?.secondary?.color}
                 name="secondary"
               />
               <input
                 type="text"
                 readOnly
                 className="hidden"
-                value={palette?.accent.color}
+                value={palette?.accent?.color}
                 name="accent"
               />
               <button type="submit" className="px-1 py-2">

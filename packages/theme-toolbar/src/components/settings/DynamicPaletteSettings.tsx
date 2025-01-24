@@ -27,7 +27,7 @@ export const DynamicPaletteSettings = () => {
 
   return (
     <div className="flex flex-col h-[28rem]">
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-x-2 gap-y-1">
         <div>
           <SettingsSection title="Preset">
             <RadioCardGroup
@@ -54,7 +54,7 @@ export const DynamicPaletteSettings = () => {
             <RadioCardGroup
               value={page}
               onValueChange={setPage}
-              className="text-lg grid grid-cols-1 gap-x-2"
+              className="text-lg grid grid-cols-1 gap-x-2 gap-y-1  "
             >
               {Object.keys(GenerativeThemePageEnum).map((p) => (
                 <RadioCardItem

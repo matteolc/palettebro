@@ -45,7 +45,7 @@ export const PaletteSettings = () => {
       <PopoverContent
         sideOffset={14}
         align="start"
-        className="w-full min-h-[28rem] bg-white z-50 rounded-md border border-zinc-200 p-2.5 text-sm shadow-md"
+        className="min-h-[28rem] w-full bg-white z-50 rounded-md border border-zinc-200 p-2.5 text-sm shadow-md"
       >
         <Tabs defaultValue={variant}>
           <TabsList className="bg-zinc-100 text-zinc-950">

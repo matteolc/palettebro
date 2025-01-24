@@ -20,11 +20,11 @@ export const KobayashiPaletteSettings = () => {
     <div className="flex flex-col h-[28rem]">
       <div className="grid grid-cols-2 gap-2">
         <div>
-          <SettingsSection title="Image">
+          <SettingsSection title="Preset">
             <RadioCardGroup
               value={image}
               onValueChange={setImage}
-              className="text-sm grid grid-cols-2 gap-x-2"
+              className="text-sm grid grid-cols-2 gap-x-2 gap-y-1 "
             >
               {Object.keys(KobayashiImageEnum).map((p) => (
                 <RadioCardItem
@@ -45,7 +45,7 @@ export const KobayashiPaletteSettings = () => {
             <RadioCardGroup
               value={word}
               onValueChange={setWord}
-              className="text-sm grid grid-cols-1 gap-x-2"
+              className="text-sm grid grid-cols-1 gap-x-2 gap-y-1 "
             >
               {words.map((p) => (
                 <RadioCardItem

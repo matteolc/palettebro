@@ -20,13 +20,13 @@ export const MuiPaletteSettings = () => {
         <RadioCardGroup
           value={preset}
           onValueChange={setPreset}
-          className="text-sm grid grid-cols-2 gap-2"
+          className="text-sm grid grid-cols-2 gap-x-2 gap-y-1"
         >
           {Object.keys(MuiThemePresetEnum).map((p) => (
             <RadioCardItem
               key={p}
               value={p}
-              className="flex items-center gap-3 py-2 text-zinc-950"
+              className="flex items-center gap-3 py-2 text-zinc-950 "
             >
               <RadioCardIndicator />
               <span>{sentenceCase(p.split('-').join(' '))}</span>

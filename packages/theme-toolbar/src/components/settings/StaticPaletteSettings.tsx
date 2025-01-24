@@ -19,7 +19,7 @@ export const StaticPaletteSettings = () => {
         <RadioCardGroup
           value={preset}
           onValueChange={setPreset}
-          className="text-sm grid grid-cols-1 gap-2"
+          className="text-sm grid grid-cols-1 gap-x-2 gap-y-1 "
         >
           {Object.keys(StaticThemePresetEnum).map((p) => (
             <RadioCardItem
