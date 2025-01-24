@@ -533,8 +533,8 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
     ],
     generous: [
       ['R/L', 'R/P', 'Y/Vp'],
-      ['R/L', 'YR/Lgr', 'YR/DI'],
-      ['YR/Lgr', 'R/L', 'YR/DI'],
+      ['R/L', 'YR/Lgr', 'YR/Dl'],
+      ['YR/Lgr', 'R/L', 'YR/Dl'],
       ['YR/L', 'Y/Vp', 'Y/L'],
       ['R/L', 'R/P', 'Y/Vp'],
       ['YR/Lgr', 'Y/Vp', 'GY/L'],
@@ -551,10 +551,10 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
       ['YR/L', 'Y/L', 'Y/Lgr'],
       ['Y/L', 'Y/Lgr', 'GY/L'],
       ['Y/L', 'GY/Lgr', 'GY/L'],
-      ['YR/DI', 'YR/Lgr', 'GY/S'],
+      ['YR/Dl', 'YR/Lgr', 'GY/S'],
       ['GY/Vp', 'GY/L', 'GY/Dp'],
       ['GY/Lgr', 'Y/Vp', 'G/Lgr'],
-      ['GY/Gr', 'Y/L', 'G/DI'],
+      ['GY/Gr', 'Y/L', 'G/Dl'],
       ['Y/Lgr', 'G/Gr', 'G/Dp'],
     ],
     peaceful: [

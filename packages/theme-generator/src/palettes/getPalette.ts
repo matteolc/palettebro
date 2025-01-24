@@ -4,19 +4,13 @@ import { formatSchemistToHex } from '../color/formatting';
 import { nearestColorName } from '../color/nearest-color-name';
 import { parseColor } from '../color/parse-color';
 import {
-  type MuiThemePreset,
   type Palette,
   type SchemistColor,
-  type StaticThemePreset,
   type Theme,
   ThemeColorSchemeEnum,
   type ThemePalette,
-  ThemeVariantEnum,
   ThemeVariantToPalette,
 } from '../types';
-import { getMuiPalette } from './getMuiPalette';
-import { getStaticPalette } from './getStaticPalette';
-import { getDynamicPalette } from './getDynamicPalette';
 
 const logColor = (
   type: string,
@@ -62,16 +56,14 @@ export const getPalette = (props: { theme: Theme }): Palette => {
   const [_, primaryColor] = parseColor(primary);
   if (!primaryColor) return {};
 
-  const secondaryColor =
-    variant === 'dynamic' && secondary ? parseColor(secondary)[1] : undefined;
-  const accentColor =
-    variant === 'dynamic' && accent ? parseColor(accent)[1] : undefined;
+  const secondaryColor = secondary ? parseColor(secondary)[1] : undefined;
+  const accentColor = accent ? parseColor(accent)[1] : undefined;
 
   logColor('primary', primary, primaryColor);
   logColor('secondary', secondary, secondaryColor);
   logColor('accent', accent, accentColor);
 
-  const paletteProps = {
+  const palette = ThemeVariantToPalette[variant]({
     primaryColor,
     secondaryColor,
     accentColor,
@@ -81,11 +73,10 @@ export const getPalette = (props: { theme: Theme }): Palette => {
     reverseLightDarkShades,
     preset,
     colorShadesPreset,
-  } satisfies ThemePalette;
-
-  const palette = ThemeVariantToPalette[variant](paletteProps);
+  } satisfies ThemePalette);
 
   if (debug) {
+    console.info(palette);
     for (const [key, value] of Object.entries(palette)) {
       console.info(
         `%c${picocolors.dim(key)}\n${value.name}`,

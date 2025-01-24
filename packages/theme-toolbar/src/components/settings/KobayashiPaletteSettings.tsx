@@ -8,16 +8,16 @@ import {
 import { KobayashiImageEnum } from '@palettebro/theme-generator/types';
 import { SettingsSection } from './SettingsSection';
 import { KobayashiPaletteContext } from '@/context/KobayashiPaletteContext';
+import { Checkbox } from '@/ui/checkbox';
 
 export const KobayashiPaletteSettings = () => {
-  const { word, words, setWord, image, setImage } = useContext(
-    KobayashiPaletteContext,
-  );
+  const { word, words, setWord, image, setImage, generative, setGenerative } =
+    useContext(KobayashiPaletteContext);
 
   if (!word || !setImage) return null;
 
   return (
-    <div className="flex flex-col h-[28rem]">
+    <div className="flex flex-col h-[30rem]">
       <div className="grid grid-cols-2 gap-2">
         <div>
           <SettingsSection title="Preset">
@@ -45,7 +45,7 @@ export const KobayashiPaletteSettings = () => {
             <RadioCardGroup
               value={word}
               onValueChange={setWord}
-              className="text-sm grid grid-cols-1 gap-x-2 gap-y-1 "
+              className="text-sm grid grid-cols-1 gap-x-2 gap-y-1"
             >
               {words.map((p) => (
                 <RadioCardItem
@@ -60,6 +60,14 @@ export const KobayashiPaletteSettings = () => {
             </RadioCardGroup>
           </SettingsSection>
         </div>
+      </div>
+      <div className="mt-auto pt-4">
+        <SettingsSection
+          title="Generative"
+          rightElement={
+            <Checkbox checked={generative} onCheckedChange={setGenerative} />
+          }
+        />
       </div>
     </div>
   );

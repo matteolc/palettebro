@@ -5,9 +5,9 @@ import { rgbToCulori } from '../culori';
 import { round } from '../../utils/math';
 
 const formatRgb = ({ r, g, b, a = 1 }: RgbColor, precision = 3) => {
-  const rr = round(r, precision);
-  const rg = round(g, precision);
-  const rb = round(b, precision);
+  const rr = Math.round(25500 * r) / 100; // round(r, precision);
+  const rg = Math.round(25500 * g) / 100; // round(g, precision);
+  const rb = Math.round(25500 * b) / 100; // round(b, precision);
   const ra = round(clamp(a, 1), precision);
   return ra < 1
     ? `rgba(${rr}, ${rg}, ${rb}, ${ra})`

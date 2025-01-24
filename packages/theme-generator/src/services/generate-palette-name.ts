@@ -16,6 +16,7 @@ export const generatePaletteName = async (props: {
       format_instructions: parser.getFormatInstructions(),
       primary_color: primary,
       secondary_color: secondary,
+      accent_color: accent,
     }),
   );
 };

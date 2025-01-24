@@ -1,3 +1,4 @@
+// TODO: Decide if we want to use this tool or not
 import { DynamicStructuredTool } from '@langchain/core/tools';
 import { z } from 'zod';
 import { extractWebContent } from './extract-palette-from-url';

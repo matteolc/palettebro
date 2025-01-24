@@ -1,20 +1,21 @@
-import { parse, parseHex } from 'culori/fn';
+import { parse, parseHex, type Rgb } from 'culori/fn';
 import { hslToSchemist, lchToSchemist, rgbToSchemist } from './conversion';
 import { hslFromCulori, lchFromCulori, rgbFromCulori } from './culori';
-import type { ColorFormat } from './formatting';
 import type { SchemistColor } from './types';
 
-export const parseColor = (color: string): [string, SchemistColor | undefined] => {
+export const parseColor = (
+  color: string,
+): [string, SchemistColor | undefined] => {
   try {
     // Add input validation
     if (!color || typeof color !== 'string') {
       throw new Error('Invalid color input');
     }
-    
+
     const hex = parseHex(color);
 
     if (hex) {
-      return ['hex', rgbToSchemist(rgbFromCulori(hex))];
+      return ['hex', rgbToSchemist(rgbFromCulori(hex as Rgb))];
     }
 
     const parsed = parse(color);

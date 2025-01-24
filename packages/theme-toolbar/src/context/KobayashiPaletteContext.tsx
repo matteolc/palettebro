@@ -12,6 +12,8 @@ type KobayashiPaletteContextType = {
   setWord: (word: string) => void;
   image: KobayashiImage;
   setImage: (image: KobayashiImage) => void;
+  generative: boolean;
+  setGenerative: (generative: boolean) => void;
 };
 
 export const KobayashiPaletteContext =
@@ -21,6 +23,8 @@ export const KobayashiPaletteContext =
     setWord: () => {},
     image: KobayashiImageEnum.pretty,
     setImage: () => {},
+    generative: false,
+    setGenerative: () => {},
   });
 
 export const KobayashiPaletteContextProvider = ({
@@ -33,7 +37,7 @@ export const KobayashiPaletteContextProvider = ({
   const words = Object.keys(
     KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<string, string[][]>,
   );
-
+  const [generative, setGenerative] = useState(false);
   useEffect(() => {
     setWord(
       Object.keys(
@@ -44,7 +48,15 @@ export const KobayashiPaletteContextProvider = ({
 
   return (
     <KobayashiPaletteContext.Provider
-      value={{ word, words, setWord, image, setImage }}
+      value={{
+        word,
+        words,
+        setWord,
+        image,
+        setImage,
+        generative,
+        setGenerative,
+      }}
     >
       {children}
     </KobayashiPaletteContext.Provider>

@@ -39,7 +39,7 @@ const PaletteToolbar = ({
     useContext(PaletteContext);
   const { temperature, profile, preset, adjacency, page, numColors } =
     useContext(GenerativePaletteContext);
-  const { word, image } = useContext(KobayashiPaletteContext);
+  const { word, image, generative } = useContext(KobayashiPaletteContext);
   const [generatedPalettes, setGeneratedPalettes] = useState<
     { palette: string[] }[] | undefined
   >([]);
@@ -65,11 +65,14 @@ const PaletteToolbar = ({
     if (!result) return;
 
     const { palette } = result;
-    console.dir({
-      primary: palette[0],
-      secondary: palette[1],
-      accent: palette[2],
-    }, { depth: null });
+    console.dir(
+      {
+        primary: palette[0],
+        secondary: palette[1],
+        accent: palette[2],
+      },
+      { depth: null },
+    );
     setBaseColors?.({
       primary: palette[0],
       secondary: palette[1],
@@ -80,7 +83,7 @@ const PaletteToolbar = ({
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(
     () => setGeneratedPalettes([]),
-    [temperature, profile, preset, page],
+    [temperature, profile, preset, page, word, image, generative],
   );
 
   const popPalette = () => setGeneratedPalettes(generatedPalettes?.slice(1));
@@ -112,6 +115,7 @@ const PaletteToolbar = ({
                 <>
                   <input type="hidden" name="image" value={image} />
                   <input type="hidden" name="word" value={word} />
+                  <input type="hidden" name="generative" value={String(generative)} />
                 </>
               )}
               {variant === ThemeVariantEnum.dynamic && (

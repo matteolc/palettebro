@@ -1,20 +1,21 @@
 import {
-  type Culori,
+  type Lch,
+  type Oklch,
   convertLabToRgb,
   convertLchToLab,
   convertOklabToRgb,
+  modeLch,
 } from 'culori/fn';
 import type { LchColor } from '../types';
-import { modeLch } from './modes';
 
-const lchFromCulori = ({ l, c, h, alpha }: Culori.Lch): LchColor => ({
+const lchFromCulori = ({ l, c, h, alpha }: Lch): LchColor => ({
   l,
   c: (c / modeLch.ranges.c[1]) * 100,
   h: h ?? 0,
   a: alpha,
 });
 
-const lchToCulori = ({ l, c, h, a }: LchColor): Culori.Lch => ({
+const lchToCulori = ({ l, c, h, a }: LchColor): Lch => ({
   mode: 'lch',
   l,
   c: (c / 100) * modeLch.ranges.c[1],
@@ -22,10 +23,10 @@ const lchToCulori = ({ l, c, h, a }: LchColor): Culori.Lch => ({
   alpha: a,
 });
 
-const culoriLchToRgb = (color: Culori.Lch) =>
+const culoriLchToRgb = (color: Lch) =>
   convertLabToRgb(convertLchToLab(color));
 
-const culoriOklchToRgb = (color: Culori.Oklch) =>
-  convertOklabToRgb(convertLchToLab(color, 'oklab'));
+const culoriOklchToRgb = (color: Oklch) =>
+  convertOklabToRgb(convertLchToLab(color));
 
 export { lchFromCulori, lchToCulori, culoriLchToRgb, culoriOklchToRgb };

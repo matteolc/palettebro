@@ -1,16 +1,26 @@
 import {
   KOBAYASHI_COLOR_COMBINATIONS_MAP,
-  KOBAYASHI_COLOR_MAP,
 } from '../const';
 import type { KobayashiImage } from '../types';
+import { parseKobayashiColorCode } from '../utils/parse-kobayashi-color-code';
+import { getKobayashiPalette } from './get-kobayashi-palette';
 
 export type GenerateKobayashiParams = {
   image: KobayashiImage;
   word: string;
+  generative: boolean;
 };
 
-export function generateKobayashi(params: GenerateKobayashiParams) {
-  const { image, word } = params;
+export async function generateKobayashi(params: GenerateKobayashiParams) {
+  const { image, word, generative } = params;
+
+  if (generative) {
+    const response = await getKobayashiPalette({ image, word });
+    const results = response.palette.map((item) => ({
+      palette: [item.primaryColor, item.secondaryColor, item.accentColor],
+    }));
+    return { results };
+  }
 
   // Get the color combinations for the image and word
   const imageMap = KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<
@@ -22,32 +32,11 @@ export function generateKobayashi(params: GenerateKobayashiParams) {
   // Convert each combination to HEX colors and format as results
   const results = combinations.map((combination: string[]) => {
     const palette = combination
-      .map((colorCode: string) => {
-        if (!colorCode) return '';
-
-        // Handle neutral colors (N) differently as they don't use the slash format
-        if (colorCode.startsWith('N')) {
-          const hue = 'N' as const;
-          const tone = colorCode.slice(1) as keyof (typeof KOBAYASHI_COLOR_MAP)['N'];
-          return KOBAYASHI_COLOR_MAP[hue][tone];
-        }
-
-        // Split the color code into hue and tone (e.g., "R/P" -> ["R", "P"])
-        const [hue, tone] = colorCode.split('/') as [
-          keyof typeof KOBAYASHI_COLOR_MAP,
-          string,
-        ];
-
-        return KOBAYASHI_COLOR_MAP[hue][
-          tone as keyof (typeof KOBAYASHI_COLOR_MAP)[keyof typeof KOBAYASHI_COLOR_MAP]
-        ];
-      })
+      .map(parseKobayashiColorCode)
       .filter(Boolean); // Remove empty strings
 
     return { palette };
   });
-
-  console.dir(results, { depth: null });
 
   return { results };
 }

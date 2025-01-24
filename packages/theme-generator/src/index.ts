@@ -113,7 +113,11 @@ export const presetSampleWithKeyAndNameHash = (
   Object.fromEntries(
     samples.map(([key, name, color]) => [
       key,
-      { name, color: formatRgbToHex(schemistToRgb(color)) },
+      {
+        name,
+        color: formatRgbToHex(schemistToRgb(color)),
+        originalColor: color,
+      },
     ]),
   );
 

@@ -14,7 +14,7 @@ export const StaticPaletteSettings = () => {
   const { preset, setPreset, reverse, setReverse } = useContext(PaletteContext);
 
   return (
-    <div className="flex flex-col h-[28rem]">
+    <div className="flex flex-col h-[30rem]">
       <SettingsSection title="Preset">
         <RadioCardGroup
           value={preset}

@@ -26,14 +26,14 @@ export const DynamicPaletteSettings = () => {
   if (!temperature || !setTemperature) return null;
 
   return (
-    <div className="flex flex-col h-[28rem]">
+    <div className="flex flex-col h-[30rem]">
       <div className="grid grid-cols-2 gap-x-2 gap-y-1">
         <div>
           <SettingsSection title="Preset">
             <RadioCardGroup
               value={preset}
               onValueChange={setPreset}
-              className="text-sm"
+              className="text-sm gap-y-1"
             >
               {Object.keys(GenerativeThemePresetEnum).map((p) => (
                 <RadioCardItem
@@ -54,13 +54,13 @@ export const DynamicPaletteSettings = () => {
             <RadioCardGroup
               value={page}
               onValueChange={setPage}
-              className="text-lg grid grid-cols-1 gap-x-2 gap-y-1  "
+              className="text-sm gap-y-1"
             >
               {Object.keys(GenerativeThemePageEnum).map((p) => (
                 <RadioCardItem
                   key={p}
                   value={p}
-                  className="flex items-center gap-3 py-2 text-zinc-950 text-sm"
+                  className="flex items-center gap-3 py-2 text-zinc-950"
                 >
                   <RadioCardIndicator />
                   <span>{sentenceCase(p.split('-').join(' '))}</span>

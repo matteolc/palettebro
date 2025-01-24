@@ -37,7 +37,7 @@ export const ColorShadesSettings = () => {
           <RadioCardGroup
             value={colorShadesPreset}
             onValueChange={setColorShadesPreset}
-            className="text-lg"
+            className="text-sm gap-y-1"
           >
             {Object.keys(ColorShadesPresetEnum).map((p) => (
               <RadioCardItem

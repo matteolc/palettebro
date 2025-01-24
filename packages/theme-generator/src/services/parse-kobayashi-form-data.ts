@@ -6,9 +6,11 @@ export function parseKobayashiFormData(
   const image =
     (formData.get('image') as GenerateKobayashiParams['image']) || 'pretty';
   const word = (formData.get('word') as string) || 'pretty';
+  const generative = formData.get('generative') === 'true';
 
   return {
     image,
     word,
+    generative,
   };
 }
