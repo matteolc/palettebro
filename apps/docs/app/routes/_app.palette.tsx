@@ -7,7 +7,8 @@ import {
 import { generateMeta } from '~/utils/meta-utils';
 import type { MetaFunction } from '@vercel/remix';
 import { DownloadDialog } from '~/components/DownloadDialog';
-import { ThemePalette } from '@palettebro/theme-toolbar';
+import { ThemePalette, ThemeUtilities } from '@palettebro/theme-toolbar';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 
 export const meta: MetaFunction = () => {
   return generateMeta({
@@ -35,7 +36,18 @@ export default function Page() {
       </PageHeader>
 
       <div className="container mt-8">
-        <ThemePalette />
+        <Tabs defaultValue="palette" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="palette">Theme Palette</TabsTrigger>
+            <TabsTrigger value="utilities">Theme Utilities</TabsTrigger>
+          </TabsList>
+          <TabsContent value="palette">
+            <ThemePalette />
+          </TabsContent>
+          <TabsContent value="utilities">
+            <ThemeUtilities />
+          </TabsContent>
+        </Tabs>
       </div>
     </>
   );

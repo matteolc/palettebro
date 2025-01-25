@@ -18,6 +18,7 @@ export async function generateKobayashi(params: GenerateKobayashiParams) {
     const response = await getKobayashiPalette({ image, word });
     const results = response.palette.map((item) => ({
       palette: [item.primaryColor, item.secondaryColor, item.accentColor],
+      isDark: item.isDark,
     }));
     return { results };
   }
@@ -35,7 +36,7 @@ export async function generateKobayashi(params: GenerateKobayashiParams) {
       .map(parseKobayashiColorCode)
       .filter(Boolean); // Remove empty strings
 
-    return { palette };
+    return { palette, isDark: false };
   });
 
   return { results };

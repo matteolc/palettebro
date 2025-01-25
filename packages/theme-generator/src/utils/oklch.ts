@@ -1,8 +1,8 @@
-import type { Culori } from 'culori';
+import type { Oklch } from 'culori';
 import { oklch } from 'culori';
 import { cutNumber } from './cut-number';
 
-const oklchColorToString = ({ l, c, h }: Culori.Oklch) =>
+const oklchColorToString = ({ l, c, h }: Oklch) =>
   `${Number.parseFloat((cutNumber(l) * 100).toFixed(6))}% ${cutNumber(
     c,
   )} ${cutNumber(h ?? 0)}`;

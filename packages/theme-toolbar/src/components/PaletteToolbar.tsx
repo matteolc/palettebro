@@ -41,11 +41,13 @@ const PaletteToolbar = ({
     useContext(GenerativePaletteContext);
   const { word, image, generative } = useContext(KobayashiPaletteContext);
   const [generatedPalettes, setGeneratedPalettes] = useState<
-    { palette: string[] }[] | undefined
+    { palette: string[]; isDark?: boolean; score?: number }[] | undefined
   >([]);
   const generateFetcher = useFetcher<{
     results: {
       palette: string[];
+      isDark?: boolean;
+      score?: number;
     }[];
   }>({
     key: 'generate',
@@ -65,19 +67,12 @@ const PaletteToolbar = ({
     if (!result) return;
 
     const { palette } = result;
-    console.dir(
-      {
-        primary: palette[0],
-        secondary: palette[1],
-        accent: palette[2],
-      },
-      { depth: null },
-    );
     setBaseColors?.({
       primary: palette[0],
       secondary: palette[1],
       accent: palette[2],
     });
+    setIsDark?.(result.isDark ?? isDark ?? false);
   }, [generatedPalettes]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>

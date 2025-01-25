@@ -14,25 +14,13 @@ const schemistToRgb = ({ h, s, l, a }: SchemistColor): RgbColor => {
     l: l / 100,
   };
 
-  try {
-    const rgb = rgbFromCulori(
-      culoriOklchToRgb({
-        ...culoriOkhslToOklch(hsl),
-        h,
-        alpha: a,
-      }),
-    );
-    
-    return {
-      r: Math.min(255, Math.max(0, rgb.r)),
-      g: Math.min(255, Math.max(0, rgb.g)),
-      b: Math.min(255, Math.max(0, rgb.b)),
-      a: rgb.a
-    };
-  } catch (e) {
-    console.warn('Color conversion failed:', e);
-    return { r: 0, g: 0, b: 0, a };
-  }
+  return rgbFromCulori(
+    culoriOklchToRgb({
+      ...culoriOkhslToOklch(hsl),
+      h,
+      alpha: a,
+    })
+  );
 };
 
 const rgbToSchemist = (color: RgbColor): SchemistColor => {

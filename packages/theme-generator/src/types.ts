@@ -140,7 +140,6 @@ export type KobayashiImage =
   | 'casual'
   | 'dynamic'
   | 'gorgeous'
-  | 'ethnic'
   | 'romantic'
   | 'natural'
   | 'elegant'
@@ -157,7 +156,6 @@ export const KobayashiImageEnum = createEnum([
   'casual',
   'dynamic',
   'gorgeous',
-  'ethnic',
   'romantic',
   'natural',
   'elegant',

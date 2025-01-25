@@ -384,7 +384,6 @@ export const KOBAYASHI_LIFESTYLE_KEYWORDS = {
     'fiery',
     'striking',
   ],
-  ethnic: ['ethnic', 'wild', 'robust', 'untamed'],
   gorgeous: [
     'gorgeous',
     'flamboyant',
@@ -495,20 +494,30 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
     ],
   },
   dynamic: {
+    active: [
+      ['R/V', 'YR/V', 'Y/V'],
+    ],
     hot: [
-      [],
+      ['R/V', 'RP/V', 'YR/S'],
+    ],
+    provocative: [
+      ['R/V', 'P/V', 'RP/S'],
+    ],
+    striking: [
+      ['R/V', 'PB/V', 'P/V'],
     ],
   },
   gorgeous: {
-    abundant: [['']],
-    decorative: [['']],
-    mature: [['']],
-  },
-  ethnic: {
-    default: [['']],
+    abundant: [['RP/Dp', 'P/S', 'PB/Dp']],
+    decorative: [['RP/V', 'P/S', 'PB/V']],
+    mature: [['RP/Dp', 'R/Dp', 'P/Dp']],
+    rich: [['P/Dp', 'RP/Dp', 'R/Dp']],
   },
   romantic: {
-    default: [['']],
+    charming: [['RP/P', 'R/P', 'P/P']],
+    soft: [['RP/P', 'R/Vp', 'P/Vp']],
+    dreamy: [['P/P', 'RP/Vp', 'PB/P']],
+    sweet: [['RP/B', 'R/P', 'P/P']],
   },
   natural: {
     free: [
@@ -567,13 +576,6 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
       ['YR/P', 'Y/Vp', 'B/P'],
       ['G/Lgr', 'Y/Vp', 'B/L'],
     ],
-    restful: [
-      ['YR/P', 'Y/Vp', 'GY/Lgr'],
-      ['YR/P', 'YR/Vp', 'Y/Lgr'],
-      ['YR/S', 'Y/Lgr', 'Y/L'],
-      ['YR/Vp', 'YR/P', 'GY/Lgr'],
-      ['Y/Vp', 'GY/Lgr', 'GY/L'],
-    ],
     'simple-and-appealing': [
       ['Y/Lgr', 'GY/L', 'GY/Gr'],
       ['Y/L', 'Y/Vp', 'N8'],
@@ -591,28 +593,45 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
     ],
   },
   clear: {
-    default: [['']],
+    clean: [['B/V', 'N9.5', 'BG/V']],
+    fresh: [['G/V', 'BG/V', 'B/V']],
+    young: [['B/B', 'BG/B', 'N9.5']],
+    pure: [['B/Vp', 'N9.5', 'BG/Vp']],
+    simple: [['N9.5', 'B/L', 'BG/L']],
   },
   'cool-casual': {
-    default: [['']],
+    sporty: [['B/V', 'PB/V', 'N9.5']],
+    youthful: [['B/B', 'PB/B', 'BG/B']],
   },
   modern: {
-    default: [['']],
+    distinguished: [['PB/Dp', 'B/Dp', 'N2']],
+    intellectual: [['PB/Dp', 'N3', 'B/Dp']],
+    modern: [['N2', 'PB/V', 'B/V']],
+    cultivated: [['PB/Dp', 'B/Dp', 'BG/Dp']],
+    precise: [['B/V', 'N2', 'PB/V']],
+    sharp: [['B/V', 'PB/V', 'N1.5']],
   },
   elegant: {
-    default: [['']],
+    graceful: [['P/P', 'RP/P', 'PB/P']],
+    polished: [['PB/L', 'B/L', 'N8']],
+    refined: [['P/L', 'RP/L', 'PB/L']],
+    tender: [['RP/P', 'P/P', 'PB/P']],
   },
   dandy: {
-    default: [['']],
+    placid: [['PB/Dgr', 'B/Dgr', 'N3']],
   },
   formal: {
-    default: [['']],
+    formal: [['PB/Dk', 'N2', 'B/Dk']],
   },
   chich: {
-    default: [['']],
+    chich: [['N2', 'N4', 'N6']],
+    modest: [['N4', 'N6', 'N8']],
+    quiet: [['N3', 'N5', 'N7']],
+    sober: [['N2', 'N3', 'N5']],
   },
   classic: {
-    default: [['']],
+    classic: [['YR/Dk', 'R/Dk', 'N3']],
+    rustic: [['YR/Dl', 'Y/Dl', 'N5']],
   },
 } satisfies Record<KobayashiImage, Record<string, string[][]>>;
 
