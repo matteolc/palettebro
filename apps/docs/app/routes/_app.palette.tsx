@@ -38,8 +38,8 @@ export default function Page() {
       <div className="container mt-8">
         <Tabs defaultValue="palette" className="space-y-4">
           <TabsList>
-            <TabsTrigger value="palette">Theme Palette</TabsTrigger>
-            <TabsTrigger value="utilities">Theme Utilities</TabsTrigger>
+            <TabsTrigger value="palette">Palette</TabsTrigger>
+            <TabsTrigger value="utilities">Utilities</TabsTrigger>
           </TabsList>
           <TabsContent value="palette">
             <ThemePalette />
