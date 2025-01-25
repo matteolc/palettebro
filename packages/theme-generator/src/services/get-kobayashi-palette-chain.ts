@@ -3,7 +3,6 @@ import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableSequence } from '@langchain/core/runnables';
 import { z } from 'zod';
 import { ChatOpenAIClient } from './openai';
-import { getPaletteTool } from './get-palette-tool';
 
 export const getKobayashiPaletteChain = () => {
   const zodSchema = z.object({

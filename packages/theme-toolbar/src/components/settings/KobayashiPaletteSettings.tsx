@@ -45,7 +45,7 @@ export const KobayashiPaletteSettings = () => {
             <RadioCardGroup
               value={word}
               onValueChange={setWord}
-              className="text-sm grid grid-cols-1 gap-x-2 gap-y-1"
+              className="text-sm grid grid-cols-2 gap-x-2 gap-y-1"
             >
               {words.map((p) => (
                 <RadioCardItem
@@ -64,6 +64,7 @@ export const KobayashiPaletteSettings = () => {
       <div className="mt-auto pt-4">
         <SettingsSection
           title="Generative"
+          className='items-center'
           rightElement={
             <Checkbox checked={generative} onCheckedChange={setGenerative} />
           }

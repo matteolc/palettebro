@@ -16,7 +16,7 @@ export const SettingsSection = ({
   return (
     <div className={className}>
       <div className="flex flex-row items-center justify-between text-zinc-950">
-        <div className="text-lg mb-2 font-bold">{title}</div>
+        <div className="text-md mb-2 font-bold">{title}</div>
         {rightElement}
       </div>
       {children}

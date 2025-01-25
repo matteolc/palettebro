@@ -15,7 +15,7 @@ export const MuiPaletteSettings = () => {
     useContext(PaletteContext);
 
   return (
-    <div className="flex flex-col h-[30rem]">
+    <div className="grid grid-rows-2 gap-x-2 gap-y-1 h-[30rem]">
       <SettingsSection title="Preset">
         <RadioCardGroup
           value={preset}

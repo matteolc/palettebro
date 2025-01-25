@@ -37,6 +37,7 @@ export const StaticPaletteSettings = () => {
       <div className="mt-auto pt-4">
         <SettingsSection
           title="Reverse"
+          className='items-center'
           rightElement={
             <Checkbox checked={reverse} onCheckedChange={setReverse} />
           }

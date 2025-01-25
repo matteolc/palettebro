@@ -21,7 +21,8 @@ export const SettingsSlider = ({
   return (
     <SettingsSection
       title={title}
-      rightElement={<div className="text-lg mb-2">{value}</div>}
+      className='items-center'
+      rightElement={<div className="text-md mb-2">{value}</div>}
     >
       <Slider
         value={[value]}
