@@ -1,124 +1,102 @@
-import color from '../nodes/color';
-import lightness from '../nodes/lightness';
-import negative from '../nodes/negative';
-import saturation from '../nodes/saturation';
 import splitComplementaryLeft from '../nodes/splitComplementaryLeft';
 import splitComplementaryRight from '../nodes/splitComplementaryRight';
 import tetradLeft from '../nodes/tetradLeft';
 import tetradRight from '../nodes/tetradRight';
 import triadLeft from '../nodes/triadLeft';
 import triadRight from '../nodes/triadRight';
-import { ColorShadesPresetEnum, type ThemePalette } from '../types';
-import background from './background';
-import materialScale from './materialScale';
-import materialTones from './materialTones';
-import outlineScale from './outlineScale';
-import rainbow from './rainbow';
-import shadowAndScrim from './shadowAndScrim';
-import surface from './surface';
-import tailwindScale from './tailwindScale';
-import bootstrapScale from './bootstrapScale';
+import {
+  ColorShadesPresetEnum,
+  StaticThemePresetEnum,
+  type ThemePalette,
+} from '../types';
 import type { Preset } from './types';
+import primary from '../nodes/primary';
+import { randomUsableColor } from '../color';
+import defs from '../nodes';
+import shades from '../nodes/shades';
+
+type NodeConfig = {
+  secondary: {
+    default: string;
+    reverse: string;
+  };
+  accent: {
+    default: string;
+    reverse: string;
+  };
+};
+
+const presetNodeMapping: Record<
+  keyof typeof StaticThemePresetEnum,
+  NodeConfig
+> = {
+  'split-complementary': {
+    secondary: {
+      default: splitComplementaryLeft.type,
+      reverse: splitComplementaryRight.type,
+    },
+    accent: {
+      default: splitComplementaryRight.type,
+      reverse: splitComplementaryLeft.type,
+    },
+  },
+  tetrad: {
+    secondary: {
+      default: tetradLeft.type,
+      reverse: tetradRight.type,
+    },
+    accent: {
+      default: tetradRight.type,
+      reverse: tetradLeft.type,
+    },
+  },
+  triad: {
+    secondary: {
+      default: triadLeft.type,
+      reverse: triadRight.type,
+    },
+    accent: {
+      default: triadRight.type,
+      reverse: triadLeft.type,
+    },
+  },
+} as const;
 
 export default (options?: ThemePalette) => {
-  const scaleNodes = (() => {
-    switch (options?.colorShadesPreset) {
-      case ColorShadesPresetEnum.mui:
-        return materialScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes;
-      case ColorShadesPresetEnum.bootstrap:
-        return bootstrapScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes;
-      default:
-        return tailwindScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes;
-    }
-  })();
+  const getNodeDef = (type: keyof typeof defs, token: string) => ({
+    ...defs[type],
+    token,
+    children: shades({
+      isDark: options?.isDark ?? false,
+      colorShadesPreset:
+        options?.colorShadesPreset ?? ColorShadesPresetEnum.tailwind,
+      reverseLightDarkShades: options?.reverseLightDarkShades ?? false,
+    }),
+  });
 
-  const shadeNodes = [
-    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...scaleNodes,
-  ];
-
-  const secondaryNode = {
-    token: 'secondary',
-    children: shadeNodes,
-    type: '',
-  };
-  if (options?.preset === 'split-complementary') {
-    secondaryNode.type = options?.reverse
-      ? splitComplementaryRight.type
-      : splitComplementaryLeft.type;
-  } else if (options?.preset === 'tetrad') {
-    secondaryNode.type = options?.reverse ? tetradRight.type : tetradLeft.type;
-  } else {
-    secondaryNode.type = options?.reverse ? triadRight.type : triadLeft.type;
-  }
-
-  const accentNode = {
-    token: 'accent',
-    children: shadeNodes,
-    type: '',
-  };
-  if (options?.preset === 'split-complementary') {
-    accentNode.type = options?.reverse
-      ? splitComplementaryLeft.type
-      : splitComplementaryRight.type;
-  } else if (options?.preset === 'tetrad') {
-    accentNode.type = options?.reverse ? tetradLeft.type : tetradRight.type;
-  } else {
-    accentNode.type = options?.reverse ? triadLeft.type : triadRight.type;
-  }
+  const defaultPreset = StaticThemePresetEnum.triad;
+  const currentPreset = options?.preset ?? defaultPreset;
+  const preset = currentPreset as keyof typeof StaticThemePresetEnum;
+  const direction = options?.reverse ? 'reverse' : 'default';
 
   return {
-    label: 'Spot palette',
-    description: 'A static palette with a primary color',
+    label: 'Static palette',
+    description: 'A static palette with fixed color combinations',
     nodes: [
-      {
-        type: color.type,
-        isHidden: false,
-        token: 'primary',
-        args: {
-          color: options?.primaryColor,
-        },
+      primary({
+        isDark: options?.isDark ?? false,
+        primaryColor: options?.primaryColor ?? randomUsableColor(),
+        colorShadesPreset:
+          options?.colorShadesPreset ?? ColorShadesPresetEnum.tailwind,
+        reverseLightDarkShades: options?.reverseLightDarkShades ?? false,
         children: [
-          ...shadeNodes,
-          ...rainbow.nodes,
-          {
-            type: lightness.type,
-            token: 'inverse-primary',
-            args: {
-              amount: options?.isDark ? 40 : 80,
-            },
-          },
-          secondaryNode,
-          accentNode,
-          {
-            type: negative.type,
-            token: 'error',
-            isHidden: false,
-            children: [
-              ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-            ],
-          },
-          ...background({ isDark: options?.isDark ?? false }).nodes,
-          {
-            type: saturation.type,
-            isHidden: true,
-            args: {
-              amount: options?.isDark ? 8 : 12.5,
-            },
-            children: [
-              ...surface({ isDark: options?.isDark ?? false }).nodes,
-              ...outlineScale({ isDark: options?.isDark ?? false }).nodes,
-              ...shadowAndScrim({ isDark: options?.isDark ?? false }).nodes,
-            ],
-          },
+          getNodeDef(
+            presetNodeMapping[preset].secondary[direction],
+            'secondary',
+          ),
+          getNodeDef(presetNodeMapping[preset].accent[direction], 'accent'),
         ],
-      },
+      }),
     ],
   } as Preset;
 };

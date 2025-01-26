@@ -11,13 +11,13 @@ export default (options?: {
     description: 'Material Design tone variations',
     nodes: [
       // Primary colors
-      {
-        type: lightness.type,
-        token: '$',
-        args: {
-          amount: isDark ? 80 : 40,
-        },
-      },
+      // {
+      //   type: lightness.type,
+      //   token: '$',
+      //   args: {
+      //     amount: isDark ? 80 : 40,
+      //   },
+      // },
       {
         type: lightness.type,
         token: 'on-$',

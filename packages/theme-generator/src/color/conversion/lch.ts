@@ -7,7 +7,7 @@ import {
   lchToCulori,
   rgbToCulori,
 } from '../culori';
-import { clampChroma } from 'culori/fn';
+import { clampChroma } from 'culori';
 import type { LchColor, SchemistColor } from '../types';
 
 export const lchToSchemist = (color: LchColor): SchemistColor =>

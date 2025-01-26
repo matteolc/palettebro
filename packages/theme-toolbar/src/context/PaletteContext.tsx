@@ -50,7 +50,9 @@ export const PaletteProvider = ({
   themes,
   children,
 }: { lightOrDark?: string; themes: Themes; children: React.ReactNode }) => {
-  const [isDark, setIsDark] = useState<boolean>(lightOrDark === 'dark');
+  const [isDark, setIsDark] = useState<boolean>(
+    lightOrDark === ThemeColorSchemeEnum.dark,
+  );
   const [baseColors, setBaseColorsState] = useState<BaseColors>(
     themes[isDark ? ThemeColorSchemeEnum.dark : ThemeColorSchemeEnum.light]
       .baseColors,
@@ -64,9 +66,8 @@ export const PaletteProvider = ({
   const [colorShadesPreset, setColorShadesPreset] = useState<ColorShadesPreset>(
     DEFAULT_COLOR_SHADES_PRESET,
   );
-  const [reverseLightDarkShades, setReverseLightDarkShades] = useState<boolean>(
-    false,
-  );
+  const [reverseLightDarkShades, setReverseLightDarkShades] =
+    useState<boolean>(false);
 
   const { palette } = useCustomPalette({
     colors: baseColors,

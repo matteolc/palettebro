@@ -27,10 +27,6 @@ const logColor = (
       colorName,
     )} (${picocolors.dim(hexColor)})`,
   );
-  console.info(
-    `%c${type} (input)\n${formatSchemistToHex(parsedColor)}`,
-    `color: #000000; background-color: ${formatSchemistToHex(parsedColor)}; padding: 0.5rem;`,
-  );
 };
 
 export const getPalette = (props: { theme: Theme }): Palette => {

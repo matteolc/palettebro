@@ -3,7 +3,7 @@ import {
   type Okhsl,
   convertLabToLch,
   convertOkhslToOklab,
-} from 'culori/fn';
+} from 'culori';
 import type { HslColor } from '../types';
 
 const hslFromCulori = ({ h, s, l, alpha }: Hsl): HslColor => ({

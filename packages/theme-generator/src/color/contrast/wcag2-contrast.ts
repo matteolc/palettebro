@@ -1,4 +1,4 @@
-import { wcagContrast } from 'culori/fn';
+import { wcagContrast } from 'culori';
 import { schemistToRgb } from '../conversion';
 import { rgbToCulori } from '../culori';
 import { parseColor } from '../parse-color';

@@ -1,6 +1,6 @@
 import { rgbToCulori } from '../culori';
 import { culoriRgbToOkhsl, culoriRgbToOklch } from '../culori';
-import type { Okhsl } from 'culori/fn';
+import type { Okhsl } from 'culori';
 import { rgbFromCulori } from '../culori';
 import { culoriOklchToRgb } from '../culori';
 import { culoriOkhslToOklch } from '../culori';

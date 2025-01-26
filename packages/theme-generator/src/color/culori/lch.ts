@@ -5,7 +5,7 @@ import {
   convertLchToLab,
   convertOklabToRgb,
   modeLch,
-} from 'culori/fn';
+} from 'culori';
 import type { LchColor } from '../types';
 
 const lchFromCulori = ({ l, c, h, alpha }: Lch): LchColor => ({

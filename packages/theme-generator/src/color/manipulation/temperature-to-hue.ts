@@ -15,7 +15,7 @@ export const temperatureToHue = (kelvins: number): number => {
     return 95.09736692688655; // D65 white point hue
   }
 
-  const temperature = clamp(kelvins, 1000, 40000) / 100;
+  const temperature = clamp(kelvins, 40000, 1000) / 100;
 
   // Calculate red component
   const r =

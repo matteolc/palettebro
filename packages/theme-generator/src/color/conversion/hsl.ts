@@ -4,7 +4,7 @@ import {
   hslToCulori,
   rgbToCulori,
 } from '../culori';
-import { convertHslToRgb, convertRgbToHsl } from 'culori/fn';
+import { convertHslToRgb, convertRgbToHsl } from 'culori';
 import type { HslColor, SchemistColor } from '../types';
 import { rgbToSchemist, schemistToRgb } from './rgb';
 

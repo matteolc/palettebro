@@ -1,89 +1,14 @@
 import color from '../nodes/color';
-import lightness from '../nodes/lightness';
-import negative from '../nodes/negative';
-import saturation from '../nodes/saturation';
 import { ColorShadesPresetEnum, type ThemePalette } from '../types';
-import background from './background';
-import bootstrapScale from './bootstrapScale';
-import materialScale from './materialScale';
-import materialTones from './materialTones';
-import outlineScale from './outlineScale';
-import rainbow from './rainbow';
-import shadowAndScrim from './shadowAndScrim';
-import tailwindScale from './tailwindScale';
-import surface from './surface';
 import type { Preset } from './types';
 import semanticPairs from './semanticPairs';
+import shades from '../nodes/shades';
+import primary from '../nodes/primary';
+import { randomUsableColor } from '../color';
 
 export default (
   options?: ThemePalette & { token: 'primary' | 'secondary' | 'accent' },
 ) => {
-  const scaleNodes = (() => {
-    switch (options?.colorShadesPreset) {
-      case ColorShadesPresetEnum.mui:
-        return materialScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes;
-      case ColorShadesPresetEnum.bootstrap:
-        return bootstrapScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes;
-      default:
-        return tailwindScale({
-          reverseLightDarkShades: options?.reverseLightDarkShades,
-        }).nodes;
-    }
-  })();
-
-  const shadeNodes = [
-    ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-    ...scaleNodes,
-  ];
-
-  const nodes =
-    options?.token === 'primary'
-      ? [
-          ...shadeNodes,
-          ...semanticPairs.nodes,
-          ...rainbow.nodes,
-          {
-            type: lightness.type,
-            token: 'inverse-primary',
-            args: {
-              amount: options?.isDark ? 40 : 80,
-            },
-          },
-          {
-            type: negative.type,
-            token: 'error',
-            isHidden: false,
-            children: [
-              ...materialTones({ isDark: options?.isDark ?? false }).nodes,
-            ],
-          },
-          {
-            type: saturation.type,
-            isHidden: true,
-            args: {
-              amount: options?.isDark ? 8 : 12.5,
-            },
-            children: [
-              ...background({ isDark: options?.isDark ?? false }).nodes,
-              ...surface({ isDark: options?.isDark ?? false }).nodes,
-              ...outlineScale({ isDark: options?.isDark ?? false }).nodes,
-              ...shadowAndScrim({ isDark: options?.isDark ?? false }).nodes,
-            ],
-          },
-        ]
-      : [...shadeNodes, ...semanticPairs.nodes];
-
-  const startColor =
-    options?.token === 'primary'
-      ? options?.primaryColor
-      : options?.token === 'secondary'
-        ? options?.secondaryColor
-        : options?.accentColor;
-
   return {
     label: 'Dynamic palette',
     description:
@@ -94,9 +19,33 @@ export default (
         isHidden: false,
         token: options?.token,
         args: {
-          color: startColor,
+          color:
+            options?.token === 'primary'
+              ? options?.primaryColor
+              : options?.token === 'secondary'
+                ? options?.secondaryColor
+                : options?.accentColor,
         },
-        children: nodes,
+        children:
+          options?.token === 'primary'
+            ? [
+                primary({
+                  isDark: options?.isDark ?? false,
+                  primaryColor: options?.primaryColor ?? randomUsableColor(),
+                  colorShadesPreset:
+                    options?.colorShadesPreset ??
+                    ColorShadesPresetEnum.tailwind,
+                  reverseLightDarkShades:
+                    options?.reverseLightDarkShades ?? false,
+                }),
+              ]
+            : shades({
+                isDark: options?.isDark ?? false,
+                colorShadesPreset:
+                  options?.colorShadesPreset ?? ColorShadesPresetEnum.tailwind,
+                reverseLightDarkShades:
+                  options?.reverseLightDarkShades ?? false,
+              }),
       },
     ],
   } as Preset;

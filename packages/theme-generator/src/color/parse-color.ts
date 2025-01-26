@@ -1,4 +1,4 @@
-import { parse, parseHex, type Rgb } from 'culori/fn';
+import { parse, parseHex, type Rgb } from 'culori';
 import { hslToSchemist, lchToSchemist, rgbToSchemist } from './conversion';
 import { hslFromCulori, lchFromCulori, rgbFromCulori } from './culori';
 import type { SchemistColor } from './types';
