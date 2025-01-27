@@ -71,8 +71,8 @@ const SHADCN_COLOR_UTILITIES = {
     foreground: 'oklch(var(--on-surface))',
   },
   muted: {
-    DEFAULT: 'oklch(var(--on-secondary)/<alpha-value>)',
-    foreground: 'oklch(var(--secondary)/<alpha-value>)',
+    DEFAULT: 'oklch(var(--surface)/<alpha-value>)',
+    foreground: 'oklch(var(--on-surface)/<alpha-value>)',
   },
   destructive: {
     DEFAULT: 'oklch(var(--error)/<alpha-value>)',
