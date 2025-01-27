@@ -11,8 +11,6 @@ import {
   ColorShadesPresetEnum,
 } from '@palettebro/theme-generator/types';
 
-export * from './theming/const';
-
 export const getColorUtilities = (colorShadesPreset: ColorShadesPreset) => ({
   ...getPaletteColors(colorShadesPreset),
   ...SHADCN_COLOR_UTILITIES,

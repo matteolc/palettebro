@@ -1,6 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
-import { SHADCN_COLOR_UTILITIES } from '@palettebro/tailwind-theme';
-import { PaletteColor } from './PaletteColor';
 import { PaletteColorWithClassNames } from './PaletteColorWithClassNames';
 
 export const ThemeUtilitiesDisplay = () => {
