@@ -36,12 +36,12 @@ export default function Index() {
         <div className="container flex items-center py-4">
           <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
             <Badge
-              variant="outline"
-              className="mb-4 text-md rounded-full text-accent"
+              variant="accent"
+              className="mb-4 text-md rounded-full text-on-accent border-accent"
             >
               <span className="relative flex h-3 w-3 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-accent" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-accent" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-on-accent" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-on-accent" />
               </span>
               Introducing Palettebro 1.0
             </Badge>
@@ -67,7 +67,12 @@ export default function Index() {
               <Button asChild size="sm">
                 <NavLink to="/docs">Get Started</NavLink>
               </Button>
-              <Button asChild size="sm" variant="link">
+              <Button
+                asChild
+                size="sm"
+                variant="link"
+                className="text-muted-foreground"
+              >
                 <NavLink to="/examples">Examples</NavLink>
               </Button>
             </PageActions>

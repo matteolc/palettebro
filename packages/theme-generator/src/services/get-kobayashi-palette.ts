@@ -11,7 +11,7 @@ export const getKobayashiPalette = async (props: {
   return await withRetry(() =>
     chain.invoke({
       question:
-        'Please provide at least 10 color palettes for the image and word following the Kobayashi color system.',
+        'Please provide at least 10 different and unique color palettes for the image and word following the Kobayashi color system.',
       format_instructions: parser.getFormatInstructions(),
       image,
       word,
