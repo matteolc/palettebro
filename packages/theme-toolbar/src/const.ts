@@ -13,7 +13,7 @@ export const DEFAULT_COLOR_SHADES_PRESET = ColorShadesPresetEnum.tailwind;
 export const DEFAULT_CONTRAST = 0.0;
 export const DEFAULT_GENERATIVE_MODE = GenerativeThemeModeEnum.transformer;
 export const DEFAULT_GENERATIVE_PAGE = GenerativeThemePageEnum['brand-2'];
-export const DEFAULT_GENERATIVE_PRESET = GenerativeThemePresetEnum.default;
+export const DEFAULT_GENERATIVE_PRESET = GenerativeThemePresetEnum.pastel;
 export const DEFAULT_GENERATIVE_NUM_COLORS = 3;
 export const DEFAULT_GENERATIVE_TEMPERATURE = 1.2;
 

@@ -1,7 +1,6 @@
 import color from '../nodes/color';
 import { ColorShadesPresetEnum, type ThemePalette } from '../types';
 import type { Preset } from './types';
-import semanticPairs from './semanticPairs';
 import shades from '../nodes/shades';
 import primary from '../nodes/primary';
 import { randomUsableColor } from '../color';

@@ -1,3 +1,4 @@
+import contrasting from '../nodes/contrasting';
 import lightness from '../nodes/lightness';
 import type { Preset } from './types';
 
@@ -19,11 +20,11 @@ export default (options?: {
       //   },
       // },
       {
-        type: lightness.type,
+        type: contrasting.type,
         token: 'on-$',
-        args: {
-          amount: isDark ? 20 : 100,
-        },
+        // args: {
+        //   amount: isDark ? 20 : 100,
+        // },
       },
       {
         type: lightness.type,

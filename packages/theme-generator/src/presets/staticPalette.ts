@@ -62,6 +62,10 @@ const presetNodeMapping: Record<
   },
 } as const;
 
+const isValidStaticPreset = (preset: string): preset is keyof typeof StaticThemePresetEnum => {
+  return preset in presetNodeMapping;
+};
+
 export default (options?: ThemePalette) => {
   const getNodeDef = (type: keyof typeof defs, token: string) => ({
     ...defs[type],
@@ -75,8 +79,14 @@ export default (options?: ThemePalette) => {
   });
 
   const defaultPreset = StaticThemePresetEnum.triad;
-  const currentPreset = options?.preset ?? defaultPreset;
-  const preset = currentPreset as keyof typeof StaticThemePresetEnum;
+  let currentPreset = options?.preset ?? defaultPreset;
+  
+  // Ensure we have a valid static preset
+  if (!isValidStaticPreset(currentPreset)) {
+    // If the preset is invalid, fall back to the default
+    currentPreset = defaultPreset;
+  }
+  
   const direction = options?.reverse ? 'reverse' : 'default';
 
   return {
@@ -91,10 +101,10 @@ export default (options?: ThemePalette) => {
         reverseLightDarkShades: options?.reverseLightDarkShades ?? false,
         children: [
           getNodeDef(
-            presetNodeMapping[preset].secondary[direction],
+            presetNodeMapping[currentPreset].secondary[direction],
             'secondary',
           ),
-          getNodeDef(presetNodeMapping[preset].accent[direction], 'accent'),
+          getNodeDef(presetNodeMapping[currentPreset].accent[direction], 'accent'),
         ],
       }),
     ],

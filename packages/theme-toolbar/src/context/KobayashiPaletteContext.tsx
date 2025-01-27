@@ -37,7 +37,7 @@ export const KobayashiPaletteContextProvider = ({
   const words = Object.keys(
     KOBAYASHI_COLOR_COMBINATIONS_MAP[image] as Record<string, string[][]>,
   );
-  const [generative, setGenerative] = useState(false);
+  const [generative, setGenerative] = useState(true);
   useEffect(() => {
     setWord(
       Object.keys(

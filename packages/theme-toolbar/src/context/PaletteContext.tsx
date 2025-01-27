@@ -123,6 +123,9 @@ export const PaletteProvider = ({
         setPreset(DEFAULT_STATIC_PRESET);
         setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
         break;
+      case ThemeVariantEnum.dynamic:
+        setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
+        break;
     }
   }, [variant]);
 
