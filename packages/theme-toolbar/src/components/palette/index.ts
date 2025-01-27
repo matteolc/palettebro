@@ -1,2 +1,2 @@
 export * from './ThemePalette';
-export * from './ThemeUtilities';
+export * from './ThemeUtilitiesDisplay';

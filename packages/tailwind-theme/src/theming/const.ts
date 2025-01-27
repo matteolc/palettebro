@@ -82,9 +82,9 @@ const SHADCN_COLOR_UTILITIES = {
   input: 'oklch(var(--outline)/<alpha-value>)',
   ring: 'oklch(var(--outline-variant)/<alpha-value>)',
   chart: Object.fromEntries(
-    Array.from({ length: 5 }, (_, i) => [
+    Array.from({ length: 11 }, (_, i) => [
       String(i + 1),
-      `oklch(var(--primary-rainbow-${i + 1}))`,
+      `oklch(var(--primary-rainbow-${i}))`,
     ]),
   ),
   sidebar: {
