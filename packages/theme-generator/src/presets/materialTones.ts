@@ -17,7 +17,8 @@ export default (options?: {
         args: {
           lightAmount: 100, // Full white in dark mode
           contrastAmount: 80, // Strong contrast if needed
-          threshold: 60, // Switch to contrast mode if base color is >60% light
+          threshold: 70, // Switch to contrast mode if base color is >70% light
+          preserveHue: 30, // Preserve 30% of the original hue to maintain harmony
         },
       },
       {

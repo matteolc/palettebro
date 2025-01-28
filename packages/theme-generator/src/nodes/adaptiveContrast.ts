@@ -1,4 +1,4 @@
-import { setLightness, contrastingColor } from '../color/manipulation';
+import { setLightness, contrastingColor, setHue, setSaturation } from '../color/manipulation';
 import type { NodeDef } from './types';
 
 export default {
@@ -33,14 +33,43 @@ export default {
       max: 100,
       default: 50,
     },
+    {
+      type: 'range',
+      name: 'preserveHue',
+      label: 'Preserve Original Hue',
+      unit: '%',
+      min: 0,
+      max: 100,
+      default: 30,
+    },
   ],
   samples: 'continuous',
-  apply(color, { lightAmount, contrastAmount, threshold }) {
+  apply(color, { lightAmount, contrastAmount, threshold, preserveHue }) {
     // If color is too light (above threshold), use contrast
     if (color.l > threshold) {
-      return contrastingColor(color, contrastAmount);
+      const contrastedColor = contrastingColor(color, contrastAmount);
+      
+      // If we want to preserve some of the original hue
+      if (preserveHue > 0) {
+        // Calculate a weighted average between the original hue and the contrasted hue
+        const hueWeight = preserveHue / 100;
+        const targetHue = color.h;
+        const currentHue = contrastedColor.h;
+        
+        // Interpolate between the current hue and target hue
+        const newHue = currentHue + (targetHue - currentHue) * hueWeight;
+        
+        // Desaturate slightly to make the color more neutral
+        const desaturated = setSaturation(contrastedColor, contrastedColor.s * 0.7);
+        
+        // Apply the interpolated hue
+        return setHue(desaturated, newHue);
+      }
+      
+      return contrastedColor;
     }
-    // Otherwise use lightness
+    
+    // For dark colors, simply use lightness
     return setLightness(color, lightAmount);
   },
 } as NodeDef; 
