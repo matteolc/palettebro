@@ -482,6 +482,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      simple-color-converter:
+        specifier: ^2.1.13
+        version: 2.1.13
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
@@ -5996,6 +5999,11 @@ packages:
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
+  /color_library@0.0.2:
+    resolution: {integrity: sha512-qdsir2B3bfOYLvdAiKaMHadulQBPp+1liP+1HK5KbB1mtlklA68xdIoudSWbPYVuWkd+4FOPPONDANnBw9pPbA==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
   /colorparsley@0.1.8:
     resolution: {integrity: sha512-rObESTTTE6G5qO5WFwFxWPggpw4KfpxnLC6Ssl8bITBnNVRhDsyCeTRAUxWQNVTx2pRknKlO2nddYTxjkdNFaw==}
 
@@ -10669,6 +10677,13 @@ packages:
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+
+  /simple-color-converter@2.1.13:
+    resolution: {integrity: sha512-li2tcrdBH+0eFwSkELUNH8a7YUpuDT3m+PlF2gSMH2vEVfgzkp1aea+HWNWohgJ1no0m2Sxmt4AWnX3kqk9AZw==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      color_library: 0.0.2
+    dev: false
 
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
