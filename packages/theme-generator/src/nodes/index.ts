@@ -26,6 +26,7 @@ import warning from './warning';
 
 export default {
   [analogous.type]: analogous,
+  [color.type]: color,
   [complementary.type]: complementary,
   [contrasting.type]: contrasting,
   [highlight.type]: highlight,
@@ -33,7 +34,6 @@ export default {
   [informative.type]: informative,
   [lightness.type]: lightness,
   [negative.type]: negative,
-  [color.type]: color,
   [positive.type]: positive,
   [saturation.type]: saturation,
   [shadow.type]: shadow,
@@ -45,7 +45,7 @@ export default {
   [triadLeft.type]: triadLeft,
   [triadRight.type]: triadRight,
   [warning.type]: warning,
-};
+} as const;
 
 export const defList = [
   analogous,
