@@ -1,5 +1,5 @@
 import {
-  CSSColorPicker,
+  HEXColorPicker,
   HSLColorPicker,
   LCHColorPicker,
   PantoneColorPicker,
@@ -7,48 +7,57 @@ import {
   RGBColorPicker,
   TailwindColorPicker,
 } from '~/pickers';
-import type { SchemistPickerComponent, StringPickerComponent } from '~/types';
+import {
+  type ColorPickerPicker,
+  ColorPickerPickerEnum,
+  type ColorPickerType,
+  ColorPickerTypeEnum,
+  type SchemistPickerComponent,
+  type StringPickerComponent,
+} from '~/types';
 
-const tabs = [
+const DEFAULT_PICKER = ColorPickerPickerEnum.HSL;
+
+const PICKER_TABS = [
   {
-    value: 'rgb',
-    type: 'schemist' as const,
+    value: ColorPickerPickerEnum.RGB,
+    type: ColorPickerTypeEnum.schemist,
     component: RGBColorPicker as SchemistPickerComponent,
   },
   {
-    value: 'hsl',
-    type: 'schemist' as const,
+    value: ColorPickerPickerEnum.HSL,
+    type: ColorPickerTypeEnum.schemist,
     component: HSLColorPicker as SchemistPickerComponent,
   },
   {
-    value: 'lch',
-    type: 'schemist' as const,
+    value: ColorPickerPickerEnum.LCH,
+    type: ColorPickerTypeEnum.schemist,
     component: LCHColorPicker as SchemistPickerComponent,
   },
   {
-    value: 'css',
-    type: 'schemist' as const,
-    component: CSSColorPicker as SchemistPickerComponent,
+    value: ColorPickerPickerEnum.HEX,
+    type: ColorPickerTypeEnum.schemist,
+    component: HEXColorPicker as SchemistPickerComponent,
   },
   {
-    value: 'tw',
-    type: 'string' as const,
+    value: ColorPickerPickerEnum.TW,
+    type: ColorPickerTypeEnum.string,
     component: TailwindColorPicker as StringPickerComponent,
   },
   {
-    value: 'pantone',
-    type: 'string' as const,
+    value: ColorPickerPickerEnum.PANTONE,
+    type: ColorPickerTypeEnum.string,
     component: PantoneColorPicker as StringPickerComponent,
   },
   {
-    value: 'ral',
-    type: 'string' as const,
+    value: ColorPickerPickerEnum.RAL,
+    type: ColorPickerTypeEnum.string,
     component: RALColorPicker as StringPickerComponent,
   },
 ] satisfies {
-  value: string;
-  type: 'string' | 'schemist';
+  value: ColorPickerPicker;
+  type: ColorPickerType;
   component: StringPickerComponent | SchemistPickerComponent;
 }[];
 
-export { tabs };
+export { PICKER_TABS, DEFAULT_PICKER };

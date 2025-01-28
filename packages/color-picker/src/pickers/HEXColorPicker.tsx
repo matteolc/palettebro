@@ -5,7 +5,7 @@ import type { SchemistBasedPickerProps } from '~/types';
 import { Button } from '~/ui/button';
 import { Input } from '~/ui/input';
 
-const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({
+const HEXColorPicker: React.FC<SchemistBasedPickerProps> = ({
   value,
   onChange,
 }) => {
@@ -27,15 +27,15 @@ const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({
   return (
     <div className="flex flex-col gap-y-4 my-4">
       <div className="flex flex-row items-center justify-between text-zinc-950">
-        <label className="text-lg mb-2" htmlFor="css-color-picker">
-          HTML
+        <label className="text-md mb-2" htmlFor="hex-color-picker">
+          Hex
         </label>
-        <div className="text-lg font-bold mb-2">{formattedValue}</div>
+        <div className="text-md font-bold mb-2">{formattedValue}</div>
       </div>
       <Input
         placeholder="Enter color"
-        id="css-color-picker"
-        name="css-color-picker"
+        id="hex-color-picker"
+        name="hex-color-picker"
         type="text"
         value={formattedValue}
         onChange={(e) => setFormattedValue(e.target.value.trim())}
@@ -46,4 +46,4 @@ const CSSColorPicker: React.FC<SchemistBasedPickerProps> = ({
   );
 };
 
-export { CSSColorPicker };
+export { HEXColorPicker };

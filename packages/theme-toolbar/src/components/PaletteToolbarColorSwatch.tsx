@@ -7,7 +7,7 @@ import { sentenceCase } from '@/lib/string';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { getPaletteColor } from '@/utils/get-palette-color';
-
+import { ColorPickerPickerEnum } from '@palettebro/color-picker/types';
 export const PaletteToolbarColorSwatch = ({
   token,
   onLockUnlock,
@@ -42,6 +42,24 @@ export const PaletteToolbarColorSwatch = ({
   const shouldShowLock =
     variant === ThemeVariantEnum.dynamic && EDITABLE_TOKENS.includes(token);
 
+  const META_COLOR_PICKERS = [
+    ColorPickerPickerEnum.HEX,
+    ColorPickerPickerEnum.TW,
+    ColorPickerPickerEnum.PANTONE,
+    ColorPickerPickerEnum.RAL,
+  ];
+
+  const DEFAULT_COLOR_PICKERS = [
+    ColorPickerPickerEnum.RGB,
+    ColorPickerPickerEnum.HSL,
+    ColorPickerPickerEnum.LCH,
+  ];
+
+  const pickers =
+    variant === ThemeVariantEnum.mui
+      ? META_COLOR_PICKERS
+      : [...DEFAULT_COLOR_PICKERS, ...META_COLOR_PICKERS];
+
   return (
     <div
       style={{
@@ -72,6 +90,7 @@ export const PaletteToolbarColorSwatch = ({
                 className="w-full bg-white border-zinc-200 p-2.5 shadow-md h-fit overflow-y-scroll"
               >
                 <ColorPicker
+                  pickers={pickers}
                   value={getPaletteColor(token, palette)}
                   onChange={(value: string) =>
                     getPaletteColor(token, palette) !== value &&

@@ -7,7 +7,10 @@ import {
   RadioCardIndicator,
   RadioCardItem,
 } from '@/ui/radio-card';
-import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
+import {
+  ColorShadesPresetEnum,
+  ThemeVariantEnum,
+} from '@palettebro/theme-generator/types';
 import { sentenceCase } from '@palettebro/theme-generator';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { RiShadowLine } from '@remixicon/react';
@@ -15,6 +18,7 @@ import { Checkbox } from '@/ui/checkbox';
 
 export const ColorShadesSettings = () => {
   const {
+    variant,
     colorShadesPreset,
     setColorShadesPreset,
     reverseLightDarkShades,
@@ -41,6 +45,7 @@ export const ColorShadesSettings = () => {
           >
             {Object.keys(ColorShadesPresetEnum).map((p) => (
               <RadioCardItem
+                disabled={variant === ThemeVariantEnum.mui}
                 key={p}
                 value={p}
                 className="flex items-center gap-3 py-2 text-zinc-950"
@@ -55,6 +60,7 @@ export const ColorShadesSettings = () => {
           title="Reverse"
           rightElement={
             <Checkbox
+              disabled={variant === ThemeVariantEnum.mui}
               checked={reverseLightDarkShades}
               onCheckedChange={setReverseLightDarkShades}
             />

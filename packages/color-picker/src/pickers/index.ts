@@ -1,4 +1,4 @@
-export * from './CSSColorPicker';
+export * from './HEXColorPicker';
 export * from './HSLColorPicker';
 export * from './LCHColorPicker';
 export * from './PantoneColorPicker';

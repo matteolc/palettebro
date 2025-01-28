@@ -49,8 +49,8 @@ export const BaseColorPicker: React.FC<BaseColorPickerProps> = ({
       {sliderConfig.map((config) => (
         <div key={config.label} className="flex flex-col gap-x-4">
           <div className="flex flex-row items-center justify-between text-zinc-950">
-            <div className="text-lg mb-2">{config.label}</div>
-            <div className="text-lg font-bold mb-2">
+            <div className="text-md mb-2">{config.label}</div>
+            <div className="text-md font-bold mb-2">
               {Math.floor(config.value)}
               {config.unit}
             </div>
