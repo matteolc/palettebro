@@ -23,6 +23,7 @@ import triadLeft from './triadLeft';
 import triadRight from './triadRight';
 import type { NodeDef } from './types';
 import warning from './warning';
+import adaptiveContrast from './adaptiveContrast';
 
 export default {
   [analogous.type]: analogous,
@@ -45,6 +46,7 @@ export default {
   [triadLeft.type]: triadLeft,
   [triadRight.type]: triadRight,
   [warning.type]: warning,
+  [adaptiveContrast.type]: adaptiveContrast,
 } as const;
 
 export const defList = [
@@ -68,6 +70,7 @@ export const defList = [
   hue,
   color,
   tone,
+  adaptiveContrast,
 ];
 
 export const defaultArgs = (def: NodeDef) =>

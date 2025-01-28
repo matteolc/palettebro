@@ -66,7 +66,7 @@ const presetNodeMapping: Record<
   keyof typeof StaticThemePresetEnum,
   NodeConfig
 > = {
-  'vaporwave': {
+  vaporwave: {
     secondary: {
       default: {
         type: hue.type,
@@ -110,7 +110,7 @@ const presetNodeMapping: Record<
       },
     },
   },
-  'cyberpunk': {
+  cyberpunk: {
     secondary: {
       default: {
         type: hue.type,
@@ -132,7 +132,7 @@ const presetNodeMapping: Record<
       },
     },
   },
-  'glassmorphism': {
+  glassmorphism: {
     secondary: {
       default: {
         type: saturation.type,
@@ -176,7 +176,7 @@ const presetNodeMapping: Record<
       },
     },
   },
-  'duotone': {
+  duotone: {
     secondary: {
       default: {
         type: saturation.type,
@@ -198,7 +198,7 @@ const presetNodeMapping: Record<
       },
     },
   },
-  'depth': {
+  depth: {
     secondary: {
       default: {
         type: highlight.type,
@@ -252,7 +252,7 @@ const presetNodeMapping: Record<
       reverse: { type: splitComplementaryLeft.type },
     },
   },
-  'tetrad': {
+  tetrad: {
     secondary: {
       default: { type: tetradLeft.type },
       reverse: { type: tetradRight.type },
@@ -262,7 +262,7 @@ const presetNodeMapping: Record<
       reverse: { type: tetradLeft.type },
     },
   },
-  'triad': {
+  triad: {
     secondary: {
       default: { type: triadLeft.type },
       reverse: { type: triadRight.type },
@@ -274,7 +274,9 @@ const presetNodeMapping: Record<
   },
 } as const;
 
-const isValidStaticPreset = (preset: string): preset is keyof typeof StaticThemePresetEnum => {
+const isValidStaticPreset = (
+  preset: string,
+): preset is keyof typeof StaticThemePresetEnum => {
   return preset in presetNodeMapping;
 };
 
@@ -301,11 +303,11 @@ export default (options?: ThemePalette) => {
 
   const defaultPreset = StaticThemePresetEnum.triad;
   let currentPreset = options?.preset ?? defaultPreset;
-  
+
   if (!isValidStaticPreset(currentPreset)) {
     currentPreset = defaultPreset;
   }
-  
+
   const direction = options?.reverse ? 'reverse' : 'default';
 
   return {

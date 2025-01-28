@@ -1,5 +1,5 @@
-import contrasting from '../nodes/contrasting';
 import lightness from '../nodes/lightness';
+import adaptiveContrast from '../nodes/adaptiveContrast';
 import type { Preset } from './types';
 
 export default (options?: {
@@ -11,17 +11,14 @@ export default (options?: {
     label: 'Material tones',
     description: 'Material Design tone variations',
     nodes: [
-      // Primary colors
-      // {
-      //   type: lightness.type,
-      //   token: '$',
-      //   args: {
-      //     amount: isDark ? 80 : 40,
-      //   },
-      // },
       {
-        type: contrasting.type,
+        type: adaptiveContrast.type,
         token: 'on-$',
+        args: {
+          lightAmount: 100, // Full white in dark mode
+          contrastAmount: 80, // Strong contrast if needed
+          threshold: 60, // Switch to contrast mode if base color is >60% light
+        },
       },
       {
         type: lightness.type,

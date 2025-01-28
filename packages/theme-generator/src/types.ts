@@ -12,7 +12,7 @@ export const ThemeVariantEnum = createEnum([
   'mui',
   'static',
   'dynamic',
-  'kobayashi'
+  'kobayashi',
 ] as const);
 
 export const ThemeVariantToPalette = {
@@ -22,7 +22,18 @@ export const ThemeVariantToPalette = {
   kobayashi: getDynamicPalette,
 };
 
-export type StaticThemePreset = 'split-complementary' | 'tetrad' | 'triad' | 'hue-shift' | 'depth' | 'duotone' | 'neo-brutalist' | 'glassmorphism' | 'cyberpunk' | 'vaporwave' | 'retro-futurism';
+export type StaticThemePreset =
+  | 'split-complementary'
+  | 'tetrad'
+  | 'triad'
+  | 'hue-shift'
+  | 'depth'
+  | 'duotone'
+  | 'neo-brutalist'
+  | 'glassmorphism'
+  | 'cyberpunk'
+  | 'vaporwave'
+  | 'retro-futurism';
 
 export type MuiThemePreset =
   | 'content'
