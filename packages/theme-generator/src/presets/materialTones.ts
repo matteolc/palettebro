@@ -22,9 +22,6 @@ export default (options?: {
       {
         type: contrasting.type,
         token: 'on-$',
-        // args: {
-        //   amount: isDark ? 20 : 100,
-        // },
       },
       {
         type: lightness.type,

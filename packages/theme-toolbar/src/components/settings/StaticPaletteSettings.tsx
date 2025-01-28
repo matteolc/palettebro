@@ -14,12 +14,12 @@ export const StaticPaletteSettings = () => {
   const { preset, setPreset, reverse, setReverse } = useContext(PaletteContext);
 
   return (
-    <div className="flex flex-col h-[30rem]">
+    <div className="grid grid-cols-1 h-[32rem]">
       <SettingsSection title="Preset">
         <RadioCardGroup
           value={preset}
           onValueChange={setPreset}
-          className="text-sm grid grid-cols-1 gap-x-2 gap-y-1 "
+          className="text-sm grid grid-cols-2 gap-x-2 gap-y-1 "
         >
           {Object.keys(StaticThemePresetEnum).map((p) => (
             <RadioCardItem
@@ -34,7 +34,7 @@ export const StaticPaletteSettings = () => {
         </RadioCardGroup>
       </SettingsSection>
 
-      <div className="mt-auto pt-4">
+      <div className="mt-auto pt-4 col-span-2">
         <SettingsSection
           title="Reverse"
           className='items-center'

@@ -308,16 +308,6 @@ export const KOBAYASHI_LIFESTYLE_KEYWORDS = {
     'clean and fresh',
     'simple',
   ],
-  'cool-casual': [
-    'youthful',
-    'steady',
-    'young',
-    'sporty',
-    'agile',
-    'smart',
-    'speedy',
-    'western',
-  ],
   chich: [
     'quiet',
     'chic',
@@ -415,37 +405,6 @@ export const KOBAYASHI_LIFESTYLE_KEYWORDS = {
     'heavy and deep',
     'sturdy',
   ],
-  dandy: [
-    'diligent',
-    'subtle and mysterious',
-    'quiet and sophisticated',
-    'eminent',
-    'bitter',
-    'placid',
-    'aristocratic',
-    'dapper',
-    'precious',
-    'formal',
-    'solemn',
-    'majestic',
-    'dignified',
-    'practical',
-    'heavy and deep',
-    'sound',
-    'majestic',
-    'strong and robust',
-    'serious',
-  ],
-  formal: [
-    'formal',
-    'precious',
-    'solemn',
-    'majestic',
-    'dignified',
-    'sublime',
-    'earnest',
-    'proper',
-  ],
 } satisfies Record<KobayashiImage, string[]>;
 
 export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
@@ -492,6 +451,8 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
       ['YR/P', 'Y/Vp', 'GY/B'],
       ['YR/L', 'BG/Dp', 'Y/L'],
     ],
+    sporty: [['B/V', 'PB/V', 'N9.5']],
+    youthful: [['B/B', 'PB/B', 'BG/B']],
   },
   dynamic: {
     active: [
@@ -520,13 +481,6 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
     sweet: [['RP/B', 'R/P', 'P/P']],
   },
   natural: {
-    free: [
-      ['YR/P', 'Y/Vp', 'BG/P'],
-      ['YR/P', 'Y/Vp', 'GY/P'],
-      ['GY/B', 'Y/Vp', 'BG/P'],
-      ['YR/L', 'Y/Vp', 'GY/P'],
-      ['GY/P', 'Y/Vp', 'G/P'],
-    ],
     fresh: [
       ['GY/V', 'N9.5', 'G/Vp'],
       ['GY/B', 'N9.5', 'PB/B'],
@@ -576,21 +530,6 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
       ['YR/P', 'Y/Vp', 'B/P'],
       ['G/Lgr', 'Y/Vp', 'B/L'],
     ],
-    'simple-and-appealing': [
-      ['Y/Lgr', 'GY/L', 'GY/Gr'],
-      ['Y/L', 'Y/Vp', 'N8'],
-      ['GY/Gr', 'Y/Lgr', 'N6'],
-      ['Y/Lgr', 'G/Lgr', 'N7'],
-      ['Y/L', 'Y/Gr', 'N7'],
-      ['GY/Gr', 'Y/Lgr', 'N6'],
-    ],
-    wholesome: [
-      ['YR/L', 'Y/Vp', 'GY/Lgr'],
-      ['Y/L', 'Y/Vp', 'GY/Lgr'],
-      ['YR/L', 'Y/Vp', 'Y/L'],
-      ['Y/L', 'N9.5', 'GY/S'],
-      ['Y/Lgr', 'N9', 'GY/L'],
-    ],
   },
   clear: {
     clean: [['B/V', 'N9.5', 'BG/V']],
@@ -598,10 +537,6 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
     young: [['B/B', 'BG/B', 'N9.5']],
     pure: [['B/Vp', 'N9.5', 'BG/Vp']],
     simple: [['N9.5', 'B/L', 'BG/L']],
-  },
-  'cool-casual': {
-    sporty: [['B/V', 'PB/V', 'N9.5']],
-    youthful: [['B/B', 'PB/B', 'BG/B']],
   },
   modern: {
     distinguished: [['PB/Dp', 'B/Dp', 'N2']],
@@ -617,12 +552,6 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
     refined: [['P/L', 'RP/L', 'PB/L']],
     tender: [['RP/P', 'P/P', 'PB/P']],
   },
-  dandy: {
-    placid: [['PB/Dgr', 'B/Dgr', 'N3']],
-  },
-  formal: {
-    formal: [['PB/Dk', 'N2', 'B/Dk']],
-  },
   chich: {
     chich: [['N2', 'N4', 'N6']],
     modest: [['N4', 'N6', 'N8']],
@@ -632,6 +561,7 @@ export const KOBAYASHI_COLOR_COMBINATIONS_MAP = {
   classic: {
     classic: [['YR/Dk', 'R/Dk', 'N3']],
     rustic: [['YR/Dl', 'Y/Dl', 'N5']],
+    formal: [['PB/Dk', 'N2', 'B/Dk']],
   },
 } satisfies Record<KobayashiImage, Record<string, string[][]>>;
 

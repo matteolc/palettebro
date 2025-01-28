@@ -15,7 +15,7 @@ export const MuiPaletteSettings = () => {
     useContext(PaletteContext);
 
   return (
-    <div className="grid grid-rows-2 gap-x-2 gap-y-1 h-[30rem]">
+    <div className="grid grid-cols-1 h-[32rem]">
       <SettingsSection title="Preset">
         <RadioCardGroup
           value={preset}
@@ -35,7 +35,7 @@ export const MuiPaletteSettings = () => {
         </RadioCardGroup>
       </SettingsSection>
 
-      <div className="mt-auto pt-4">
+      <div className="mt-auto pt-4 col-span-2">
         <SettingsSlider
           title="Contrast"
           value={contrast ?? 0}

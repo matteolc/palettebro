@@ -145,10 +145,7 @@ export type KobayashiImage =
   | 'elegant'
   | 'chich'
   | 'classic'
-  | 'dandy'
-  | 'formal'
   | 'clear'
-  | 'cool-casual'
   | 'modern';
 
 export const KobayashiImageEnum = createEnum([
@@ -161,10 +158,7 @@ export const KobayashiImageEnum = createEnum([
   'elegant',
   'chich',
   'classic',
-  'dandy',
-  'formal',
   'clear',
-  'cool-casual',
   'modern',
 ] as const);
 

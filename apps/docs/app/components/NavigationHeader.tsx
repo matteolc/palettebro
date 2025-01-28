@@ -60,6 +60,7 @@ const NavigationHeader = () => {
                 <NavLink
                   to={`/${item}`}
                   key={item}
+                  prefetch="intent"
                   className={({ isActive, isPending }) =>
                     clsx(
                       isActive ? 'bg-background text-foreground shadow' : '',

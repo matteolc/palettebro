@@ -26,7 +26,7 @@ export const DynamicPaletteSettings = () => {
   if (!temperature || !setTemperature) return null;
 
   return (
-    <div className="grid grid-rows-2 gap-x-2 gap-y-1 h-[30rem]">
+    <div className="grid grid-rows-2 gap-x-2 gap-y-1 h-[32rem]">
       <div className="grid grid-cols-2 gap-x-2 gap-y-1">
         <div>
           <SettingsSection title="Preset">
