@@ -61,7 +61,7 @@ export const PaletteProvider = ({
   const [preset, setPreset] = useState<StaticThemePreset | MuiThemePreset>(
     DEFAULT_STATIC_PRESET,
   );
-  const [reverse, setReverse] = useState<boolean>(true);
+  const [reverse, setReverse] = useState<boolean>(false);
   const [contrast, setContrast] = useState<number>(DEFAULT_CONTRAST);
   const [colorShadesPreset, setColorShadesPreset] = useState<ColorShadesPreset>(
     DEFAULT_COLOR_SHADES_PRESET,

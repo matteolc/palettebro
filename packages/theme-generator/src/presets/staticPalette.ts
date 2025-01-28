@@ -176,7 +176,7 @@ const presetNodeMapping: Record<
       },
     },
   },
-  duotone: {
+  'duotone': {
     secondary: {
       default: {
         type: saturation.type,
@@ -189,12 +189,20 @@ const presetNodeMapping: Record<
     },
     accent: {
       default: {
-        type: contrasting.type,
-        args: { amount: 100 },
+        type: highlight.type,
+        args: { 
+          amount: 25,
+          shift: 5,    // Small hue shift to maintain harmony
+          temp: 650,   // Neutral temperature
+        },
       },
       reverse: {
-        type: saturation.type,
-        args: { amount: -80 },
+        type: shadow.type,
+        args: { 
+          amount: 25,
+          shift: 5,    // Small hue shift to maintain harmony
+          temp: 650,   // Neutral temperature
+        },
       },
     },
   },
