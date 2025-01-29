@@ -86,7 +86,7 @@ export const ColorFormats = ({ color }: { color: string }) => {
       return (
         <div className="flex items-center gap-1">
           <div 
-            className="w-6 h-6 rounded-md border border-border"
+            className="w-6 h-6 rounded-md"
             style={{ 
               backgroundColor: colorString,
               backgroundImage: 'linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%)',

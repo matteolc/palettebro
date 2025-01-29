@@ -6,3 +6,4 @@ export * from './formatting';
 export * from './manipulation';
 export * from './nearest-color-name';
 export * from './parse-color';
+export * from './simulation';
