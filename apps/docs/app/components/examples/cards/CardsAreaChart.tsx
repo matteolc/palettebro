@@ -29,11 +29,11 @@ const chartData = [
 const chartConfig = {
   desktop: {
     label: 'Desktop',
-    color: 'oklch(var(--primary-rainbow-8))',
+    color: 'oklch(var(--primary-rainbow-2))',
   },
   mobile: {
     label: 'Mobile',
-    color: 'oklch(var(--primary-rainbow-2))',
+    color: 'oklch(var(--primary-rainbow-4))',
   },
 } satisfies ChartConfig;
 

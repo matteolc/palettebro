@@ -121,7 +121,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Regular text (24px / 19px bold and below)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG2Pass('regular') ? 'positive' : 'outline'}
+                      variant={isWCAG2Pass('regular') ? 'positive' : 'destructive'}
                     >
                       {isWCAG2Pass('regular') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -134,7 +134,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Large text (24px / 19px bold and above)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG2Pass('large') ? 'positive' : 'outline'}
+                      variant={isWCAG2Pass('large') ? 'positive' : 'destructive'}
                     >
                       {isWCAG2Pass('large') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -146,7 +146,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                 <tr>
                   <td>UI Components & graphics</td>
                   <td className="text-center">
-                    <Badge variant={isWCAG2Pass('ui') ? 'positive' : 'outline'}>
+                    <Badge variant={isWCAG2Pass('ui') ? 'positive' : 'destructive'}>
                       {isWCAG2Pass('ui') ? 'Pass' : 'Fail'}
                     </Badge>
                   </td>
@@ -174,7 +174,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Regular text (24px / 19px bold and below)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG3Pass('regular') ? 'positive' : 'outline'}
+                      variant={isWCAG3Pass('regular') ? 'positive' : 'destructive'}
                     >
                       {isWCAG3Pass('regular') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -187,7 +187,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Large text (24px / 19px bold and above)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG3Pass('large') ? 'positive' : 'outline'}
+                      variant={isWCAG3Pass('large') ? 'positive' : 'destructive'}
                     >
                       {isWCAG3Pass('large') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -199,7 +199,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                 <tr>
                   <td>UI Components & graphics</td>
                   <td className="text-center">
-                    <Badge variant={isWCAG3Pass('ui') ? 'positive' : 'outline'}>
+                    <Badge variant={isWCAG3Pass('ui') ? 'positive' : 'destructive'}>
                       {isWCAG3Pass('ui') ? 'Pass' : 'Fail'}
                     </Badge>
                   </td>

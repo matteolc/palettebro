@@ -30,15 +30,15 @@ const chartConfig = {
   },
   chrome: {
     label: 'Chrome',
-    color: 'oklch(var(--primary-rainbow-4))',
+    color: 'oklch(var(--primary-rainbow-1))',
   },
   safari: {
     label: 'Safari',
-    color: 'oklch(var(--primary-rainbow-5))',
+    color: 'oklch(var(--primary-rainbow-3))',
   },
   firefox: {
     label: 'Firefox',
-    color: 'oklch(var(--primary-rainbow-6))',
+    color: 'oklch(var(--primary-rainbow-5))',
   },
   edge: {
     label: 'Edge',
@@ -46,7 +46,7 @@ const chartConfig = {
   },
   other: {
     label: 'Other',
-    color: 'oklch(var(--primary-rainbow-8))',
+    color: 'oklch(var(--primary-rainbow-9))',
   },
 } satisfies ChartConfig;
 

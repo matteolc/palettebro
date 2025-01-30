@@ -9,6 +9,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         positive: 'bg-green-500/10 text-green-700 ring-green-600/20',
+        destructive: 'bg-red-500/10 text-red-700 ring-red-600/20',
         outline: 'text-foreground',
       },
     },

@@ -1,3 +1,4 @@
+import { cn } from '@/lib/cn';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/ui/table';
 import convert from 'simple-color-converter';
 import type { ColorValue } from 'simple-color-converter';
@@ -105,9 +106,15 @@ export const ColorFormats = ({ color }: { color: string }) => {
     };
 
     return (
+        <div
+        className={cn(
+          'rounded-lg border bg-card text-card-foreground w-full',
+        )}
+      >
+        <div className="p-6">        
       <Table>
         <TableHeader>
-          <TableRow>
+          <TableRow className="bg-muted/50 [&_th]:uppercase [&_th]:text-xs [&_th]:font-medium [&_th]:text-left">
             <TableHead>Format</TableHead>
             <TableHead>Channels</TableHead>
             <TableHead>String</TableHead>
@@ -145,6 +152,8 @@ export const ColorFormats = ({ color }: { color: string }) => {
           })}
         </TableBody>
       </Table>
+      </div>
+      </div>
     );
   } catch (error) {
     console.error('Error in ColorFormats:', error);

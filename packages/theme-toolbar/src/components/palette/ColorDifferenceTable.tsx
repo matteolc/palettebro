@@ -27,7 +27,7 @@ const ColorPreview = ({
   color1,
   color2,
 }: { color1: RgbColor; color2: RgbColor }) => (
-  <div className="flex gap-0 w-16 h-8 rounded-md overflow-hidden">
+  <div className="flex gap-0 w-14 h-6 rounded-md overflow-hidden">
     <div
       className="w-1/2 h-full"
       style={{
@@ -120,10 +120,10 @@ export function ColorDifferenceTable({
       <div className="p-6">
         <div className="space-y-4">
           <div className="grid grid-cols-4 gap-4">
-            <div className="text-sm font-medium">Preview</div>
-            <div className="text-sm font-medium">Vision Type</div>
-            <div className="text-sm font-medium">Status</div>
-            <div className="text-sm font-medium">Color Difference</div>
+            <div className="text-xs font-medium uppercase">Preview</div>
+            <div className="text-xs font-medium uppercase">Vision Type</div>
+            <div className="text-xs font-medium uppercase">Status</div>
+            <div className="text-xs font-medium uppercase">Color Difference</div>
           </div>
           <div className="space-y-4">
             {getVisionTypeRows().map((row) => (
@@ -143,9 +143,9 @@ export function ColorDifferenceTable({
                     {row.status}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col items-end gap-1">
                   <div className="text-xs">{row.deltaE.toFixed(2)}</div>
-                  <div className="flex-1">
+                  <div className="flex-1 w-full">
                     <Progress
                       value={Math.min(100, (row.deltaE / 100) * 100)}
                       className={cn(
