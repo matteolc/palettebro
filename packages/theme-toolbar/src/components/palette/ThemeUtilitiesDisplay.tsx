@@ -69,15 +69,15 @@ export const ThemeUtilitiesDisplay = () => {
             {/* Muted */}
             <div className="col-span-1 flex flex-col">
               <PaletteColor
-                token="on-secondary"
+                token="surface"
                 label="Muted"
-                labelToken="secondary"
+                labelToken="on-surface"
                 borderRadius="rounded-t-md"
               />
               <PaletteColor
-                token="secondary"
+                token="on-surface"
                 label="Muted Foreground"
-                labelToken="on-secondary"
+                labelToken="surface"
                 borderRadius="rounded-b-md"
                 className="h-16"
               />
