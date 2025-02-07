@@ -46,19 +46,25 @@ export type MuiThemePreset =
   | 'tonal-spot'
   | 'vibrant';
 
-export const StaticThemePresetEnum = createEnum([
-  'split-complementary',
-  'tetrad',
-  'triad',
-  'hue-shift',
-  'depth',
-  'duotone',
-  'neo-brutalist',
-  'glassmorphism',
-  'cyberpunk',
-  'vaporwave',
-  'retro-futurism',
-] as const);
+export enum StaticThemePresetEnum {
+  'split-complementary' = 'split-complementary',
+  tetrad = 'tetrad',
+  triad = 'triad',
+  'hue-shift' = 'hue-shift',
+  depth = 'depth',
+  duotone = 'duotone',
+  'neo-brutalist' = 'neo-brutalist',
+  glassmorphism = 'glassmorphism',
+  cyberpunk = 'cyberpunk',
+  vaporwave = 'vaporwave',
+  'retro-futurism' = 'retro-futurism',
+  'nordic-minimalism' = 'nordic-minimalism',
+  'sunset-gradient' = 'sunset-gradient',
+  'electric-neon' = 'electric-neon',
+  'earth-tones' = 'earth-tones',
+  'pastel-dreams' = 'pastel-dreams',
+  'monochrome-depth' = 'monochrome-depth',
+}
 
 export const MuiThemePresetEnum = createEnum([
   'content',

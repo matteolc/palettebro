@@ -176,7 +176,7 @@ const presetNodeMapping: Record<
       },
     },
   },
-  'duotone': {
+  duotone: {
     secondary: {
       default: {
         type: saturation.type,
@@ -190,18 +190,18 @@ const presetNodeMapping: Record<
     accent: {
       default: {
         type: highlight.type,
-        args: { 
+        args: {
           amount: 25,
-          shift: 5,    // Small hue shift to maintain harmony
-          temp: 650,   // Neutral temperature
+          shift: 5, // Small hue shift to maintain harmony
+          temp: 650, // Neutral temperature
         },
       },
       reverse: {
         type: shadow.type,
-        args: { 
+        args: {
           amount: 25,
-          shift: 5,    // Small hue shift to maintain harmony
-          temp: 650,   // Neutral temperature
+          shift: 5, // Small hue shift to maintain harmony
+          temp: 650, // Neutral temperature
         },
       },
     },
@@ -278,6 +278,138 @@ const presetNodeMapping: Record<
     accent: {
       default: { type: triadRight.type },
       reverse: { type: triadLeft.type },
+    },
+  },
+  'nordic-minimalism': {
+    secondary: {
+      default: {
+        type: saturation.type,
+        args: { amount: -30 }, // Desaturated look
+      },
+      reverse: {
+        type: lightness.type,
+        args: { amount: 95 }, // High lightness for contrast
+      },
+    },
+    accent: {
+      default: {
+        type: hue.type,
+        args: { degrees: 200 }, // Cool blue tones
+      },
+      reverse: {
+        type: shadow.type,
+        args: { amount: 15, shift: 5, temp: 650 },
+      },
+    },
+  },
+  'sunset-gradient': {
+    secondary: {
+      default: {
+        type: hue.type,
+        args: { degrees: 35 }, // Warm orange
+      },
+      reverse: {
+        type: saturation.type,
+        args: { amount: 80 }, // Boost saturation
+      },
+    },
+    accent: {
+      default: {
+        type: hue.type,
+        args: { degrees: 320 }, // Magenta shift
+      },
+      reverse: {
+        type: highlight.type,
+        args: { amount: 40, shift: 10, temp: 550 },
+      },
+    },
+  },
+  'electric-neon': {
+    secondary: {
+      default: {
+        type: saturation.type,
+        args: { amount: 100 }, // Max saturation
+      },
+      reverse: {
+        type: hue.type,
+        args: { degrees: 120 }, // Green shift
+      },
+    },
+    accent: {
+      default: {
+        type: contrasting.type,
+        args: { amount: 100 }, // Maximum contrast
+      },
+      reverse: {
+        type: hue.type,
+        args: { degrees: 270 }, // Purple shift
+      },
+    },
+  },
+  'earth-tones': {
+    secondary: {
+      default: {
+        type: saturation.type,
+        args: { amount: -20 }, // Muted colors
+      },
+      reverse: {
+        type: lightness.type,
+        args: { amount: 75 }, // Natural lightness
+      },
+    },
+    accent: {
+      default: {
+        type: hue.type,
+        args: { degrees: 50 }, // Terracotta
+      },
+      reverse: {
+        type: shadow.type,
+        args: { amount: 20, shift: 15, temp: 450 },
+      },
+    },
+  },
+  'pastel-dreams': {
+    secondary: {
+      default: {
+        type: lightness.type,
+        args: { amount: 85 }, // Soft pastel base
+      },
+      reverse: {
+        type: saturation.type,
+        args: { amount: 40 }, // Gentle saturation
+      },
+    },
+    accent: {
+      default: {
+        type: hue.type,
+        args: { degrees: 280 }, // Lavender tones
+      },
+      reverse: {
+        type: highlight.type,
+        args: { amount: 25, shift: 5, temp: 600 },
+      },
+    },
+  },
+  'monochrome-depth': {
+    secondary: {
+      default: {
+        type: lightness.type,
+        args: { amount: 30 }, // Dark accents
+      },
+      reverse: {
+        type: lightness.type,
+        args: { amount: 70 }, // Light accents
+      },
+    },
+    accent: {
+      default: {
+        type: saturation.type,
+        args: { amount: -100 }, // Full desaturation
+      },
+      reverse: {
+        type: shadow.type,
+        args: { amount: 25, shift: 0, temp: 650 }, // Neutral shadows
+      },
     },
   },
 } as const;

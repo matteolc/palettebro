@@ -14,6 +14,13 @@ A powerful color palette generator with support for Material You-inspired themes
 - 🎭 Support for light and dark themes
 - 📱 Automatic contrast checking (WCAG 2.0 and 3.0)
 
+## Credits
+
+- This package was heavily inspired by [Schemist](https://schemist.fglt.fr/) so huge thanks to the [creator](https://github.com/felixgirault) for the awesome work.
+- The Huemint palette generator uses the [Huemint API](https://huemint.com) to generate palettes.
+- The Kobayashi palette generator is inspired by the book **Color Image Scale** by Shigenobu Kobayashi.
+- The Material UI palette generator uses the [Material UI Color Utilities](https://github.com/material-foundation/material-color-utilities) package to generate palettes.
+
 ## Installation
 
 ```bash
@@ -42,85 +49,12 @@ const { palette } = usePalette({
 
 ### Theme Configuration
 
-The theme generator supports several configuration options:
-
-```ts
-type Theme = {
-  'color-scheme': 'light' | 'dark';
-  variant: 'mui' | 'static' | 'dynamic';
-  preset?: 'split-complementary' | 'tetrad' | 'triad';
-  reverse?: boolean;
-  debug?: boolean;
-  baseColors: {
-    primary: string;
-    secondary?: string;
-    accent?: string;
-  };
-};
-```
-
+The theme generator supports several configuration options. Refer to the [types](https://github.com/palettebro/palettebro/blob/main/packages/theme-generator/src/types.ts) for more details.
 
 ### Available Color Tokens
 
-The generator provides semantic color tokens that follow Material Design principles:
-
-- Base Colors:
-  - `primary` - Primary brand color
-  - `secondary` - Secondary brand color
-  - `accent` - Accent color
-
-- Status Colors:
-  - `info` - Information color
-  - `success` - Success color
-  - `warning` - Warning color
-  - `error` - Error color
-
-Each color token includes variants:
-- Default (e.g., `primary`)
-- Container (e.g., `primary-container`)
-- On Container (e.g., `on-primary-container`)
-- Light/Base/Dark (e.g., `primary-light`)
-- Shades (50-950) (e.g., `primary-100`)
-
-### Color Manipulation Utilities
-
-The generator includes utility functions for color manipulation:
-
-- `adjustColor`: Adjusts the lightness, saturation, or hue of a color.
-- `mixColors`: Mixes two colors to create a new color.
-- `contrastColor`: Finds the best contrasting color for a given color.
-
-```ts
-import {
-  colorToRawOklchString,
-  formatSchemistToHex,
-  parseColor
-} from '@palettebro/theme-generator';
-
-// Convert colors between formats
-const oklchColor = colorToRawOklchString('#663399');
-const hexColor = formatSchemistToHex(oklchColor);
-
-// Parse colors
-const [format, color] = parseColor('#663399');
-```
-
-### Contrast Checking
-
-The generator includes a function to check the contrast between two colors:
-
-```ts
-import {
-  wcag2Contrast,
-  wcag3Contrast,
-  wcag2ContrastGrade,
-  wcag3ContrastGrade
-} from '@palettebro/theme-generator';
-
-const contrast = wcag2Contrast(backgroundColor, foregroundColor);
-const grade = wcag2ContrastGrade(backgroundColor, foregroundColor);
-```
-
+The generator provides semantic color tokens that follow [Material Design principles](https://m3.material.io/styles/color/system/overview).
+By using the generated color tokens you can create component color tokens that are consistent with the theme.
 
 ## Theme Variants
 
@@ -129,6 +63,8 @@ enum ThemeVariantEnum {
   mui = 'mui',
   static = 'static',
   dynamic = 'dynamic',
+  kobayashi = 'kobayashi',
+  generative = 'generative',
 }
 ```
 

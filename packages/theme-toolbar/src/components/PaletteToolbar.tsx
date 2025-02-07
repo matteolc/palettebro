@@ -43,6 +43,7 @@ const PaletteToolbar = ({
   const [generatedPalettes, setGeneratedPalettes] = useState<
     { palette: string[]; isDark?: boolean; score?: number }[] | undefined
   >([]);
+  const [isLocked, setIsLocked] = useState<Record<string, boolean>>({});
   const generateFetcher = useFetcher<{
     results: {
       palette: string[];
@@ -81,9 +82,18 @@ const PaletteToolbar = ({
     [temperature, profile, preset, page, word, image, generative],
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    setIsLocked({});
+  }, [variant]);
+
   const popPalette = () => setGeneratedPalettes(generatedPalettes?.slice(1));
 
-  const resetGeneratedPalettes = () => setGeneratedPalettes([]);
+  const handleLockUnlock = (token: string) => {
+    if (variant === ThemeVariantEnum.mui) return;
+    setIsLocked((prev) => ({ ...prev, [token]: !prev[token] }));
+    setGeneratedPalettes([]);
+  };
 
   const handleSetBaseColors = (color: SchemistColor) =>
     setBaseColors?.({
@@ -110,7 +120,11 @@ const PaletteToolbar = ({
                 <>
                   <input type="hidden" name="image" value={image} />
                   <input type="hidden" name="word" value={word} />
-                  <input type="hidden" name="generative" value={String(generative)} />
+                  <input
+                    type="hidden"
+                    name="generative"
+                    value={String(generative)}
+                  />
                 </>
               )}
               {variant === ThemeVariantEnum.dynamic && (
@@ -157,6 +171,33 @@ const PaletteToolbar = ({
                     value={page}
                     name="page"
                   />
+                  {isLocked.primary && (
+                    <input
+                      type="text"
+                      readOnly
+                      className="hidden"
+                      value={palette?.primary.color}
+                      name="primary"
+                    />
+                  )}
+                  {isLocked.secondary && (
+                    <input
+                      type="text"
+                      readOnly
+                      className="hidden"
+                      value={palette?.secondary?.color}
+                      name="secondary"
+                    />
+                  )}
+                  {isLocked.accent && (
+                    <input
+                      type="text"
+                      readOnly
+                      className="hidden"
+                      value={palette?.accent?.color}
+                      name="accent"
+                    />
+                  )}
                 </>
               )}
               {(() => {
@@ -253,7 +294,7 @@ const PaletteToolbar = ({
                 <PaletteToolbarColorSwatch
                   token={token}
                   key={token}
-                  onLockUnlock={resetGeneratedPalettes}
+                  onLockUnlock={() => handleLockUnlock(token)}
                 />
               ),
             )}
