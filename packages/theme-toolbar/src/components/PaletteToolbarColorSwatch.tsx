@@ -1,6 +1,9 @@
 import { RiLockLine, RiLockUnlockLine, RiPaletteLine } from '@remixicon/react';
 import { ColorPicker } from '@palettebro/color-picker';
-import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
+import {
+  type ThemeVariant,
+  ThemeVariantEnum,
+} from '@palettebro/theme-generator/types';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@/lib/string';
@@ -35,12 +38,19 @@ export const PaletteToolbarColorSwatch = ({
   ];
 
   const EDITABLE_TOKENS = ['primary', 'secondary', 'accent'];
+  const LOCKABLE_VARIANTS = [
+    ThemeVariantEnum.dynamic,
+    ThemeVariantEnum.kobayashi,
+  ];
 
   const shouldShowColorPicker =
-    (variant === ThemeVariantEnum.dynamic && EDITABLE_TOKENS.includes(token)) ||
+    (variant &&
+      LOCKABLE_VARIANTS.includes(variant as 'dynamic' | 'kobayashi')) ||
     token === 'primary';
   const shouldShowLock =
-    variant === ThemeVariantEnum.dynamic && EDITABLE_TOKENS.includes(token);
+    variant &&
+    LOCKABLE_VARIANTS.includes(variant as 'dynamic' | 'kobayashi') &&
+    EDITABLE_TOKENS.includes(token);
 
   const META_COLOR_PICKERS = [
     ColorPickerPickerEnum.HEX,

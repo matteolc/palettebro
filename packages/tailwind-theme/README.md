@@ -19,11 +19,46 @@ pnpm add @palettebro/tailwind-theme
 
 ## Usage
 
+Define your themes:
+
+```ts
+// themes.ts
+import type { Themes } from '@palettebro/theme-generator/types';
+import { ThemeVariantEnum, StaticThemePresetEnum } from '@palettebro/theme-generator/types';
+import colors from 'tailwindcss/colors';
+
+const themes = {
+  light: {
+    'color-scheme': 'light' as const,
+    variant: ThemeVariantEnum.static,
+    debug: false,
+    preset: StaticThemePresetEnum.tetrad,
+    reverse: true,
+    baseColors: {
+      primary: colors.purple[500],
+      secondary: colors.blue[500],
+      accent: colors.green[500],
+    },
+  },
+  dark: {
+    'color-scheme': 'dark' as const,
+    variant: ThemeVariantEnum.static,
+    debug: false,
+    preset: StaticThemePresetEnum.tetrad,
+    reverse: true,
+    baseColors: {
+      primary: colors.purple[500],
+      secondary: colors.blue[500],
+      accent: colors.green[500],
+    },
+  },
+} satisfies Themes;
+```
+
 Add the plugin to your Tailwind config:
 
 ```ts
 // tailwind.config.ts
-
 import type { Config } from 'tailwindcss';
 import { themes } from './themes';
 
@@ -42,35 +77,6 @@ const config: Config = {
 };
 
 export default config;
-```
-
-Define your themes in a separate file (e.g., `themes.ts`):
-
-```ts
-// themes.ts
-
-import type { Themes } from '@palettebro/theme-generator/types';
-import { StaticThemePresetEnum, ThemeVariantEnum } from '@palettebro/theme-generator/types';
-import colors from 'tailwindcss/colors';
-
-export const themes = {
-    light: {
-        'color-scheme': 'light',
-        variant: ThemeVariantEnum.static,
-        preset: StaticThemePresetEnum['split-complementary'],
-        baseColors: {
-            primary: colors.purple[500],
-        },
-    },
-    dark: {
-        'color-scheme': 'dark',
-        variant: ThemeVariantEnum.static,
-        preset: StaticThemePresetEnum['split-complementary'],
-        baseColors: {
-            primary: colors.purple[500],
-        },
-    },
-} satisfies Themes;
 ```
 
 
@@ -100,29 +106,11 @@ Each color token includes variants:
 - Light/Base/Dark (e.g., `bg-primary-light`)
 - Shades (50-900) (e.g., `bg-primary-100`)
 
+And many more (TBD)
+
 ## Utility Classes
 
-When `utils: true` is enabled, the plugin provides additional utility classes:
-
-### Border Radius
-
-```css
-rounded-xl / calc(var(--radius) + 4px) /
-rounded-lg / var(--radius) /
-rounded-md / calc(var(--radius) - 2px) /
-rounded-sm / calc(var(--radius) - 4px) /
-```
-
-### Animations
-
-```css
-animate-pulse / animation-pulse /
-animate-bounce / animation-bounce /
-animate-spin / animation-spin /
-animate-fade / animation-fade /
-animate-fade-in / animation-fade-in /
-animate-fade-out / animation-fade-out /
-```
+When `utils: true` is enabled, the plugin provides additional utility classes.
 
 ## Theme Switching
 
