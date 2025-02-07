@@ -7,11 +7,7 @@
     "./react": "./react.json",
     "./library": "./library.json"
   },
-  "files": [
-    "library.json",
-    "react.json",
-    "storybook.json"
-  ],
+  "files": ["library.json", "react.json", "storybook.json"],
   "devDependencies": {
     "@biomejs/biome": "1.9.4"
   },
@@ -22,5 +18,9 @@
       "url": "https://github.com/matteolc"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
