@@ -1,6 +1,6 @@
 {
   "name": "@palettebro/theme-toolbar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "exports": {
     ".": "./src/index.ts",
@@ -50,5 +50,9 @@
       "url": "https://github.com/matteolc"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

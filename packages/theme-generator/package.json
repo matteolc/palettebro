@@ -1,6 +1,6 @@
 {
   "name": "@palettebro/theme-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "exports": {
     "./palettes": "./src/palettes/index.ts",
@@ -49,5 +49,12 @@
       "url": "https://github.com/matteolc"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

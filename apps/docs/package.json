@@ -1,6 +1,6 @@
 {
   "name": "@palettebro/docs",
-  "private": false,
+  "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -101,5 +101,8 @@
       "url": "https://github.com/matteolc"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "restricted"
+  }
 }

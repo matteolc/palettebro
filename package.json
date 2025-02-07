@@ -13,7 +13,7 @@
     "format-and-lint:fix": "biome check . --write",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish"
+    "release": "turbo run build --filter=@palettebro/docs^... && changeset publish"
   },
   "devDependencies": {
     "turbo": "^2.2.3",
@@ -36,4 +36,3 @@
   ],
   "license": "MIT"
 }
-
