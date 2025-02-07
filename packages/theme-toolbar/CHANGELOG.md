@@ -1,5 +1,17 @@
 # @palettebro/theme-toolbar
 
+## 0.0.3
+
+### Patch Changes
+
+- Fix build
+
+## 0.0.3
+
+### Minor Changes
+
+- Export hooks
+
 ## 0.0.2
 
 ### Patch Changes
