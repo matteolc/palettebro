@@ -3,9 +3,9 @@ import {
   generateKobayashi,
   parseKobayashiFormData,
   parseHuemintsFormData,
-} from '@palettebro/theme-generator/services';
-import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
-import type { ThemeVariant } from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator/server';
+import { ThemeVariantEnum } from '@palettebro/theme-generator';
+import type { ThemeVariant } from '@palettebro/theme-generator';
 import type { LoaderFunctionArgs } from '@vercel/remix';
 
 export async function action({ request }: LoaderFunctionArgs) {

@@ -3,7 +3,7 @@ import { ColorPicker } from '@palettebro/color-picker';
 import {
   type ThemeVariant,
   ThemeVariantEnum,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@/lib/string';

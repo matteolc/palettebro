@@ -9,7 +9,7 @@ import type { PluginOptions } from './types';
 import {
   type ColorShadesPreset,
   ColorShadesPresetEnum,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 
 export const getColorUtilities = (colorShadesPreset: ColorShadesPreset) => ({
   ...getPaletteColors(colorShadesPreset),

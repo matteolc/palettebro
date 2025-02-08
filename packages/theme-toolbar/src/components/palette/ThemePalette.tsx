@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 import { PaletteColor } from './PaletteColor';
 import { useContext } from 'react';
 import { PaletteContext } from '@/context/PaletteContext';
-import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
+import { ColorShadesPresetEnum } from '@palettebro/theme-generator';
 
 export const ThemePalette = () => {
   const { isDark, colorShadesPreset, reverseLightDarkShades } =

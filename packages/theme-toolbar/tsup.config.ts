@@ -5,21 +5,17 @@ export default defineConfig({
   outDir: 'dist',
   format: ['cjs', 'esm'],
   dts: true,
-  splitting: false,
+  splitting: true,
+  treeshake: false,
+  minify: true,
   sourcemap: true,
   clean: true,
+  injectStyle: false,
   esbuildOptions(options) {
     options.tsconfig = 'tsconfig.build.json';
     options.alias = {
       '@': './src',
     };
   },
-  external: [
-    'react',
-    'react-dom',
-    '@radix-ui/*',
-    '@remixicon/react',
-    '@palettebro/color-picker',
-    '@palettebro/theme-generator',
-  ],
+  external: ['react'],
 });

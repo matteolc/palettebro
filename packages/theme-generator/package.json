@@ -2,11 +2,22 @@
   "name": "@palettebro/theme-generator",
   "version": "0.0.2",
   "private": false,
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
   "exports": {
-    "./palettes": "./src/palettes/index.ts",
-    "./services": "./src/services/index.ts",
-    ".": "./src/index.ts",
-    "./types": "./src/types.ts"
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./server": {
+      "import": "./dist/services/index.mjs",
+      "require": "./dist/services/index.js"
+    },
+    "./client": {
+      "import": "./dist/palettes/index.mjs",
+      "require": "./dist/palettes/index.js"
+    },
+    "./types": "./dist/index.d.ts"
   },
   "scripts": {
     "build": "tsup",
@@ -24,9 +35,9 @@
     "delta-e": "^0.0.8",
     "culori": "^4.0.1",
     "nearest-color": "^0.4.4",
+    "node-fetch": "^2.6.9",
     "picocolors": "^1.1.1",
-    "zod": "^3.24.1",
-    "node-fetch": "^2.6.9"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@palettebro/biome-config": "workspace:*",
@@ -50,8 +61,6 @@
     }
   ],
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": ["dist"],
   "publishConfig": {
     "access": "public",

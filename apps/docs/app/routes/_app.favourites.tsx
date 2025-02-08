@@ -1,6 +1,6 @@
 import { Form, useFetcher, useLoaderData } from '@remix-run/react';
 import { RiHeartLine } from '@remixicon/react';
-import { generatePaletteName } from '@palettebro/theme-generator/services';
+import { generatePaletteName } from '@palettebro/theme-generator/server';
 import type {
   ActionFunctionArgs,
   LoaderFunctionArgs,
@@ -140,7 +140,7 @@ export default function Page() {
       <div id="blocks" className="border-grid scroll-mt-24 border-b">
         <div className="container-wrapper">
           <div className="container flex items-center py-4">
-            {(palettes.length === 0 || isDeletingAll)? (
+            {palettes.length === 0 || isDeletingAll ? (
               <div className="text-center py-12 text-muted-foreground mx-auto">
                 No favorites yet. Save some palettes to see them here.
                 <br />

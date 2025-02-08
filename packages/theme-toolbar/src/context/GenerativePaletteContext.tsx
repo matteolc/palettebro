@@ -10,7 +10,7 @@ import type {
   GenerativeThemeMode,
   GenerativeThemePage,
   GenerativeThemePreset,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 import { createContext, useEffect, useState } from 'react';
 
 type GenerativePaletteContextType = {

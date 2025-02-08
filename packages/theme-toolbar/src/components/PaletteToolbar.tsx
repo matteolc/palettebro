@@ -9,7 +9,7 @@ import {
   randomUsableColor,
   type SchemistColor,
 } from '@palettebro/theme-generator';
-import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
+import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import { useContext, useEffect, useState } from 'react';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { PaletteSettings } from './settings/PaletteSettings';

@@ -7,7 +7,7 @@ import {
   RadioCardItem,
 } from '@/ui/radio-card';
 import { PaletteContext } from '@/context/PaletteContext';
-import { StaticThemePresetEnum } from '@palettebro/theme-generator/types';
+import { StaticThemePresetEnum } from '@palettebro/theme-generator';
 import { SettingsSection } from './SettingsSection';
 
 export const StaticPaletteSettings = () => {
@@ -37,7 +37,7 @@ export const StaticPaletteSettings = () => {
       <div className="mt-auto pt-4 col-span-2">
         <SettingsSection
           title="Reverse"
-          className='items-center'
+          className="items-center"
           rightElement={
             <Checkbox checked={reverse} onCheckedChange={setReverse} />
           }

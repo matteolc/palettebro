@@ -10,7 +10,7 @@ import {
 import {
   ColorShadesPresetEnum,
   ThemeVariantEnum,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 import { sentenceCase } from '@palettebro/theme-generator';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { RiShadowLine } from '@remixicon/react';

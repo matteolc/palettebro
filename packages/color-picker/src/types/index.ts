@@ -1,4 +1,4 @@
-import type { SchemistColor } from '@palettebro/theme-generator/types';
+import type { SchemistColor } from '@palettebro/theme-generator';
 import type { FC } from 'react';
 
 type ColorPickerPicker =

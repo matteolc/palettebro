@@ -5,7 +5,7 @@ import {
   GenerativeThemePresetEnum,
   MuiThemePresetEnum,
   StaticThemePresetEnum,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 
 export const DEFAULT_STATIC_PRESET = StaticThemePresetEnum['hue-shift'];
 export const DEFAULT_MUI_PRESET = MuiThemePresetEnum.fidelity;

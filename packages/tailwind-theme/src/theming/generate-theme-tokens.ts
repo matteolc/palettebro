@@ -1,6 +1,6 @@
-import { getPalette } from '@palettebro/theme-generator/palettes';
-import type { Theme } from '@palettebro/theme-generator/types';
+import { getPalette } from '@palettebro/theme-generator/client';
 import { paletteToCssVars } from '@palettebro/theme-generator';
+import type { Theme } from '@palettebro/theme-generator';
 import { DEFAULT_UTILITY_VALUES } from './const';
 
 const generateThemeTokens = (theme: Theme) => {
