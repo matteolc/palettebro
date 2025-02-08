@@ -6,11 +6,10 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   dts: true,
   splitting: true,
-  treeshake: false,
+  treeshake: true,
   minify: true,
   sourcemap: true,
   clean: true,
-  injectStyle: false,
   esbuildOptions(options) {
     options.tsconfig = 'tsconfig.build.json';
     options.alias = {

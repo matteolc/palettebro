@@ -1,6 +1,6 @@
 {
   "name": "@palettebro/theme-toolbar",
-  "version": "0.0.5",
+  "version": "0.1.1",
   "private": false,
   "types": "./dist/index.d.ts",
   "files": ["dist"],

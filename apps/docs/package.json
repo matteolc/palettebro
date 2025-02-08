@@ -6,6 +6,7 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf build",
     "start": "dotenv -e .env remix-serve ./build/server/index.js",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --fix --unsafe",
