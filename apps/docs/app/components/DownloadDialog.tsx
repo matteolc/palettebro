@@ -12,9 +12,11 @@ import { ScrollArea } from './ui/scroll-area';
 import { useContext } from 'react';
 
 import { PaletteContext } from '@palettebro/theme-toolbar';
-import { paletteToCssVars } from '@palettebro/theme-generator';
+import {
+  paletteToCssVars,
+  ColorShadesPresetEnum,
+} from '@palettebro/theme-generator';
 import { getColorUtilities } from '@palettebro/tailwind-theme';
-import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
 
 export function DownloadDialog() {
   const { palette } = useContext(PaletteContext);

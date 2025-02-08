@@ -1,5 +1,5 @@
 import type { GenerativeThemePreset } from '../types';
-import type { GenerateHuemintsParams } from './generate-huemints';
+import type { GenerateHuemintsParams } from './generate-huemints.server';
 
 export function parseHuemintsFormData(
   formData: FormData,

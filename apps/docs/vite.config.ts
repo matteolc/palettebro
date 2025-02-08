@@ -5,7 +5,7 @@ import globPlugin from 'vite-plugin-glob';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { remixDevTools } from 'remix-development-tools';
 
-const isVercel = process.env.VERCEL === "1";
+const isVercel = process.env.VERCEL === '1';
 
 declare module '@remix-run/node' {
   interface Future {
@@ -19,7 +19,7 @@ export default defineConfig({
     globPlugin(),
     tsconfigPaths(),
     remix({
-      ...isVercel && { presets: [vercelPreset()] },
+      ...(isVercel && { presets: [vercelPreset()] }),
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
@@ -35,7 +35,7 @@ export default defineConfig({
     },
   },
   resolve: {
-    mainFields: ['browser', 'module', 'main'],
+    mainFields: ['module', 'browser', 'main'],
   },
   build: {
     minify: true,

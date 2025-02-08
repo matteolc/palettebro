@@ -47,8 +47,8 @@ Define your themes:
 
 ```tsx
 // themes.ts
-import type { Themes } from '@palettebro/theme-generator/types';
-import { ThemeVariantEnum, StaticThemePresetEnum } from '@palettebro/theme-generator/types';
+import type { Themes } from '@palettebro/theme-generator';
+import { ThemeVariantEnum, StaticThemePresetEnum } from '@palettebro/theme-generator';
 import colors from 'tailwindcss/colors';
 
 const themes = {

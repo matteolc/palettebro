@@ -3,9 +3,10 @@
   "ui": "tui",
   "tasks": {
     "build": {
+      "env": ["OPENAI_API_KEY"],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", "build/**", "*.log"]
     },
     "format-and-lint": {},
     "format-and-lint:fix": {
@@ -14,6 +15,9 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "clean": {
+      "cache": false
     }
   }
 }

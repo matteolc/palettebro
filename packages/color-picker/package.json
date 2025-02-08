@@ -1,45 +1,47 @@
 {
   "name": "@palettebro/color-picker",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "private": false,
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "exports": {
-    ".": "./src/index.ts",
-    "./types": "./src/types/index.ts"
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./types": "./dist/index.d.ts"
   },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "format-and-lint": "biome check .",
-    "format-and-lint:fix": "biome check . --write",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "format-and-lint:fix": "biome check . --write"
   },
-  "devDependencies": {
+  "dependencies": {
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-tabs": "^1.1.2",
+    "@radix-ui/react-slot": "^1.1.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0",
+    "@palettebro/theme-generator": "workspace:*"
+  },
+  "devDependencies": {
     "@palettebro/biome-config": "workspace:*",
     "@palettebro/typescript-config": "workspace:*",
     "@types/react": "^18.3.12",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.6.0",
-    "tailwindcss": "^3.4.17",
     "tsup": "^8.3.5",
     "typescript": "5.5.4",
-    "@testing-library/jest-dom": "^6.1.5",
-    "@types/testing-library__jest-dom": "^5.14.9",
-    "@testing-library/react": "^14.2.1",
-    "@vitest/coverage-v8": "^1.3.1",
-    "jsdom": "^24.0.0",
-    "vitest": "^1.3.1",
     "@vitejs/plugin-react": "^4.2.1",
-    "vite-tsconfig-paths": "^5.1.3",
-    "@testing-library/user-event": "^14.5.2"
+    "vite-tsconfig-paths": "^5.1.3"
   },
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.1.0",
+  "peerDependencies": {
     "react": "^18.3.1",
-    "@palettebro/theme-generator": "workspace:*"
+    "tailwindcss": "^3.4.17"
   },
   "authors": [
     {
@@ -48,6 +50,5 @@
       "url": "https://github.com/matteolc"
     }
   ],
-  "license": "MIT",
-  "type": "module"
+  "license": "MIT"
 }

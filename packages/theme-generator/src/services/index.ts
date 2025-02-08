@@ -1,4 +1,4 @@
-export * from './generate-huemints';
+export * from './generate-huemints.server';
 export * from './generate-palette-name';
 export * from './parse-huemints-form-data';
 export * from './generate-kobayashi';

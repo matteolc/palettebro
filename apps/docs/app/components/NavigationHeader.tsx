@@ -4,7 +4,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@palettebro/theme-generator';
 import { PaletteContext } from '@palettebro/theme-toolbar';
-import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
+import { ColorShadesPresetEnum } from '@palettebro/theme-generator';
 
 const NavigationHeader = () => {
   const { scrollY } = useScroll();

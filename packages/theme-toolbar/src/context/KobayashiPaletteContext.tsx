@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
-import type { KobayashiImage } from '@palettebro/theme-generator/types';
-import { KobayashiImageEnum } from '@palettebro/theme-generator/types';
+import type { KobayashiImage } from '@palettebro/theme-generator';
+import { KobayashiImageEnum } from '@palettebro/theme-generator';
 import {
   KOBAYASHI_COLOR_COMBINATIONS_MAP,
   KOBAYASHI_LIFESTYLE_KEYWORDS,

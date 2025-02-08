@@ -3,14 +3,14 @@ import { ColorPicker } from '@palettebro/color-picker';
 import {
   type ThemeVariant,
   ThemeVariantEnum,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@/lib/string';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { getPaletteColor } from '@/utils/get-palette-color';
-import { ColorPickerPickerEnum } from '@palettebro/color-picker/types';
+import { ColorPickerPickerEnum } from '@palettebro/color-picker';
 export const PaletteToolbarColorSwatch = ({
   token,
   onLockUnlock,

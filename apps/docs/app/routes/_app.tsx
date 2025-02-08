@@ -6,7 +6,7 @@ import {
   PaletteToolbar,
   GenerativePaletteContextProvider,
 } from '@palettebro/theme-toolbar';
-import type { FormProps as ToolbarFormProps } from '@palettebro/theme-toolbar/types';
+import type { FormProps as ToolbarFormProps } from '@palettebro/theme-toolbar';
 import type { ComponentType } from 'react';
 import { NavigationHeader } from '~/components/NavigationHeader';
 import { useHints } from '~/hooks/use-hints';

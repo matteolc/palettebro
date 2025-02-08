@@ -5,7 +5,7 @@ import {
   RadioCardIndicator,
   RadioCardItem,
 } from '../../ui/radio-card';
-import { KobayashiImageEnum } from '@palettebro/theme-generator/types';
+import { KobayashiImageEnum } from '@palettebro/theme-generator';
 import { SettingsSection } from './SettingsSection';
 import { KobayashiPaletteContext } from '@/context/KobayashiPaletteContext';
 import { Checkbox } from '@/ui/checkbox';

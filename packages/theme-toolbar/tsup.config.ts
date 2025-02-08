@@ -1,18 +1,20 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
+  entry: ['src/index.ts'],
+  outDir: 'dist',
+  format: ['cjs', 'esm'],
   dts: true,
-  splitting: false,
+  splitting: true,
+  treeshake: true,
+  minify: true,
   sourcemap: true,
   clean: true,
-  external: [
-    "react",
-    "react-dom",
-    "@radix-ui/*",
-    "@remixicon/react",
-    "@palettebro/color-picker",
-    "@palettebro/theme-generator"
-  ]
-}); 
+  esbuildOptions(options) {
+    options.tsconfig = 'tsconfig.build.json';
+    options.alias = {
+      '@': './src',
+    };
+  },
+  external: ['react'],
+});

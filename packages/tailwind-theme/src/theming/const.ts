@@ -2,9 +2,9 @@ import {
   MATERIAL_TONES,
   TAILWIND_TONES,
   BOOTSTRAP_TONES,
+  ColorShadesPresetEnum,
 } from '@palettebro/theme-generator';
-import { ColorShadesPresetEnum } from '@palettebro/theme-generator/types';
-import type { ColorShadesPreset } from '@palettebro/theme-generator/types';
+import type { ColorShadesPreset } from '@palettebro/theme-generator';
 
 const DEFAULT_UTILITY_VALUES = {
   '--radius': '0.5rem',

@@ -9,19 +9,13 @@ import { GenerativePaletteContext } from '../../context/GenerativePaletteContext
 import {
   GenerativeThemePageEnum,
   GenerativeThemePresetEnum,
-} from '@palettebro/theme-generator/types';
+} from '@palettebro/theme-generator';
 import { SettingsSection } from './SettingsSection';
 import { SettingsSlider } from './SettingsSlider';
 
 export const DynamicPaletteSettings = () => {
-  const {
-    temperature,
-    setTemperature,
-    preset,
-    setPreset,
-    page,
-    setPage,
-  } = useContext(GenerativePaletteContext);
+  const { temperature, setTemperature, preset, setPreset, page, setPage } =
+    useContext(GenerativePaletteContext);
 
   if (!temperature || !setTemperature) return null;
 

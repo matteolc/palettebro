@@ -1,5 +1,5 @@
 import { RiEqualizerLine } from '@remixicon/react';
-import { ThemeVariantEnum } from '@palettebro/theme-generator/types';
+import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import { useContext } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';

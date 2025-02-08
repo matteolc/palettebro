@@ -124,3 +124,4 @@ export const presetSampleWithKeyAndNameHash = (
 export * from './color';
 export * from './utils';
 export * from './const';
+export * from './types';
