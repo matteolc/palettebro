@@ -23,7 +23,7 @@ export const useCustomPalette = (props: {
   const {
     colors,
     themes,
-    variant = ThemeVariantEnum.static,
+    variant,
     isDark,
     preset,
     reverse,
@@ -39,7 +39,7 @@ export const useCustomPalette = (props: {
       theme: {
         ...currentTheme,
         'color-scheme': isDark ? 'dark' : ('light' as ThemeColorScheme),
-        variant,
+        variant: variant ?? ThemeVariantEnum.static,
         preset,
         reverse,
         contrast,
