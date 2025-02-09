@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { sentenceCase } from '../../lib/string';
+import { sentenceCase } from '@palettebro/theme-generator';
 import {
   RadioCardGroup,
   RadioCardIndicator,
   RadioCardItem,
-} from '../../ui/radio-card';
+} from '@/ui/radio-card';
 import { KobayashiImageEnum } from '@palettebro/theme-generator';
 import { SettingsSection } from './SettingsSection';
 import { KobayashiPaletteContext } from '@/context/KobayashiPaletteContext';

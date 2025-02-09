@@ -35,7 +35,8 @@ export default function Page() {
         </main>
         <footer className="w-full max-w-7xl mx-auto p-10 flex justify-center">
           <span className="text-sm text-muted-foreground">
-            Made with ❤️ by <a href="https://github.com/matteolc">matteolc</a>
+            Made with ❤️ by{' '}
+            <a href="https://github.com/matteolc/palettebro">matteolc</a>
           </span>
         </footer>
       </div>

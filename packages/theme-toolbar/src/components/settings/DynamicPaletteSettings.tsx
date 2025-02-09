@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { sentenceCase } from '../../lib/string';
+import { sentenceCase } from '@palettebro/theme-generator';
 import {
   RadioCardGroup,
   RadioCardIndicator,
   RadioCardItem,
-} from '../../ui/radio-card';
-import { GenerativePaletteContext } from '../../context/GenerativePaletteContext';
+} from '@/ui/radio-card';
+import { GenerativePaletteContext } from '@/context/GenerativePaletteContext';
 import {
   GenerativeThemePageEnum,
   GenerativeThemePresetEnum,

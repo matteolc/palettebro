@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { sentenceCase } from '@/lib/string';
+import { sentenceCase } from '@palettebro/theme-generator';
 import { Checkbox } from '@/ui/checkbox';
 import {
   RadioCardGroup,

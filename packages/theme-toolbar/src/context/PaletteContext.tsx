@@ -1,4 +1,5 @@
 import type { usePalette } from '@palettebro/theme-generator/client';
+import { useCustomPalette } from '@palettebro/theme-generator/client';
 import {
   type ColorShadesPreset,
   ColorShadesPresetEnum,
@@ -10,7 +11,6 @@ import {
   ThemeVariantEnum,
 } from '@palettebro/theme-generator';
 import { createContext, useEffect, useMemo, useState } from 'react';
-import { useCustomPalette } from '../utils/use-custom-palette';
 import {
   DEFAULT_COLOR_SHADES_PRESET,
   DEFAULT_CONTRAST,
