@@ -53,21 +53,25 @@ export const PaletteProvider = ({
   const [isDark, setIsDark] = useState<boolean>(
     lightOrDark === ThemeColorSchemeEnum.dark,
   );
+  const theme =
+    themes[isDark ? ThemeColorSchemeEnum.dark : ThemeColorSchemeEnum.light];
   const [baseColors, setBaseColorsState] = useState<BaseColors>(
-    themes[isDark ? ThemeColorSchemeEnum.dark : ThemeColorSchemeEnum.light]
-      .baseColors,
+    theme.baseColors,
   );
-  const [variant, setVariant] = useState<ThemeVariant>(ThemeVariantEnum.static);
+  const [variant, setVariant] = useState<ThemeVariant>(theme.variant);
   const [preset, setPreset] = useState<StaticThemePreset | MuiThemePreset>(
-    DEFAULT_STATIC_PRESET,
+    theme.preset ?? DEFAULT_STATIC_PRESET,
   );
-  const [reverse, setReverse] = useState<boolean>(false);
-  const [contrast, setContrast] = useState<number>(DEFAULT_CONTRAST);
+  const [reverse, setReverse] = useState<boolean>(theme.reverse ?? false);
+  const [contrast, setContrast] = useState<number>(
+    theme.contrast ?? DEFAULT_CONTRAST,
+  );
   const [colorShadesPreset, setColorShadesPreset] = useState<ColorShadesPreset>(
-    DEFAULT_COLOR_SHADES_PRESET,
+    theme.colorShadesPreset ?? DEFAULT_COLOR_SHADES_PRESET,
   );
-  const [reverseLightDarkShades, setReverseLightDarkShades] =
-    useState<boolean>(false);
+  const [reverseLightDarkShades, setReverseLightDarkShades] = useState<boolean>(
+    theme.reverseLightDarkShades ?? false,
+  );
 
   const { palette } = useCustomPalette({
     colors: baseColors,
@@ -114,20 +118,30 @@ export const PaletteProvider = ({
   );
 
   useEffect(() => {
+    setIsDark(lightOrDark === ThemeColorSchemeEnum.dark);
+  }, [lightOrDark]);
+
+  useEffect(() => {
     switch (variant) {
       case ThemeVariantEnum.mui:
-        setPreset(DEFAULT_MUI_PRESET);
-        setColorShadesPreset(ColorShadesPresetEnum.mui);
+        setPreset(theme.preset ?? DEFAULT_MUI_PRESET);
+        setColorShadesPreset(
+          theme.colorShadesPreset ?? ColorShadesPresetEnum.mui,
+        );
         break;
       case ThemeVariantEnum.static:
-        setPreset(DEFAULT_STATIC_PRESET);
-        setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
+        setPreset(theme.preset ?? DEFAULT_STATIC_PRESET);
+        setColorShadesPreset(
+          theme.colorShadesPreset ?? DEFAULT_COLOR_SHADES_PRESET,
+        );
         break;
       case ThemeVariantEnum.dynamic:
-        setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
+        setColorShadesPreset(
+          theme.colorShadesPreset ?? DEFAULT_COLOR_SHADES_PRESET,
+        );
         break;
     }
-  }, [variant]);
+  }, [variant, theme]);
 
   return (
     <PaletteContext.Provider value={contextValue}>
