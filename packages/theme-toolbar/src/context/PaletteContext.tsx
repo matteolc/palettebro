@@ -118,20 +118,30 @@ export const PaletteProvider = ({
   );
 
   useEffect(() => {
+    setIsDark(lightOrDark === ThemeColorSchemeEnum.dark);
+  }, [lightOrDark]);
+
+  useEffect(() => {
     switch (variant) {
       case ThemeVariantEnum.mui:
-        setPreset(DEFAULT_MUI_PRESET);
-        setColorShadesPreset(ColorShadesPresetEnum.mui);
+        setPreset(theme.preset ?? DEFAULT_MUI_PRESET);
+        setColorShadesPreset(
+          theme.colorShadesPreset ?? ColorShadesPresetEnum.mui,
+        );
         break;
       case ThemeVariantEnum.static:
-        setPreset(DEFAULT_STATIC_PRESET);
-        setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
+        setPreset(theme.preset ?? DEFAULT_STATIC_PRESET);
+        setColorShadesPreset(
+          theme.colorShadesPreset ?? DEFAULT_COLOR_SHADES_PRESET,
+        );
         break;
       case ThemeVariantEnum.dynamic:
-        setColorShadesPreset(DEFAULT_COLOR_SHADES_PRESET);
+        setColorShadesPreset(
+          theme.colorShadesPreset ?? DEFAULT_COLOR_SHADES_PRESET,
+        );
         break;
     }
-  }, [variant]);
+  }, [variant, theme]);
 
   return (
     <PaletteContext.Provider value={contextValue}>
