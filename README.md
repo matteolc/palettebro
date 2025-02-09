@@ -12,152 +12,99 @@ Welcome to the official documentation for PaletteBruh, a comprehensive color pal
 
 ## Packages
 
-### @palettebro/color-picker
-A versatile color picker component supporting multiple color formats and providing an intuitive interface for color selection.
+### @palettebro/theme-generator
+Core package for generating color palettes with WCAG compliance and AI-powered suggestions.
 
-[Learn more about color-picker →](../packages/color-picker)
+[Learn more about theme-generator →](../packages/theme-generator)
 
 ### @palettebro/theme-toolbar
 React components for managing and customizing color palettes with features like WCAG contrast checking and favorites system.
 
 [Learn more about theme-toolbar →](../packages/theme-toolbar)
 
+### @palettebro/color-picker
+A versatile color picker component supporting multiple color formats and providing an intuitive interface for color selection.
+
+[Learn more about color-picker →](../packages/color-picker)
+
 ### @palettebro/tailwind-theme
 Tailwind CSS plugin for implementing dynamic theming with semantic color tokens and utility classes.
 
 [Learn more about tailwind-theme →](../packages/tailwind-theme)
 
-### @palettebro/theme-generator
-Core package for generating color palettes with WCAG compliance and AI-powered suggestions.
-
-[Learn more about theme-generator →](../packages/theme-generator)
-
-
-## Getting Started
+## TL;DR: Getting Started
 
 1. Install the core packages:
 
 ```bash
-pnpm add @palettebro/color-picker @palettebro/theme-toolbar @palettebro/tailwind-theme @palettebro/theme-generator
+pnpm add @palettebro/theme-generator
 ```
 
-### Using Palettebro toolbar in your project
-
-Define your themes:
+2. Define your themes:
 
 ```tsx
 // themes.ts
 import type { Themes } from '@palettebro/theme-generator';
 import { ThemeVariantEnum, StaticThemePresetEnum } from '@palettebro/theme-generator';
-import colors from 'tailwindcss/colors';
 
 const themes = {
   light: {
     'color-scheme': 'light' as const,
     variant: ThemeVariantEnum.static,
-    debug: false,
     preset: StaticThemePresetEnum.tetrad,
-    reverse: true,
     baseColors: {
-      primary: colors.purple[500],
-      secondary: colors.blue[500],
-      accent: colors.green[500],
+      primary: '#0066ff',
     },
   },
   dark: {
     'color-scheme': 'dark' as const,
     variant: ThemeVariantEnum.static,
-    debug: false,
     preset: StaticThemePresetEnum.tetrad,
-    reverse: true,
     baseColors: {
-      primary: colors.purple[500],
-      secondary: colors.blue[500],
-      accent: colors.green[500],
+      primary: '#0066ff',
     },
   },
 } satisfies Themes;
 ```
 
-Configure Tailwind CSS:
+3. Use Palettebro to inject the generated CSS tokens into your project:
 
 ```tsx
-// tailwind.config.ts
-import type { Config } from 'tailwindcss';
-import { themes } from './themes';
+import { useCustomPalette } from '@palettebro/theme-generator';
 
-const config: Pick<
-  Config,
-  'content' | 'theme' | 'variants' | 'plugins' | 'darkMode'
-> = {
-  darkMode: 'class',
-  content: [
-    './app/**/*.tsx',
-    '../../packages/color-picker/src/**/*.{js,ts,jsx,tsx}',
-    '../../packages/theme-toolbar/src/**/*.{js,ts,jsx,tsx}',
-    '!../../packages/**/node_modules',
-  ],
-  plugins: [
-    require('@palettebro/tailwind-theme')({
-      themes,
-      utils: true,
-      addThemes: false,
-    }),
-  ],
-};
-```
-
-Use the Palette provider to wrap your application:
-
-```tsx
-import {
-  KobayashiPaletteContextProvider,
-  PaletteProvider,
-  PaletteToolbar,
-  GenerativePaletteContextProvider,
-} from '@palettebro/theme-toolbar';
-import type { FormProps as ToolbarFormProps } from '@palettebro/theme-toolbar/types';
-
-function App() {
+export function Layout({ children }: { children: React.ReactNode }) {
+  const theme = useTheme(); // Get the dark/light theme from your theme provider
+	useCustomPalette({
+		themes,
+		isDark: theme === "dark",
+	});
+  
   return (
-    <PaletteProvider lightOrDark={'dark'} themes={themes}>
-      <main>
-        {/ Your application components /}
-        <GenerativePaletteContextProvider>
-          <KobayashiPaletteContextProvider>
-            <PaletteToolbar
-              FormComponent={FormWrapper}
-              useFetcher={useFetcher}
-            />
-          </KobayashiPaletteContextProvider>
-        </GenerativePaletteContextProvider>
-      </main>
-    </PaletteProvider>
-  );
+    <html className={theme}>
+      <body>
+        {children}
+      </body>
+    </html>
+  )
 }
 ```
 
-Framework notes:
+Tip: Use the `debug` option to log the generated CSS tokens in the Chrome DevTools.
 
-### Using Palettebro with Tailwind CSS
+## Use Palettebro toolbar in your project
 
-Configure Tailwind:
+[Learn more about theme-toolbar →](../packages/theme-toolbar)
 
-```tsx
-// tailwind.config.ts
-import { createTailwindTheme } from '@palettebro/tailwind-theme';
+### Use Palettebro with Tailwind CSS
 
-export default createTailwindTheme({
-  primary: '#0066ff',
-  secondary: '#ff6600',
-  // ... other theme configurations
-});
-```
+[Learn more about tailwind-theme →](../packages/tailwind-theme)
 
 ## Framework Integration
 
 ### Remix Method Signatures
-The PaletteToolbar requires these Remix-like signatures:
+
+The Palettebro toolbar requires these Remix-like signatures:
+
 ```tsx
 type FormProps = {
   action?: string;
@@ -178,6 +125,7 @@ function useFetcher(): Fetcher;
 ```
 
 ### Next.js Implementation Example
+
 For Next.js App Router, create these adapters:
 
 ```tsx

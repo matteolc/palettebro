@@ -5,7 +5,7 @@ import {
 } from '@palettebro/theme-generator';
 import { getColorDifference } from '@palettebro/theme-generator';
 import type { RgbColor } from '@palettebro/theme-generator';
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 import { Badge } from '@/ui/badge';
 import { Progress } from '@/ui/progress';
 
@@ -123,7 +123,9 @@ export function ColorDifferenceTable({
             <div className="text-xs font-medium uppercase">Preview</div>
             <div className="text-xs font-medium uppercase">Vision Type</div>
             <div className="text-xs font-medium uppercase">Status</div>
-            <div className="text-xs font-medium uppercase">Color Difference</div>
+            <div className="text-xs font-medium uppercase">
+              Color Difference
+            </div>
           </div>
           <div className="space-y-4">
             {getVisionTypeRows().map((row) => (
@@ -138,7 +140,7 @@ export function ColorDifferenceTable({
                 <div className="text-sm">{row.name}</div>
                 <div>
                   <Badge
-                    variant={row.status === 'Safe' ? 'positive' : 'outline' }
+                    variant={row.status === 'Safe' ? 'positive' : 'outline'}
                   >
                     {row.status}
                   </Badge>
@@ -149,10 +151,10 @@ export function ColorDifferenceTable({
                     <Progress
                       value={Math.min(100, (row.deltaE / 100) * 100)}
                       className={cn(
-                        "h-2",
-                        row.status === 'Safe' 
-                          ? "bg-white [&>div]:bg-green-500" 
-                          : "bg-white [&>div]:bg-red-500"
+                        'h-2',
+                        row.status === 'Safe'
+                          ? 'bg-white [&>div]:bg-green-500'
+                          : 'bg-white [&>div]:bg-red-500',
                       )}
                     />
                   </div>

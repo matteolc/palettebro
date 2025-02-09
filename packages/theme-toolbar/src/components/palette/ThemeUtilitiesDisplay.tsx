@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 import { PaletteColor } from './PaletteColor';
 
 export const ThemeUtilitiesDisplay = () => {
@@ -20,7 +20,7 @@ export const ThemeUtilitiesDisplay = () => {
           <div className="grid grid-cols-5 gap-4 grid-rows-2">
             <div className="col-span-1 flex flex-col">
               <PaletteColor
-                token="background"  
+                token="background"
                 labelToken="on-background"
                 label="Background"
                 borderRadius="rounded-t-md"

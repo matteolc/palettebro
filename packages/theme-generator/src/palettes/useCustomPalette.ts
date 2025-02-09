@@ -1,17 +1,18 @@
 import { usePalette } from './usePalette';
-import type {
-  ColorShadesPreset,
-  MuiThemePreset,
-  StaticThemePreset,
-  ThemeColorScheme,
-  Themes,
-  ThemeVariant,
+import {
+  ThemeVariantEnum,
+  type ColorShadesPreset,
+  type MuiThemePreset,
+  type StaticThemePreset,
+  type ThemeColorScheme,
+  type Themes,
+  type ThemeVariant,
 } from '../types';
 
 export const useCustomPalette = (props: {
-  colors: Record<string, string>;
+  colors?: Record<string, string>;
   themes: Themes;
-  variant: ThemeVariant;
+  variant?: ThemeVariant;
   isDark?: boolean;
   preset?: StaticThemePreset | MuiThemePreset;
   reverse?: boolean;
@@ -22,7 +23,7 @@ export const useCustomPalette = (props: {
   const {
     colors,
     themes,
-    variant,
+    variant = ThemeVariantEnum.static,
     isDark,
     preset,
     reverse,
