@@ -2,12 +2,12 @@ import { parse, parseHex, type Rgb } from 'culori';
 import { hslToSchemist, lchToSchemist, rgbToSchemist } from './conversion';
 import { hslFromCulori, lchFromCulori, rgbFromCulori } from './culori';
 import type { SchemistColor } from './types';
+import { converter } from 'culori';
 
 export const parseColor = (
   color: string,
 ): [string, SchemistColor | undefined] => {
   try {
-    // Add input validation
     if (!color || typeof color !== 'string') {
       throw new Error('Invalid color input');
     }
@@ -27,6 +27,11 @@ export const parseColor = (
         return ['hsl', hslToSchemist(hslFromCulori(parsed))];
       case 'lch':
         return ['lch', lchToSchemist(lchFromCulori(parsed))];
+      case 'oklch':
+        return [
+          'lch',
+          lchToSchemist({ ...converter('lch')(parsed), h: parsed.h ?? 0 }),
+        ];
       default:
         return [color, undefined];
     }

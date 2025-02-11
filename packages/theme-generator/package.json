@@ -1,6 +1,6 @@
 {
   "name": "@palettebro/theme-generator",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "private": false,
   "sideEffects": false,
   "types": "./dist/index.d.ts",
@@ -62,7 +62,9 @@
     }
   ],
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
