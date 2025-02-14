@@ -1,4 +1,4 @@
-import { Outlet } from '@remix-run/react';
+import { Outlet } from 'react-router';
 import { PaletteProvider } from '@palettebro/theme-toolbar';
 import React from 'react';
 import { themes } from '~/themes';

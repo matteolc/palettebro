@@ -1,4 +1,4 @@
-import { Link, NavLink } from '@remix-run/react';
+import { Link, NavLink } from 'react-router';
 import { UserAuthForm } from '~/components/examples/authentication/user-auth-form';
 import { buttonVariants } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';

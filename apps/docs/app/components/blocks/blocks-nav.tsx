@@ -1,4 +1,4 @@
-import { Link, useLocation } from '@remix-run/react';
+import { Link, useLocation } from 'react-router';
 import { ScrollArea, ScrollBar } from '~/components/ui/scroll-area';
 import { registryCategories } from './registry-categories';
 

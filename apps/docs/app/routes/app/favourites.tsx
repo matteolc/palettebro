@@ -1,11 +1,9 @@
-import { Form, useFetcher, useLoaderData } from '@remix-run/react';
+import { Form, useFetcher } from 'react-router';
 import { RiHeartLine } from '@remixicon/react';
 import { generatePaletteName } from '@palettebro/theme-generator/server';
 import type {
-  ActionFunctionArgs,
-  LoaderFunctionArgs,
   MetaFunction,
-} from '@vercel/remix';
+} from 'react-router';
 import { z } from 'zod';
 import {
   PageActions,
@@ -17,6 +15,7 @@ import { Button } from '~/components/ui/button';
 import { favouritesCookie } from '~/lib/palette-store';
 import { generateMeta } from '~/utils/meta-utils';
 import { FavouritePalette } from '~/components/FavouritePalette';
+import type { Route } from './+types/favourites';
 
 const paletteSchema = z.object({
   name: z.string().optional(),
@@ -37,14 +36,14 @@ export const meta: MetaFunction = () => {
   });
 };
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request }: Route.LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = ((await favouritesCookie.parse(cookieHeader)) ||
     {}) as z.infer<typeof schema>;
   return { palettes: cookie.palettes ?? [] };
 }
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ request }: Route.ActionArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = ((await favouritesCookie.parse(cookieHeader)) ||
     {}) as z.infer<typeof schema>;
@@ -108,8 +107,8 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-export default function Page() {
-  const { palettes } = useLoaderData<typeof loader>();
+export default function Page({ loaderData }: Route.ComponentProps) {
+  const { palettes } = loaderData;
   const fetcher = useFetcher();
 
   const isDeletingAll =

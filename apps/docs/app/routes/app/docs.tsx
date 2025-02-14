@@ -2,9 +2,9 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import { NavLink } from '@remix-run/react';
+import { NavLink } from 'react-router';
 import { PageActions } from '~/components/PageHeader';
-import { Outlet } from '@remix-run/react';
+import { Outlet } from 'react-router';
 import { PageHeader } from '~/components/PageHeader';
 import { Button } from '~/components/ui/button';
 

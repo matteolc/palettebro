@@ -1,4 +1,4 @@
-import type { LoaderFunction } from '@remix-run/node';
+import type { LoaderFunction } from 'react-router';
 import { generateOgImage } from '~/utils/og-image';
 
 export const loader: LoaderFunction = async ({ request }) => {

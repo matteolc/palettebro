@@ -1,4 +1,4 @@
-import { Outlet } from '@remix-run/react';
+import { Outlet } from 'react-router';
 import { SidebarNav } from '~/components/examples/forms/components/sidebar-nav';
 import { Card } from '~/components/ui/card';
 import { Separator } from '~/components/ui/separator';

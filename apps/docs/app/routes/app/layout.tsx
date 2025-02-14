@@ -1,5 +1,5 @@
-import { Form, Outlet, useFetcher } from '@remix-run/react';
-import type { FormProps as RemixFormProps } from '@remix-run/react';
+import { Form, Outlet, useFetcher } from 'react-router';
+import type { FormProps as RemixFormProps } from 'react-router';
 import {
   KobayashiPaletteContextProvider,
   PaletteProvider,
@@ -28,7 +28,11 @@ export default function Page() {
             <KobayashiPaletteContextProvider>
               <PaletteToolbar
                 FormComponent={FormWrapper}
-                useFetcher={useFetcher}
+                useFetcher={(options) => {
+                  // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
+                  const fetcher = useFetcher(options);
+                  return { state: fetcher.state, data: fetcher.data };
+                }}
               />
             </KobayashiPaletteContextProvider>
           </GenerativePaletteContextProvider>

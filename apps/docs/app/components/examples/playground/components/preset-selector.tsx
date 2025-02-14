@@ -18,7 +18,7 @@ import {
 } from '~/components/ui/popover';
 import { cn } from '~/lib/utils';
 
-import { useNavigate } from '@remix-run/react';
+import { useNavigate } from 'react-router';
 import type { Preset } from '../data/presets';
 
 interface PresetSelectorProps extends PopoverProps {

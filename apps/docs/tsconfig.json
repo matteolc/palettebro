@@ -1,27 +1,28 @@
 {
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".react-router/types/**/*"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@vercel/remix", "node", "vite/client"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
+    "types": ["vite/client"],
+    "rootDirs": [".", "./.react-router/types"],
     "jsx": "react-jsx",
-    "module": "ESNext",
     "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
     "target": "ES2022",
-    "strict": true,
-    "allowJs": true,
-    "skipLibCheck": true,
+    "module": "ES2022",
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true,
-    "sourceMap": true,
-    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]
     },
-
-    // Vite takes care of building everything, not tsc.
-    "noEmit": true
   }
 }

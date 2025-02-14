@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 import { Button } from '~/components/ui/button';
 import {
   Form,

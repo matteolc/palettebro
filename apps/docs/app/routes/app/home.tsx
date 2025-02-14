@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@vercel/remix';
+
 import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import { Badge } from '~/components/ui/badge';
 import { PaletteContext } from '@palettebro/theme-toolbar';
@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { useContext } from 'react';
 import { PageActions } from '~/components/PageHeader';
 import { Button } from '~/components/ui/button';
-import { NavLink } from '@remix-run/react';
+import { type MetaFunction, NavLink } from 'react-router';
 
 export const meta: MetaFunction = () => {
   return [

@@ -1,7 +1,7 @@
-import { useParams } from '@remix-run/react';
+import { useParams } from 'react-router';
 import { startTransition, useEffect, useState } from 'react';
 import { BlocksMap } from '~/components/blocks/blocks-map';
-import type { MetaFunction } from '@vercel/remix';
+import type { MetaFunction } from 'react-router';
 
 export const meta: MetaFunction = ({ params }) => {
   const blockName = params.name;

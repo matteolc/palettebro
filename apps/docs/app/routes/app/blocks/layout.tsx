@@ -1,5 +1,5 @@
-import { Link, Outlet } from '@remix-run/react';
-import type { MetaFunction } from '@vercel/remix';
+import { Link, Outlet } from 'react-router';
+import type { MetaFunction } from 'react-router';
 import {
   PageActions,
   PageHeader,

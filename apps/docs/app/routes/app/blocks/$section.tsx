@@ -1,16 +1,13 @@
-import { useParams } from '@remix-run/react';
-import type {
-  LoaderFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
-} from '@vercel/remix';
+import { useParams } from 'react-router';
+import type { MetaFunction } from 'react-router';
 import { BlockDisplay } from '~/components/blocks/block-display';
 import { BlocksMap } from '~/components/blocks/blocks-map';
 
 import { generateMeta } from '~/utils/meta-utils';
+import type { Route } from './+types/$section';
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  const category = data?.category || '';
+export const meta: MetaFunction = ({ data }) => {
+  const category = (data as { category: string }).category || '';
   const title = `${category.charAt(0).toUpperCase() + category.slice(1)} Blocks`;
 
   return generateMeta({
@@ -19,9 +16,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   });
 };
 
-export const loader: LoaderFunction = async ({
-  params,
-}: LoaderFunctionArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   const { category } = params;
   return { category };
 };

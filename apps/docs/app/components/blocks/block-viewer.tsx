@@ -10,7 +10,7 @@ import * as React from 'react';
 import type { ImperativePanelHandle } from 'react-resizable-panels';
 import { z } from 'zod';
 
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 import { Button } from '~/components/ui/button';
 import {
   ResizableHandle,

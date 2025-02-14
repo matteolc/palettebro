@@ -5,7 +5,6 @@
 import { getHintUtils } from '@epic-web/client-hints';
 import { clientHint as colorSchemeHint } from '@epic-web/client-hints/color-scheme';
 import { clientHint as timeZoneHint } from '@epic-web/client-hints/time-zone';
-import type { Jsonify } from '@remix-run/server-runtime/dist/jsonify';
 import type { ClientHintsValue } from 'node_modules/@epic-web/client-hints/dist/utils';
 
 import { useRequestInfo } from '~/hooks/use-request-info';
@@ -16,12 +15,10 @@ const hintsUtils = getHintUtils({
 });
 const { getHints } = hintsUtils;
 
-function useHints(): Jsonify<
-  ClientHintsValue<{
-    theme: typeof colorSchemeHint;
-    timeZone: typeof timeZoneHint;
-  }>
-> {
+function useHints(): ClientHintsValue<{
+  theme: typeof colorSchemeHint;
+  timeZone: typeof timeZoneHint;
+}> {
   const requestInfo = useRequestInfo();
   return requestInfo.hints;
 }
