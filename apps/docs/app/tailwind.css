@@ -1,39 +1,154 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
+
+  --color-card: oklch(var(--card));
+  --color-card-foreground: oklch(var(--card-foreground));
+
+  --color-popover: oklch(var(--popover));
+  --color-popover-foreground: oklch(var(--popover-foreground));
+
+  --color-primary: oklch(var(--primary));
+  --color-primary-foreground: oklch(var(--on-primary));
+
+  --color-secondary: oklch(var(--secondary));
+  --color-secondary-foreground: oklch(var(--on-secondary));
+
+  --color-muted: oklch(var(--muted));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+
+  --color-accent: oklch(var(--accent));
+  --color-accent-foreground: oklch(var(--on-accent));
+
+  --color-destructive: oklch(var(--destructive));
+  --color-destructive-foreground: oklch(var(--destructive-foreground));
+
+  --color-border: oklch(var(--border));
+  --color-input: oklch(var(--input));
+  --color-ring: oklch(var(--ring));
+
+  --color-chart-1: oklch(var(--primary-rainbow-0));
+  --color-chart-2: oklch(var(--primary-rainbow-1));
+  --color-chart-3: oklch(var(--primary-rainbow-2));
+  --color-chart-4: oklch(var(--primary-rainbow-3));
+  --color-chart-5: oklch(var(--primary-rainbow-4));
+
+  --color-sidebar: oklch(var(--sidebar));
+  --color-sidebar-foreground: oklch(var(--sidebar-foreground));
+  --color-sidebar-primary: oklch(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: oklch(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: oklch(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: oklch(var(--sidebar-accent-foreground));
+  --color-sidebar-border: oklch(var(--sidebar-border));
+  --color-sidebar-ring: oklch(var(--sidebar-ring));
+
+  --color-surface-container: oklch(var(--surface-container));
+  --color-surface-container-lowest: oklch(var(--surface-container-lowest));
+  --color-surface-container-high: oklch(var(--surface-container-high));
+  --color-surface-container-highest: oklch(var(--surface-container-highest));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
-  50% {
-    background-position: 100% 50%;
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
-  100% {
-    background-position: 0% 50%;
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
   }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes place {
+    0% {
+      transform: scaleY(1.2);
+      filter: brightness(300%);
+      filter: hue-rotate(50deg);
+    }
+  }  
 }
 
-@keyframes place {
-  0% {
-    transform: scaleY(1.2);
-    filter: brightness(300%);
-    filter: hue-rotate(50deg);
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  :root {
+    --radius: 0.5rem;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    --tw-gradient-from: oklch(var(--primary-50)) var(--tw-gradient-from-position);
+    --tw-gradient-to: oklch(var(--secondary-50)) var(--tw-gradient-to-position);
+    --tw-gradient-from-position: 0%;
+    --tw-gradient-to-position: 100%;
+    --tw-gradient-via-position: 50%;
+  }
+  .dark {
   }
 }
 
 @layer base {
-  html {
-    @apply scroll-smooth;
+  * {
+    @apply border-border;
   }
   body {
-    @apply bg-background text-foreground overscroll-none;
+    @apply bg-background text-foreground;
+    @apply overscroll-none bg-background text-foreground;
     /* font-feature-settings: "rlig" 1, "calt" 1; */
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
-  * {
-    @apply border-border;
+  html {
+    @apply scroll-smooth;
   }
 
   /* Custom scrollbar styling. Thanks @pranathiperii. */
@@ -51,6 +166,30 @@
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--border)) transparent;
   }
+
+  .container-wrapper {
+    @apply mx-auto w-full border-border/30 min-[1800px]:max-w-[1536px] min-[1800px]:border-x dark:border-border;
+  }
+  .container {
+    @apply mx-auto max-w-[1536px] px-4 xl:px-6 2xl:px-4;
+  }
+
+  .audio-indicator {
+    @apply inline-block w-5 h-5 rounded-full align-middle bg-gray-400;
+  }
+  
+  .audio-indicator.active {
+    @apply bg-green-500;
+    animation: pulse 1s infinite;
+  }
+  
+  .controls {
+    @apply my-5;
+  }
+  
+  .form-group {
+    @apply mb-4;
+  }  
 }
 
 @layer utilities {
@@ -59,7 +198,7 @@
     animation: gradient 4s ease infinite;
     background-size: 200% 200%;
   }
-  
+
   .title-gradient-mui {
     --tw-gradient-to: oklch(var(--accent-60)) var(--tw-gradient-to-position);
     --tw-gradient-from: oklch(var(--primary-50)) var(--tw-gradient-from-position);

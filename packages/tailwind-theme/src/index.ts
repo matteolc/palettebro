@@ -16,36 +16,78 @@ export const getColorUtilities = (colorShadesPreset: ColorShadesPreset) => ({
   ...SHADCN_COLOR_UTILITIES,
 });
 
-export default plugin.withOptions(
-  ({ utils, themes, darkTheme, addThemes }: PluginOptions) =>
-    ({
-      addBase,
-      addUtilities,
-    }: {
-      // biome-ignore lint/suspicious/noExplicitAny: No will to type this
-      addBase: (...args: any[]) => void;
-      // biome-ignore lint/suspicious/noExplicitAny: No will to type this
-      addUtilities: (...args: any[]) => void;
-    }) => {
+// @ts-ignore
+const tailwindPlugin = plugin.withOptions<PluginOptions>(
+  (options?: PluginOptions) => {
+    const defaultOptions: PluginOptions = {
+      themes: {
+        light: {
+          'color-scheme': 'light',
+          variant: 'static',
+          baseColors: {
+            primary: '#000000'
+          }
+        },
+        dark: {
+          'color-scheme': 'dark',
+          variant: 'static',
+          baseColors: {
+            primary: '#ffffff'
+          }
+        }
+      },
+      utils: false,
+      darkTheme: false,
+      addThemes: false,
+    };
+    const finalOptions = { ...defaultOptions, ...options };
+
+    return ({ addBase, addUtilities }) => {
       console.info(
         '\n',
         `🏄   ${pc.magenta('@palettebro/tailwind-theme')} ${pc.dim(version)}`,
       );
 
-      if (utils) {
+      if (finalOptions.utils) {
         addUtilities(utilities);
         console.info(`├─ ${pc.green('✔︎')} ${'Utility classes added'}`, '\n');
       }
 
-      if (addThemes) {
-        injectThemes(addBase, { themes, darkTheme });
+      if (finalOptions.addThemes) {
+        injectThemes(addBase, { 
+          themes: finalOptions.themes, 
+          darkTheme: finalOptions.darkTheme 
+        });
       }
-    },
-  ({ themes }: PluginOptions) => {
+    };
+  },
+  (options?: PluginOptions) => {
+    const defaultOptions: PluginOptions = {
+      themes: {
+        light: {
+          'color-scheme': 'light',
+          variant: 'static',
+          baseColors: {
+            primary: '#000000'
+          }
+        },
+        dark: {
+          'color-scheme': 'dark',
+          variant: 'static',
+          baseColors: {
+            primary: '#ffffff'
+          }
+        }
+      },
+      utils: false,
+      darkTheme: false,
+      addThemes: false,
+    };
+    const finalOptions = { ...defaultOptions, ...options };
     const colorShadesPreset =
-      themes.light.colorShadesPreset ?? ColorShadesPresetEnum.tailwind;
+      finalOptions.themes.light.colorShadesPreset ?? ColorShadesPresetEnum.tailwind;
 
-    if (Object.values(themes).some((theme) => theme.debug)) {
+    if (Object.values(finalOptions.themes).some((theme) => theme.debug)) {
       console.info(getColorUtilities(colorShadesPreset));
     }
     return {
@@ -55,5 +97,7 @@ export default plugin.withOptions(
         },
       },
     };
-  },
+  }
 );
+
+export default tailwindPlugin;
