@@ -1,9 +1,5 @@
 
-import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import { Badge } from '@palettebro/shadcn-ui/badge';
-import { PaletteContext } from '@palettebro/theme-toolbar';
-import clsx from 'clsx';
-import { useContext } from 'react';
 import { PageActions } from '~/components/PageHeader';
 import { Button } from '@palettebro/shadcn-ui/button';
 import { type MetaFunction, NavLink } from 'react-router';
@@ -24,33 +20,30 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const { variant } = useContext(PaletteContext);
-  const gradient =
-    variant === ThemeVariantEnum.mui
-      ? 'title-gradient-mui'
-      : 'title-gradient-tw';
-
   return (
     <>
       <div className="container-wrapper">
         <div className="container flex items-center py-4">
           <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
             <Badge
+              style={{
+                '--color-secondary': 'var(--color-accent)',
+                '--color-secondary-foreground': 'var(--color-accent-foreground)',
+              } as React.CSSProperties}
               variant="secondary"
               className="mb-4 text-md rounded-full"
             >
               <span className="relative flex h-3 w-3 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-secondary-foreground" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-secondary-foreground" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-accent-foreground" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-foreground" />
               </span>
               Introducing Palettebro 1.0
             </Badge>
 
             <h1
-              className={clsx(
-                gradient,
-                'scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-5xl lg:leading-tight title-gradient text-transparent bg-clip-text',
-              )}
+              className={
+                'scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-5xl lg:leading-tight title-gradient text-transparent bg-clip-text'
+              }
             >
               The best color palette generator for the web. Ever.
             </h1>

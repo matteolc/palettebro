@@ -1,15 +1,12 @@
 import { Link, NavLink } from 'react-router';
 import clsx from 'clsx';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { sentenceCase } from '@palettebro/theme-generator';
-import { PaletteContext } from '@palettebro/theme-toolbar';
-import { ColorShadesPresetEnum } from '@palettebro/theme-generator';
 
 const NavigationHeader = () => {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
-  const { variant, colorShadesPreset } = useContext(PaletteContext);
 
   useMotionValueEvent(scrollY, 'change', (current) => {
     if (current === 0) {
@@ -18,11 +15,6 @@ const NavigationHeader = () => {
       setIsScrolled(true);
     }
   });
-
-  const gradient =
-    colorShadesPreset === ColorShadesPresetEnum.mui
-      ? 'title-gradient-mui'
-      : 'title-gradient-tw';
 
   return (
     <motion.header
@@ -46,10 +38,9 @@ const NavigationHeader = () => {
         >
           <Link to="/">
             <h2
-              className={clsx(
-                gradient,
-                'cursor-pointer title-gradient text-3xl font-bold leading-relaxed text-transparent bg-clip-text',
-              )}
+              className={
+                'cursor-pointer title-gradient text-3xl font-bold leading-relaxed text-transparent bg-clip-text'
+              }
             >
               🌈 Palettebro
             </h2>
