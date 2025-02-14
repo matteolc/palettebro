@@ -32,8 +32,9 @@ export const SettingsSlider = ({
         onValueChange={(values: number[]) => onChange(values[0])}
         orientation="horizontal"
         style={{
-          '--color-primary': 'oklch(.928 .006 264.531)',
-          '--color-muted': 'oklch(0.141 .005 285.823)',
+          '--color-muted': 'oklch(.928 .006 264.531)',
+          '--color-primary': 'oklch(0.141 .005 285.823)',
+          '--color-background': 'oklch(.967 .001 286.375)',
         } as React.CSSProperties}
       />
     </SettingsSection>
