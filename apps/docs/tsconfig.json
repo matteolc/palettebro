@@ -7,7 +7,7 @@
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["vite/client"],
+    "types": ["@react-router/node", "vite/client"],
     "rootDirs": [".", "./.react-router/types"],
     "jsx": "react-jsx",
     "moduleResolution": "Bundler",

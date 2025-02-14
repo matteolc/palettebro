@@ -39,3 +39,4 @@ yarn-error.log*
 
 .cache
 .changeset
+.react-router
