@@ -35,8 +35,11 @@ const HEXColorPicker: React.FC<SchemistBasedPickerProps> = ({
       <Input
         style={
           {
+            'color': 'oklch(.141 .005 285.823)',
             '--color-input': 'oklch(.141 .005 285.823)',
             '--color-border': 'oklch(.985 .002 247.839)',
+            '--color-primary': 'oklch(.141 .005 285.823)',
+            '--color-primary-foreground': 'oklch(.985 .002 247.839)',
           } as React.CSSProperties
         }
         placeholder="Enter color"
