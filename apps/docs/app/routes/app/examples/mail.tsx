@@ -1,6 +1,6 @@
 import { accounts, mails } from '~/components/examples/mail/data';
 import { MailComponent } from '~/components/examples/mail/mail';
-import { Card } from '~/components/ui/card';
+import { Card } from '@palettebro/shadcn-ui/card';
 
 export default function Page() {
   return (

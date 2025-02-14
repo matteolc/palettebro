@@ -1,5 +1,5 @@
 import { AccountForm } from '~/components/examples/forms/account/account-form';
-import { Separator } from '~/components/ui/separator';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 export default function Page() {
   return (

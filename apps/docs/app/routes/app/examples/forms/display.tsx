@@ -1,5 +1,5 @@
 import { DisplayForm } from '~/components/examples/forms/display/display-form';
-import { Separator } from '~/components/ui/separator';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 export default function Page() {
   return (

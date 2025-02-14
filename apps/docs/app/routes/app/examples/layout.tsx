@@ -7,7 +7,7 @@ import {
   PageHeaderHeading,
 } from '~/components/PageHeader';
 import { ExamplesNav } from '~/components/examples/examples-nav';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import { generateMeta } from '~/utils/meta-utils';
 
 export const meta: MetaFunction = () => {

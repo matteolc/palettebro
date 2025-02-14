@@ -6,8 +6,8 @@ import {
 import { getColorDifference } from '@palettebro/theme-generator';
 import type { RgbColor } from '@palettebro/theme-generator';
 import { cn } from '@/lib/cn';
-import { Badge } from '@/ui/badge';
-import { Progress } from '@/ui/progress';
+import { Badge } from '@palettebro/shadcn-ui/badge';
+import { Progress } from '@palettebro/shadcn-ui/progress';
 
 interface ColorDifferenceTableProps {
   color1: RgbColor;
@@ -140,7 +140,7 @@ export function ColorDifferenceTable({
                 <div className="text-sm">{row.name}</div>
                 <div>
                   <Badge
-                    variant={row.status === 'Safe' ? 'positive' : 'outline'}
+                    variant={row.status === 'Safe' ? 'default' : 'outline'}
                   >
                     {row.status}
                   </Badge>

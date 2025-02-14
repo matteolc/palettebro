@@ -1,5 +1,8 @@
-import { Calendar } from '~/components/ui/calendar';
-import { SidebarGroup, SidebarGroupContent } from '~/components/ui/sidebar';
+import { Calendar } from '@palettebro/shadcn-ui/calendar';
+import {
+  SidebarGroup,
+  SidebarGroupContent,
+} from '@palettebro/shadcn-ui/sidebar';
 
 export function DatePicker() {
   return (

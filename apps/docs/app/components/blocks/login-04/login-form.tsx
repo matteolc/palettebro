@@ -1,7 +1,7 @@
-import { Button } from '~/components/ui/button';
-import { Card, CardContent } from '~/components/ui/card';
-import { Input } from '~/components/ui/input';
-import { Label } from '~/components/ui/label';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Card, CardContent } from '@palettebro/shadcn-ui/card';
+import { Input } from '@palettebro/shadcn-ui/input';
+import { Label } from '@palettebro/shadcn-ui/label';
 import { cn } from '~/lib/utils';
 
 export function LoginForm({
@@ -89,7 +89,7 @@ export function LoginForm({
           <div className="relative hidden bg-muted md:block">
             <img
               src="/placeholder.svg"
-              alt="Image"
+              alt="Login form illustration"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>

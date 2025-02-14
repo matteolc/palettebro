@@ -13,15 +13,15 @@ import {
 } from 'lucide-react';
 import * as React from 'react';
 
-import { Input } from '~/components/ui/input';
+import { Input } from '@palettebro/shadcn-ui/input';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '~/components/ui/resizable';
-import { Separator } from '~/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
-import { TooltipProvider } from '~/components/ui/tooltip';
+} from '@palettebro/shadcn-ui/resizable';
+import { Separator } from '@palettebro/shadcn-ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
+import { TooltipProvider } from '@palettebro/shadcn-ui/tooltip';
 import { cn } from '~/lib/utils';
 import { AccountSwitcher } from './account-switcher';
 import type { Mail } from './data';

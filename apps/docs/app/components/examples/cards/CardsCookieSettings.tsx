@@ -1,4 +1,4 @@
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
@@ -6,9 +6,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
-import { Label } from '~/components/ui/label';
-import { Switch } from '~/components/ui/switch';
+} from '@palettebro/shadcn-ui/card';
+import { Label } from '@palettebro/shadcn-ui/label';
+import { Switch } from '@palettebro/shadcn-ui/switch';
 
 export function CardsCookieSettings() {
   return (

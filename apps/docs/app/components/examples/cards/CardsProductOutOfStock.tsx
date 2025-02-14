@@ -1,14 +1,14 @@
 import { Star } from 'lucide-react';
 import type React from 'react';
-import { Badge } from '~/components/ui/badge';
-import { Button } from '~/components/ui/button';
+import { Badge } from '@palettebro/shadcn-ui/badge';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
+} from '@palettebro/shadcn-ui/card';
 
 interface ProductCardProps {
   name?: string;
@@ -43,7 +43,7 @@ export const CardsProductOutOfStock: React.FC<ProductCardProps> = ({
       <CardHeader className="relative p-0">
         <div className="relative overflow-hidden rounded-t-lg">
           <Badge
-            variant="accent"
+            variant="secondary"
             className="absolute top-3 left-3 z-10 px-2 py-1"
           >
             {category}

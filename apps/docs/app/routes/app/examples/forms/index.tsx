@@ -1,5 +1,5 @@
 import { ProfileForm } from '~/components/examples/forms/profile-form';
-import { Separator } from '~/components/ui/separator';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 export default function Page() {
   return (

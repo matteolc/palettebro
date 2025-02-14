@@ -1,6 +1,6 @@
 import { addDays } from 'date-fns';
-import { Calendar } from '~/components/ui/calendar';
-import { Card, CardContent } from '~/components/ui/card';
+import { Calendar } from '@palettebro/shadcn-ui/calendar';
+import { Card, CardContent } from '@palettebro/shadcn-ui/card';
 
 const start = new Date(2023, 5, 5);
 

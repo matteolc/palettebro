@@ -2,7 +2,12 @@ import { formatSchemistToHex, parseColor } from '@palettebro/theme-generator';
 import type { FC } from 'react';
 import { PICKER_TABS, DEFAULT_PICKER } from '~/const';
 import type { ColorPickerProps, ColorPickerPicker } from '~/types';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/ui/tabs';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@palettebro/shadcn-ui/tabs';
 
 const getPickerLabel = (value: ColorPickerPicker) => {
   switch (value) {

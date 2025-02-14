@@ -1,14 +1,14 @@
 import { ChevronDown } from 'lucide-react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Button } from '~/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@palettebro/shadcn-ui/avatar';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
+} from '@palettebro/shadcn-ui/card';
 import {
   Command,
   CommandEmpty,
@@ -16,12 +16,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '~/components/ui/command';
+} from '@palettebro/shadcn-ui/command';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
+} from '@palettebro/shadcn-ui/popover';
 
 const teamMembers = [
   {
@@ -77,7 +77,7 @@ export function CardsTeamMembers() {
       </CardHeader>
       <CardContent className="grid gap-6">
         {teamMembers.map((member) => (
-          <div key={member.toString()} className="flex items-center justify-between space-x-4">
+          <div key={member.name} className="flex items-center justify-between space-x-4">
             <div className="flex items-center space-x-4">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={member.avatar} alt="Image" />
@@ -102,7 +102,7 @@ export function CardsTeamMembers() {
                     <CommandGroup className="p-1.5">
                       {roles.map((role) => (
                         <CommandItem
-                          key={role.toString()}
+                          key={role.name}
                           className="teamaspace-y-1 flex flex-col items-start px-4 gap-y-1 group"
                         >
                           <p>{role.name}</p>

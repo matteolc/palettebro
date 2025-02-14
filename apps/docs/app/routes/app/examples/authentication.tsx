@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router';
 import { UserAuthForm } from '~/components/examples/authentication/user-auth-form';
-import { buttonVariants } from '~/components/ui/button';
-import { Card } from '~/components/ui/card';
+import { buttonVariants } from '@palettebro/shadcn-ui/button';
+import { Card } from '@palettebro/shadcn-ui/card';
 import { cn } from '~/lib/utils';
 
 export default function Page() {

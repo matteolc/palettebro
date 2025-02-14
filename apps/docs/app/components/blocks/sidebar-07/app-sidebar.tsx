@@ -18,7 +18,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 import { NavMain } from './nav-main';
 import { NavProjects } from './nav-projects';
 import { NavUser } from './nav-user';

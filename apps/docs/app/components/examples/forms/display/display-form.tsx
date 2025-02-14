@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Button } from '~/components/ui/button';
-import { Checkbox } from '~/components/ui/checkbox';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 import {
   Form,
   FormControl,

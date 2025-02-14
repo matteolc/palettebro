@@ -1,11 +1,11 @@
 
 import { ThemeVariantEnum } from '@palettebro/theme-generator';
-import { Badge } from '~/components/ui/badge';
+import { Badge } from '@palettebro/shadcn-ui/badge';
 import { PaletteContext } from '@palettebro/theme-toolbar';
 import clsx from 'clsx';
 import { useContext } from 'react';
 import { PageActions } from '~/components/PageHeader';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import { type MetaFunction, NavLink } from 'react-router';
 
 export const meta: MetaFunction = () => {
@@ -36,12 +36,12 @@ export default function Index() {
         <div className="container flex items-center py-4">
           <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
             <Badge
-              variant="accent"
-              className="mb-4 text-md rounded-full text-on-accent border-accent"
+              variant="secondary"
+              className="mb-4 text-md rounded-full text-on-secondary border-secondary"
             >
               <span className="relative flex h-3 w-3 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-on-accent" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-on-accent" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-on-secondary" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-on-secondary" />
               </span>
               Introducing Palettebro 1.0
             </Badge>

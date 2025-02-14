@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu';
+} from '@palettebro/shadcn-ui/dropdown-menu';
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -21,7 +21,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 
 export function NavProjects({
   projects,

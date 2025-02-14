@@ -1,5 +1,5 @@
 import { AppearanceForm } from '~/components/examples/forms/appearance/appearance-form';
-import { Separator } from '~/components/ui/separator';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 export default function Page() {
   return (

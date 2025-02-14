@@ -8,7 +8,7 @@ import {
 import { KobayashiImageEnum } from '@palettebro/theme-generator';
 import { SettingsSection } from './SettingsSection';
 import { KobayashiPaletteContext } from '@/context/KobayashiPaletteContext';
-import { Checkbox } from '@/ui/checkbox';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 
 export const KobayashiPaletteSettings = () => {
   const { word, words, setWord, image, setImage, generative, setGenerative } =

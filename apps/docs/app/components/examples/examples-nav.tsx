@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router';
-import { ScrollArea, ScrollBar } from '~/components/ui/scroll-area';
+import { ScrollArea, ScrollBar } from '@palettebro/shadcn-ui/scroll-area';
 import { cn } from '~/lib/utils';
 
 const examples = [

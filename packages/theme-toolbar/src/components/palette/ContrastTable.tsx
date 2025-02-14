@@ -1,5 +1,5 @@
-import { Badge } from '@/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
+import { Badge } from '@palettebro/shadcn-ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
 import {
   wcag2Contrast,
   wcag2ContrastGrade,
@@ -121,7 +121,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Regular text (24px / 19px bold and below)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG2Pass('regular') ? 'positive' : 'destructive'}
+                      variant={isWCAG2Pass('regular') ? 'default' : 'destructive'}
                     >
                       {isWCAG2Pass('regular') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -134,7 +134,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Large text (24px / 19px bold and above)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG2Pass('large') ? 'positive' : 'destructive'}
+                      variant={isWCAG2Pass('large') ? 'default' : 'destructive'}
                     >
                       {isWCAG2Pass('large') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -146,7 +146,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                 <tr>
                   <td>UI Components & graphics</td>
                   <td className="text-center">
-                    <Badge variant={isWCAG2Pass('ui') ? 'positive' : 'destructive'}>
+                    <Badge variant={isWCAG2Pass('ui') ? 'default' : 'destructive'}>
                       {isWCAG2Pass('ui') ? 'Pass' : 'Fail'}
                     </Badge>
                   </td>
@@ -174,7 +174,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Regular text (24px / 19px bold and below)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG3Pass('regular') ? 'positive' : 'destructive'}
+                      variant={isWCAG3Pass('regular') ? 'default' : 'destructive'}
                     >
                       {isWCAG3Pass('regular') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -187,7 +187,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                   <td>Large text (24px / 19px bold and above)</td>
                   <td className="text-center">
                     <Badge
-                      variant={isWCAG3Pass('large') ? 'positive' : 'destructive'}
+                      variant={isWCAG3Pass('large') ? 'default' : 'destructive'}
                     >
                       {isWCAG3Pass('large') ? 'Pass' : 'Fail'}
                     </Badge>
@@ -199,7 +199,7 @@ export const ContrastTable = ({ bg, fg }: ContrastTableProps) => {
                 <tr>
                   <td>UI Components & graphics</td>
                   <td className="text-center">
-                    <Badge variant={isWCAG3Pass('ui') ? 'positive' : 'destructive'}>
+                    <Badge variant={isWCAG3Pass('ui') ? 'default' : 'destructive'}>
                       {isWCAG3Pass('ui') ? 'Pass' : 'Fail'}
                     </Badge>
                   </td>

@@ -4,7 +4,7 @@ import { DataTable } from '~/components/examples/tasks/components/data-table';
 import { UserNav } from '~/components/examples/tasks/components/user-nav';
 import { taskSchema } from '~/components/examples/tasks/data/schema';
 import tasksFromFile from '~/components/examples/tasks/data/tasks.json';
-import { Card } from '~/components/ui/card';
+import { Card } from '@palettebro/shadcn-ui/card';
 
 export default function Page() {
   const tasks = z.array(taskSchema).parse(tasksFromFile);

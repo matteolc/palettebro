@@ -1,7 +1,7 @@
 import { ArchiveX, Command, File, Inbox, Send, Trash2 } from 'lucide-react';
 import * as React from 'react';
 
-import { Label } from '~/components/ui/label';
+import { Label } from '@palettebro/shadcn-ui/label';
 import {
   Sidebar,
   SidebarContent,
@@ -14,8 +14,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '~/components/ui/sidebar';
-import { Switch } from '~/components/ui/switch';
+} from '@palettebro/shadcn-ui/sidebar';
+import { Switch } from '@palettebro/shadcn-ui/switch';
 import { NavUser } from './nav-user';
 
 // This is sample data

@@ -1,15 +1,15 @@
 import { RotateCcw } from 'lucide-react';
 
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '~/components/ui/hover-card';
-import { Label } from '~/components/ui/label';
-import { Separator } from '~/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
-import { Textarea } from '~/components/ui/textarea';
+} from '@palettebro/shadcn-ui/hover-card';
+import { Label } from '@palettebro/shadcn-ui/label';
+import { Separator } from '@palettebro/shadcn-ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
+import { Textarea } from '@palettebro/shadcn-ui/textarea';
 
 import { CodeViewer } from './components/code-viewer';
 import { MaxLengthSelector } from './components/maxlength-selector';

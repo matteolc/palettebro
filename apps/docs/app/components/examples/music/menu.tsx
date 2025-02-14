@@ -13,7 +13,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from '~/components/ui/menubar';
+} from '@palettebro/shadcn-ui/menubar';
 
 export function Menu() {
   return (

@@ -13,15 +13,15 @@ import {
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
 
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
-import { Checkbox } from '~/components/ui/checkbox';
+} from '@palettebro/shadcn-ui/card';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -30,8 +30,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu';
-import { Input } from '~/components/ui/input';
+} from '@palettebro/shadcn-ui/dropdown-menu';
+import { Input } from '@palettebro/shadcn-ui/input';
 import {
   Table,
   TableBody,
@@ -39,7 +39,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '~/components/ui/table';
+} from '@palettebro/shadcn-ui/table';
 
 const data: Payment[] = [
   {

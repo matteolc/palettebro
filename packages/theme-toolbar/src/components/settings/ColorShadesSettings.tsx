@@ -12,9 +12,9 @@ import {
   ThemeVariantEnum,
 } from '@palettebro/theme-generator';
 import { sentenceCase } from '@palettebro/theme-generator';
-import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@palettebro/shadcn-ui/popover';
 import { RiShadowLine } from '@remixicon/react';
-import { Checkbox } from '@/ui/checkbox';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 
 export const ColorShadesSettings = () => {
   const {

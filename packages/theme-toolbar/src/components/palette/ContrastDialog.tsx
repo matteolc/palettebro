@@ -1,5 +1,5 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/ui/dialog';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@palettebro/shadcn-ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
 import { ColorFormats } from './ColorFormats';
 import { ColorPreview } from './ColorPreview';
 import { ContrastTable } from './ContrastTable';

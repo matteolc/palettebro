@@ -5,15 +5,15 @@ import { RecentSales } from '~/components/examples/dashboard/recent-sales';
 import { Search } from '~/components/examples/dashboard/search';
 import TeamSwitcher from '~/components/examples/dashboard/team-switcher';
 import { UserNav } from '~/components/examples/dashboard/user-nav';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+} from '@palettebro/shadcn-ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
 
 export default function Page() {
   return (

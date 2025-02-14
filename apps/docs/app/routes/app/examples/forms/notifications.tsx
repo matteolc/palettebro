@@ -1,5 +1,5 @@
 import { NotificationsForm } from '~/components/examples/forms/notifications/notifications-form';
-import { Separator } from '~/components/ui/separator';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 export default function Page() {
   return (

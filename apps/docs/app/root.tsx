@@ -52,7 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="min-h-fit antialiased">
-        <Analytics />
+        {/* <Analytics /> */}
         {children}
         <ScrollRestoration />
         <Scripts />

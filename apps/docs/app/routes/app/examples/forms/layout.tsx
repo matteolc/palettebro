@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { SidebarNav } from '~/components/examples/forms/components/sidebar-nav';
-import { Card } from '~/components/ui/card';
-import { Separator } from '~/components/ui/separator';
+import { Card } from '@palettebro/shadcn-ui/card';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 const sidebarNavItems = [
   {

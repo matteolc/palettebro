@@ -1,6 +1,6 @@
 import { Bar, BarChart, Line, LineChart } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
-import { type ChartConfig, ChartContainer } from '~/components/ui/chart';
+import { Card, CardContent, CardHeader, CardTitle } from '@palettebro/shadcn-ui/card';
+import { type ChartConfig, ChartContainer } from '@palettebro/shadcn-ui/chart';
 
 const data = [
   {

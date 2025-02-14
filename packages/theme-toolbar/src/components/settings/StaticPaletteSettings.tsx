@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { sentenceCase } from '@palettebro/theme-generator';
-import { Checkbox } from '@/ui/checkbox';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 import {
   RadioCardGroup,
   RadioCardIndicator,

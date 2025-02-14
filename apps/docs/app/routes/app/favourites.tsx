@@ -11,7 +11,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from '~/components/PageHeader';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import { favouritesCookie } from '~/lib/palette-store';
 import { generateMeta } from '~/utils/meta-utils';
 import { FavouritePalette } from '~/components/FavouritePalette';

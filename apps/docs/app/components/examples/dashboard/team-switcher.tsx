@@ -1,8 +1,8 @@
 import { Check, ChevronsUpDown, PlusCircle } from 'lucide-react';
 import * as React from 'react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Button } from '~/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@palettebro/shadcn-ui/avatar';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Command,
   CommandEmpty,
@@ -11,7 +11,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '~/components/ui/command';
+} from '@palettebro/shadcn-ui/command';
 import {
   Dialog,
   DialogContent,
@@ -20,21 +20,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '~/components/ui/dialog';
-import { Input } from '~/components/ui/input';
-import { Label } from '~/components/ui/label';
+} from '@palettebro/shadcn-ui/dialog';
+import { Input } from '@palettebro/shadcn-ui/input';
+import { Label } from '@palettebro/shadcn-ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
+} from '@palettebro/shadcn-ui/popover';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '~/components/ui/select';
+} from '@palettebro/shadcn-ui/select';
 import { cn } from '~/lib/utils';
 
 const groups = [

@@ -1,7 +1,7 @@
 import { Minus, Plus } from 'lucide-react';
 import * as React from 'react';
 import { Bar, BarChart } from 'recharts';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
@@ -9,8 +9,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
-import { type ChartConfig, ChartContainer } from '~/components/ui/chart';
+} from '@palettebro/shadcn-ui/card';
+import { type ChartConfig, ChartContainer } from '@palettebro/shadcn-ui/chart';
 
 const data = [
   {

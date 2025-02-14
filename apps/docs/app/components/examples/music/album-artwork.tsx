@@ -9,7 +9,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from '~/components/ui/context-menu';
+} from '@palettebro/shadcn-ui/context-menu';
 import { cn } from '~/lib/utils';
 
 import type { Album } from './data/albums';

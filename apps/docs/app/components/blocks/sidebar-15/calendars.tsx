@@ -5,7 +5,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '~/components/ui/collapsible';
+} from '@palettebro/shadcn-ui/collapsible';
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 
 export function Calendars({
   calendars,

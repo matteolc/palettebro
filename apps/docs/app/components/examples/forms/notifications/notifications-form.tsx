@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Link } from 'react-router';
-import { Button } from '~/components/ui/button';
-import { Checkbox } from '~/components/ui/checkbox';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 import {
   Form,
   FormControl,
@@ -14,8 +14,8 @@ import {
   FormLabel,
   FormMessage,
 } from '~/components/ui/form';
-import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group';
-import { Switch } from '~/components/ui/switch';
+import { RadioGroup, RadioGroupItem } from '@palettebro/shadcn-ui/radio-group';
+import { Switch } from '@palettebro/shadcn-ui/switch';
 import { toast } from '~/hooks/use-toast';
 
 const notificationsFormSchema = z.object({

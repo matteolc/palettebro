@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Button, buttonVariants } from '~/components/ui/button';
+import { Button, buttonVariants } from '@palettebro/shadcn-ui/button';
 import {
   Form,
   FormControl,
@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from '~/components/ui/form';
-import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group';
+import { RadioGroup, RadioGroupItem } from '@palettebro/shadcn-ui/radio-group';
 import { toast } from '~/hooks/use-toast';
 import { cn } from '~/lib/utils';
 

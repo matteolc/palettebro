@@ -6,7 +6,7 @@ import { NavLink } from 'react-router';
 import { PageActions } from '~/components/PageHeader';
 import { Outlet } from 'react-router';
 import { PageHeader } from '~/components/PageHeader';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 
 export default function Page() {
   return (

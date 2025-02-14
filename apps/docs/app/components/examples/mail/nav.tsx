@@ -1,12 +1,12 @@
 import type { LucideIcon } from 'lucide-react';
 
 import { Link } from 'react-router';
-import { buttonVariants } from '~/components/ui/button';
+import { buttonVariants } from '@palettebro/shadcn-ui/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '~/components/ui/tooltip';
+} from '@palettebro/shadcn-ui/tooltip';
 import { cn } from '~/lib/utils';
 
 interface NavProps {

@@ -1,5 +1,5 @@
-import { Button } from '~/components/ui/button';
-import { ScrollArea } from '~/components/ui/scroll-area';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { ScrollArea } from '@palettebro/shadcn-ui/scroll-area';
 import { cn } from '~/lib/utils';
 
 import type { Playlist } from './data/playlists';

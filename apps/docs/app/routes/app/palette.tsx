@@ -8,7 +8,12 @@ import { generateMeta } from '~/utils/meta-utils';
 import type { MetaFunction } from 'react-router';
 import { DownloadDialog } from '~/components/DownloadDialog';
 import { ThemePalette, ThemeUtilitiesDisplay } from '@palettebro/theme-toolbar';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@palettebro/shadcn-ui/tabs';
 
 export const meta: MetaFunction = () => {
   return generateMeta({

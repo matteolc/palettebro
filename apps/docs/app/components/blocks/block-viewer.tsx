@@ -8,19 +8,20 @@ import {
 } from 'lucide-react';
 import * as React from 'react';
 import type { ImperativePanelHandle } from 'react-resizable-panels';
-import { z } from 'zod';
 
 import { Link } from 'react-router';
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '~/components/ui/resizable';
-import { Separator } from '~/components/ui/separator';
-import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
+} from '@palettebro/shadcn-ui/resizable';
+import { Separator } from '@palettebro/shadcn-ui/separator';
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from '@palettebro/shadcn-ui/toggle-group';
 import { useCopyToClipboard } from '~/hooks/use-copy-to-clipboard';
-import LoginPage from './login-01/page';
 
 type BlockItem = {
   name: string;
@@ -52,7 +53,8 @@ function BlockViewerProvider({
 }: Pick<BlockViewerContext, 'item'> & {
   children: React.ReactNode;
 }) {
-  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null);
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null!);
 
   return (
     <BlockViewerContext.Provider
@@ -93,7 +95,7 @@ function BlockViewerToolbar() {
           <ToggleGroup
             type="single"
             defaultValue="100"
-            onValueChange={(value) => {
+            onValueChange={(value: string) => {
               if (resizablePanelRef?.current) {
                 resizablePanelRef.current.resize(Number.parseInt(value));
               }

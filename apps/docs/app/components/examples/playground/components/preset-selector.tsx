@@ -2,7 +2,7 @@ import type { PopoverProps } from '@radix-ui/react-popover';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import * as React from 'react';
 
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Command,
   CommandEmpty,
@@ -10,12 +10,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '~/components/ui/command';
+} from '@palettebro/shadcn-ui/command';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
+} from '@palettebro/shadcn-ui/popover';
 import { cn } from '~/lib/utils';
 
 import { useNavigate } from 'react-router';

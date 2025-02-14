@@ -8,11 +8,11 @@ import { playlists } from '~/components/examples/music/data/playlists';
 import { Menu } from '~/components/examples/music/menu';
 import { PodcastEmptyPlaceholder } from '~/components/examples/music/podcast-empty-placeholder';
 import { Sidebar } from '~/components/examples/music/sidebar';
-import { Button } from '~/components/ui/button';
-import { Card } from '~/components/ui/card';
-import { ScrollArea, ScrollBar } from '~/components/ui/scroll-area';
-import { Separator } from '~/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Card } from '@palettebro/shadcn-ui/card';
+import { ScrollArea, ScrollBar } from '@palettebro/shadcn-ui/scroll-area';
+import { Separator } from '@palettebro/shadcn-ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
 
 export default function Page() {
   return (

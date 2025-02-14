@@ -2,8 +2,8 @@ import { formatSchemistToHex, parseColor } from '@palettebro/theme-generator';
 import type React from 'react';
 import { useState } from 'react';
 import type { SchemistBasedPickerProps } from '~/types';
-import { Button } from '~/ui/button';
-import { Input } from '~/ui/input';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Input } from '@palettebro/shadcn-ui/input';
 
 const HEXColorPicker: React.FC<SchemistBasedPickerProps> = ({
   value,

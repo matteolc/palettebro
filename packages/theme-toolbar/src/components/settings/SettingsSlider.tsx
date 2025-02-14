@@ -1,4 +1,4 @@
-import { Slider } from '@/ui/slider';
+import { Slider } from '@palettebro/shadcn-ui/slider';
 import { SettingsSection } from './SettingsSection';
 
 interface SettingsSliderProps {
@@ -30,6 +30,12 @@ export const SettingsSlider = ({
         step={step}
         max={max}
         onValueChange={(values: number[]) => onChange(values[0])}
+        orientation="horizontal"
+        style={{
+          '--primary': '14.1% .005 285.823',
+          '--background': '14.1% .005 285.823',
+          '--surface': '14.1% .005 285.823',
+        } as React.CSSProperties}
       />
     </SettingsSection>
   );
