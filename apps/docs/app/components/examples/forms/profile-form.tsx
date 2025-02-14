@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '~/components/ui/form';
+} from '@palettebro/shadcn-ui/form';
 import { Input } from '@palettebro/shadcn-ui/input';
 import {
   Select,

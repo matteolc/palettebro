@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '~/components/ui/form';
+} from '@palettebro/shadcn-ui/form';
 import { RadioGroup, RadioGroupItem } from '@palettebro/shadcn-ui/radio-group';
 import { toast } from '~/hooks/use-toast';
 import { cn } from '~/lib/utils';

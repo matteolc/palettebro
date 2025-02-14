@@ -14,7 +14,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '~/components/ui/form';
+} from '@palettebro/shadcn-ui/form';
 import { toast } from '~/hooks/use-toast';
 
 const items = [
