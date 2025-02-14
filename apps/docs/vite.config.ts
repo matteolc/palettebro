@@ -4,9 +4,7 @@ import globPlugin from 'vite-plugin-glob';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import tailwindcssVite from '@tailwindcss/vite';
 
-const isVercel = process.env.VERCEL === '1';
-
-export default defineConfig(({ isSsrBuild, command, mode }) => {
+export default defineConfig(({ command, mode }) => {
   return {
     plugins: [globPlugin(), tsconfigPaths(), reactRouter(), tailwindcssVite()],
     ssr: {

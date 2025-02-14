@@ -39,7 +39,16 @@ export const StaticPaletteSettings = () => {
           title="Reverse"
           className="items-center"
           rightElement={
-            <Checkbox checked={reverse} onCheckedChange={setReverse} />
+            <Checkbox
+              style={
+                {
+                  '--color-primary': 'oklch(.141 .005 285.823)',
+                  '--color-primary-foreground': 'oklch(.985 .002 247.839)',
+                } as React.CSSProperties
+              }
+              checked={reverse}
+              onCheckedChange={setReverse}
+            />
           }
         />
       </div>

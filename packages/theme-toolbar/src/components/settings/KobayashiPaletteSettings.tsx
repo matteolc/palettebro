@@ -60,7 +60,16 @@ export const KobayashiPaletteSettings = () => {
             title="Generative"
             className="items-center"
             rightElement={
-              <Checkbox checked={generative} onCheckedChange={setGenerative} />
+              <Checkbox
+                style={
+                  {
+                    '--color-primary': 'oklch(.141 .005 285.823)',
+                    '--color-primary-foreground': 'oklch(.985 .002 247.839)',
+                  } as React.CSSProperties
+                }
+                checked={generative}
+                onCheckedChange={setGenerative}
+              />
             }
           />
         </div>

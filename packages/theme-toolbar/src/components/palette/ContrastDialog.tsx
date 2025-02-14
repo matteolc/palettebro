@@ -21,7 +21,7 @@ export const ContrastDialog = ({
 }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="min-w-4xl">
         <DialogHeader>
           <DialogTitle className="text-2xl">{colorName}</DialogTitle>
         </DialogHeader>

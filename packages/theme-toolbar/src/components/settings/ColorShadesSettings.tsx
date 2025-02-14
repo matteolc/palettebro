@@ -12,7 +12,11 @@ import {
   ThemeVariantEnum,
 } from '@palettebro/theme-generator';
 import { sentenceCase } from '@palettebro/theme-generator';
-import { Popover, PopoverContent, PopoverTrigger } from '@palettebro/shadcn-ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@palettebro/shadcn-ui/popover';
 import { RiShadowLine } from '@remixicon/react';
 import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 
@@ -60,6 +64,12 @@ export const ColorShadesSettings = () => {
           title="Reverse"
           rightElement={
             <Checkbox
+              style={
+                {
+                  '--color-primary': 'oklch(.141 .005 285.823)',
+                  '--color-primary-foreground': 'oklch(.985 .002 247.839)',
+                } as React.CSSProperties
+              }
               disabled={variant === ThemeVariantEnum.mui}
               checked={reverseLightDarkShades}
               onCheckedChange={setReverseLightDarkShades}

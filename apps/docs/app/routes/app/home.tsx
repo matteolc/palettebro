@@ -37,11 +37,11 @@ export default function Index() {
           <div className="max-w-2xl mx-auto lg:mx-0 mt-20 z-40">
             <Badge
               variant="secondary"
-              className="mb-4 text-md rounded-full text-on-secondary border-secondary"
+              className="mb-4 text-md rounded-full"
             >
               <span className="relative flex h-3 w-3 mr-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-on-secondary" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-on-secondary" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-secondary-foreground" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-secondary-foreground" />
               </span>
               Introducing Palettebro 1.0
             </Badge>
