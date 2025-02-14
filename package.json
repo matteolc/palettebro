@@ -8,7 +8,7 @@
     "start": "pnpm --filter docs start",
     "lint": "turbo run format-and-lint",
     "lint:fix": "turbo run format-and-lint:fix",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
     "changeset": "changeset",

@@ -10,24 +10,24 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '~/components/ui/alert-dialog';
-import { Button } from '~/components/ui/button';
+} from '@palettebro/shadcn-ui/alert-dialog';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '~/components/ui/dialog';
+} from '@palettebro/shadcn-ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu';
-import { Label } from '~/components/ui/label';
-import { Switch } from '~/components/ui/switch';
+} from '@palettebro/shadcn-ui/dropdown-menu';
+import { Label } from '@palettebro/shadcn-ui/label';
+import { Switch } from '@palettebro/shadcn-ui/switch';
 import { toast } from '~/hooks/use-toast';
 
 export function PresetActions() {

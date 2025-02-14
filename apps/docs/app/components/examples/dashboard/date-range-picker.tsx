@@ -3,13 +3,13 @@ import { CalendarIcon } from 'lucide-react';
 import * as React from 'react';
 import type { DateRange } from 'react-day-picker';
 
-import { Button } from '~/components/ui/button';
-import { Calendar } from '~/components/ui/calendar';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Calendar } from '@palettebro/shadcn-ui/calendar';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
+} from '@palettebro/shadcn-ui/popover';
 import { cn } from '~/lib/utils';
 
 export function CalendarDateRangePicker({

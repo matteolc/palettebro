@@ -1,4 +1,4 @@
-import { createCookie } from '@vercel/remix';
+import { createCookie } from 'react-router';
 
 export const FAVOURITES_COOKIE_NAME = 'palettes';
 

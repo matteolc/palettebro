@@ -1,5 +1,5 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/ui/dialog';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@palettebro/shadcn-ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
 import { ColorFormats } from './ColorFormats';
 import { ColorPreview } from './ColorPreview';
 import { ContrastTable } from './ContrastTable';
@@ -21,7 +21,7 @@ export const ContrastDialog = ({
 }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="min-w-4xl">
         <DialogHeader>
           <DialogTitle className="text-2xl">{colorName}</DialogTitle>
         </DialogHeader>

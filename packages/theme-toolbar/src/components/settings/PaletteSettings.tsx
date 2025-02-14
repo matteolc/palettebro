@@ -1,8 +1,8 @@
 import { RiEqualizerLine } from '@remixicon/react';
 import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import { useContext } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
+import { Popover, PopoverContent, PopoverTrigger } from '@palettebro/shadcn-ui/popover';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
 import { DynamicPaletteSettings } from './DynamicPaletteSettings';
 import { PaletteContext } from '@/context/PaletteContext';
 import { StaticPaletteSettings } from './StaticPaletteSettings';

@@ -1,5 +1,5 @@
 import { cn } from '@/lib/cn';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@palettebro/shadcn-ui/table';
 import convert from 'simple-color-converter';
 import type { ColorValue } from 'simple-color-converter';
 

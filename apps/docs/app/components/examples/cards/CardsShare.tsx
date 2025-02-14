@@ -1,22 +1,22 @@
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Button } from '~/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@palettebro/shadcn-ui/avatar';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
-import { Input } from '~/components/ui/input';
-import { Label } from '~/components/ui/label';
+} from '@palettebro/shadcn-ui/card';
+import { Input } from '@palettebro/shadcn-ui/input';
+import { Label } from '@palettebro/shadcn-ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '~/components/ui/select';
-import { Separator } from '~/components/ui/separator';
+} from '@palettebro/shadcn-ui/select';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 
 export function CardsShare() {
   return (

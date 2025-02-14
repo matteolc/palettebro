@@ -3,13 +3,13 @@ import {
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-} from '~/components/ui/breadcrumb';
-import { Separator } from '~/components/ui/separator';
+} from '@palettebro/shadcn-ui/breadcrumb';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 import { AppSidebar } from './app-sidebar';
 import { NavActions } from './nav-actions';
 

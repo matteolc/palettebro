@@ -6,9 +6,9 @@ import {
 } from '@palettebro/theme-generator/server';
 import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import type { ThemeVariant } from '@palettebro/theme-generator';
-import type { LoaderFunctionArgs } from '@vercel/remix';
+import type { Route } from './+types/generate';
 
-export async function action({ request }: LoaderFunctionArgs) {
+export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
   const variant = formData.get('mode') as ThemeVariant;
 

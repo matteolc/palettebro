@@ -1,43 +1,20 @@
-import { vitePlugin as remix } from '@remix-run/dev';
-import { vercelPreset } from '@vercel/remix/vite';
+import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import globPlugin from 'vite-plugin-glob';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { remixDevTools } from 'remix-development-tools';
+import tailwindcssVite from '@tailwindcss/vite';
 
-const isVercel = process.env.VERCEL === '1';
-
-declare module '@remix-run/node' {
-  interface Future {
-    v3_singleFetch: true;
-  }
-}
-
-export default defineConfig({
-  plugins: [
-    remixDevTools(),
-    globPlugin(),
-    tsconfigPaths(),
-    remix({
-      ...(isVercel && { presets: [vercelPreset()] }),
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-        v3_singleFetch: true,
-        v3_lazyRouteDiscovery: true,
-      },
-    }),
-  ],
-  ssr: {
-    resolve: {
-      conditions: ['workerd', 'worker', 'browser'],
+export default defineConfig(({ command, mode }) => {
+  return {
+    plugins: [globPlugin(), tsconfigPaths(), reactRouter(), tailwindcssVite()],
+    ssr: {
+      noExternal: command === 'build' ? true : undefined,
     },
-  },
-  resolve: {
-    mainFields: ['module', 'browser', 'main'],
-  },
-  build: {
-    minify: true,
-  },
+    resolve: {
+      mainFields: ['module', 'browser', 'main'],
+    },
+    build: {
+      minify: true,
+    },
+  };
 });

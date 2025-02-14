@@ -10,31 +10,31 @@ import {
   Trash2,
 } from 'lucide-react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Button } from '~/components/ui/button';
-import { Calendar } from '~/components/ui/calendar';
+import { Avatar, AvatarFallback, AvatarImage } from '@palettebro/shadcn-ui/avatar';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Calendar } from '@palettebro/shadcn-ui/calendar';
 import {
   DropdownMenuContent,
   DropdownMenuItem,
-} from '~/components/ui/dropdown-menu';
+} from '@palettebro/shadcn-ui/dropdown-menu';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu';
-import { Label } from '~/components/ui/label';
+} from '@palettebro/shadcn-ui/dropdown-menu';
+import { Label } from '@palettebro/shadcn-ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
-import { Separator } from '~/components/ui/separator';
-import { Switch } from '~/components/ui/switch';
-import { Textarea } from '~/components/ui/textarea';
+} from '@palettebro/shadcn-ui/popover';
+import { Separator } from '@palettebro/shadcn-ui/separator';
+import { Switch } from '@palettebro/shadcn-ui/switch';
+import { Textarea } from '@palettebro/shadcn-ui/textarea';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '~/components/ui/tooltip';
+} from '@palettebro/shadcn-ui/tooltip';
 import type { Mail } from './data';
 
 interface MailDisplayProps {

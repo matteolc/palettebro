@@ -1,13 +1,14 @@
 import { RiLockLine, RiLockUnlockLine, RiPaletteLine } from '@remixicon/react';
 import { ColorPicker } from '@palettebro/color-picker';
-import {
-  type ThemeVariant,
-  ThemeVariantEnum,
-} from '@palettebro/theme-generator';
+import { ThemeVariantEnum } from '@palettebro/theme-generator';
 import clsx from 'clsx';
 import { useContext, useState } from 'react';
 import { sentenceCase } from '@palettebro/theme-generator';
-import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@palettebro/shadcn-ui/popover';
 import { type BaseColors, PaletteContext } from '@/context/PaletteContext';
 import { getPaletteColor } from '@/utils/get-palette-color';
 import { ColorPickerPickerEnum } from '@palettebro/color-picker';

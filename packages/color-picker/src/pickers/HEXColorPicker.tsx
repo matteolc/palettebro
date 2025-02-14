@@ -2,8 +2,8 @@ import { formatSchemistToHex, parseColor } from '@palettebro/theme-generator';
 import type React from 'react';
 import { useState } from 'react';
 import type { SchemistBasedPickerProps } from '~/types';
-import { Button } from '~/ui/button';
-import { Input } from '~/ui/input';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Input } from '@palettebro/shadcn-ui/input';
 
 const HEXColorPicker: React.FC<SchemistBasedPickerProps> = ({
   value,
@@ -33,6 +33,15 @@ const HEXColorPicker: React.FC<SchemistBasedPickerProps> = ({
         <div className="text-md font-bold mb-2">{formattedValue}</div>
       </div>
       <Input
+        style={
+          {
+            'color': 'oklch(.141 .005 285.823)',
+            '--color-input': 'oklch(.141 .005 285.823)',
+            '--color-border': 'oklch(.985 .002 247.839)',
+            '--color-primary': 'oklch(.141 .005 285.823)',
+            '--color-primary-foreground': 'oklch(.985 .002 247.839)',
+          } as React.CSSProperties
+        }
         placeholder="Enter color"
         id="hex-color-picker"
         name="hex-color-picker"
@@ -41,7 +50,17 @@ const HEXColorPicker: React.FC<SchemistBasedPickerProps> = ({
         onChange={(e) => setFormattedValue(e.target.value.trim())}
       />
       {error && <div className="text-red-500">{error}</div>}
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Button
+        style={
+          {
+            '--color-primary': 'oklch(.141 .005 285.823)',
+            '--color-primary-foreground': 'oklch(.985 .002 247.839)',
+          } as React.CSSProperties
+        }
+        onClick={handleSubmit}
+      >
+        Submit
+      </Button>
     </div>
   );
 };

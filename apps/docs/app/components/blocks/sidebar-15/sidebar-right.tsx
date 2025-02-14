@@ -11,7 +11,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
   SidebarSeparator,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 import { Calendars } from './calendars';
 import { DatePicker } from './date-picker';
 import { NavUser } from './nav-user';

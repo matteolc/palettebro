@@ -1,4 +1,4 @@
-import { Button } from './ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Dialog,
   DialogContent,
@@ -6,9 +6,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { ScrollArea } from './ui/scroll-area';
+} from '@palettebro/shadcn-ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@palettebro/shadcn-ui/tabs';
+import { ScrollArea } from '@palettebro/shadcn-ui/scroll-area';
 import { useContext } from 'react';
 
 import { PaletteContext } from '@palettebro/theme-toolbar';

@@ -1,6 +1,6 @@
 import { cn } from '~/lib/utils';
 import { PaletteContext } from '@palettebro/theme-toolbar';
-import type { FormProps } from '@remix-run/react';
+import type { FormProps } from 'react-router';
 import { RiDeleteBin6Line, RiEyeLine } from '@remixicon/react';
 import { type ComponentType, useContext } from 'react';
 

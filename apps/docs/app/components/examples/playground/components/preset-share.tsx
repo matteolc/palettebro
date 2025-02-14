@@ -1,13 +1,13 @@
 import { Copy } from 'lucide-react';
 
-import { Button } from '~/components/ui/button';
-import { Input } from '~/components/ui/input';
-import { Label } from '~/components/ui/label';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Input } from '@palettebro/shadcn-ui/input';
+import { Label } from '@palettebro/shadcn-ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
+} from '@palettebro/shadcn-ui/popover';
 
 export function PresetShare() {
   return (

@@ -1,5 +1,8 @@
-import { Link, useLocation } from '@remix-run/react';
-import { ScrollArea, ScrollBar } from '~/components/ui/scroll-area';
+import { Link, useLocation } from 'react-router';
+import {
+  ScrollArea,
+  ScrollBar,
+} from '@palettebro/shadcn-ui/scroll-area';
 import { registryCategories } from './registry-categories';
 
 export function BlocksNav() {

@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 import { NavMain } from './nav-main';
 import { SidebarOptInForm } from './sidebar-opt-in-form';
 

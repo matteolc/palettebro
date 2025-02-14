@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import { Icons } from '~/components/ui/icons';
-import { Input } from '~/components/ui/input';
-import { Label } from '~/components/ui/label';
+import { Input } from '@palettebro/shadcn-ui/input';
+import { Label } from '@palettebro/shadcn-ui/label';
 import { cn } from '~/lib/utils';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}

@@ -1,4 +1,4 @@
-import { Input } from '~/components/ui/input';
+import { Input } from '@palettebro/shadcn-ui/input';
 
 export function Search() {
   return (

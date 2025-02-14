@@ -1,12 +1,12 @@
-import { Button } from '~/components/ui/button';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
-import { SidebarInput } from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/card';
+import { SidebarInput } from '@palettebro/shadcn-ui/sidebar';
 
 export function SidebarOptInForm() {
   return (

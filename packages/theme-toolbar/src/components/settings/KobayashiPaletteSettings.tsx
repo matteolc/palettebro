@@ -8,7 +8,7 @@ import {
 import { KobayashiImageEnum } from '@palettebro/theme-generator';
 import { SettingsSection } from './SettingsSection';
 import { KobayashiPaletteContext } from '@/context/KobayashiPaletteContext';
-import { Checkbox } from '@/ui/checkbox';
+import { Checkbox } from '@palettebro/shadcn-ui/checkbox';
 
 export const KobayashiPaletteSettings = () => {
   const { word, words, setWord, image, setImage, generative, setGenerative } =
@@ -60,7 +60,16 @@ export const KobayashiPaletteSettings = () => {
             title="Generative"
             className="items-center"
             rightElement={
-              <Checkbox checked={generative} onCheckedChange={setGenerative} />
+              <Checkbox
+                style={
+                  {
+                    '--color-primary': 'oklch(.141 .005 285.823)',
+                    '--color-primary-foreground': 'oklch(.985 .002 247.839)',
+                  } as React.CSSProperties
+                }
+                checked={generative}
+                onCheckedChange={setGenerative}
+              />
             }
           />
         </div>

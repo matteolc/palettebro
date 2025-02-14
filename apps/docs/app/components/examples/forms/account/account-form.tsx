@@ -4,8 +4,8 @@ import { CalendarIcon, Check, ChevronsUpDown } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Button } from '~/components/ui/button';
-import { Calendar } from '~/components/ui/calendar';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Calendar } from '@palettebro/shadcn-ui/calendar';
 import {
   Command,
   CommandEmpty,
@@ -13,7 +13,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '~/components/ui/command';
+} from '@palettebro/shadcn-ui/command';
 import {
   Form,
   FormControl,
@@ -22,13 +22,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '~/components/ui/form';
-import { Input } from '~/components/ui/input';
+} from '@palettebro/shadcn-ui/form';
+import { Input } from '@palettebro/shadcn-ui/input';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
+} from '@palettebro/shadcn-ui/popover';
 import { toast } from '~/hooks/use-toast';
 import { cn } from '~/lib/utils';
 

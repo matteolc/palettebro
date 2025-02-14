@@ -1,10 +1,5 @@
-import { Badge } from '~/components/ui/badge';
-/**
- * v0 by Vercel.
- * ~see https://v0.dev/t/LVLQojrG3ul
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import { Card, CardDescription, CardTitle } from '~/components/ui/card';
+import { Badge } from '@palettebro/shadcn-ui/badge';
+import { Card, CardDescription, CardTitle } from '@palettebro/shadcn-ui/card';
 
 export function CardsProduct() {
   return (

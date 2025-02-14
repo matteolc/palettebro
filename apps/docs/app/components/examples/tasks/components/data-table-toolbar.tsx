@@ -1,8 +1,8 @@
 import type { Table } from '@tanstack/react-table';
 import { X } from 'lucide-react';
 
-import { Button } from '~/components/ui/button';
-import { Input } from '~/components/ui/input';
+import { Button } from '@palettebro/shadcn-ui/button';
+import { Input } from '@palettebro/shadcn-ui/input';
 import { DataTableViewOptions } from './data-table-view-options';
 
 import { priorities, statuses } from '../data/data';

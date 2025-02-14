@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '~/components/ui/breadcrumb';
+} from '@palettebro/shadcn-ui/breadcrumb';
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '~/components/ui/sidebar';
+} from '@palettebro/shadcn-ui/sidebar';
 import { AppSidebar } from './app-sidebar';
 
 export default function Page() {

@@ -5,9 +5,9 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '~/components/ui/hover-card';
-import { Label } from '~/components/ui/label';
-import { Slider } from '~/components/ui/slider';
+} from '@palettebro/shadcn-ui/hover-card';
+import { Label } from '@palettebro/shadcn-ui/label';
+import { Slider } from '@palettebro/shadcn-ui/slider';
 
 interface TemperatureSelectorProps {
   defaultValue: SliderProps['defaultValue'];

@@ -2,8 +2,8 @@ import type { Column } from '@tanstack/react-table';
 import { Check, PlusCircle } from 'lucide-react';
 import type * as React from 'react';
 
-import { Badge } from '~/components/ui/badge';
-import { Button } from '~/components/ui/button';
+import { Badge } from '@palettebro/shadcn-ui/badge';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Command,
   CommandEmpty,
@@ -12,13 +12,13 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '~/components/ui/command';
+} from '@palettebro/shadcn-ui/command';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/ui/popover';
-import { Separator } from '~/components/ui/separator';
+} from '@palettebro/shadcn-ui/popover';
+import { Separator } from '@palettebro/shadcn-ui/separator';
 import { cn } from '~/lib/utils';
 
 interface DataTableFacetedFilterProps<TData, TValue> {

@@ -1,5 +1,5 @@
-import { Link, useLocation } from '@remix-run/react';
-import { buttonVariants } from '~/components/ui/button';
+import { Link, useLocation } from 'react-router';
+import { buttonVariants } from '@palettebro/shadcn-ui/button';
 import { cn } from '~/lib/utils';
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {

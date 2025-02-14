@@ -1,14 +1,14 @@
 import { Check, Plus, Send } from 'lucide-react';
 import * as React from 'react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Button } from '~/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@palettebro/shadcn-ui/avatar';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from '~/components/ui/card';
+} from '@palettebro/shadcn-ui/card';
 import {
   Command,
   CommandEmpty,
@@ -16,7 +16,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '~/components/ui/command';
+} from '@palettebro/shadcn-ui/command';
 import {
   Dialog,
   DialogContent,
@@ -24,14 +24,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '~/components/ui/dialog';
-import { Input } from '~/components/ui/input';
+} from '@palettebro/shadcn-ui/dialog';
+import { Input } from '@palettebro/shadcn-ui/input';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '~/components/ui/tooltip';
+} from '@palettebro/shadcn-ui/tooltip';
 import { cn } from '~/lib/utils';
 
 const users = [

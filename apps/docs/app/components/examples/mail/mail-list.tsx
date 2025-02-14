@@ -1,9 +1,8 @@
 import { formatDistanceToNow } from 'date-fns';
 import type { ComponentProps } from 'react';
 
-import { Badge } from '~/components/ui/badge';
-import { ScrollArea } from '~/components/ui/scroll-area';
-import { Separator } from '~/components/ui/separator';
+import { Badge } from '@palettebro/shadcn-ui/badge';
+import { ScrollArea } from '@palettebro/shadcn-ui/scroll-area';
 import { cn } from '~/lib/utils';
 import type { Mail } from './data';
 import { useMail } from './use-mail';

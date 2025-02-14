@@ -6,13 +6,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '~/components/ui/card';
+} from '@palettebro/shadcn-ui/card';
 import {
   type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '~/components/ui/chart';
+} from '@palettebro/shadcn-ui/chart';
 
 const data = [
   {

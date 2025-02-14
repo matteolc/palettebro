@@ -2,8 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Link } from '@remix-run/react';
-import { Button } from '~/components/ui/button';
+import { Link } from 'react-router';
+import { Button } from '@palettebro/shadcn-ui/button';
 import {
   Form,
   FormControl,
@@ -12,16 +12,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '~/components/ui/form';
-import { Input } from '~/components/ui/input';
+} from '@palettebro/shadcn-ui/form';
+import { Input } from '@palettebro/shadcn-ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '~/components/ui/select';
-import { Textarea } from '~/components/ui/textarea';
+} from '@palettebro/shadcn-ui/select';
+import { Textarea } from '@palettebro/shadcn-ui/textarea';
 import { toast } from '~/hooks/use-toast';
 import { cn } from '~/lib/utils';
 

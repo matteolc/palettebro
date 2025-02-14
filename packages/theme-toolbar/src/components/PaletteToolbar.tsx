@@ -17,7 +17,7 @@ import { GenerativePaletteContext } from '@/context/GenerativePaletteContext';
 import type { FormProps } from '@/types';
 import { PaletteToolbarColorSwatch } from './PaletteToolbarColorSwatch';
 import { BASE_TOKENS } from '@/const';
-import { Skeleton } from '@/ui/skeleton';
+import { Skeleton } from '@palettebro/shadcn-ui/skeleton';
 import { ColorShadesSettings } from './settings/ColorShadesSettings';
 import { KobayashiPaletteContext } from '@/context';
 
